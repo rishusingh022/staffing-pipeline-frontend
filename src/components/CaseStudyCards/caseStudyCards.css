@@ -1,0 +1,27 @@
+.case-study-image {
+  width: 201px;
+  height: 89px;
+  border-radius: 15px 15px;
+}
+
+.case-study-box {
+  margin-top: 34px;
+  margin-left: 31px;
+}
+
+.case-study-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.upload-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+}
