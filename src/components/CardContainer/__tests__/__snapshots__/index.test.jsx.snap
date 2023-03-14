@@ -3,7 +3,7 @@
 exports[`CardContainer should render without crashing 1`] = `
 <DocumentFragment>
   <div
-    class="card-container"
+    class="grid grid-cols-1 h-full gap-x-14 gap-y-8 lg:grid-cols-4 md:grid-cols-2"
   >
     <div>
       Test
