@@ -16,7 +16,7 @@ export default function Dropdown({ dropdownName, dropdownData, selectOption }) {
         {selected ? selected : `${dropdownName}`}
         <BiChevronDown size={20} />
       </div>
-      <div className={`${!toggleDropdown ? 'hidden' : ''}`}>
+      <div className={`${!toggleDropdown ? 'hidden' : 'absolute'}`}>
         <ul className={'bg-white mt-2 overflow-y-auto max-h-60 border border-black-300'}>
           <div className="flex items-center sticky top-0 h-10 bg-white">
             <AiOutlineSearch size={18} className="w-10" />
