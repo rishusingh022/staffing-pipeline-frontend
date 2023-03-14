@@ -11,7 +11,7 @@ function ToolBox() {
     <div className="filter-container">
       <div className="fiter-search-box">
         <div className="filter-input-box">
-          <Search handleSearch={handleSearch} />
+          <Search placeHolderValue={'Search for studies, tech stack, etc.'} handleSearch={handleSearch} />
         </div>
       </div>
       <div className="filter-drop-downs">

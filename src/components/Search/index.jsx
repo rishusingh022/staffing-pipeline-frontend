@@ -2,7 +2,7 @@ import React from 'react';
 import './Search.css';
 import Button from '../Button/index';
 import prop from 'prop-types';
-function Search({ handleSearch }) {
+function Search({ placeHolderValue, handleSearch }) {
   const [searchValue, setSearchValue] = React.useState('');
 
   const handleSearchChange = event => {
@@ -14,7 +14,7 @@ function Search({ handleSearch }) {
 
   return (
     <div className="search-container">
-      <input onChange={handleSearchChange} type="text" placeholder="Search for Studies, tech stack, etc" />
+      <input onChange={handleSearchChange} type="text" placeholder={placeHolderValue} />
       <div className="filter-search-button">
         <Button buttonText="Search" handleClick={handleSearchClick} />
       </div>
@@ -26,4 +26,5 @@ export default Search;
 
 Search.propTypes = {
   handleSearch: prop.func.isRequired,
+  placeHolderValue: prop.string.isRequired,
 };

@@ -10,10 +10,6 @@ describe('ToolBox', () => {
     expect(screen.getByText('Guilds')).toBeTruthy();
     expect(screen.getByText('Technology')).toBeTruthy();
   });
-  it('renders ToolBox component with search', () => {
-    render(<ToolBox />);
-    expect(screen.getByPlaceholderText('Search for Studies, tech stack, etc')).toBeTruthy();
-  });
   it('renders ToolBox component with search button', () => {
     render(<ToolBox />);
     expect(screen.getByText('Search')).toBeTruthy();
@@ -42,5 +38,11 @@ describe('ToolBox', () => {
     expect(screen.getByText('Node')).toBeTruthy();
     expect(screen.getByText('React Js')).toBeTruthy();
     expect(screen.getByText('Angular')).toBeTruthy();
+  });
+  it('should show search input when search button is clicked', () => {
+    render(<ToolBox />);
+    const search = screen.getByText('Search');
+    search.click();
+    expect(screen.getByPlaceholderText('Search for studies, tech stack, etc.')).toBeTruthy();
   });
 });
