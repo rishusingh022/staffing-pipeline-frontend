@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './EngagementDetailsPage.css';
-import { Header } from '../../components';
 import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -21,7 +20,6 @@ const EngagementDetailsPage = () => {
 
   return (
     <div>
-      <Header hasNav={true} />
       <h1>Engagement Details Page</h1>
       <Footer />
     </div>

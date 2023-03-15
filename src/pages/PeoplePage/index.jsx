@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './PeoplePage.css';
-import { Header } from '../../components';
 import Footer from '../../components/Footer';
 import userImage from './../../assets/images/user-default.png';
 
@@ -9,6 +8,8 @@ import { GET_USER_DATA_URL } from '../../constants/apiEndpoints';
 import CardContainer from '../../components/CardContainer';
 import UserCard from '../../components/UserCard';
 import { useNavigate } from 'react-router-dom';
+import { Header } from '../../components';
+
 import ToolBox from './ToolBox';
 const PeoplePage = () => {
   const [people, setPeople] = React.useState([]);
@@ -27,7 +28,7 @@ const PeoplePage = () => {
   if (error) {
     return (
       <div>
-        <Header hasNav={true} />
+        <Header hasNav={true} navigate={navigate} />
         <h1>People Page</h1>
         <p>{error.message}</p>
         <Footer />
