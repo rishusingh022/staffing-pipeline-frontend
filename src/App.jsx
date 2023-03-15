@@ -9,7 +9,6 @@ import PeoplePage from './pages/PeoplePage';
 import PeopleDetailsPage from './pages/PeopleDetailsPage';
 import ErrorPage from './pages/ErrorPage';
 import NotFoundPage from './pages/NotFoundPage';
-import HomePage from './pages/HomePage';
 
 import './App.css';
 import {
@@ -19,7 +18,6 @@ import {
   USER_DETAILS_ROUTE,
   PROJECTS_ROUTE,
   PROJECT_DETAILS_ROUTE,
-  HOME_ROUTE,
   ERROR_ROUTE,
   NOT_FOUND_ROUTE,
 } from './constants/routes';
@@ -29,7 +27,6 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route path={HOME_ROUTE} element={<HomePage />} />
           <Route path={LOGIN_ROUTE} element={<LoginPage />} />
           <Route path={CASE_STUDIES_ROUTE} element={<CaseStudiesPage />} />
           <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />

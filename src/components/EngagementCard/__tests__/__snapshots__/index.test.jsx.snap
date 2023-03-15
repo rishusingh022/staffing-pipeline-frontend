@@ -3,7 +3,7 @@
 exports[`EngagementCard should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="shadow-lg flex flex-col w-56 engagement-card-style"
+    class="bg-white shadow-lg flex flex-col w-56 engagement-card-style"
     data-testid="image-card"
   >
     <img

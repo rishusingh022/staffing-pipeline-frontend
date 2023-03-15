@@ -14,7 +14,7 @@ export default function EngagementCard({
   handleButtonClick,
 }) {
   return (
-    <div className="shadow-lg flex flex-col w-56 engagement-card-style" data-testid="image-card">
+    <div className="bg-white shadow-lg flex flex-col w-56 engagement-card-style" data-testid="image-card">
       <Image imageUrl={imageUrl} altText={altText} />
       <div className="px-3 py-2">
         <div className="text-xs mb-1">{identityNumber}</div>
