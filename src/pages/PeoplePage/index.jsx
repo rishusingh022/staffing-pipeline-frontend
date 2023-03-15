@@ -9,7 +9,7 @@ import { GET_USER_DATA_URL } from '../../constants/apiEndpoints';
 import CardContainer from '../../components/CardContainer';
 import UserCard from '../../components/UserCard';
 import { useNavigate } from 'react-router-dom';
-
+import ToolBox from './ToolBox';
 const PeoplePage = () => {
   const [people, setPeople] = React.useState([]);
   const [error, setError] = React.useState(null);
@@ -51,9 +51,8 @@ const PeoplePage = () => {
     });
     return (
       <div className="people-page">
-        <div className="header-in-people">
-          <Header hasNav={true} />
-        </div>
+        <Header hasNav={true} />
+        <ToolBox />
         <div className="container-in-people">
           <CardContainer>{peopleCards}</CardContainer>
         </div>
@@ -63,5 +62,4 @@ const PeoplePage = () => {
     return <div>loading</div>;
   }
 };
-
 export default PeoplePage;
