@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EngagementHorizontalCard should render 1`] = `
+<DocumentFragment>
+  <div
+    class="engagement-card-container"
+  >
+    <img
+      class="engagement-img"
+      src="EngagementImage"
+    />
+    <div
+      class="engagement-details"
+    >
+      <p
+        class="engagement-id"
+      >
+        123456
+      </p>
+      <p
+        class="engagement-title"
+      >
+        Project
+      </p>
+      <div
+        class="engagement-bottom-btn"
+      >
+        <div>
+          <p>
+            View
+          </p>
+          <img
+            src="Vector.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

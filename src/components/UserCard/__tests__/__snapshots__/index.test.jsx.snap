@@ -7,7 +7,9 @@ exports[`UserCard should render correctly 1`] = `
     data-testid="image-card"
   >
     <img
+      alt="User"
       class="image-component"
+      src="https://images.unsplash.com/photo-1616486497199-1c1e1f1b1b1a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     />
     <div
       class="bg-white px-3 py-2"
@@ -15,17 +17,23 @@ exports[`UserCard should render correctly 1`] = `
       <div
         class="text-xs mb-1"
       >
-        FMNO: 
+        FMNO: FMNO: 123456
       </div>
       <div
         class="font-bold text-xl mb-1"
-      />
+      >
+        John Doe
+      </div>
       <div
         class="font-semibold text-xs mb-1"
-      />
+      >
+        Software Engineer
+      </div>
       <div
         class="font-medium text-xs mb-1 text-gray-500"
-      />
+      >
+        Bangalore, India
+      </div>
     </div>
     <div
       class="bg-white link-button self-end text-xs mb-2 font-medium cursor-pointer"

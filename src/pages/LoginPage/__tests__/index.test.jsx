@@ -1,3 +1,4 @@
+import React from 'react';
 import LoginPage from '..';
 import { Fragment } from 'react';
 import { render, screen } from '@testing-library/react';

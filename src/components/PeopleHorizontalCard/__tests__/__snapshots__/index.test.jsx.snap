@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeopleHorizontalCard Snapshot should render 1`] = `
+<DocumentFragment>
+  <div
+    class="user-horizontal-card-container"
+  >
+    <div
+      class="user-horizontal-img-container"
+    >
+      <img
+        class="user-horizontal-img"
+        src="user-default.png"
+      />
+    </div>
+    <div
+      class="user-horizontal-details"
+    >
+      <p
+        class="user-horizontal-id"
+      >
+        FMNO: 
+      </p>
+      <p
+        class="user-horizontal-name"
+      />
+      <p
+        class="user-horizontal-position"
+      />
+      <p
+        class="user-horizontal-office"
+      />
+      <div
+        class="user-horizontal-bottom-btn"
+      >
+        <div>
+          <p>
+            Know More
+          </p>
+          <img
+            src="Vector.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

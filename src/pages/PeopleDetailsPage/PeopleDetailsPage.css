@@ -1,0 +1,153 @@
+.user-details-page{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-personal-card{
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  background-color: #EDEDED;
+}
+
+.user-image-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.user-details{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0px 20px;
+  width: 35%;
+}
+
+.user-image{
+  width: 200px;
+  height: 200px;
+}
+
+.user-fmno{
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.user-name{
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.user-contact-details{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 400;
+
+}
+
+
+.current-engagement-title{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.user-professional-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-professional-nav{
+  display: flex;
+  gap: 40px;
+  background-color: #EDEDED;
+  width: 100%;
+  justify-content: center;
+}
+
+.professional-nav-item{
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 5px solid transparent;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.professional-nav-item-active{
+  border-bottom: 5px solid #061B2C;
+}
+
+.user-all-details-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.user-professional-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.user-professional-skills{
+  width: 70%;
+}
+
+.user-professional-info-title{
+  font-size: x-large;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.user-skills-table{
+  width: 100%;
+}
+
+.user-skills-table th{
+  background-color: #EDEDED;
+  padding: 10px 40px;
+}
+
+.user-skills-table th:first-child {
+  text-align: left;
+}
+
+.user-skills-table td:first-child{
+  text-align: left;
+}
+
+.user-skills-table td{
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.user-skills-table th:last-child{
+  text-align: right;
+}
+
+.user-skills-table td:last-child{
+  text-align: right;
+}
+
+.user-past-engagements-info{
+  padding: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 70%;
+}
