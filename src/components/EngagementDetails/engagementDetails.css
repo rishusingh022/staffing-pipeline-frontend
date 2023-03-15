@@ -1,0 +1,162 @@
+.container-div {
+  height: fit-content;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 53.6px;
+}
+
+.project-container {
+  height: fit-content;
+  display: flex;
+}
+
+.team-members-container {
+  height: fit-content;
+  margin-top: 20px;
+  display: flex;
+}
+
+.team-members {
+  width: 50%;
+  height: fit-content;
+  flex-wrap: wrap;
+}
+
+.team-member-title {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.team-member-detail {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 300px;
+  overflow-y: scroll;
+  gap: 10px;
+  height: fit-content;
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.team-member-detail .user-horizontal-card-container {
+  width: 200px;
+}
+
+.technology {
+  width: 50%;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+
+.technology-title {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.user-dropdown {
+  margin-right: 50px;
+}
+.title-box {
+  width: 266px;
+  height: 50px;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 48px;
+  text-align: left;
+
+  align-items: center;
+}
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.case-study-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 42px;
+  height: fit-content;
+}
+
+.case-study-comp {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.case-study-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.case-study-button {
+  margin-top: 30px;
+}
+
+.container-div {
+  margin: 74px 144px;
+}
+
+.image-container {
+  height: 312px;
+  width: 430px;
+}
+
+.detail-container {
+  margin-left: 60px;
+  width: 100%;
+}
+
+.id-container {
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+}
+.id-container p {
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.project-text {
+  font-size: 32px;
+}
+.id-container button {
+  margin-right: 10px;
+}
+.project-details {
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.date-container {
+  display: flex;
+  width: 250px;
+  justify-content: flex-start;
+}
+
+.date-container :nth-child(2) {
+  padding-left: 7px;
+}
+
+.date-container p:first-child {
+  font-weight: bold;
+}
+
+.project-details p {
+  margin-top: 10px;
+}

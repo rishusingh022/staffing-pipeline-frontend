@@ -1,6 +1,6 @@
 import React from 'react';
 import './PeopleHorizontalCard.css';
-import ArrowIcon from '../../assets/images/Vector.png';
+import { BsArrowRight } from 'react-icons/bs';
 import UserImage from '../../assets/images/user-default.png';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +23,7 @@ function PeopleHorizontalCard({ userImage, userFMNO, userName, userPosition, use
         <div className="user-horizontal-bottom-btn" onClick={handleKnowMore}>
           <div>
             <p>Know More</p>
-            <img src={ArrowIcon}></img>
+            <BsArrowRight color="blue" />
           </div>
         </div>
       </div>

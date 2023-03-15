@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './EngagementDetailsPage.css';
-import Footer from '../../components/Footer';
+import { Header } from '../../components';
+import EngagementDetails from '../../components/EngagementDetails';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
@@ -13,15 +14,15 @@ const EngagementDetailsPage = () => {
 
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate).then(response => {
-      setEngagementDetails(response);
-      console.log('response', engagementDetails);
+      setEngagementDetails(response.projectData);
+      console.log('response', response);
     });
   }, [projectId, navigate]);
 
   return (
-    <div>
-      <h1>Engagement Details Page</h1>
-      <Footer />
+    <div className="engagement-container">
+      <Header hasNav={true} />
+      <EngagementDetails engagementDetails={engagementDetails ? engagementDetails : null} />
     </div>
   );
 };
