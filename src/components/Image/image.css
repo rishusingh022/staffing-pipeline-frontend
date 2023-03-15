@@ -5,3 +5,38 @@
   border-radius: inherit;
 }
 
+* {box-sizing: border-box}
+
+.overlay-image-component{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); 
+  color: #f1f1f1;
+  width: 100%;
+  height: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
