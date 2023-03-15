@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #D9D9D9;
+    background: var(--color-lightgray);
 }
 .card{
     display: flex;
@@ -14,12 +14,12 @@
     gap:30px;
     width: 518px;
     height: 509px;
-    background: #F8F9FA;
+    background: var(--color-ghostwhite);
 }
 .card button{
     width: 289.71px !important;
     height: 36.48px !important;
-    background-color:  #051B2C;
+    background-color:  var(--color-darkblue) !important;
     font-family: 'Inter' !important;
     font-style: normal !important;
     font-weight: 400 !important;

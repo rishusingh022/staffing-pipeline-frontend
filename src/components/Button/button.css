@@ -1,7 +1,7 @@
 .button {
-  background-color: #051b2c;
+  background-color: var(--color-darkblue);
   border: none;
-  color: #ffffff;
+  color: var(--color-white);
   padding: 11.5px 12px;
   text-align: center;
   text-decoration: none;

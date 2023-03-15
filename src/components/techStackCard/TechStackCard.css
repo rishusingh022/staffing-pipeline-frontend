@@ -1,32 +1,31 @@
-.all-tech-stack-cards{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    /* margin: 0 0 40px 0; */
+.all-tech-stack-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  /* margin: 0 0 40px 0; */
 }
 
-.tech-stack-card{
-    width: 255px;
-    height: 54px;
-    background-color: white;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
+.tech-stack-card {
+  width: 255px;
+  height: 54px;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
-.tech-icon{
-    height: 40px;
-    width: 45px;
-    color: lightblue;
+.tech-icon {
+  height: 40px;
+  width: 45px;
+  color: var(--color-lightblue);
 }
 
-.tech-stack-name{
-    font-size: 20px;
-    font-weight: 500;
-    color: #2c2c2c;
+.tech-stack-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-black);
 }
-

@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  background-color: var(--color-whitesmoke);
   height: 90%;
   overflow: scroll;
 }

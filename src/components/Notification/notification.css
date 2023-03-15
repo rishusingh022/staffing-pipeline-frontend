@@ -1,28 +1,28 @@
-.notification-card{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #fde7e7;
-    font-size:"1rem";
-    padding: "15px";
-    width: 100%;
+.notification-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--color-lightred);
+  font-size: '1rem';
+  padding: '15px';
+  width: 100%;
 }
-.close-button{
-    color: #a41523;
-    background-color:#fde7e7;
-    padding: 10px;
-    margin-right: 10px ;
-    border-radius: 50%;
+.close-button {
+  color: var(--color-red);
+  background-color: var(--color-lightred);
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
 }
-.close-button:hover{
-    background-color: rgba(256, 256, 256, 30%);
-    color: #a41523;
-    cursor: pointer;
+.close-button:hover {
+  background-color: rgba(256, 256, 256, 30%);
+  color: var(--color-red);
+  cursor: pointer;
 }
-.notification-card .message{
-    font-size: 1rem;
-    font-weight: 400;
-    font-family: 'Inter';
-    color: #a41523;
-    margin: 10px;
+.notification-card .message {
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: 'Inter';
+  color: var(--color-red);
+  margin: 10px;
 }
