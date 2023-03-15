@@ -69,10 +69,11 @@ exports[`PeoplePage should render without crashing 1`] = `
         class="people-page-filter-drop-downs"
       >
         <div
-          class="w-44 font-normal"
+          class="w-44 font-normal dropdown-container"
         >
           <div
-            class="bg-white w-full p-2 flex justify-between items-center border-solid border border-black cursor-pointer"
+            class="bg-white w-full p-2 dropdown-header
+        flex justify-between items-center border-solid border border-black cursor-pointer"
           >
             Technology
             <svg
@@ -147,10 +148,11 @@ exports[`PeoplePage should render without crashing 1`] = `
           </div>
         </div>
         <div
-          class="w-44 font-normal"
+          class="w-44 font-normal dropdown-container"
         >
           <div
-            class="bg-white w-full p-2 flex justify-between items-center border-solid border border-black cursor-pointer"
+            class="bg-white w-full p-2 dropdown-header
+        flex justify-between items-center border-solid border border-black cursor-pointer"
           >
             Role
             <svg

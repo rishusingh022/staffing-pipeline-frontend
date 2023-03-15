@@ -1,16 +1,53 @@
 .case-studies-page {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 .container-in-case-studies {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F5F5F5;
-    flex-grow: 1;
-    padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-whitesmoke);
+  flex-grow: 1;
+  padding-top: 30px;
+}
+
+.case-study-page-filter-container {
+  width: 100%;
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 3rem 1rem 2rem 18.7%;
+}
+
+.case-study-page-fiter-search-box {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.case-study-page-filter-input-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.case-study-page-filter-drop-downs {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .case-study-page-filter-container {
+    flex-direction: column;
+    padding: 1rem 0.5rem 1rem 18.7%;
   }
+}

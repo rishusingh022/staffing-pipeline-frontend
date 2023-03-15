@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function CaseStudyCard({ imageUrl, altText, identityNumber, name, author, boxLink }) {
   return (
-    <div className="shadow-lg flex flex-col w-64 case-study-card-style" data-testid="image-card">
+    <div className="bg-white shadow-lg flex flex-col w-64 case-study-card-style" data-testid="image-card">
       <Image imageUrl={imageUrl} altText={altText} />
       <div className="px-3 py-1">
         <div className="text-xs mb-1">{identityNumber}</div>

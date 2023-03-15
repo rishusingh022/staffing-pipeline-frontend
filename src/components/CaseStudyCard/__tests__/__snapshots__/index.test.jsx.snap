@@ -3,7 +3,7 @@
 exports[`CaseStudyCard should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="shadow-lg flex flex-col w-64 case-study-card-style"
+    class="bg-white shadow-lg flex flex-col w-64 case-study-card-style"
     data-testid="image-card"
   >
     <img
