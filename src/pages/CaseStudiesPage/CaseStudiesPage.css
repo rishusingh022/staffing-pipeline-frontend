@@ -1,0 +1,16 @@
+.case-studies-page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+.container-in-case-studies {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5F5;
+    flex-grow: 1;
+    padding-top: 30px;
+  }
