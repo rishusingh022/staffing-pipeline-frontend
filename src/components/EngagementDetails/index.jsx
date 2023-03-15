@@ -7,7 +7,7 @@ import TechStack from '../techStackCard';
 import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
-import { getFormattedDateFromUtcDate } from './../../utils/common/';
+import { getFormattedDateFromUtcDate } from '../../utils/common';
 
 export default function EngagementDetails({ engagementDetails }) {
   const handleClick = () => {};
@@ -21,7 +21,7 @@ export default function EngagementDetails({ engagementDetails }) {
         <div className="detail-container">
           <div className="id-container">
             <p className="text-sm">ID : {engagementDetails?.engagementId}</p>
-            <Button buttonText={'upload project'} handleClick={handleClick} />
+            <Button buttonText={'Update Project'} handleClick={handleClick} />
           </div>
           <div className="project-details">
             <p className="project-text">Project</p>
@@ -45,7 +45,7 @@ export default function EngagementDetails({ engagementDetails }) {
       </div>
       <div className="team-members-container grid grid-cols-2 gap-2">
         <div className="team-members">
-          <div className="team-member-title flex grid grid-cols-2 gap-2">
+          <div className="team-member-title grid grid-cols-2 gap-2">
             <div className="title-box">Team Members</div>
             <div className="user-dropdown">
               <Dropdown dropdownName="All" />
@@ -100,7 +100,7 @@ export default function EngagementDetails({ engagementDetails }) {
           <div className="technology-title">
             <div className="title-box">Technology</div>
             <div>
-              <Dropdown dropdownName="Technology" dropdownData={['React', 'NodeJs', 'Express']} />
+              <Dropdown dropdownName="All" dropdownData={['React', 'NodeJs', 'Express']} />
             </div>
           </div>
           <div className="tech-stack grid grid-cols-2">

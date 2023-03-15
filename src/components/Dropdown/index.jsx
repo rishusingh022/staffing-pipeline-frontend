@@ -53,4 +53,5 @@ Dropdown.propTypes = {
   dropdownName: PropTypes.string.isRequired,
   dropdownData: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectOption: PropTypes.func.isRequired,
+  forUpdate: PropTypes.bool,
 };

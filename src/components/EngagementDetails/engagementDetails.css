@@ -2,12 +2,17 @@
   height: fit-content;
   box-sizing: border-box;
   background-color: white;
-  padding: 53.6px;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4rem 8rem;
 }
 
 .project-container {
   height: fit-content;
   display: flex;
+  gap:30px;
 }
 
 .team-members-container {
@@ -66,7 +71,6 @@
   font-weight: 600;
   line-height: 48px;
   text-align: left;
-
   align-items: center;
 }
 .tech-stack {
@@ -103,60 +107,40 @@
   text-align: left;
 }
 
-.case-study-button {
-  margin-top: 30px;
-}
-
-.container-div {
-  margin: 74px 144px;
-}
-
 .image-container {
-  height: 312px;
-  width: 430px;
+  height: 180px;
+  width: 240px;
 }
 
 .detail-container {
-  margin-left: 60px;
   width: 100%;
 }
 
 .id-container {
-  height: 44px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.id-container p {
-  margin-left: 10px;
-  margin-top: 20px;
-  font-size: 24px;
+.id-container button{
+  padding: 8px 20px;
 }
-
-.project-text {
-  font-size: 32px;
-}
-.id-container button {
-  margin-right: 10px;
-}
-.project-details {
-  height: 250px;
-  margin-top: 20px;
-  margin-left: 10px;
-}
-.date-container {
+.project-details{
   display: flex;
-  width: 250px;
-  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2px;
 }
-
-.date-container :nth-child(2) {
-  padding-left: 7px;
-}
-
-.date-container p:first-child {
+.project-text {
+  font-size: 18px;
   font-weight: bold;
 }
 
-.project-details p {
-  margin-top: 10px;
+.date-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.case-study-button button{
+  padding: 8px 20px;
 }
