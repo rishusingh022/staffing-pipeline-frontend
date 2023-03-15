@@ -1,15 +1,19 @@
+.case-study-card-container{
+  display: flex;
+}
+
 .case-study-image {
   width: 201px;
   height: 89px;
   border-radius: 15px 15px;
 }
 
-.case-study-box {
+.case-study-detail-box {
   margin-top: 34px;
   margin-left: 31px;
 }
 
-.case-study-date {
+.case-study-name {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -18,7 +22,7 @@
   text-align: left;
 }
 
-.upload-date {
+.case-study-upload-date {
   font-family: 'Poppins', sans-serif;
   font-size: 15px;
   font-weight: 400;

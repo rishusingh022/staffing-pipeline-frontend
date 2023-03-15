@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Horizontal Case-Study Card should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="case-study-card-container"
+  >
+    <div
+      class="case-study-image"
+    >
+      <img
+        alt="test-image"
+        class="image-component"
+        src="http://surl.li/fkwje"
+      />
+    </div>
+    <div
+      class="case-study-detail-box"
+    >
+      <div
+        class="case-study-name"
+      />
+      <div
+        class="case-study-upload-date"
+      >
+        uploaded on 23/02/23
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
