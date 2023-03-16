@@ -9,6 +9,7 @@ import PeoplePage from './pages/PeoplePage';
 import PeopleDetailsPage from './pages/PeopleDetailsPage';
 import ErrorPage from './pages/ErrorPage';
 import NotFoundPage from './pages/NotFoundPage';
+import UpdateUserPage from './pages/UpdateUserPage';
 import EditEngagementDetailsPage from './pages/EditEngagementDetailsPage';
 import AddEngagementPage from './pages/AddEngagementPage';
 
@@ -18,6 +19,7 @@ import {
   LOGIN_ROUTE,
   USERS_ROUTE,
   USER_DETAILS_ROUTE,
+  UPDATE_USER_ROUTE,
   PROJECTS_ROUTE,
   PROJECT_DETAILS_ROUTE,
   ERROR_ROUTE,
@@ -39,6 +41,7 @@ function App() {
           <Route path={PROJECT_DETAILS_EDIT_ROUTE} element={<EditEngagementDetailsPage />} />
           <Route path={USERS_ROUTE} element={<PeoplePage />} />
           <Route path={USER_DETAILS_ROUTE} element={<PeopleDetailsPage />} />
+          <Route path={UPDATE_USER_ROUTE} element={<UpdateUserPage />} />
           <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
           <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
         </Routes>

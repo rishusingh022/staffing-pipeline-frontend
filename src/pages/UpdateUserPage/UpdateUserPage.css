@@ -1,0 +1,115 @@
+.user-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+    background-color: rgb(241, 241, 241);
+    /* gap: 100px; */
+}
+
+.user-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+    /* flex-wrap: wrap; */
+}
+
+.user-img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.update-profile-button{
+    background-color: #051B2C;
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    width: 162px;
+    height: 45px;
+}
+
+.update-profile-button:hover{
+    box-shadow: 3px 3px 3px 3px grey;
+}
+
+.user-details-personal{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.user-input{
+    width: 300px;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.user-details-personal-dropdown{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.user-details-personal-dropdown .dropdown-container{
+    width: 145px;
+}
+
+.user-engagements{
+    width: 30%;
+    height: 200px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.add-engagements{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 3px solid whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.user-content-professional{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(241, 241, 241);
+    gap: 30px;
+}
+
+.user-content-professional-button{
+    padding: 10px;
+    width: 400px;
+}
+
+@media only screen and (max-width: 1160px) {
+    .user-content{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-engagements{
+        padding-top: 20px ;
+    }
+  }

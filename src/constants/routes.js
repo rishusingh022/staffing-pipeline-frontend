@@ -6,5 +6,6 @@ export const PROJECT_DETAILS_EDIT_ROUTE = '/projects/:projectId/edit';
 export const CASE_STUDIES_ROUTE = '/casestudies';
 export const USERS_ROUTE = '/users';
 export const USER_DETAILS_ROUTE = '/users/:userId';
+export const UPDATE_USER_ROUTE = '/users/:userId/update';
 export const ERROR_ROUTE = '/error';
 export const NOT_FOUND_ROUTE = '*';

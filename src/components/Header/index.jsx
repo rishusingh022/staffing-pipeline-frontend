@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, USERS_ROUTE } from '../../constants/routes';
-import { useNavigate } from 'react-router-dom';
+import logoImg from '../../assets/McK_Logo.png';
 
 export default function Header({ hasNav }) {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function Header({ hasNav }) {
     <div className="font-light h-[88px] text-white flex justify-center bg-deepBlue header-container">
       <div className="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border">
         <img
-          src="./assets/McK_Logo.png"
+          src={logoImg}
           className="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
         />
         {hasNav && (
