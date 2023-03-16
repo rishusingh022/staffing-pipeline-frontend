@@ -5,7 +5,7 @@ import EngagementDetails from '../../components/EngagementDetails';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
-import { default as makeRequest } from '../../utils/makeRequest/';
+import { default as makeRequest } from '../../utils/makeRequest';
 
 const EngagementDetailsPage = () => {
   const { projectId } = useParams();

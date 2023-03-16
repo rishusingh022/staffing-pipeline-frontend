@@ -3,18 +3,41 @@ import './LoginPage.css';
 import InputComponent from '../../components/InputComponent';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
-const LoginPage = () => {
-  const onSubmit = () => {
-    console.log('onSubmit');
-  };
 
+import { Header } from '../../components';
+import makeRequest from '../../utils/authMakeRequest';
+import { AUTH_LOGIN_URL } from '../../constants/apiEndpoints';
+import { useNavigate } from 'react-router-dom';
+import Notification from '../../components/Notification';
+
+const LoginPage = () => {
+  const [credentials, setCredentials] = React.useState({ email: '', password: '' });
+  const [error, setError] = React.useState(false);
+  const navigate = useNavigate();
+  const handleCredentials = e => {
+    setCredentials({ ...credentials, [e.target.placeholder]: e.target.value });
+  };
+  const onSubmit = () => {
+    makeRequest(AUTH_LOGIN_URL(), { data: credentials }, navigate)
+      .then(res => {
+        localStorage.setItem('token', res.token);
+        navigate('/projects');
+      })
+      .catch(err => {
+        console.log(err.response);
+        setError(true);
+        console.log(err);
+      });
+  };
+  setTimeout(() => (error ? setError(false) : null), 6000);
   return (
     <div>
       <div className="login-page">
+        {error && <Notification message={'Invalid credentials'} handleClose={() => setError(false)} />}
         <div className={'card'}>
-          <h1>Hub Capablities and staffing portal</h1>
-          <InputComponent placeholder={'email'} />
-          <InputComponent placeholder={'password'} />
+          <p className={'title'}>Hub Capablities and staffing portal</p>
+          <InputComponent placeholder={'email'} type={'text'} handleChange={handleCredentials} />
+          <InputComponent placeholder={'password'} type={'password'} handleChange={handleCredentials} />
           <Button buttonText={'login'} handleClick={onSubmit} />
         </div>
       </div>

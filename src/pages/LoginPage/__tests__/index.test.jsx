@@ -1,11 +1,15 @@
 import React from 'react';
 import LoginPage from '..';
-import { Fragment } from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('LoginPage Snapshot', () => {
   it('should render', () => {
-    const { asFragment } = render(<LoginPage />);
+    const { asFragment } = render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });

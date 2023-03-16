@@ -9,7 +9,7 @@ import EngagementHorizontalCard from '../../components/EngagementHorizontalCard'
 import EngagementCard from '../../components/EngagementCard';
 import EngagementImage from '../../assets/images/engagement-default.png';
 import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
-import { default as makeRequest } from '../../utils/makeRequest/';
+import { default as makeRequest } from '../../utils/makeRequest';
 
 const PeopleDetailsPage = () => {
   const { userId } = useParams();

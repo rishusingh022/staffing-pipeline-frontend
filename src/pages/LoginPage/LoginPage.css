@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
 .login-page{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 100%;
     background: var(--color-lightgray);
 }
+
 .card{
     display: flex;
     align-items: center;
@@ -16,6 +19,7 @@
     height: 509px;
     background: var(--color-ghostwhite);
 }
+
 .card button{
     width: 289.71px !important;
     height: 36.48px !important;
@@ -27,8 +31,23 @@
     line-height: 18px !important;
     text-align: center !important;
 }
-.card h1{
+
+.title{
+    font-family: 'Inter';
+    font-style: normal;
     font-weight: 800;
     font-size: 15px;
+    line-height: 18px;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
     font-family: 'Inter';
+    font-weight: 400;
+    margin-top: 10px;   
+}
+
+.login-page .notification-card{
+    width: 518px;
 }

@@ -9,7 +9,7 @@ export default function Notification({ message, handleClose }) {
       <div className="message">
         <p>{message}</p>
       </div>
-      <div className="close-button" data-testid="X" onClick={handleClose}>
+      <div className="close-button" data-testid="X" onClick={() => handleClose()}>
         X
       </div>
     </div>

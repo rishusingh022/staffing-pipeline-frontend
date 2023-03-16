@@ -72,3 +72,7 @@ export const DELETE_CASE_STUDIES_DATA_URL = id => ({
   url: `api/case-studies/${id}`,
   method: 'delete',
 });
+export const AUTH_LOGIN_URL = () => ({
+  url: `/auth/login`,
+  method: 'post',
+});

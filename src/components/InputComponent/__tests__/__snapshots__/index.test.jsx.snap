@@ -6,7 +6,6 @@ exports[`InputComponent should render correctly 1`] = `
     <input
       class="login-input"
       placeholder="email"
-      type="text"
     />
   </div>
 </DocumentFragment>

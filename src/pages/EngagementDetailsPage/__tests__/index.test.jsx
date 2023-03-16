@@ -2,7 +2,7 @@ import React from 'react';
 import EngagementDetailsPage from '..';
 import { waitFor, render } from '@testing-library/react';
 import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../../constants/apiEndpoints';
-import makeRequest from '../../../utils/makeRequest/';
+import makeRequest from '../../../utils/makeRequest';
 import { useParams } from 'react-router-dom';
 import { default as mockEngagementData } from '../../../mocks/EngagementDetailsPage';
 

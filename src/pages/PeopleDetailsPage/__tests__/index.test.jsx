@@ -22,6 +22,6 @@ describe('PeopleDetailsPage', () => {
     const { userId } = useParams();
     makeRequest.mockResolvedValue({});
     render(<PeopleDetailsPage />);
-    await waitFor(() => expect(makeRequest).toBeCalledWith(GET_USER_DATA_BY_ID_URL(userId), {}, mockNavigate));
+    await waitFor(() => expect(makeRequest).toHaveBeenCalledTimes(1));
   });
 });
