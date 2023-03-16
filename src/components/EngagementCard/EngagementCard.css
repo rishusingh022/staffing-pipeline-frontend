@@ -1,7 +1,7 @@
 .engagement-card-style img {
-  height: 200px !important;
+  max-height: 200px !important;
   object-fit: fill;
 }
-.engagement-card-style {
-  height: 340px;
+.engagement-card-style{
+  height: 350px;
 }

@@ -10,6 +10,7 @@ import PeopleDetailsPage from './pages/PeopleDetailsPage';
 import ErrorPage from './pages/ErrorPage';
 import NotFoundPage from './pages/NotFoundPage';
 import EditEngagementDetailsPage from './pages/EditEngagementDetailsPage';
+import AddEngagementPage from './pages/AddEngagementPage';
 
 import './App.css';
 import {
@@ -22,6 +23,7 @@ import {
   ERROR_ROUTE,
   NOT_FOUND_ROUTE,
   PROJECT_DETAILS_EDIT_ROUTE,
+  ADD_PROJECT_ROUTE,
 } from './constants/routes';
 
 function App() {
@@ -32,6 +34,7 @@ function App() {
           <Route path={LOGIN_ROUTE} element={<LoginPage />} />
           <Route path={CASE_STUDIES_ROUTE} element={<CaseStudiesPage />} />
           <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />
+          <Route path={ADD_PROJECT_ROUTE} element={<AddEngagementPage />} />
           <Route path={PROJECT_DETAILS_ROUTE} element={<EngagementDetailsPage />} />
           <Route path={PROJECT_DETAILS_EDIT_ROUTE} element={<EditEngagementDetailsPage />} />
           <Route path={USERS_ROUTE} element={<PeoplePage />} />

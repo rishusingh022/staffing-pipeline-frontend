@@ -19,7 +19,7 @@ exports[`PeoplePage should render without crashing 1`] = `
           class="grid grid-cols-3 gap-10 items-end"
         >
           <button
-            class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
+            class="text-cyan border-b-[5px] border-b-cyan border-solid pt-0 pb-2.5 px-[5px]"
           >
             Engagements
           </button>

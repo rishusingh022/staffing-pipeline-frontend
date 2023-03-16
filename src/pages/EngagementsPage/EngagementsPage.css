@@ -31,6 +31,7 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
 }
 
 .filter-input-box {
@@ -44,6 +45,10 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
+}
+.search-container{
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
