@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, USERS_ROUTE } from '../../constants/routes';
+import { useNavigate } from 'react-router-dom';
 
-export default function Header({ hasNav, navigate }) {
+export default function Header({ hasNav }) {
+  const navigate = useNavigate();
   const location = window.location.pathname;
 
   const activeClass = 'text-cyan border-b-[5px] border-b-cyan border-solid pt-0 pb-2.5 px-[5px]';
@@ -10,7 +12,7 @@ export default function Header({ hasNav, navigate }) {
     'text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]';
 
   return (
-    <div className="font-light h-[88px] text-white flex justify-center bg-deepBlue">
+    <div className="font-light h-[88px] text-white flex justify-center bg-deepBlue header-container">
       <div className="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border">
         <img
           src="./assets/McK_Logo.png"
@@ -42,5 +44,4 @@ export default function Header({ hasNav, navigate }) {
 
 Header.propTypes = {
   hasNav: PropTypes.bool.isRequired,
-  navigate: PropTypes.func.isRequired,
 };

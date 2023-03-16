@@ -6,7 +6,7 @@ exports[`PeoplePage should render without crashing 1`] = `
     class="people-page"
   >
     <div
-      class="font-light h-[88px] text-white flex justify-center bg-deepBlue"
+      class="font-light h-[88px] text-white flex justify-center bg-deepBlue header-container"
     >
       <div
         class="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border"

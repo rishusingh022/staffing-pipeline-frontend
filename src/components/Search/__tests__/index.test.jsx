@@ -9,8 +9,8 @@ describe('Search', () => {
     expect(screen.getByText('Search')).toBeTruthy();
   });
   it('renders search input with placeHolder value', () => {
-    render(<Search placeHolderValue="Search for studies, tech stack, etc." />);
-    expect(screen.getByPlaceholderText('Search for studies, tech stack, etc.')).toBeTruthy();
+    render(<Search placeHolderValue="Search for studies" />);
+    expect(screen.getByPlaceholderText('Search for studies')).toBeTruthy();
   });
   it('should call handleSearch when search button is clicked', () => {
     const handleSearch = jest.fn();

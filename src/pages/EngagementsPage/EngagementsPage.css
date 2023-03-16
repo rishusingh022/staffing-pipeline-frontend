@@ -3,7 +3,6 @@
   justify-content: center;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   width: 100%;
 }
 .container-in-engagements {
@@ -21,13 +20,12 @@
   background-color: var(--color-white);
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   gap: 1rem;
-  padding: 3rem 1rem 2rem 18.7%;
+  padding: 3rem 1rem 2rem 6rem;
 }
 
 .fiter-search-box {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -41,11 +39,14 @@
   gap: 1rem;
 }
 .filter-drop-downs {
-  width: 40%;
   display: flex;
   flex-direction: row;
   gap: 1rem;
   align-items: center;
+}
+.filter-drop-downs button{
+  padding: 10px 12px;
+  width: 180px;
 }
 .search-container{
   align-items: center;
