@@ -9,3 +9,4 @@ export const USER_DETAILS_ROUTE = '/users/:userId';
 export const UPDATE_USER_ROUTE = '/users/:userId/update';
 export const ERROR_ROUTE = '/error';
 export const NOT_FOUND_ROUTE = '*';
+export const ADD_USER_ROUTE = '/users/add';

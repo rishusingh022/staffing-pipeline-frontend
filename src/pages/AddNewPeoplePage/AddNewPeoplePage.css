@@ -1,0 +1,235 @@
+.add-new-people-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.add-new-people-upper-body {
+  display: flex;
+  flex-direction: row;
+  background-color: #ededed;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.add-new-people-upper-body-left {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  gap: 5rem;
+  padding: 1rem;
+}
+.add-new-people-upper-body-left-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.add-new-people-upper-body-left-left > img {
+  width: 277.88px;
+  height: 266px;
+}
+.add-new-people-upper-body-left-left > button {
+  padding: 10px;
+  cursor: pointer;
+}
+.add-new-people-upper-body-left-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.new-people-fmno > input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #051b2c;
+}
+
+.new-people-name > input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #051b2c;
+}
+
+.new-people-position-office {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.new-people-position-office .dropdown-container {
+  width: 100%;
+}
+.new-people-position-office .dropdown-container .dropdown-header {
+  color: grey;
+}
+.new-people-email > input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #051b2c;
+}
+
+.new-people-phone > input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #051b2c;
+}
+
+.add-new-people-upper-body-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 50%;
+  align-items: center;
+  margin-top: 30px;
+}
+.add-new-people-engaement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.add-new-people-engaement > h3 {
+  color: var(--color-darkblue);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.add-new-people-engaement > div {
+  background-color: var(--color-white);
+  width: 480px;
+  height: 132px;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.25);
+}
+.add-new-people-engaement > div > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+.add-new-people-enagenemnt-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: grey;
+  font-weight: 300;
+}
+.add-new-people-lower-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-user-professional-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-user-professional-nav {
+  display: flex;
+  gap: 40px;
+  background-color: #ededed;
+  width: 100%;
+  justify-content: center;
+}
+
+.professional-nav-item {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 5px solid transparent;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.professional-nav-item-active {
+  border-bottom: 5px solid #061b2c;
+}
+
+.add-user-all-details-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.add-user-professional-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.add-user-professional-skills {
+  width: 70%;
+}
+
+.add-user-professional-info-title {
+  font-size: x-large;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.add-user-skills-table {
+  width: 100%;
+}
+
+.add-user-skills-table th {
+  background-color: #ededed;
+  padding: 10px 40px;
+}
+
+.add-user-skills-table th:first-child {
+  text-align: left;
+}
+
+.add-user-skills-table td:first-child {
+  text-align: left;
+}
+
+.add-user-skills-table td {
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.add-user-skills-table th:last-child {
+  text-align: right;
+}
+
+.add-user-skills-table td:last-child {
+  text-align: right;
+}
+
+.add-user-past-engagements-info {
+  padding: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 70%;
+}
+
+.add-skill-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.add-skill-button button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 60px;
+  background: #051b2c;
+  cursor: pointer;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}

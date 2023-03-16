@@ -10,7 +10,7 @@ exports[`Header should render correctly with a navbar when Navbar boolean is tru
     >
       <img
         class="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
-        src="./assets/McK_Logo.png"
+        src="McK_Logo.png"
       />
       <div
         class="grid grid-cols-3 gap-10 items-end"
@@ -46,7 +46,7 @@ exports[`Header should render correctly without a navbar when Navbar boolean is 
     >
       <img
         class="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
-        src="./assets/McK_Logo.png"
+        src="McK_Logo.png"
       />
     </div>
   </div>
