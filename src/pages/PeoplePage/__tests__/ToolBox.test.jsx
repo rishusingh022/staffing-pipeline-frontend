@@ -1,5 +1,5 @@
 import React from 'react';
-import { waitFor, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import ToolBox from '../ToolBox';
 
@@ -37,6 +37,6 @@ describe('ToolBox', () => {
     render(<ToolBox />);
     const search = screen.getByText('Search');
     search.click();
-    expect(screen.getByPlaceholderText('Search for people ...')).toBeTruthy();
+    expect(screen.getByPlaceholderText('Search for people')).toBeTruthy();
   });
 });

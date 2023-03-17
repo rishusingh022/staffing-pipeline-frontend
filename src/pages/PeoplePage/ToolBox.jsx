@@ -15,7 +15,7 @@ function ToolBox() {
     <div className="people-page-filter-container">
       <div className="people-page-filter-search-box">
         <div className="people-page-filter-input-box">
-          <Search placeHolderValue={'Search for people ...'} handleSearch={handleSearch} />
+          <Search placeHolderValue={'Search for people'} handleSearch={handleSearch} />
         </div>
       </div>
       <div className="people-page-filter-drop-downs">

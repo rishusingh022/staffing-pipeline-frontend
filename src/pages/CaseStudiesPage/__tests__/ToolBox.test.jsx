@@ -7,7 +7,6 @@ describe('ToolBox', () => {
   it('renders ToolBox component', () => {
     render(<ToolBox />);
     expect(screen.getByText('Time Frame')).toBeTruthy();
-    expect(screen.getByText('Owner')).toBeTruthy();
     expect(screen.getByText('Study')).toBeTruthy();
   });
   it('renders ToolBox component with search button', () => {
@@ -23,13 +22,13 @@ describe('ToolBox', () => {
     expect(screen.getByText('This month')).toBeTruthy();
     expect(screen.getByText('This year')).toBeTruthy();
   });
-  it('should show owner drop down options when owner drop down is clicked', () => {
+  it('should show collaborator drop down options when collaborator drop down is clicked', () => {
     render(<ToolBox />);
-    const owner = screen.getByText('Owner');
-    owner.click();
-    expect(screen.getByText('Owner1')).toBeTruthy();
-    expect(screen.getByText('Owner2')).toBeTruthy();
-    expect(screen.getByText('Owner3')).toBeTruthy();
+    const collaborators = screen.getByText('Collaborators');
+    collaborators.click();
+    expect(screen.getByText('Collaborator1')).toBeTruthy();
+    expect(screen.getByText('Collaborator2')).toBeTruthy();
+    expect(screen.getByText('Collaborator3')).toBeTruthy();
   });
   it('should show study drop down options when study drop down is clicked', () => {
     render(<ToolBox />);
@@ -43,6 +42,6 @@ describe('ToolBox', () => {
     render(<ToolBox />);
     const search = screen.getByText('Search');
     search.click();
-    expect(screen.getByPlaceholderText('Search for studies, tech stack, etc.')).toBeTruthy();
+    expect(screen.getByPlaceholderText('Search for case studies')).toBeTruthy();
   });
 });

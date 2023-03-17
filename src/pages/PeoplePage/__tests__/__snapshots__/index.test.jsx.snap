@@ -49,7 +49,7 @@ exports[`PeoplePage should render without crashing 1`] = `
             class="search-container"
           >
             <input
-              placeholder="Search for people ..."
+              placeholder="Search for people"
               type="text"
             />
             <div

@@ -13,7 +13,7 @@ function ToolBox({ handleAddNewEngagement }) {
     <div className="filter-container">
       <div className="fiter-search-box">
         <div className="filter-input-box">
-          <Search placeHolderValue={'Search for studies'} handleSearch={handleSearch} />
+          <Search placeHolderValue={'Search for engagements'} handleSearch={handleSearch} />
         </div>
       </div>
       <div className="filter-drop-downs">

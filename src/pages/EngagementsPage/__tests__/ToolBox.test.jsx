@@ -43,6 +43,6 @@ describe('ToolBox', () => {
     render(<ToolBox />);
     const search = screen.getByText('Search');
     search.click();
-    expect(screen.getByPlaceholderText('Search for studies')).toBeTruthy();
+    expect(screen.getByPlaceholderText('Search for engagements')).toBeTruthy();
   });
 });
