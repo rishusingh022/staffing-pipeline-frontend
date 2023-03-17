@@ -1,26 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { Modal } from '..';
+import PropTypes from 'prop-types';
+import makeRequest from '../../utils/makeRequest';
+import { GET_DATA_BY_SEARCH_URL } from '../../constants/apiEndpoints';
+import { skills } from '../../constants/skills';
 
-const mockList = [
-  {
-    id: 1,
-    name: 'John Doe',
-    fmno: '123456',
-  },
-  {
-    id: 2,
-    name: 'Jane Doe',
-    fmno: '123455',
-  },
-  {
-    id: 3,
-    name: 'Kyle Joe',
-    fmno: '123454',
-  },
-];
-
-const SearchAndAdd = () => {
+const SearchAndAdd = ({ open, entity, navigate, setItem }) => {
+  const [isOpen, setIsOpen] = useState(open);
   const [mactchQueries, setMatchQueries] = useState([]);
   const [input, setInput] = useState('');
   const [debouncedInput] = useDebounce(input, 1000);
@@ -30,28 +17,34 @@ const SearchAndAdd = () => {
   }, [debouncedInput]);
 
   const handleSearch = async searchValue => {
-    console.log(searchValue);
     if (searchValue === '') {
       setMatchQueries([]);
       return;
     }
-    console.log(mockList);
-    const result = mockList.filter(item => {
-      return item.name.toUpperCase().match(searchValue.toUpperCase());
-    });
-    console.log(result);
-    setMatchQueries(result);
+    // data fetch
+    try {
+      if (entity === 'skills') {
+        const result = skills;
+        const filteredResult = result.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
+        setMatchQueries(filteredResult);
+        return;
+      }
+      const result = await makeRequest(GET_DATA_BY_SEARCH_URL(entity, searchValue), {}, navigate);
+      setMatchQueries(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  // Subject to change according to the API
   const handleAdd = e => {
-    // console.log(e.target.getAttribute('data-id'));
     const id = e.target.getAttribute('data-id');
-    console.log(id);
+    const item = mactchQueries.find(item => item.id == id);
+    setItem(item);
+    setIsOpen(false);
   };
 
   return (
     <div>
-      <Modal open={true}>
+      <Modal open={isOpen}>
         <div>
           <input
             className="w-full h-[48px] border-2 border-gray-400 focus:outline-none focus:border-electricBlue p-2 my-2 mb-0"
@@ -77,6 +70,13 @@ const SearchAndAdd = () => {
       </Modal>
     </div>
   );
+};
+
+SearchAndAdd.propTypes = {
+  open: PropTypes.bool,
+  entity: PropTypes.string,
+  navigate: PropTypes.func,
+  setItem: PropTypes.func,
 };
 
 export default SearchAndAdd;

@@ -1,0 +1,92 @@
+export const skills = [
+  {
+    id: 1,
+    name: 'JavaScript',
+    category: 'Programming Languages',
+    area: 'Frontend',
+  },
+  {
+    id: 2,
+    name: 'React',
+    category: 'Frameworks',
+    area: 'Frontend',
+  },
+  {
+    id: 3,
+    name: 'Redux',
+    category: 'Frameworks',
+    area: 'Frontend',
+  },
+  {
+    id: 4,
+    name: 'HTML',
+    category: 'Markup Languages',
+    area: 'Frontend',
+  },
+  {
+    id: 5,
+    name: 'CSS',
+    category: 'Markup Languages',
+    area: 'Frontend',
+  },
+  {
+    id: 6,
+    name: 'SASS',
+    category: 'Markup Languages',
+    area: 'Frontend',
+  },
+  {
+    id: 7,
+    name: 'Bootstrap',
+    category: 'Frameworks',
+    area: 'Frontend',
+  },
+  {
+    id: 8,
+    name: 'Material UI',
+    category: 'Frameworks',
+    area: 'Frontend',
+  },
+  {
+    id: 9,
+    name: 'Angular',
+    category: 'Frameworks',
+    area: 'Frontend',
+  },
+  {
+    id: 10,
+    name: 'Node',
+    category: 'Frameworks',
+    area: 'Backend',
+  },
+  {
+    id: 11,
+    name: 'Express',
+    category: 'Frameworks',
+    area: 'Backend',
+  },
+  {
+    id: 12,
+    name: 'MongoDB',
+    category: 'Databases',
+    area: 'Backend',
+  },
+  {
+    id: 13,
+    name: 'MySQL',
+    category: 'Databases',
+    area: 'Backend',
+  },
+  {
+    id: 14,
+    name: 'PostgreSQL',
+    category: 'Databases',
+    area: 'Backend',
+  },
+  {
+    id: 15,
+    name: 'Python',
+    category: 'Programming Languages',
+    area: 'Backend',
+  },
+];

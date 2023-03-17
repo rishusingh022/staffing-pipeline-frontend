@@ -1,3 +1,3 @@
-const AUTHORIZATION_TOKEN = localStorage.getItem('token') || null;
-
-export default () => AUTHORIZATION_TOKEN;
+const AUTHORIZATION_TOKEN =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWNraW5zZXkuY29tIiwiaWF0IjoxNjc5MDQ4MTQzLCJleHAiOjE2NzkwNTE3NDN9.i_Wij4JpS_bPeUWI98Eq7hgSy4ooXE0F5MpAhomn_Rg';
+export default AUTHORIZATION_TOKEN;
