@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
-import logoImg from '../../assets/McK_Logo.png';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, USERS_ROUTE } from '../../constants/routes';
-import { useNavigate } from 'react-router-dom';
 import logoImage from '../../assets/McK_Logo.png';
 export default function Header({ hasNav }) {
   const navigate = useNavigate();

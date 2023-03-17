@@ -50,34 +50,6 @@ exports[`LoginPage Snapshot should render 1`] = `
         </button>
       </div>
     </div>
-    <div>
-      <div
-        class="z-10 fixed inset-0 flex justify-center items-center"
-      >
-        <div
-          class="absolute inset-0 bg-black/[.85]"
-        />
-        <div
-          class="relative z-1 bg-white p-10 w-[40rem] h-[9rem]"
-        >
-          <div
-            class="absolute top-3 right-3 bg-transparent border-none cursor-pointer w-4 h-4 flex justify-center items-center"
-          >
-            <i
-              class="fa-solid fa-xmark"
-            />
-          </div>
-          <div>
-            <input
-              class="w-full h-[48px] border-2 border-gray-400 focus:outline-none focus:border-electricBlue p-2 my-2 mb-0"
-              placeholder="Search"
-              type="text"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
     <div
       class="footer"
     >
