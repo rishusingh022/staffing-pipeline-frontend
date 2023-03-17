@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should not render if isOpen prop is false 1`] = `<DocumentFragment />`;
+
+exports[`Header should render correctly if isOpen prop is true 1`] = `<DocumentFragment />`;

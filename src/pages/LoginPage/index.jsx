@@ -4,7 +4,6 @@ import InputComponent from '../../components/InputComponent';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 
-import { Header } from '../../components';
 import makeRequest from '../../utils/authMakeRequest';
 import { AUTH_LOGIN_URL } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';

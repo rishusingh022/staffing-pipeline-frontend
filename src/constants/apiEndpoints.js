@@ -72,6 +72,12 @@ export const DELETE_CASE_STUDIES_DATA_URL = id => ({
   url: `api/case-studies/${id}`,
   method: 'delete',
 });
+
+export const GET_DATA_BY_SEARCH_URL = (entity, searchQuery) => ({
+  url: `api/search/${entity}?name=${searchQuery}`,
+  method: 'get',
+});
+
 export const AUTH_LOGIN_URL = () => ({
   url: `/auth/login`,
   method: 'post',
