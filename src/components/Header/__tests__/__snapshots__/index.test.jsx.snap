@@ -3,7 +3,7 @@
 exports[`Header should render correctly with a navbar when Navbar boolean is true 1`] = `
 <DocumentFragment>
   <div
-    class="font-light h-[88px] text-white flex justify-center bg-deepBlue header-container"
+    class="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container"
   >
     <div
       class="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border"
@@ -39,7 +39,7 @@ exports[`Header should render correctly with a navbar when Navbar boolean is tru
 exports[`Header should render correctly without a navbar when Navbar boolean is false 1`] = `
 <DocumentFragment>
   <div
-    class="font-light h-[88px] text-white flex justify-center bg-deepBlue header-container"
+    class="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container"
   >
     <div
       class="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border"

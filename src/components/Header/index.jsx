@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import logoImg from '../../assets/McK_Logo.png';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, USERS_ROUTE } from '../../constants/routes';
+import { useNavigate } from 'react-router-dom';
+import logoImage from '../../assets/McK_Logo.png';
 export default function Header({ hasNav }) {
   const navigate = useNavigate();
   const location = window.location.pathname;
@@ -12,10 +14,10 @@ export default function Header({ hasNav }) {
     'text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]';
 
   return (
-    <div className="font-light h-[88px] text-white flex justify-center bg-deepBlue header-container">
+    <div className="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container">
       <div className="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border">
         <img
-          src={logoImg}
+          src={logoImage}
           className="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
         />
         {hasNav && (

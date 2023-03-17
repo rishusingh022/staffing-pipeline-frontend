@@ -22,6 +22,10 @@
   gap: 20px;
 }
 
+.user-image-container button{
+  padding: 10px 15px;
+}
+
 .user-details{
   display: flex;
   flex-direction: column;

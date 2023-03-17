@@ -3,13 +3,11 @@ import './EngagementsPage.css';
 import Dropdown from '../../components/Dropdown';
 import { Search } from '../../components';
 import Button from '../../components/Button';
+import PropTypes from 'prop-types';
 import { timeFrameOptions, guildOptions, technologyOptions } from '../../mocks/DropDownOptions';
-function ToolBox() {
+function ToolBox({ handleAddNewEngagement }) {
   const handleSearch = searchValue => {
     console.log(searchValue);
-  };
-  const handleAddNewEngagement = () => {
-    console.log('Add new engagement');
   };
   return (
     <div className="filter-container">
@@ -27,5 +25,7 @@ function ToolBox() {
     </div>
   );
 }
-
+ToolBox.propTypes = {
+  handleAddNewEngagement: PropTypes.func.isRequired,
+};
 export default ToolBox;

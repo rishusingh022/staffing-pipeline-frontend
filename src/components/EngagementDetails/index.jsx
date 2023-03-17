@@ -8,10 +8,11 @@ import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
 import { getFormattedDateFromUtcDate } from '../../utils/common';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function EngagementDetails({ engagementDetails }) {
-  const handleClick = () => {};
-
+  const navigate = useNavigate();
+  const { projectId } = useParams();
   return (
     <div className="container-div">
       <div className="project-container">
@@ -21,7 +22,7 @@ export default function EngagementDetails({ engagementDetails }) {
         <div className="detail-container">
           <div className="id-container">
             <p className="text-sm">ID : {engagementDetails?.engagementId}</p>
-            <Button buttonText={'Update Project'} handleClick={handleClick} />
+            <Button buttonText={'Update Project'} handleClick={() => navigate(`/projects/${projectId}/edit`)} />
           </div>
           <div className="project-details">
             <p className="project-text">Project</p>
@@ -121,7 +122,7 @@ export default function EngagementDetails({ engagementDetails }) {
           ))}
         </div>
         <div className="case-study-button">
-          <Button buttonText={'upload'} handleClick={handleClick} />
+          <Button buttonText={'upload'} handleClick={() => {}} />
         </div>
       </div>
     </div>

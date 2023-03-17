@@ -43,7 +43,9 @@ const EngagementsPage = () => {
           startDate={formatDate(project.startDate)}
           status={project.status}
           identityNumber={project.engagementId}
-          handleButtonClick={() => {}}
+          handleButtonClick={() => {
+            navigate(`/projects/${project.engagementId}`);
+          }}
         />
       );
     });
@@ -51,7 +53,7 @@ const EngagementsPage = () => {
     return (
       <div className="engagements-page">
         <Header hasNav={true} />
-        <ToolBox />
+        <ToolBox handleAddNewEngagement={() => navigate('/projects/add')} />
         <div className="container-in-engagements">
           <CardContainer>{projectCards}</CardContainer>
         </div>

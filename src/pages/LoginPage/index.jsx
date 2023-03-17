@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './LoginPage.css';
 import InputComponent from '../../components/InputComponent';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 
@@ -20,7 +21,7 @@ const LoginPage = () => {
     makeRequest(AUTH_LOGIN_URL(), { data: credentials }, navigate)
       .then(res => {
         localStorage.setItem('token', res.token);
-        navigate('/projects');
+        navigate('/');
       })
       .catch(err => {
         console.log(err.response);
@@ -30,7 +31,8 @@ const LoginPage = () => {
   };
   setTimeout(() => (error ? setError(false) : null), 6000);
   return (
-    <div>
+    <div className="login-page-container">
+      <Header hasNav={false} />
       <div className="login-page">
         {error && <Notification message={'Invalid credentials'} handleClose={() => setError(false)} />}
         <div className={'card'}>

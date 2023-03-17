@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './EngagementDetailsPage.css';
-import { Header } from '../../components';
+import Header from '../../components/Header';
 import EngagementDetails from '../../components/EngagementDetails';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';

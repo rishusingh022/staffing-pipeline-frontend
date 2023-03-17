@@ -46,7 +46,9 @@ const PeoplePage = () => {
           name={person.name}
           designation={person.role}
           location="Bangalore Office"
-          handleButtonClick={() => {}}
+          handleButtonClick={() => {
+            navigate(`/users/${person.userId}`);
+          }}
         />
       );
     });

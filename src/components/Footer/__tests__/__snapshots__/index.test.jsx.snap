@@ -7,7 +7,7 @@ exports[`footer should render correctly 1`] = `
   >
     <img
       alt="McKinsey and Company"
-      class="footer-img"
+      class="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
       src="mckinsey-logo.png"
     />
   </div>
