@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import EngagementDetailsPage from './pages/EngagementDetailsPage';
@@ -28,6 +28,7 @@ import {
   PROJECT_DETAILS_EDIT_ROUTE,
   ADD_USER_ROUTE,
   ADD_PROJECT_ROUTE,
+  DEFAULT_ROUTE,
 } from './constants/routes';
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Route path={UPDATE_USER_ROUTE} element={<UpdateUserPage />} />
           <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
           <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
+          <Route path={DEFAULT_ROUTE} element={<Navigate to={CASE_STUDIES_ROUTE} />} />
         </Routes>
       </BrowserRouter>
     </div>
