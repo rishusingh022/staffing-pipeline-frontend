@@ -14,7 +14,7 @@ const EngagementDetailsPage = () => {
 
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate).then(response => {
-      setEngagementDetails(response.projectData);
+      setEngagementDetails(response);
       console.log('response', response);
     });
   }, [projectId, navigate]);

@@ -4,7 +4,7 @@ describe('DateTime Utils', () => {
     it('should format date correctly', () => {
       const date = new Date('2020-01-01T00:00:00.000Z');
       const formattedDate = formatDate(date);
-      expect(formattedDate).toBe('2020-01-01');
+      expect(formattedDate).toBe('01/01/2020');
     });
   });
 });

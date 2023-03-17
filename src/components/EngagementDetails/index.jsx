@@ -7,12 +7,11 @@ import TechStack from '../techStackCard';
 import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
-import { getFormattedDateFromUtcDate } from '../../utils/common';
-import { useNavigate, useParams } from 'react-router-dom';
+import formatDate from '../../utils/dateTime';
 
 export default function EngagementDetails({ engagementDetails }) {
-  const navigate = useNavigate();
-  const { projectId } = useParams();
+  const handleClick = () => {};
+
   return (
     <div className="container-div">
       <div className="project-container">
@@ -21,91 +20,60 @@ export default function EngagementDetails({ engagementDetails }) {
         </div>
         <div className="detail-container">
           <div className="id-container">
-            <p className="text-sm">ID : {engagementDetails?.engagementId}</p>
-            <Button buttonText={'Update Project'} handleClick={() => navigate(`/projects/${projectId}/edit`)} />
+            <p className="text-sm">ID : {engagementDetails?.projectData?.engagementId}</p>
+            <Button buttonText={'upload project'} handleClick={handleClick} />
           </div>
           <div className="project-details">
             <p className="project-text">Project</p>
             <div className="date-container">
               <p>Start Date:</p>
-              <p>{getFormattedDateFromUtcDate(engagementDetails?.startDate)}</p>
+              <p>{formatDate(engagementDetails?.projectData?.startDate)}</p>
             </div>
             <div className="date-container">
               <p>End Date:</p>
-              <p>{getFormattedDateFromUtcDate(engagementDetails?.endDate)}</p>
+              <p>{formatDate(engagementDetails?.projectData?.endDate)}</p>
             </div>
             <div className="date-container">
               <p>Status:</p>
-              <p className="text-blue-600">{engagementDetails?.status}</p>
+              <p className="text-blue-600">{engagementDetails?.projectData?.status}</p>
             </div>
             <div className="date-container">
               <p>Tags:</p>
+              <p>{engagementDetails?.projectData?.tags}</p>
             </div>
           </div>
         </div>
       </div>
       <div className="team-members-container grid grid-cols-2 gap-2">
         <div className="team-members">
-          <div className="team-member-title grid grid-cols-2 gap-2">
+          <div className="team-member-title flex grid grid-cols-2 gap-2">
             <div className="title-box">Team Members</div>
             <div className="user-dropdown">
               <Dropdown dropdownName="All" />
             </div>
           </div>
           <div className="team-member-detail">
-            <PeopleHorizontalCard
-              userFMNO="328974"
-              userId="328974"
-              userName="Harsh Agarwal"
-              userPosition="Intern"
-              userOffice="Bangalore"
-            />
-            <PeopleHorizontalCard
-              userFMNO="328974"
-              userId="328974"
-              userName="Harsh Agarwal"
-              userPosition="Intern"
-              userOffice="Bangalore"
-            />
-            <PeopleHorizontalCard
-              userFMNO="328974"
-              userId="328974"
-              userName="Harsh Agarwal"
-              userPosition="Intern"
-              userOffice="Bangalore"
-            />
-            <PeopleHorizontalCard
-              userFMNO="328974"
-              userId="328974"
-              userName="Harsh Agarwal"
-              userPosition="Intern"
-              userOffice="Bangalore"
-            />
-            <PeopleHorizontalCard
-              userFMNO="328974"
-              userId="328974"
-              userName="Harsh Agarwal"
-              userPosition="Intern"
-              userOffice="Bangalore"
-            />
-            <PeopleHorizontalCard
-              userFMNO="328974"
-              userId="328974"
-              userName="Harsh Agarwal"
-              userPosition="Intern"
-              userOffice="Bangalore"
-            />
+            {engagementDetails?.usersInEngagement?.map((data, index) => (
+              <PeopleHorizontalCard
+                key={index}
+                userFMNO={data.fmno}
+                userId={data.userId}
+                userName={data.name}
+                userPosition={data.role}
+                userOffice="Bangaolore"
+              />
+            ))}
           </div>
         </div>
         <div className="technology">
           <div className="technology-title">
             <div className="title-box">Technology</div>
             <div>
-              <Dropdown dropdownName="All" dropdownData={['React', 'NodeJs', 'Express']} />
+              <Dropdown dropdownName="Technology" dropdownData={['React', 'NodeJs', 'Express']} />
             </div>
           </div>
           <div className="tech-stack grid grid-cols-2">
-            {engagementDetails?.skills?.map((data, index) => (
+            {engagementDetails?.projectData?.skills?.map((data, index) => (
               <TechStack key={index} techName={data} />
             ))}
           </div>
@@ -117,12 +85,12 @@ export default function EngagementDetails({ engagementDetails }) {
           <Dropdown dropdownName="All" />
         </div>
         <div className="case-study-comp">
-          {engagementDetails?.caseStudyIds?.map((data, index) => (
-            <HorizontalCaseStudyCards key={index} caseStudyId={data} />
+          {engagementDetails?.caseStudiesInEngagement?.map((data, index) => (
+            <HorizontalCaseStudyCards key={index} caseStudyName={data.name} caseStudyDate={data.createdAt} />
           ))}
         </div>
         <div className="case-study-button">
-          <Button buttonText={'upload'} handleClick={() => {}} />
+          <Button buttonText={'upload'} handleClick={handleClick} />
         </div>
       </div>
     </div>

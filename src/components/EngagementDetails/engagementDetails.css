@@ -76,8 +76,8 @@
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  gap: 15px;
+  justify-content: flex-start;
   max-height: 300px;
   overflow-y: scroll;
   margin-top: 10px;
