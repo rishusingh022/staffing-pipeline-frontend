@@ -7,6 +7,7 @@ import { GET_CASE_STUDIES_DATA_URL } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import CaseStudyCard from './../../components/CaseStudyCard';
 import ToolBox from './ToolBox';
+import PageLoader from '../../components/Spinner';
 
 export default function CaseStudiesPage() {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ export default function CaseStudiesPage() {
           <Header hasNav={true} />
         </div>
         <div className="container-in-case-studies">
-          <CardContainer>Loading....</CardContainer>
+          <PageLoader />
         </div>
       </div>
     );

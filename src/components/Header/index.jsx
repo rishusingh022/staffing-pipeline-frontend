@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, USERS_ROUTE } from '../../constants/routes';
+import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, UPLOAD_EXCELL_ROUTE, USERS_ROUTE } from '../../constants/routes';
 import logoImage from '../../assets/McK_Logo.png';
 export default function Header({ hasNav }) {
   const navigate = useNavigate();
@@ -12,14 +12,11 @@ export default function Header({ hasNav }) {
     'text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]';
 
   return (
-    <div className="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container">
-      <div className="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border">
-        <img
-          src={logoImage}
-          className="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
-        />
+    <div className="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container relative">
+      <img src={logoImage} className="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute left-44" />
+      <div className="h-full  flex box-border">
         {hasNav && (
-          <div className="grid grid-cols-3 gap-10 items-end">
+          <div className="grid grid-cols-4 gap-10 items-end">
             <button
               className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
               onClick={() => navigate(PROJECTS_ROUTE)}>
@@ -34,6 +31,11 @@ export default function Header({ hasNav }) {
               className={location === CASE_STUDIES_ROUTE ? activeClass : inactiveClass}
               onClick={() => navigate(CASE_STUDIES_ROUTE)}>
               Case Studies
+            </button>
+            <button
+              className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
+              onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>
+              Upload Excel
             </button>
           </div>
         )}

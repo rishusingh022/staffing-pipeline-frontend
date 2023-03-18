@@ -6,16 +6,15 @@ exports[`LoginPage Snapshot should render 1`] = `
     class="login-page-container"
   >
     <div
-      class="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container"
+      class="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container relative"
     >
+      <img
+        class="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute left-44"
+        src="McK_Logo.png"
+      />
       <div
-        class="h-full xl:w-[63vw] lg:[70vw] md:[80vw] flex box-border"
-      >
-        <img
-          class="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
-          src="McK_Logo.png"
-        />
-      </div>
+        class="h-full  flex box-border"
+      />
     </div>
     <div
       class="login-page"

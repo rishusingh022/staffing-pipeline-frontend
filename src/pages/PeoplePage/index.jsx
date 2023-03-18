@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components';
 
 import ToolBox from './ToolBox';
+import PageLoader from '../../components/Spinner';
 const PeoplePage = () => {
   const [people, setPeople] = React.useState([]);
   const [error, setError] = React.useState(null);
@@ -62,7 +63,7 @@ const PeoplePage = () => {
       </div>
     );
   } else {
-    return <div>loading</div>;
+    return <PageLoader />;
   }
 };
 export default PeoplePage;

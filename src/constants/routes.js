@@ -10,4 +10,5 @@ export const UPDATE_USER_ROUTE = '/users/:userId/update';
 export const ERROR_ROUTE = '/error';
 export const NOT_FOUND_ROUTE = '*';
 export const ADD_USER_ROUTE = '/users/add';
+export const UPLOAD_EXCELL_ROUTE = '/upload';
 export const DEFAULT_ROUTE = '/';

@@ -13,6 +13,7 @@ import UpdateUserPage from './pages/UpdateUserPage';
 import EditEngagementDetailsPage from './pages/EditEngagementDetailsPage';
 import AddNewPeoplePage from './pages/AddNewPeoplePage';
 import AddEngagementPage from './pages/AddEngagementPage';
+import UploadExcelPage from './pages/UploadExcelPage';
 
 import './App.css';
 import {
@@ -28,6 +29,7 @@ import {
   PROJECT_DETAILS_EDIT_ROUTE,
   ADD_USER_ROUTE,
   ADD_PROJECT_ROUTE,
+  UPLOAD_EXCELL_ROUTE,
   DEFAULT_ROUTE,
 } from './constants/routes';
 
@@ -48,6 +50,7 @@ function App() {
           <Route path={USER_DETAILS_ROUTE} element={<PeopleDetailsPage />} />
           <Route path={UPDATE_USER_ROUTE} element={<UpdateUserPage />} />
           <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
+          <Route path={UPLOAD_EXCELL_ROUTE} element={<UploadExcelPage />} />
           <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
           <Route path={DEFAULT_ROUTE} element={<Navigate to={CASE_STUDIES_ROUTE} />} />
         </Routes>
