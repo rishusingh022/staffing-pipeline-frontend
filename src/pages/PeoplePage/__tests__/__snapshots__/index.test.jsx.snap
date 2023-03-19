@@ -3,7 +3,7 @@
 exports[`PeoplePage should render without crashing 1`] = `
 <DocumentFragment>
   <div
-    class="people-page"
+    class="pt-32 w-full flex justify-center undefined"
   >
     <div
       class="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container relative"

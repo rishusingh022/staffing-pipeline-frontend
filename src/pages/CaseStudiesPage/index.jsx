@@ -13,13 +13,16 @@ export default function CaseStudiesPage() {
   const navigate = useNavigate();
   const [caseStudies, setCaseStudies] = React.useState([]);
   const [error, setError] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(true);
   React.useEffect(() => {
     makeRequest(GET_CASE_STUDIES_DATA_URL, {}, navigate)
       .then(response => {
         setCaseStudies(response);
+        setIsLoading(false);
       })
       .catch(error => {
         setError(error);
+        setIsLoading(false);
       });
   }, []);
   if (error) {
@@ -30,6 +33,9 @@ export default function CaseStudiesPage() {
         <p>{error.message}</p>
       </div>
     );
+  }
+  if (isLoading) {
+    return <PageLoader />;
   }
   if (caseStudies) {
     const caseStudiesCards = caseStudies.map(caseStudy => {

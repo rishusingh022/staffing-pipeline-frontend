@@ -12,12 +12,14 @@ import { Header } from '../../components';
 
 import ToolBox from './ToolBox';
 import PageLoader from '../../components/Spinner';
-
 import { extractSkillFromUsers, extractRoleFromUsers } from '../../utils/common/user';
 
+  
+  
 const PeoplePage = () => {
   const navigate = useNavigate();
   let [people, setPeople] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   const [technologyOptions, setTechnologyOptions] = React.useState([]);
   const [roleOptions, setRoleOptions] = React.useState([]);
@@ -43,11 +45,13 @@ const PeoplePage = () => {
     makeRequest(GET_USER_DATA_URL, {}, navigate)
       .then(data => {
         setPeople(data);
+        setIsLoading(false);
         setTechnologyOptions(extractSkillFromUsers(data));
         setRoleOptions(extractRoleFromUsers(data));
       })
       .catch(error => {
         console.log(error);
+        setIsLoading(false);
         setError(error);
       });
   }, []);
@@ -60,6 +64,9 @@ const PeoplePage = () => {
         <Footer />
       </div>
     );
+  }
+  if (isLoading) {
+    return <PageLoader />;
   }
   if (people) {
     if (technologySelected && roleSelected) {
