@@ -2,18 +2,39 @@ import React from 'react';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import PageLoader from '../../components/Spinner';
+import { useNavigate } from 'react-router-dom';
+import makeRequest from '../../utils/makeRequest';
+import { UPLOAD_EXCEL_ROUTE } from '../../constants/apiEndpoints';
 
 function UploadExcelPage() {
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
+  const navigate = useNavigate();
   const handleFileSelect = event => {
     setFile(event.target.files[0]);
   };
   const handleUpload = () => {
     if (file) {
-      console.log('file selected');
+      const formData = new FormData();
+      formData.append('file', file);
+      makeRequest(
+        UPLOAD_EXCEL_ROUTE,
+        {
+          data: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+        navigate
+      )
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     } else {
-      console.log('file not selected');
+      alert('Please select a file');
     }
   };
 

@@ -3,6 +3,7 @@ import Image from '../Image';
 import './EngagementCard.css';
 import { BsArrowRight } from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
 
 export default function EngagementCard({
   imageUrl,
@@ -11,8 +12,10 @@ export default function EngagementCard({
   name,
   startDate,
   status,
+  // eslint-disable-next-line no-unused-vars
   handleButtonClick,
 }) {
+  const navigate = useNavigate();
   return (
     <div className="bg-white shadow-lg flex flex-col w-56 engagement-card-style" data-testid="image-card">
       <Image imageUrl={imageUrl} altText={altText} />
@@ -22,7 +25,9 @@ export default function EngagementCard({
         <div className="font-semibold text-xs mb-1">Start Date: {startDate}</div>
         <div className="font-medium text-xs mb-1 text-gray-500">{status}</div>
       </div>
-      <div className="link-button self-end text-xs mb-2 font-medium cursor-pointer" onClick={handleButtonClick}>
+      <div
+        className="link-button self-end text-xs mb-2 font-medium cursor-pointer"
+        onClick={() => navigate(`/projects/${identityNumber}`)}>
         Read More
         <BsArrowRight className="inline-block mx-2 text-blue-800" />
       </div>

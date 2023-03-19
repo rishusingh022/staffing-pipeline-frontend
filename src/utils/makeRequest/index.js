@@ -13,6 +13,7 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
       ...dynamicConfig,
       headers: {
         authorization: AUTHORIZATION_TOKEN,
+        ...dynamicConfig.headers,
       },
     };
     const { data } = await axios(requestDetails);

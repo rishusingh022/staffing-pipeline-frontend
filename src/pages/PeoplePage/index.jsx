@@ -14,8 +14,6 @@ import ToolBox from './ToolBox';
 import PageLoader from '../../components/Spinner';
 import { extractSkillFromUsers, extractRoleFromUsers } from '../../utils/common/user';
 
-  
-  
 const PeoplePage = () => {
   const navigate = useNavigate();
   let [people, setPeople] = React.useState([]);

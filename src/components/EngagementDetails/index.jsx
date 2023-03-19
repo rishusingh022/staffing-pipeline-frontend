@@ -53,6 +53,7 @@ export default function EngagementDetails({ engagementDetails }) {
             </div>
           </div>
           <div className="team-member-detail">
+            {engagementDetails?.usersInEngagement?.length === 0 && <p>No Teams Members are assigned</p>}
             {engagementDetails?.usersInEngagement?.map((data, index) => (
               <PeopleHorizontalCard
                 key={index}
@@ -85,6 +86,7 @@ export default function EngagementDetails({ engagementDetails }) {
           <Dropdown dropdownName="All" />
         </div>
         <div className="case-study-comp">
+          {engagementDetails?.caseStudiesInEngagement?.length === 0 && <p>No Case Studies are uploaded</p>}
           {engagementDetails?.caseStudiesInEngagement?.map((data, index) => (
             <HorizontalCaseStudyCards
               key={index}

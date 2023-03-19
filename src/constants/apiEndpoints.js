@@ -82,3 +82,8 @@ export const AUTH_LOGIN_URL = () => ({
   url: `/auth/login`,
   method: 'post',
 });
+
+export const UPLOAD_EXCEL_ROUTE = {
+  url: 'excel/upload',
+  method: 'post',
+};

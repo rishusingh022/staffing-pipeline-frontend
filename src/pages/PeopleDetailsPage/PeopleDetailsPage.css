@@ -9,9 +9,11 @@
 .user-personal-card{
   width: 100%;
   display: flex;
-  padding: 20px;
+  padding: 40px;
   justify-content: center;
   background-color: #EDEDED;
+  gap: 40px;
+  max-height: 40vh;
 }
 
 .user-image-container{
@@ -26,10 +28,10 @@
   padding: 10px 15px;
 }
 
-.user-details{
+.user-details-main{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   padding: 0px 20px;
   width: 35%;
 }
