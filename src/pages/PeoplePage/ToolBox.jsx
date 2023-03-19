@@ -1,12 +1,18 @@
 import React from 'react';
 import Dropdown from '../../components/Dropdown';
 import { Search } from '../../components';
-import { technologyOptions, role } from '../../mocks/DropDownOptions';
+import props from 'prop-types';
 import './PeoplePage.css';
 import Button from '../../components/Button';
-function ToolBox() {
+function ToolBox({ handleSearchChange, handleTechnologyChange, handleRoleChange, technologyOptions, roleOptions }) {
   const handleSearch = searchValue => {
-    console.log(searchValue);
+    handleSearchChange(searchValue);
+  };
+  const selectTechOption = option => {
+    handleTechnologyChange(option);
+  };
+  const selectRoleOption = option => {
+    handleRoleChange(option);
   };
   const handleAddNewMember = () => {
     console.log('Add new member');
@@ -19,13 +25,21 @@ function ToolBox() {
         </div>
       </div>
       <div className="people-page-filter-drop-downs">
-        <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={() => {}} />
-        <Dropdown dropdownName={'Role'} dropdownData={role} selectOption={() => {}} />
+        <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
+        <Dropdown dropdownName={'Role'} dropdownData={roleOptions} selectOption={selectRoleOption} />
         <Button buttonText={'Add new member'} handleClick={handleAddNewMember} />
       </div>
       <div></div>
     </div>
   );
 }
+
+ToolBox.propTypes = {
+  handleSearchChange: props.func.isRequired,
+  handleTechnologyChange: props.func.isRequired,
+  handleRoleChange: props.func.isRequired,
+  technologyOptions: props.array.isRequired,
+  roleOptions: props.array.isRequired,
+};
 
 export default ToolBox;
