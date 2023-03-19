@@ -1,7 +1,13 @@
 .case-study-card-style img{
-    height: 120px !important;
-    object-fit: fill;
+    max-height: 120px !important;
+    object-fit: contain;
 }
 .case-study-card-style{
     height: 240px;
+}
+.case-study-name{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }

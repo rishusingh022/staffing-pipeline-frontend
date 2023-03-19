@@ -9,9 +9,8 @@ exports[`Horizontal Case-Study Card should render correctly 1`] = `
       class="case-study-image"
     >
       <img
-        alt="test-image"
+        alt="case-study-image"
         class="image-component"
-        src="http://surl.li/fkwje"
       />
     </div>
     <div

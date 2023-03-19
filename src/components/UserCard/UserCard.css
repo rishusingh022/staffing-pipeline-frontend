@@ -5,6 +5,9 @@
 .user-card-style{
   height: 330px;
 }
-.bg-white {
-  background-color: white;
+.user-card-name{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }

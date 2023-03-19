@@ -18,7 +18,7 @@ export default function EngagementCard({
       <Image imageUrl={imageUrl} altText={altText} />
       <div className="px-3 py-2">
         <div className="text-xs mb-1">{identityNumber}</div>
-        <div className="font-bold text-xl mb-1">{name}</div>
+        <div className="font-bold text-xl mb-1 engagement-name">{name}</div>
         <div className="font-semibold text-xs mb-1">Start Date: {startDate}</div>
         <div className="font-medium text-xs mb-1 text-gray-500">{status}</div>
       </div>

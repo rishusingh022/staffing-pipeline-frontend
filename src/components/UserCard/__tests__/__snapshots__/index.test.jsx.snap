@@ -20,7 +20,7 @@ exports[`UserCard should render correctly 1`] = `
         FMNO: FMNO: 123456
       </div>
       <div
-        class="font-bold text-xl mb-1"
+        class="font-bold text-xl mb-1 user-card-name"
       >
         John Doe
       </div>

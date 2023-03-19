@@ -3,14 +3,14 @@ import Image from '../Image';
 import './horizontalCaseStudyCards.css';
 import PropTypes from 'prop-types';
 import formatDate from '../../utils/dateTime';
-export default function HorizontalCaseStudyCards({ caseStudyName, caseStudyDate }) {
+export default function HorizontalCaseStudyCards({ caseStudyName, caseStudyDate, caseStudyImage }) {
   const date = formatDate(caseStudyDate);
 
   return (
     <>
       <div className="case-study-card-container">
         <div className="case-study-image">
-          <Image imageUrl={'http://surl.li/fkwje'} altText={'test-image'} />
+          <Image imageUrl={caseStudyImage} altText={'case-study-image'} />
         </div>
         <div className="case-study-detail-box">
           <div className="case-study-name text-base font-bold">{caseStudyName}</div>
@@ -23,4 +23,5 @@ export default function HorizontalCaseStudyCards({ caseStudyName, caseStudyDate 
 HorizontalCaseStudyCards.propTypes = {
   caseStudyName: PropTypes.string.isRequired,
   caseStudyDate: PropTypes.string.isRequired,
+  caseStudyImage: PropTypes.string.isRequired,
 };

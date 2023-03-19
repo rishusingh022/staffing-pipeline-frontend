@@ -20,7 +20,7 @@ exports[`CaseStudyCard should render correctly 1`] = `
         FMNO: 123456
       </div>
       <div
-        class="font-bold text-xl mb-1"
+        class="font-bold text-xl mb-1 case-study-name"
       >
         John Doe
       </div>

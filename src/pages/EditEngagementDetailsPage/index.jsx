@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import Image from '../../components/Image';
-import EngagementDefault from '../../assets/images/engagement-default.png';
 import './EditEngagementDetails.css';
 import Dropdown from '../../components/Dropdown';
 import HorizontalCaseStudyCards from '../../components/HorizontalCaseStudyCards';
@@ -9,8 +8,22 @@ import PeopleHorizontalCard from '../../components/PeopleHorizontalCard';
 import TechStack from '../../components/techStackCard';
 import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
+import { useParams } from 'react-router';
+import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
+import { default as makeRequest } from '../../utils/makeRequest';
+import { useNavigate } from 'react-router-dom';
+import formatDate from '../../utils/dateTime';
 
 export default function EditEngagementDetailsPage() {
+  const navigate = useNavigate();
+  const { projectId } = useParams();
+  const [engagementDetails, setEngagementDetails] = useState({});
+
+  useEffect(() => {
+    makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate).then(response => {
+      setEngagementDetails(response);
+    });
+  }, []);
   return (
     <div className="bg-gray-200">
       <Header hasNav />
@@ -18,16 +31,31 @@ export default function EditEngagementDetailsPage() {
         <div className="flex flex-col gap-4">
           <div className="flex image-style upper-container justify-between">
             <div className="flex">
-              <Image imageUrl={EngagementDefault} altText="default" hasOverlay />
+              <Image imageUrl={engagementDetails?.projectData?.image} altText="default" hasOverlay />
               <div className="ml-4 my-4 flex flex-col gap-2 engagement-form-container">
-                <input type="text" placeholder="Project Name" className="input-style" />
+                <input
+                  type="text"
+                  placeholder="Project Name"
+                  className="input-style"
+                  defaultValue={engagementDetails?.projectData?.name}
+                />
                 <div className="flex gap-2">
-                  <input type="text" placeholder="Start Date" className="input-style w-32" />
+                  <input
+                    type="text"
+                    placeholder="Start Date"
+                    className="input-style w-32"
+                    defaultValue={formatDate(engagementDetails?.projectData?.startDate)}
+                  />
                   <p>:</p>
-                  <input type="text" placeholder="End Date" className="input-style w-32" />
+                  <input
+                    type="text"
+                    placeholder="End Date"
+                    className="input-style w-32"
+                    defaultValue={formatDate(engagementDetails?.projectData?.endDate)}
+                  />
                 </div>
                 <Dropdown
-                  dropdownName="Status"
+                  dropdownName={engagementDetails?.projectData?.status}
                   dropdownData={['Ongoing', 'Completed', 'Not Started']}
                   selectOption={() => {}}
                 />
@@ -50,69 +78,16 @@ export default function EditEngagementDetailsPage() {
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
               <div className="people-card-container">
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
-                <PeopleHorizontalCard
-                  userFMNO="328974"
-                  userId="328974"
-                  userName="Harsh Agarwal"
-                  userPosition="Intern"
-                  userOffice="Bangalore"
-                />
+                {engagementDetails?.usersInEngagement?.map((data, index) => (
+                  <PeopleHorizontalCard
+                    key={index}
+                    userFMNO={data.fmno}
+                    userId={data.userId}
+                    userName={data.name}
+                    userPosition={data.role}
+                    userOffice="Bangalore"
+                  />
+                ))}
                 <div className="update-user-card cursor-pointer">
                   <BiPlus size={24} />
                 </div>
@@ -124,9 +99,9 @@ export default function EditEngagementDetailsPage() {
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
               <div className="tech-card-container">
-                <TechStack techName="React" />
-                <TechStack techName="React" />
-                <TechStack techName="React" />
+                {engagementDetails?.projectData?.skills?.map((data, index) => (
+                  <TechStack key={index} techName={data} />
+                ))}
                 <div className="add-tech-card">
                   <p className="px-4 font-semibold text-gray-400 cursor-pointer">Add +</p>
                 </div>
@@ -136,8 +111,14 @@ export default function EditEngagementDetailsPage() {
           <div className="flex flex-col gap-2 case-study-container-update-engagement">
             <p className="font-bold">Case Studies & Knowledge Materials</p>
             <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
-            <HorizontalCaseStudyCards caseStudyId="1234" />
-            <HorizontalCaseStudyCards caseStudyId="1235" />
+            {engagementDetails?.caseStudiesInEngagement?.map((caseStudy, index) => (
+              <HorizontalCaseStudyCards
+                key={index}
+                caseStudyName={caseStudy.caseStudyId}
+                caseStudyImage={caseStudy.image}
+                caseStudyDate={caseStudy.createdAt}
+              />
+            ))}
             <Button buttonText="Upload" />
           </div>
         </div>

@@ -7,21 +7,21 @@ import TechStack from '../techStackCard';
 import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
+import { useNavigate } from 'react-router-dom';
 import formatDate from '../../utils/dateTime';
 
 export default function EngagementDetails({ engagementDetails }) {
-  const handleClick = () => {};
-
+  const navigate = useNavigate();
   return (
     <div className="container-div">
       <div className="project-container">
         <div className="image-container">
-          <Image imageUrl={'http://surl.li/fkwje'} altText={'test-image'} />
+          <Image imageUrl={engagementDetails?.projectData?.image} altText={'enagagement-image'} />
         </div>
         <div className="detail-container">
           <div className="id-container">
-            <p className="text-sm">ID : {engagementDetails?.projectData?.engagementId}</p>
-            <Button buttonText={'upload project'} handleClick={handleClick} />
+            <p className="text-sm">ID : {engagementDetails?.engagementId}</p>
+            <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} />
           </div>
           <div className="project-details">
             <p className="project-text">{engagementDetails?.projectData?.name}</p>
@@ -39,14 +39,14 @@ export default function EngagementDetails({ engagementDetails }) {
             </div>
             <div className="date-container">
               <p>Tags:</p>
-              <p>{engagementDetails?.projectData?.tags}</p>
+              <p>#{engagementDetails?.projectData?.tags}</p>
             </div>
           </div>
         </div>
       </div>
       <div className="team-members-container grid grid-cols-2 gap-2">
         <div className="team-members">
-          <div className="team-member-title flex grid grid-cols-2 gap-2">
+          <div className="team-member-title grid grid-cols-2 gap-2">
             <div className="title-box">Team Members</div>
             <div className="user-dropdown">
               <Dropdown dropdownName="All" />
@@ -60,7 +60,7 @@ export default function EngagementDetails({ engagementDetails }) {
                 userId={data.userId}
                 userName={data.name}
                 userPosition={data.role}
-                userOffice="Bangaolore"
+                userOffice="Bangalore"
               />
             ))}
           </div>
@@ -86,11 +86,16 @@ export default function EngagementDetails({ engagementDetails }) {
         </div>
         <div className="case-study-comp">
           {engagementDetails?.caseStudiesInEngagement?.map((data, index) => (
-            <HorizontalCaseStudyCards key={index} caseStudyName={data.name} caseStudyDate={data.createdAt} />
+            <HorizontalCaseStudyCards
+              key={index}
+              caseStudyName={data.name}
+              caseStudyDate={data.createdAt}
+              caseStudyImage={data.image}
+            />
           ))}
         </div>
         <div className="case-study-button">
-          <Button buttonText={'upload'} handleClick={handleClick} />
+          <Button buttonText={'upload'} handleClick={() => {}} />
         </div>
       </div>
     </div>
