@@ -17,7 +17,6 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
       },
     };
     const { data } = await axios(requestDetails);
-    console.log(data);
     return data.data;
   } catch (e) {
     const errorStatus = e.response?.status;
