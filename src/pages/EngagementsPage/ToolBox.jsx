@@ -4,10 +4,27 @@ import Dropdown from '../../components/Dropdown';
 import { Search } from '../../components';
 import Button from '../../components/Button';
 import PropTypes from 'prop-types';
-import { timeFrameOptions, guildOptions, technologyOptions } from '../../mocks/DropDownOptions';
-function ToolBox({ handleAddNewEngagement }) {
+import { timeFrameOptions } from '../../mocks/DropDownOptions';
+function ToolBox({
+  guildOptions,
+  technologyOptions,
+  handleAddNewEngagement,
+  handleTechnologyChange,
+  handleGuildChange,
+  handleTimeFrameChange,
+  handleSearchChange,
+}) {
   const handleSearch = searchValue => {
-    console.log(searchValue);
+    handleSearchChange(searchValue);
+  };
+  const selectTechOption = option => {
+    handleTechnologyChange(option);
+  };
+  const selectGuildOption = option => {
+    handleGuildChange(option);
+  };
+  const selectTimeFrameOption = option => {
+    handleTimeFrameChange(option);
   };
   return (
     <div className="filter-container">
@@ -17,9 +34,9 @@ function ToolBox({ handleAddNewEngagement }) {
         </div>
       </div>
       <div className="filter-drop-downs">
-        <Dropdown dropdownName={'Time Frame'} dropdownData={timeFrameOptions} selectOption={() => {}} />
-        <Dropdown dropdownName={'Guilds'} dropdownData={guildOptions} selectOption={() => {}} />
-        <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={() => {}} />
+        <Dropdown dropdownName={'Time Frame'} dropdownData={timeFrameOptions} selectOption={selectTimeFrameOption} />
+        <Dropdown dropdownName={'Guilds'} dropdownData={guildOptions} selectOption={selectGuildOption} />
+        <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
         <Button buttonText={'Add new engagement'} handleClick={handleAddNewEngagement} />
       </div>
     </div>
@@ -27,5 +44,11 @@ function ToolBox({ handleAddNewEngagement }) {
 }
 ToolBox.propTypes = {
   handleAddNewEngagement: PropTypes.func.isRequired,
+  technologyOptions: PropTypes.array.isRequired,
+  guildOptions: PropTypes.array.isRequired,
+  handleTechnologyChange: PropTypes.func.isRequired,
+  handleGuildChange: PropTypes.func.isRequired,
+  handleTimeFrameChange: PropTypes.func.isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
 };
 export default ToolBox;

@@ -6,10 +6,13 @@ function Search({ placeHolderValue, handleSearch }) {
   const [searchValue, setSearchValue] = React.useState('');
 
   const handleSearchChange = event => {
-    setSearchValue(event.target.value);
+    event.preventDefault();
+    setSearchValue(() => event.target.value);
+    handleSearch(event.target.value);
   };
   const handleSearchClick = () => {
     handleSearch(searchValue);
+    setSearchValue(() => '');
   };
 
   return (
