@@ -24,7 +24,7 @@ export default function EngagementDetails({ engagementDetails }) {
             <Button buttonText={'upload project'} handleClick={handleClick} />
           </div>
           <div className="project-details">
-            <p className="project-text">Project</p>
+            <p className="project-text">{engagementDetails?.projectData?.name}</p>
             <div className="date-container">
               <p>Start Date:</p>
               <p>{formatDate(engagementDetails?.projectData?.startDate)}</p>
