@@ -9,7 +9,11 @@ import TechStack from '../../components/techStackCard';
 import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
 import { useParams } from 'react-router';
-import { GET_ENGAGEMENT_DATA_BY_ID_URL, UPDATE_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
+import {
+  GET_ENGAGEMENT_DATA_BY_ID_URL,
+  UPDATE_ENGAGEMENT_DATA_URL,
+  UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
+} from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import { useNavigate } from 'react-router-dom';
 import formatDate from '../../utils/dateTime';
@@ -25,11 +29,32 @@ export default function EditEngagementDetailsPage() {
   const [handleNotification, setHandleNotification] = useState(false);
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
   const [newTechnology, setNewTechnology] = useState({});
+  const [engagementImage, setEngagementImage] = useState('');
+
+  const handleImageChange = e => {
+    setEngagementImage(e.target.files[0]);
+  };
   const data = {};
 
-  const updateEngagement = () => {
-    makeRequest(UPDATE_ENGAGEMENT_DATA_URL(projectId), { data: data }, navigate).then(() => {
-      setHandleNotification(true);
+  const updateEngagement = async () => {
+    const formData = new FormData();
+    formData.append('file', engagementImage);
+    await makeRequest(
+      UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
+      {
+        data: formData,
+      },
+      navigate
+    ).then(response => {
+      makeRequest(
+        UPDATE_ENGAGEMENT_DATA_URL(projectId),
+        {
+          data: { ...data, image: response.imageUrl },
+        },
+        navigate
+      ).then(() => {
+        setHandleNotification(true);
+      });
     });
   };
 
@@ -54,7 +79,13 @@ export default function EditEngagementDetailsPage() {
         <div className="flex flex-col gap-4">
           <div className="flex image-style upper-container justify-between">
             <div className="flex">
-              <Image imageUrl={engagementDetails?.projectData?.image} altText="default" hasOverlay />
+              <Image
+                imageUrl={engagementDetails?.projectData?.image}
+                altText="default"
+                hasOverlay
+                handleImageSelect={handleImageChange}
+              />
+              {engagementImage && <p>File Selected : {engagementImage.name} </p>}
               <div className="ml-4 my-4 flex flex-col gap-2 engagement-form-container">
                 <input
                   type="text"
