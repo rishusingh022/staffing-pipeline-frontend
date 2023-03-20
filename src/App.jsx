@@ -14,6 +14,7 @@ import EditEngagementDetailsPage from './pages/EditEngagementDetailsPage';
 import AddNewPeoplePage from './pages/AddNewPeoplePage';
 import AddEngagementPage from './pages/AddEngagementPage';
 import UploadExcelPage from './pages/UploadExcelPage';
+import ProtectedRoute from './utils/ProtectedRoute';
 
 import './App.css';
 import {
@@ -39,20 +40,22 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={LOGIN_ROUTE} element={<LoginPage />} />
-          <Route path={CASE_STUDIES_ROUTE} element={<CaseStudiesPage />} />
-          <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />\
-          <Route path={ADD_USER_ROUTE} element={<AddNewPeoplePage />} />
-          <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />
-          <Route path={ADD_PROJECT_ROUTE} element={<AddEngagementPage />} />
-          <Route path={PROJECT_DETAILS_ROUTE} element={<EngagementDetailsPage />} />
-          <Route path={PROJECT_DETAILS_EDIT_ROUTE} element={<EditEngagementDetailsPage />} />
-          <Route path={USERS_ROUTE} element={<PeoplePage />} />
-          <Route path={USER_DETAILS_ROUTE} element={<PeopleDetailsPage />} />
-          <Route path={UPDATE_USER_ROUTE} element={<UpdateUserPage />} />
-          <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
-          <Route path={UPLOAD_EXCELL_ROUTE} element={<UploadExcelPage />} />
-          <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
-          <Route path={DEFAULT_ROUTE} element={<Navigate to={CASE_STUDIES_ROUTE} />} />
+          <Route exact path="/" element={<ProtectedRoute />}>
+            <Route path={CASE_STUDIES_ROUTE} element={<CaseStudiesPage />} />
+            <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />\
+            <Route path={ADD_USER_ROUTE} element={<AddNewPeoplePage />} />
+            <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />
+            <Route path={ADD_PROJECT_ROUTE} element={<AddEngagementPage />} />
+            <Route path={PROJECT_DETAILS_ROUTE} element={<EngagementDetailsPage />} />
+            <Route path={PROJECT_DETAILS_EDIT_ROUTE} element={<EditEngagementDetailsPage />} />
+            <Route path={USERS_ROUTE} element={<PeoplePage />} />
+            <Route path={USER_DETAILS_ROUTE} element={<PeopleDetailsPage />} />
+            <Route path={UPDATE_USER_ROUTE} element={<UpdateUserPage />} />
+            <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
+            <Route path={UPLOAD_EXCELL_ROUTE} element={<UploadExcelPage />} />
+            <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
+            <Route path={DEFAULT_ROUTE} element={<Navigate to={CASE_STUDIES_ROUTE} />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
