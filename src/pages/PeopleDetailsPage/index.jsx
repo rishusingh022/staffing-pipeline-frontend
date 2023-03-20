@@ -18,7 +18,9 @@ const PeopleDetailsPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('skills');
   const [isLoading, setIsLoading] = useState(true);
-
+  const handleUpdateUser = () => {
+    navigate(`/users/${userId}/update`);
+  };
   useEffect(() => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate)
       .then(response => {
@@ -41,7 +43,7 @@ const PeopleDetailsPage = () => {
         <div className="user-personal-card">
           <div className="user-image-container">
             <img src={UserImage} className="user-image"></img>
-            <Button buttonText="Update Profile" handleClick={() => {}} />
+            <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
           </div>
           <div className="user-details-main">
             <div>

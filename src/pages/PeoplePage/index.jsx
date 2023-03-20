@@ -111,6 +111,7 @@ const PeoplePage = () => {
           handleRoleChange={handleRoleChange}
           technologyOptions={technologyOptions}
           roleOptions={roleOptions}
+          navigate={navigate}
         />
         <div className="container-in-people">
           <CardContainer>{peopleCards}</CardContainer>

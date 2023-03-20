@@ -12,7 +12,7 @@ export default function Header({ hasNav }) {
     'text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]';
 
   return (
-    <div className="font-light h-[15vh] text-white flex justify-center bg-deepBlue header-container relative">
+    <div className="font-light h-[120px] text-white flex justify-center bg-deepBlue header-container relative">
       <img src={logoImage} className="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute left-44" />
       <div className="h-full  flex box-border">
         {hasNav && (

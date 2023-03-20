@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { BACKEND_URL } from '../../constants/apiEndpoints';
 import { ERROR_ROUTE } from '../../constants/routes';
-const AUTHORIZATION_TOKEN = localStorage.getItem('token') || null;
-console.log('AUTHORIZATION_TOKEN', AUTHORIZATION_TOKEN);
 
 const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
+  const AUTHORIZATION_TOKEN = localStorage.getItem('token');
   try {
     const requestDetails = {
       baseURL: BACKEND_URL,
@@ -13,7 +12,6 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
       ...dynamicConfig,
       headers: {
         authorization: AUTHORIZATION_TOKEN,
-        ...dynamicConfig.headers,
       },
     };
     const { data } = await axios(requestDetails);

@@ -4,7 +4,15 @@ import { Search } from '../../components';
 import props from 'prop-types';
 import './PeoplePage.css';
 import Button from '../../components/Button';
-function ToolBox({ handleSearchChange, handleTechnologyChange, handleRoleChange, technologyOptions, roleOptions }) {
+
+function ToolBox({
+  handleSearchChange,
+  handleTechnologyChange,
+  handleRoleChange,
+  technologyOptions,
+  roleOptions,
+  navigate,
+}) {
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
   };
@@ -15,7 +23,7 @@ function ToolBox({ handleSearchChange, handleTechnologyChange, handleRoleChange,
     handleRoleChange(option);
   };
   const handleAddNewMember = () => {
-    console.log('Add new member');
+    navigate('/users/add');
   };
   return (
     <div className="people-page-filter-container">
@@ -40,6 +48,7 @@ ToolBox.propTypes = {
   handleRoleChange: props.func.isRequired,
   technologyOptions: props.array.isRequired,
   roleOptions: props.array.isRequired,
+  navigate: props.func.isRequired,
 };
 
 export default ToolBox;
