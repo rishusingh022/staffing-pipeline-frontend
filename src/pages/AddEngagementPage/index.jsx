@@ -34,7 +34,7 @@ export default function AddEngagementPage() {
             chargeCode,
             caseStudyIds: [],
             skills: [],
-            guild: '',
+            guild: 'swe',
           },
         },
         navigate
