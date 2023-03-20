@@ -12,6 +12,10 @@ const SearchAndAdd = ({ setIsOpen, entity, navigate, setItem }) => {
   const [debouncedInput] = useDebounce(input, 1000);
 
   useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
+
+  useEffect(() => {
     handleSearch(debouncedInput);
   }, [debouncedInput]);
 
