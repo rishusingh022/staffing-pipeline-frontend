@@ -28,7 +28,7 @@ export default function EditEngagementDetailsPage() {
   const [engagementDetails, setEngagementDetails] = useState({});
   const [handleNotification, setHandleNotification] = useState(false);
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
-  const [newTechnology, setNewTechnology] = useState({});
+  const [technologies, setTechnologies] = useState([]);
   const [engagementImage, setEngagementImage] = useState('');
 
   const handleImageChange = e => {
@@ -37,6 +37,7 @@ export default function EditEngagementDetailsPage() {
   const data = {};
 
   const updateEngagement = async () => {
+    data.skills = [...technologies];
     const formData = new FormData();
     formData.append('file', engagementImage);
     await makeRequest(
@@ -56,6 +57,14 @@ export default function EditEngagementDetailsPage() {
         setHandleNotification(true);
       });
     });
+  };
+
+  const handleNewTechnology = item => {
+    if (!engagementDetails?.projectData?.skills.includes(item.name)) {
+      setTechnologies([...engagementDetails.projectData.skills, item.name]);
+      engagementDetails.projectData.skills.push(item.name);
+      setEngagementDetails({ ...engagementDetails });
+    }
   };
 
   useEffect(() => {
@@ -176,7 +185,6 @@ export default function EditEngagementDetailsPage() {
                 {engagementDetails?.projectData?.skills?.map((data, index) => (
                   <TechStack key={index} techName={data} />
                 ))}
-                <TechStack techName={newTechnology?.name} />
                 <div
                   className="add-tech-card"
                   onClick={() => {
@@ -207,7 +215,7 @@ export default function EditEngagementDetailsPage() {
           setIsOpen={setShowTechnologyModal}
           entity="skills"
           navigate={navigate}
-          setItem={setNewTechnology}
+          handleItem={handleNewTechnology}
         />
       )}
     </div>

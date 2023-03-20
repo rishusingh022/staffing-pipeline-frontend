@@ -3,7 +3,7 @@
 exports[`Header should render correctly with a navbar when Navbar boolean is true 1`] = `
 <DocumentFragment>
   <div
-    class="font-light h-[120px] text-white flex justify-center bg-deepBlue header-container relative"
+    class="font-light h-[120px] text-white flex justify-center bg-deepBlue header-container relative items-center"
   >
     <img
       class="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute left-44"
@@ -37,6 +37,11 @@ exports[`Header should render correctly with a navbar when Navbar boolean is tru
         </button>
       </div>
     </div>
+    <button
+      class="absolute right-[5%] border-[1px] py-1 px-3 hover:text-cyan hover:border-cyan"
+    >
+      Logout
+    </button>
   </div>
 </DocumentFragment>
 `;
@@ -44,7 +49,7 @@ exports[`Header should render correctly with a navbar when Navbar boolean is tru
 exports[`Header should render correctly without a navbar when Navbar boolean is false 1`] = `
 <DocumentFragment>
   <div
-    class="font-light h-[120px] text-white flex justify-center bg-deepBlue header-container relative"
+    class="font-light h-[120px] text-white flex justify-center bg-deepBlue header-container relative items-center"
   >
     <img
       class="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute left-44"

@@ -6,14 +6,10 @@ import makeRequest from '../../utils/makeRequest';
 import { GET_DATA_BY_SEARCH_URL } from '../../constants/apiEndpoints';
 import { skills } from '../../constants/skills';
 
-const SearchAndAdd = ({ setIsOpen, entity, navigate, setItem }) => {
+const SearchAndAdd = ({ setIsOpen, entity, navigate, handleItem }) => {
   const [mactchQueries, setMatchQueries] = useState([]);
   const [input, setInput] = useState('');
   const [debouncedInput] = useDebounce(input, 1000);
-
-  useEffect(() => {
-    setIsOpen(open);
-  }, [open]);
 
   useEffect(() => {
     handleSearch(debouncedInput);
@@ -41,7 +37,7 @@ const SearchAndAdd = ({ setIsOpen, entity, navigate, setItem }) => {
   const handleAdd = e => {
     const id = e.target.getAttribute('data-id');
     const item = mactchQueries.find(item => item.id == id);
-    setItem(item);
+    handleItem(item);
     setIsOpen(false);
   };
 
@@ -78,7 +74,7 @@ const SearchAndAdd = ({ setIsOpen, entity, navigate, setItem }) => {
 SearchAndAdd.propTypes = {
   entity: PropTypes.string,
   navigate: PropTypes.func,
-  setItem: PropTypes.func,
+  handleItem: PropTypes.func,
   setIsOpen: PropTypes.func,
 };
 
