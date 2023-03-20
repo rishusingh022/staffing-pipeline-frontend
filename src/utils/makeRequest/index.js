@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { BACKEND_URL } from '../../constants/apiEndpoints';
 import { ERROR_ROUTE } from '../../constants/routes';
-
 const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
   try {
     const requestDetails = {
@@ -18,7 +17,9 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
     return data.data;
   } catch (e) {
     const errorStatus = e.response?.status;
-    if (errorStatus) {
+    if (e.message === 'Request failed with status code 500') {
+      navigate('/login');
+    } else if (errorStatus) {
       navigate(`${ERROR_ROUTE}/${errorStatus}`, {
         state: {
           message: e.response.data.error,
