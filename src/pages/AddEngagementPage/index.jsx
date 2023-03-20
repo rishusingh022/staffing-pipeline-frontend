@@ -1,32 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Image from '../../components/Image';
 import EngagementDefault from '../../assets/images/engagement-default.png';
 import './AddEngagement.css';
 import Dropdown from '../../components/Dropdown';
+import { statusOptions } from '../../mocks/DropDownOptions';
 import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
+import parseDate from '../../utils/common/parseDate';
+import makeRequest from '../../utils/makeRequest';
+import { CREATE_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
+import { useNavigate } from 'react-router-dom';
+import Notification from '../../components/Notification';
 
 export default function AddEngagementPage() {
+  const navigate = useNavigate();
+  const [projectName, setProjectName] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [selectedStatus, setSelectedStatus] = useState();
+  const [chargeCode, setChargeCode] = useState();
+  const [handleNotification, setHandleNotification] = useState();
+  const handleCreateClick = () => {
+    if (projectName && startDate && endDate && selectedStatus && chargeCode) {
+      makeRequest(
+        CREATE_ENGAGEMENT_DATA_URL,
+        {
+          data: {
+            name: projectName,
+            startDate: parseDate(startDate),
+            endDate: parseDate(endDate),
+            status: selectedStatus,
+            chargeCode,
+            caseStudyIds: [],
+          },
+        },
+        navigate
+      )
+        .then(() => {
+          setHandleNotification(true);
+        })
+        .catch(error => {
+          console.log('Error while adding engagement', error);
+        });
+    }
+  };
   return (
     <div className="bg-gray-200">
       <Header hasNav />
+      {handleNotification && (
+        <Notification
+          message="Engagement successfully added"
+          handleClose={() => {
+            setHandleNotification(false);
+          }}
+          success
+        />
+      )}
       <div className="bg-white min-h-screen mx-32 my-16 px-12 py-10">
         <div className="flex flex-col gap-4">
           <div className="flex image-style upper-container justify-between">
             <div className="flex left-upper">
               <Image imageUrl={EngagementDefault} altText="default" hasOverlay />
               <div className="ml-4 my-4 flex flex-col gap-2 engagement-form-container">
-                <input type="text" placeholder="Project Name" className="input-style" />
+                <input
+                  type="text"
+                  placeholder="Project Name"
+                  className="input-style"
+                  onChange={e => {
+                    setProjectName(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Charge Code"
+                  className="input-style w-32"
+                  onChange={e => {
+                    setChargeCode(e.target.value);
+                  }}
+                />
                 <div className="flex gap-2">
-                  <input type="text" placeholder="Start Date" className="input-style w-32" />
+                  <input
+                    type="text"
+                    placeholder="Start Date"
+                    className="input-style w-32"
+                    onChange={e => {
+                      setStartDate(e.target.value);
+                    }}
+                  />
                   <p>:</p>
-                  <input type="text" placeholder="End Date" className="input-style w-32" />
+                  <input
+                    type="text"
+                    placeholder="End Date"
+                    className="input-style w-32"
+                    onChange={e => {
+                      setEndDate(e.target.value);
+                    }}
+                  />
                 </div>
                 <Dropdown
                   dropdownName="Status"
-                  dropdownData={['Ongoing', 'Completed', 'Not Started']}
-                  selectOption={() => {}}
+                  dropdownData={statusOptions}
+                  selectOption={option => {
+                    setSelectedStatus(option.toLowerCase());
+                  }}
                 />
                 <div className="flex justify-between w-32 text-gray-400 px-2 border-black border">
                   <p>Tags</p>
@@ -38,7 +115,7 @@ export default function AddEngagementPage() {
                 </div>
               </div>
             </div>
-            <Button buttonText="Create" />
+            <Button buttonText="Create" handleClick={handleCreateClick} />
           </div>
           <div className="mid-container grid grid-cols-2 gap-12">
             <div className="flex w-1/2 gap-2 flex-col">
