@@ -87,3 +87,8 @@ export const UPLOAD_EXCEL_ROUTE = {
   url: 'excel/upload',
   method: 'post',
 };
+
+export const UPLOAD_ENGAGEMENT_IMAGE_ROUTE = {
+  url: '/image/upload/engagement',
+  method: 'post',
+};

@@ -9,7 +9,7 @@ import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
 import parseDate from '../../utils/common/parseDate';
 import makeRequest from '../../utils/makeRequest';
-import { CREATE_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
+import { CREATE_ENGAGEMENT_DATA_URL, UPLOAD_ENGAGEMENT_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import Notification from '../../components/Notification';
 
@@ -21,30 +21,47 @@ export default function AddEngagementPage() {
   const [selectedStatus, setSelectedStatus] = useState();
   const [chargeCode, setChargeCode] = useState();
   const [handleNotification, setHandleNotification] = useState();
-  const handleCreateClick = () => {
+  const [engagementImage, setEngagementImage] = useState('');
+  const handleImageChange = e => {
+    console.log('e.target.files[0]', e.target.files[0]);
+    setEngagementImage(e.target.files[0]);
+  };
+
+  const handleCreateClick = async () => {
     if (projectName && startDate && endDate && selectedStatus && chargeCode) {
-      makeRequest(
-        CREATE_ENGAGEMENT_DATA_URL,
+      const formData = new FormData();
+      formData.append('file', engagementImage);
+      await makeRequest(
+        UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
         {
-          data: {
-            name: projectName,
-            startDate: parseDate(startDate),
-            endDate: parseDate(endDate),
-            status: selectedStatus,
-            chargeCode,
-            caseStudyIds: [],
-            skills: [],
-            guild: 'swe',
-          },
+          data: formData,
         },
         navigate
-      )
-        .then(() => {
-          setHandleNotification(true);
-        })
-        .catch(error => {
-          console.log('Error while adding engagement', error);
-        });
+      ).then(response => {
+        makeRequest(
+          CREATE_ENGAGEMENT_DATA_URL,
+          {
+            data: {
+              name: projectName,
+              startDate: parseDate(startDate),
+              endDate: parseDate(endDate),
+              status: selectedStatus,
+              chargeCode,
+              caseStudyIds: [],
+              skills: [],
+              guild: 'swe',
+              image: response.imageUrl,
+            },
+          },
+          navigate
+        )
+          .then(() => {
+            setHandleNotification(true);
+          })
+          .catch(error => {
+            console.log('Error while adding engagement', error);
+          });
+      });
     }
   };
   return (
@@ -63,7 +80,15 @@ export default function AddEngagementPage() {
         <div className="flex flex-col gap-4">
           <div className="flex image-style upper-container justify-between">
             <div className="flex left-upper">
-              <Image imageUrl={EngagementDefault} altText="default" hasOverlay />
+              <div>
+                <Image
+                  imageUrl={EngagementDefault}
+                  altText="default"
+                  hasOverlay
+                  handleImageSelect={handleImageChange}
+                />
+                {engagementImage && <p>File selected: {engagementImage.name}</p>}
+              </div>
               <div className="ml-4 my-4 flex flex-col gap-2 engagement-form-container">
                 <input
                   type="text"
