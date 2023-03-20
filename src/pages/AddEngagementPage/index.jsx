@@ -33,6 +33,8 @@ export default function AddEngagementPage() {
             status: selectedStatus,
             chargeCode,
             caseStudyIds: [],
+            skills: [],
+            guild: '',
           },
         },
         navigate
