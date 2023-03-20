@@ -13,6 +13,10 @@ const SearchAndAdd = ({ open, entity, navigate, setItem }) => {
   const [debouncedInput] = useDebounce(input, 1000);
 
   useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
+
+  useEffect(() => {
     handleSearch(debouncedInput);
   }, [debouncedInput]);
 
@@ -50,7 +54,7 @@ const SearchAndAdd = ({ open, entity, navigate, setItem }) => {
             className="w-full h-[48px] border-2 border-gray-400 focus:outline-none focus:border-electricBlue p-2 my-2 mb-0"
             type="text"
             value={input}
-            placeholder="Search"
+            placeholder={`Search ${entity}`}
             onChange={e => setInput(e.target.value)}
           />
         </div>

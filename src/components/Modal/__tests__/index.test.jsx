@@ -4,7 +4,7 @@ import Modal from '..';
 
 const onClose = jest.fn();
 
-describe('Header', () => {
+describe('Modal', () => {
   it('should render correctly if isOpen prop is true', () => {
     const { asFragment } = render(<Modal {...{ isOpen: true, onClose }} />);
     expect(asFragment()).toMatchSnapshot();
