@@ -19,7 +19,7 @@ const PeopleDetailsPage = () => {
   const [activeTab, setActiveTab] = useState('skills');
   const [isLoading, setIsLoading] = useState(true);
   const handleUpdateUser = () => {
-    navigate(`/users/${userId}/update`);
+    navigate(`/users/${userId}/edit`);
   };
   useEffect(() => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate)

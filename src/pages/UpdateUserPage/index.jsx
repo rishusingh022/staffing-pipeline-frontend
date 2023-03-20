@@ -6,8 +6,9 @@ import Image from '../../components/Image';
 import DropDown from '../../components/Dropdown';
 import { GoPlus } from 'react-icons/go';
 import DefaultUser from '../../assets/images/user-default.png';
-import EngagementCard from '../../components/EngagementCard';
-import EngagementImage from '../../assets/images/engagement-default.png';
+// import EngagementCard from '../../components/EngagementCard';
+// import EngagementImage from '../../assets/images/engagement-default.png';
+import SearchAndAdd from '../../components/SearchAndAdd';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
@@ -21,6 +22,8 @@ const UpdateUserPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('skills');
   const data = {};
+  const [showSkillModal, setShowSkillModal] = useState(false);
+  // const [newSkill, setNewSkill] = useState({});
 
   React.useEffect(() => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate).then(response => {
@@ -99,11 +102,11 @@ const UpdateUserPage = () => {
             onClick={() => setActiveTab('skills')}>
             Professional Information
           </p>
-          <p
+          {/* <p
             className={`professional-nav-item ${activeTab === 'past_engagements' && 'professional-nav-item-active'}`}
             onClick={() => setActiveTab('past_engagements')}>
             Past Studies
-          </p>
+          </p> */}
         </div>
         <div className="user-all-details-container">
           <div className="user-professional-info">
@@ -126,10 +129,20 @@ const UpdateUserPage = () => {
                     </tr>
                   </tbody>
                 </table>
+
+                <div className="add-skill-container">
+                  <button
+                    className="add-skill-button"
+                    onClick={() => {
+                      setShowSkillModal(true);
+                    }}>
+                    Add Skill
+                  </button>
+                </div>
               </div>
             ) : (
               <>
-                <div className="grid gap-10 lg:grid-cols-4 md:grid-cols-3">
+                {/* <div className="grid gap-10 lg:grid-cols-4 md:grid-cols-3">
                   <EngagementCard
                     name="Project"
                     imageUrl={EngagementImage}
@@ -158,33 +171,20 @@ const UpdateUserPage = () => {
                     startDate="12/2/2023"
                     status="completed"
                   />
-                  <EngagementCard
-                    name="Project"
-                    imageUrl={EngagementImage}
-                    identityNumber="123456"
-                    startDate="12/2/2023"
-                    status="completed"
-                  />
-                  <EngagementCard
-                    name="Project"
-                    imageUrl={EngagementImage}
-                    identityNumber="123456"
-                    startDate="12/2/2023"
-                    status="completed"
-                  />
-                  <EngagementCard
-                    name="Project"
-                    imageUrl={EngagementImage}
-                    identityNumber="123456"
-                    startDate="12/2/2023"
-                    status="completed"
-                  />
-                </div>
+                </div> */}
               </>
             )}
           </div>
         </div>
       </div>
+      {showSkillModal && (
+        <SearchAndAdd
+          setIsOpen={setShowSkillModal}
+          entity="skills"
+          navigate={navigate}
+          // setItem={setNewSkill}
+        />
+      )}
     </div>
   );
 };

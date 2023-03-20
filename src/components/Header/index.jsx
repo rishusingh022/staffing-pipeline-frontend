@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, UPLOAD_EXCELL_ROUTE, USERS_ROUTE } from '../../constants/routes';
 import logoImage from '../../assets/McK_Logo.png';
+// eslint-disable-next-line no-unused-vars
 import Button from '../Button';
 export default function Header({ hasNav }) {
   const navigate = useNavigate();

@@ -38,9 +38,6 @@
     height: 45px;
 }
 
-.update-profile-button:hover{
-    box-shadow: 3px 3px 3px 3px grey;
-}
 
 .user-details-personal{
     display: flex;
@@ -101,6 +98,22 @@
 .user-content-professional-button{
     padding: 10px;
     width: 400px;
+}
+
+.add-skill-button{
+    background-color: #051B2C;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.add-skill-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 @media only screen and (max-width: 1160px) {
