@@ -1,3 +1,4 @@
+// makeRequest(GET_USER_DATA_BY_ID_URL('a90c610c-1bd5-40c4-8b01-fdd7708f3730'), {}, navigate).then(response => {
 import React from 'react';
 import './UpdateUserPage.css';
 import Header from '../../components/Header';
@@ -7,9 +8,31 @@ import { GoPlus } from 'react-icons/go';
 import DefaultUser from '../../assets/images/user-default.png';
 import EngagementCard from '../../components/EngagementCard';
 import EngagementImage from '../../assets/images/engagement-default.png';
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
+import { UPDATE_USER_DATA_URL } from '../../constants/apiEndpoints';
+import { default as makeRequest } from '../../utils/makeRequest';
 
 const UpdateUserPage = () => {
-  const [activeTab, setActiveTab] = React.useState('skills');
+  const { userId } = useParams();
+  // eslint-disable-next-line no-unused-vars
+  const [userDetails, setUserDetails] = useState({});
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('skills');
+  const data = {};
+
+  React.useEffect(() => {
+    makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate).then(response => {
+      setUserDetails(response);
+      // console.log(response);
+    });
+  }, []);
+
+  const handlClick = () => {
+    makeRequest(UPDATE_USER_DATA_URL(userId), { data: data }, navigate);
+  };
+
   return (
     <div>
       <Header hasNav={true} />
@@ -18,18 +41,46 @@ const UpdateUserPage = () => {
         <div className="user-details">
           <div className="user-img">
             <Image hasOverlay={true} imageUrl={DefaultUser} altText="default-user" />
-            <button className="update-profile-button">Update profile</button>
+            <button className="update-profile-button" onClick={handlClick}>
+              Update profile
+            </button>
           </div>
 
           <div className="user-details-personal">
-            <input className="user-input" type="text" placeholder="FMNO" />
-            <input className="user-input" type="text" placeholder="Name" />
-            <input className="user-input" type="text" placeholder="E-mail" />
+            <input
+              className="user-input"
+              name="fmno"
+              type="text"
+              placeholder="FMNO"
+              defaultValue={userDetails?.userData?.fmno}
+              onChange={e => (data.fmno = e.target.value)}
+            />
+            <input
+              className="user-input"
+              name="name"
+              type="text"
+              placeholder="Name"
+              defaultValue={userDetails?.userData?.name}
+              onChange={e => (data.name = e.target.value)}
+            />
+            <input
+              className="user-input"
+              name="email"
+              type="text"
+              placeholder="E-mail"
+              defaultValue={userDetails?.userData?.email}
+              onChange={e => (data.email = e.target.value)}
+            />
             <div className="user-details-personal-dropdown">
-              <DropDown dropdownName="Position" dropdownData={['Senior Engineer', 'Junior Engineer', 'Intern']} />
-              <DropDown dropdownName="Office" dropdownData={['Bengaluru', 'Gurgaon']} />
+              <DropDown
+                dropdownName={userDetails?.userData?.role}
+                dropdownData={['Senior Engineer', 'Junior Engineer', 'Intern']}
+                selectOption={optionName => {
+                  data.role = optionName.toLowerCase();
+                }}
+              />
+              <DropDown dropdownName="Office" dropdownData={['Bengaluru', 'Gurgaon']} selectOption={console.log} />
             </div>
-            <input className="user-input" type="text" placeholder="Phone" />
           </div>
         </div>
 
