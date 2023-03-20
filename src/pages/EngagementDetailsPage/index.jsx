@@ -19,7 +19,6 @@ const EngagementDetailsPage = () => {
       .then(response => {
         setEngagementDetails(response);
         setIsLoading(false);
-        console.log('response', response);
       })
       .catch(error => {
         console.log('error', error);

@@ -9,15 +9,30 @@ import TechStack from '../../components/techStackCard';
 import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
 import { useParams } from 'react-router';
-import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
+import { GET_ENGAGEMENT_DATA_BY_ID_URL, UPDATE_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import { useNavigate } from 'react-router-dom';
 import formatDate from '../../utils/dateTime';
+import { statusOptions } from '../../mocks/DropDownOptions';
+import parseDate from '../../utils/common/parseDate';
+import Notification from '../../components/Notification';
+import SearchAndAdd from '../../components/SearchAndAdd';
 
 export default function EditEngagementDetailsPage() {
   const navigate = useNavigate();
   const { projectId } = useParams();
   const [engagementDetails, setEngagementDetails] = useState({});
+  const [handleNotification, setHandleNotification] = useState(false);
+  const [showTechnologyModal, setShowTechnologyModal] = useState(false);
+  const [newTechnology, setNewTechnology] = useState({});
+  console.log(newTechnology);
+  const data = {};
+
+  const updateEngagement = () => {
+    makeRequest(UPDATE_ENGAGEMENT_DATA_URL(projectId), { data: data }, navigate).then(() => {
+      setHandleNotification(true);
+    });
+  };
 
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate).then(response => {
@@ -27,6 +42,15 @@ export default function EditEngagementDetailsPage() {
   return (
     <div className="bg-gray-200">
       <Header hasNav />
+      {handleNotification && (
+        <Notification
+          message="Engagement Updated Successfully"
+          handleClose={() => {
+            setHandleNotification(false);
+          }}
+          success={true}
+        />
+      )}
       <div className="bg-white min-h-screen mx-32 my-16 px-12 py-10">
         <div className="flex flex-col gap-4">
           <div className="flex image-style upper-container justify-between">
@@ -38,28 +62,48 @@ export default function EditEngagementDetailsPage() {
                   placeholder="Project Name"
                   className="input-style"
                   defaultValue={engagementDetails?.projectData?.name}
+                  onChange={e => {
+                    data.name = e.target.value;
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Charge Code"
+                  className="input-style"
+                  defaultValue={engagementDetails?.projectData?.chargeCode}
+                  onChange={e => {
+                    data.chargeCode = e.target.value;
+                  }}
                 />
                 <div className="flex gap-2">
                   <input
                     type="text"
                     placeholder="Start Date"
-                    className="input-style w-32"
+                    className="input-style w-36"
                     defaultValue={formatDate(engagementDetails?.projectData?.startDate)}
+                    onChange={e => {
+                      data.startDate = parseDate(e.target.value);
+                    }}
                   />
                   <p>:</p>
                   <input
                     type="text"
                     placeholder="End Date"
-                    className="input-style w-32"
+                    className="input-style w-36"
                     defaultValue={formatDate(engagementDetails?.projectData?.endDate)}
+                    onChange={e => {
+                      data.endDate = parseDate(e.target.value);
+                    }}
                   />
                 </div>
                 <Dropdown
                   dropdownName={engagementDetails?.projectData?.status}
-                  dropdownData={['Ongoing', 'Completed', 'Not Started']}
-                  selectOption={() => {}}
+                  dropdownData={statusOptions}
+                  selectOption={optionName => {
+                    data.status = optionName;
+                  }}
                 />
-                <div className="flex justify-between w-32 text-gray-400 px-2 border-black border">
+                <div className="flex justify-between w-36 text-gray-400 px-2 border-black border">
                   <p>Tags</p>
                   <p>+</p>
                 </div>
@@ -69,7 +113,7 @@ export default function EditEngagementDetailsPage() {
                 </div>
               </div>
             </div>
-            <Button buttonText="Update" />
+            <Button buttonText="Update" handleClick={updateEngagement} />
           </div>
           <div className="mid-container grid grid-cols-2 gap-2">
             <div className="flex w-1/2 gap-2 flex-col">
@@ -102,7 +146,11 @@ export default function EditEngagementDetailsPage() {
                 {engagementDetails?.projectData?.skills?.map((data, index) => (
                   <TechStack key={index} techName={data} />
                 ))}
-                <div className="add-tech-card">
+                <div
+                  className="add-tech-card"
+                  onClick={() => {
+                    setShowTechnologyModal(true);
+                  }}>
                   <p className="px-4 font-semibold text-gray-400 cursor-pointer">Add +</p>
                 </div>
               </div>
@@ -123,6 +171,9 @@ export default function EditEngagementDetailsPage() {
           </div>
         </div>
       </div>
+      {showTechnologyModal && (
+        <SearchAndAdd open={showTechnologyModal} entity="skills" navigate={navigate} setItem={setNewTechnology} />
+      )}
     </div>
   );
 }

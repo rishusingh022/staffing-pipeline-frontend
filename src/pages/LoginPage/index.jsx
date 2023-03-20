@@ -21,7 +21,9 @@ const LoginPage = () => {
     makeRequest(AUTH_LOGIN_URL(), { data: credentials }, navigate)
       .then(res => {
         localStorage.setItem('token', res.token);
-        navigate('/');
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
       })
       .catch(err => {
         console.log(err.response);

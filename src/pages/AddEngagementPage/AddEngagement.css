@@ -23,12 +23,11 @@
     object-fit: cover;
     border-radius: 10px 10px;
 }
-.engagement-form-container .dropdown-container, .engagement-dropdown-wrapper .dropdown-container{
-    width: 8rem;
+.add-engagement-form-container .dropdown-container, .engagement-dropdown-wrapper .dropdown-container{
+    width: 9rem;
 }
-.engagement-form-container .dropdown-container .dropdown-header{
+.add-engagement-form-container .dropdown-container .dropdown-header{
     padding: 0 0.5rem;
-    color: rgb(156 163 175);
 }
 .engagement-dropdown-wrapper .dropdown-container .dropdown-header{
     padding: 0 0.5rem;
@@ -79,5 +78,7 @@
     padding: 5px 10px;
 }
 .upper-container button{
-    padding : 3px 10px;
+    width: 100px;
+    height: 30px;
+    padding: 5px 10px;
 }

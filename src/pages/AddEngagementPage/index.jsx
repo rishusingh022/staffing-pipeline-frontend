@@ -106,72 +106,75 @@ export default function AddEngagementPage() {
                     setChargeCode(e.target.value);
                   }}
                 />
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    placeholder="Start Date"
-                    className="input-style w-32"
-                    onChange={e => {
-                      setStartDate(e.target.value);
+                <div className="ml-4 my-4 flex flex-col gap-2 add-engagement-form-container">
+                  <input type="text" placeholder="Project Name" className="input-style" />
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="MM/DD/YYYY"
+                      className="input-style w-32"
+                      onChange={e => {
+                        setStartDate(e.target.value);
+                      }}
+                    />
+                    <p>:</p>
+                    <input
+                      type="text"
+                      placeholder="MM/DD/YYYY"
+                      className="input-style w-32"
+                      onChange={e => {
+                        setEndDate(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <Dropdown
+                    dropdownName="Status"
+                    dropdownData={statusOptions}
+                    selectOption={option => {
+                      setSelectedStatus(option.toLowerCase());
                     }}
                   />
-                  <p>:</p>
-                  <input
-                    type="text"
-                    placeholder="End Date"
-                    className="input-style w-32"
-                    onChange={e => {
-                      setEndDate(e.target.value);
-                    }}
-                  />
+                  <div className="flex justify-between w-36 text-gray-400 px-2 border-black border">
+                    <p>Tags</p>
+                    <p>+</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Front-End</div>
+                    <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Back-End</div>
+                  </div>
                 </div>
-                <Dropdown
-                  dropdownName="Status"
-                  dropdownData={statusOptions}
-                  selectOption={option => {
-                    setSelectedStatus(option.toLowerCase());
-                  }}
-                />
-                <div className="flex justify-between w-32 text-gray-400 px-2 border-black border">
-                  <p>Tags</p>
-                  <p>+</p>
+              </div>
+              <Button buttonText="Create" handleClick={handleCreateClick} />
+            </div>
+            <div className="mid-container grid grid-cols-2 gap-12">
+              <div className="flex w-1/2 gap-2 flex-col">
+                <div className="flex items-center justify-between">
+                  <p className="font-bold text-2xl">Team Members</p>
+                  <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
                 </div>
-                <div className="flex gap-2">
-                  <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Front-End</div>
-                  <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Back-End</div>
+                <div className="people-card-container-add">
+                  <div className="user-card-add">
+                    <BiPlus size={24} />
+                  </div>
+                </div>
+              </div>
+              <div className="flex w-1/2 gap-2 flex-col">
+                <div className="flex items-center justify-between">
+                  <p className="font-bold text-2xl">Technology</p>
+                  <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
+                </div>
+                <div className="tech-card-container-add">
+                  <div className="tech-card-add">
+                    <p className="px-4 font-semibold text-gray-400 cursor-pointer">Add +</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <Button buttonText="Create" handleClick={handleCreateClick} />
-          </div>
-          <div className="mid-container grid grid-cols-2 gap-12">
-            <div className="flex w-1/2 gap-2 flex-col">
-              <div className="flex items-center justify-between">
-                <p className="font-bold text-2xl">Team Members</p>
-                <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
-              </div>
-              <div className="people-card-container-add">
-                <div className="user-card-add">
-                  <BiPlus size={24} />
-                </div>
-              </div>
+            <div className="flex flex-col gap-2 case-study-container-add-engagement">
+              <p className="font-bold">Case Studies & Knowledge Materials</p>
+              <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
+              <Button buttonText="Upload" />
             </div>
-            <div className="flex w-1/2 gap-2 flex-col">
-              <div className="flex items-center justify-between">
-                <p className="font-bold text-2xl">Technology</p>
-                <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
-              </div>
-              <div className="tech-card-container-add">
-                <div className="tech-card-add">
-                  <p className="px-4 font-semibold text-gray-400 cursor-pointer">Add +</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 case-study-container-add-engagement">
-            <p className="font-bold">Case Studies & Knowledge Materials</p>
-            <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
-            <Button buttonText="Upload" />
           </div>
         </div>
       </div>
