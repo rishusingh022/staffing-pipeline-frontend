@@ -9,7 +9,7 @@ import Dropdown from '../../components/Dropdown';
 import Notification from '../../components/Notification';
 import makeRequest from '../../utils/makeRequest';
 const { useNavigate } = require('react-router-dom');
-import { CREATE_USER_DATA_URL, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
+import { CREATE_USER_DATA_URL, ADD_USER_SKILL_ROUTE, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 
 import SearchAndAdd from '../../components/SearchAndAdd';
 
@@ -25,6 +25,7 @@ function AddNewPeoplePage() {
   const [handleNotification, setHandleNotification] = React.useState(false);
   const [showSkillModal, setShowSkillModal] = React.useState(false);
   const [setSkill, setSetSkill] = React.useState([]);
+  const [userId, setUserId] = React.useState('');
   const [selectedUserImage, setUserImage] = React.useState('');
 
   const handleImageChange = e => {
@@ -55,18 +56,40 @@ function AddNewPeoplePage() {
         )
           .then(() => {
             setHandleNotification(true);
+            setUserId(response.userId);
           })
           .catch(error => {
             console.log('Error while adding user', error);
           });
+
       });
     }
   };
-  const handleAddNewSkill = item => {
+
+  const handleAddNewSkill = async item => {
     setSetSkill([...setSkill, item]);
-    console.log(item);
+    userId &&
+      (await makeRequest(
+        ADD_USER_SKILL_ROUTE(userId),
+        {
+          data: {
+            area: `${item.area}`,
+            category: `${item.category}`,
+            skill: `${item.name}`,
+          },
+          params: {
+            userId: userId,
+          },
+        },
+        navigate
+      )
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log('Error while adding user', error);
+        }));
   };
-  console.log(setSkill);
   return (
     <div>
       <Header hasNav />
