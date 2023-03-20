@@ -35,28 +35,36 @@ export default function EditEngagementDetailsPage() {
     setEngagementImage(e.target.files[0]);
   };
   const data = {};
-
-  const updateEngagement = async () => {
-    data.skills = [...technologies];
+  const uploadImage = async () => {
     const formData = new FormData();
     formData.append('file', engagementImage);
-    await makeRequest(
+    return await makeRequest(
       UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
       {
         data: formData,
       },
       navigate
-    ).then(response => {
-      makeRequest(
-        UPDATE_ENGAGEMENT_DATA_URL(projectId),
-        {
-          data: { ...data, image: response.imageUrl },
-        },
-        navigate
-      ).then(() => {
-        setHandleNotification(true);
-      });
+    );
+  };
+  const updateEngagementData = async imageUrl => {
+    makeRequest(
+      UPDATE_ENGAGEMENT_DATA_URL(projectId),
+      {
+        data: { ...data, image: imageUrl },
+      },
+      navigate
+    ).then(() => {
+      setHandleNotification(true);
     });
+  };
+  const updateEngagement = async () => {
+    data.skills = [...technologies];
+    if (engagementImage) {
+      const response = await uploadImage();
+      await updateEngagementData(response.imageUrl);
+    } else {
+      await updateEngagementData(engagementDetails?.projectData?.image);
+    }
   };
 
   const handleNewTechnology = item => {

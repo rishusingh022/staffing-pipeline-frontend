@@ -28,7 +28,7 @@ export default function AddEngagementPage() {
   };
 
   const handleCreateClick = async () => {
-    if (projectName && startDate && endDate && selectedStatus && chargeCode) {
+    if (projectName && startDate && endDate && selectedStatus && chargeCode && engagementImage !== '') {
       const formData = new FormData();
       formData.append('file', engagementImage);
       await makeRequest(

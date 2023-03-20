@@ -9,7 +9,7 @@ import Dropdown from '../../components/Dropdown';
 import Notification from '../../components/Notification';
 import makeRequest from '../../utils/makeRequest';
 const { useNavigate } = require('react-router-dom');
-import { CREATE_USER_DATA_URL } from '../../constants/apiEndpoints';
+import { CREATE_USER_DATA_URL, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 
 import SearchAndAdd from '../../components/SearchAndAdd';
 
@@ -25,29 +25,42 @@ function AddNewPeoplePage() {
   const [handleNotification, setHandleNotification] = React.useState(false);
   const [showSkillModal, setShowSkillModal] = React.useState(false);
   const [setSkill, setSetSkill] = React.useState([]);
-  const handleAddNewUser = () => {
-    makeRequest(
-      CREATE_USER_DATA_URL,
-      {
-        data: {
-          name: name,
-          email: email,
-          fmno: fmno,
-          caseStudyIds: [],
-          skills: [],
-          role: position,
-          guild: null,
-          image: null,
-        },
-      },
-      navigate
-    )
-      .then(() => {
-        setHandleNotification(true);
-      })
-      .catch(error => {
-        console.log('Error while adding user', error);
+  const [selectedUserImage, setUserImage] = React.useState('');
+
+  const handleImageChange = e => {
+    setUserImage(e.target.files[0]);
+  };
+  const handleAddNewUser = async () => {
+    if (name !== '' && email !== '' && fmno !== '' && position !== '' && selectedUserImage !== '') {
+      const formData = new FormData();
+      formData.append('file', selectedUserImage);
+      await makeRequest(UPLOAD_USER_IMAGE_ROUTE, {
+        data: formData,
+      }).then(response => {
+        makeRequest(
+          CREATE_USER_DATA_URL,
+          {
+            data: {
+              name: name,
+              email: email,
+              fmno: fmno,
+              caseStudyIds: [],
+              skills: [],
+              role: position,
+              guild: null,
+              image: response.imageUrl,
+            },
+          },
+          navigate
+        )
+          .then(() => {
+            setHandleNotification(true);
+          })
+          .catch(error => {
+            console.log('Error while adding user', error);
+          });
       });
+    }
   };
   const handleAddNewSkill = item => {
     setSetSkill([...setSkill, item]);
@@ -70,8 +83,9 @@ function AddNewPeoplePage() {
         <div className="add-new-people-upper-body">
           <div className="add-new-people-upper-body-left">
             <div className="add-new-people-upper-body-left-left">
-              <Image imageUrl={userImage} altText="user" hasOverlay />
+              <Image imageUrl={userImage} altText="user" hasOverlay handleImageSelect={handleImageChange} />
               <Button handleClick={handleAddNewUser} buttonText="Add New User" />
+              {selectedUserImage && <p>file selected : {selectedUserImage.name}</p>}
             </div>
             <div className="add-new-people-upper-body-left-right">
               <div className="new-people-fmno">

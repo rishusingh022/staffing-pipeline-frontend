@@ -10,8 +10,9 @@ import DefaultUser from '../../assets/images/user-default.png';
 // import EngagementImage from '../../assets/images/engagement-default.png';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { useState } from 'react';
+import Notification from '../../components/Notification';
 import { useNavigate, useParams } from 'react-router-dom';
-import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
+import { GET_USER_DATA_BY_ID_URL, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { UPDATE_USER_DATA_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 
@@ -23,30 +24,68 @@ const UpdateUserPage = () => {
   const [activeTab, setActiveTab] = useState('skills');
   const data = {};
   const [showSkillModal, setShowSkillModal] = useState(false);
+  const [userImage, setUserImage] = useState('');
+  const [handleNotification, setHandleNotification] = useState(false);
+  const handleImageChange = e => {
+    setUserImage(e.target.files[0]);
+  };
   // const [newSkill, setNewSkill] = useState({});
 
   React.useEffect(() => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate).then(response => {
       setUserDetails(response);
-      // console.log(response);
     });
   }, []);
-
+  const uploadImage = async () => {
+    const formData = new FormData();
+    formData.append('file', userImage);
+    return await makeRequest(
+      UPLOAD_USER_IMAGE_ROUTE,
+      {
+        data: formData,
+      },
+      navigate
+    );
+  };
+  const updateUser = async () => {
+    if (userImage !== '') {
+      const response = await uploadImage();
+      data.image = response.imageUrl;
+      handlClick();
+    } else {
+      handlClick();
+    }
+  };
   const handlClick = () => {
     makeRequest(UPDATE_USER_DATA_URL(userId), { data: data }, navigate);
+    setHandleNotification(true);
   };
 
   return (
     <div>
       <Header hasNav={true} />
-
+      {handleNotification && (
+        <Notification
+          message="User Updated Successfully"
+          handleClose={() => {
+            setHandleNotification(false);
+          }}
+          success={true}
+        />
+      )}
       <div className="user-content">
         <div className="user-details">
           <div className="user-img">
-            <Image hasOverlay={true} imageUrl={DefaultUser} altText="default-user" />
-            <button className="update-profile-button" onClick={handlClick}>
+            <Image
+              hasOverlay={true}
+              imageUrl={DefaultUser}
+              altText="default-user"
+              handleImageSelect={handleImageChange}
+            />
+            <button className="update-profile-button" onClick={updateUser}>
               Update profile
             </button>
+            {userImage && <p>File selected : {userImage.name}</p>}
           </div>
 
           <div className="user-details-personal">
