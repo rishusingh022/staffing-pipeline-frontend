@@ -11,6 +11,8 @@ import makeRequest from '../../utils/makeRequest';
 const { useNavigate } = require('react-router-dom');
 import { CREATE_USER_DATA_URL } from '../../constants/apiEndpoints';
 
+import SearchAndAdd from '../../components/SearchAndAdd';
+
 function AddNewPeoplePage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = React.useState('skills');
@@ -21,6 +23,8 @@ function AddNewPeoplePage() {
   const [email, setEmail] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [handleNotification, setHandleNotification] = React.useState(false);
+  const [showSkillModal, setShowSkillModal] = React.useState(false);
+  const [setSkill, setSetSkill] = React.useState([]);
   const handleAddNewUser = () => {
     makeRequest(
       CREATE_USER_DATA_URL,
@@ -45,6 +49,11 @@ function AddNewPeoplePage() {
         console.log('Error while adding user', error);
       });
   };
+  const handleAddNewSkill = item => {
+    setSetSkill([...setSkill, item]);
+    console.log(item);
+  };
+  console.log(setSkill);
   return (
     <div>
       <Header hasNav />
@@ -61,7 +70,7 @@ function AddNewPeoplePage() {
         <div className="add-new-people-upper-body">
           <div className="add-new-people-upper-body-left">
             <div className="add-new-people-upper-body-left-left">
-              <Image imageUrl={userImage} altText="user" />
+              <Image imageUrl={userImage} altText="user" hasOverlay />
               <Button handleClick={handleAddNewUser} buttonText="Add New User" />
             </div>
             <div className="add-new-people-upper-body-left-right">
@@ -153,11 +162,18 @@ function AddNewPeoplePage() {
                         <th>Categories</th>
                         <th>Skills</th>
                       </tr>
+                      {setSkill.map((skill, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{skill.area}</td>
+                            <td>{skill.category}</td>
+                            <td>{skill.name}</td>
+                          </tr>
+                        );
+                      })}
                     </thead>
                   </table>
-                  <div className="add-skill-button">
-                    <Button buttonText="Add Skill" />
-                  </div>
+                  <Button buttonText="Add Skill" handleClick={() => setShowSkillModal(true)} />
                 </div>
               ) : (
                 <>
@@ -168,6 +184,14 @@ function AddNewPeoplePage() {
           </div>
         </div>
       </div>
+      {showSkillModal && (
+        <SearchAndAdd
+          setIsOpen={setShowSkillModal}
+          handleItem={handleAddNewSkill}
+          navigate={navigate}
+          entity="skills"
+        />
+      )}
     </div>
   );
 }

@@ -17,9 +17,7 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
     return data.data;
   } catch (e) {
     const errorStatus = e.response?.status;
-    if (e.message === 'Request failed with status code 500') {
-      navigate('/login');
-    } else if (errorStatus) {
+    if (errorStatus) {
       navigate(`${ERROR_ROUTE}/${errorStatus}`, {
         state: {
           message: e.response.data.error,
