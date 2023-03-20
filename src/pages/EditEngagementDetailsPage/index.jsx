@@ -25,7 +25,6 @@ export default function EditEngagementDetailsPage() {
   const [handleNotification, setHandleNotification] = useState(false);
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
   const [newTechnology, setNewTechnology] = useState({});
-  console.log(newTechnology);
   const data = {};
 
   const updateEngagement = () => {
@@ -146,6 +145,7 @@ export default function EditEngagementDetailsPage() {
                 {engagementDetails?.projectData?.skills?.map((data, index) => (
                   <TechStack key={index} techName={data} />
                 ))}
+                <TechStack techName={newTechnology?.name} />
                 <div
                   className="add-tech-card"
                   onClick={() => {
@@ -172,7 +172,12 @@ export default function EditEngagementDetailsPage() {
         </div>
       </div>
       {showTechnologyModal && (
-        <SearchAndAdd open={showTechnologyModal} entity="skills" navigate={navigate} setItem={setNewTechnology} />
+        <SearchAndAdd
+          setIsOpen={setShowTechnologyModal}
+          entity="skills"
+          navigate={navigate}
+          setItem={setNewTechnology}
+        />
       )}
     </div>
   );

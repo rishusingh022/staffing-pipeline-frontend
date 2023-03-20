@@ -6,15 +6,10 @@ import makeRequest from '../../utils/makeRequest';
 import { GET_DATA_BY_SEARCH_URL } from '../../constants/apiEndpoints';
 import { skills } from '../../constants/skills';
 
-const SearchAndAdd = ({ open, entity, navigate, setItem }) => {
-  const [isOpen, setIsOpen] = useState(open);
+const SearchAndAdd = ({ setIsOpen, entity, navigate, setItem }) => {
   const [mactchQueries, setMatchQueries] = useState([]);
   const [input, setInput] = useState('');
   const [debouncedInput] = useDebounce(input, 1000);
-
-  useEffect(() => {
-    setIsOpen(open);
-  }, [open]);
 
   useEffect(() => {
     handleSearch(debouncedInput);
@@ -48,7 +43,7 @@ const SearchAndAdd = ({ open, entity, navigate, setItem }) => {
 
   return (
     <div>
-      <Modal open={isOpen}>
+      <Modal setIsOpen={setIsOpen}>
         <div>
           <input
             className="w-full h-[48px] border-2 border-gray-400 focus:outline-none focus:border-electricBlue p-2 my-2 mb-0"
@@ -77,10 +72,10 @@ const SearchAndAdd = ({ open, entity, navigate, setItem }) => {
 };
 
 SearchAndAdd.propTypes = {
-  open: PropTypes.bool,
   entity: PropTypes.string,
   navigate: PropTypes.func,
   setItem: PropTypes.func,
+  setIsOpen: PropTypes.func,
 };
 
 export default SearchAndAdd;
