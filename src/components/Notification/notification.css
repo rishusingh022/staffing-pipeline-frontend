@@ -2,28 +2,43 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: var(--color-lightred);
   font-size: '1rem';
   padding: '15px';
   width: 100%;
   margin-bottom: 10px;
 }
+
+.error-bg{
+    background-color: var(--color-lightred);
+}
+
 .close-button {
-  color: var(--color-red);
-  background-color: var(--color-lightred);
   padding: 10px;
   margin-right: 10px;
   border-radius: 50%;
 }
+
+.error-text{
+    color: var(--color-red);
+}
+
 .close-button:hover {
   background-color: rgba(256, 256, 256, 30%);
   color: var(--color-red);
   cursor: pointer;
 }
+
 .notification-card .message {
   font-size: 1rem;
   font-weight: 400;
   font-family: 'Inter';
-  color: var(--color-red);
   margin: 10px;
+}
+
+.success-bg{
+    background-color: var(--color-lightgreen);
+}
+
+.success-text{
+    color: var(--color-green);
 }

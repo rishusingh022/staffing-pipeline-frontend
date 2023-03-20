@@ -3,17 +3,19 @@
 exports[`Notification Notification snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="notification-card"
+    class="notification-card error-bg"
   >
     <div
       class="message"
     >
-      <p>
+      <p
+        class="error-text"
+      >
         test
       </p>
     </div>
     <div
-      class="close-button"
+      class="close-button error-bg error-text "
       data-testid="X"
     >
       X

@@ -34,7 +34,7 @@ const LoginPage = () => {
     <div className="login-page-container">
       <Header hasNav={false} />
       <div className="login-page">
-        {error && <Notification message={'Invalid credentials'} handleClose={() => setError(false)} />}
+        {error && <Notification message={'Invalid credentials'} handleClose={() => setError(false)} success={false} />}
         <div className={'card'}>
           <p className={'title'}>Hub Capablities and staffing portal</p>
           <InputComponent placeholder={'email'} type={'text'} handleChange={handleCredentials} />
