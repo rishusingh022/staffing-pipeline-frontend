@@ -17,23 +17,10 @@ const LoginPage = () => {
   const handleCredentials = e => {
     setCredentials({ ...credentials, [e.target.placeholder]: e.target.value });
   };
-  // const setUserRole = async () => {
-  //   //
-  //   makeRequest(
-  //     GET_USER_ROLE_URL,
-  //     {
-  //       headers: {
-  //         Authorization: localStorage.getItem('token'),
-  //       },
-  //     },
-  //     navigate
-  //   ).then(data => setUserInfo(data));
-  // };
   const onSubmit = () => {
     makeRequest(AUTH_LOGIN_URL(), { data: credentials }, navigate)
       .then(async res => {
         localStorage.setItem('token', res.token);
-        // await setUserRole();
         navigate('/');
       })
       .catch(err => {
