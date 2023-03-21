@@ -93,6 +93,11 @@ export const UPLOAD_ENGAGEMENT_IMAGE_ROUTE = {
   method: 'post',
 };
 
+export const GET_USER_SKILL_ROUTE = userId => ({
+  url: `api/skills/${userId}`,
+  method: 'get',
+});
+
 export const GET_USER_ROLE_URL = {
   url: 'api/user-role',
   method: 'get',
@@ -102,8 +107,12 @@ export const ADD_USER_SKILL_ROUTE = userId => ({
   method: 'post',
 });
 
+export const UPDATE_USER_SKILL_ROUTE = userId => ({
+  url: `api/skills/${userId}`,
+  method: 'post',
+});
+
 export const UPLOAD_USER_IMAGE_ROUTE = {
   url: '/image/upload/user',
   method: 'post',
 };
-

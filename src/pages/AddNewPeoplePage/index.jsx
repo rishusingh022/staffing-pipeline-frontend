@@ -67,7 +67,6 @@ function AddNewPeoplePage() {
           .catch(error => {
             console.log('Error while adding user', error);
           });
-
       });
     }
   };
