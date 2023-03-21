@@ -12,6 +12,8 @@ import makeRequest from '../../utils/makeRequest';
 import { CREATE_ENGAGEMENT_DATA_URL, UPLOAD_ENGAGEMENT_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import Notification from '../../components/Notification';
+import SearchAndAdd from '../../components/SearchAndAdd';
+import TechStack from '../../components/techStackCard';
 
 export default function AddEngagementPage() {
   const navigate = useNavigate();
@@ -22,9 +24,16 @@ export default function AddEngagementPage() {
   const [chargeCode, setChargeCode] = useState();
   const [handleNotification, setHandleNotification] = useState();
   const [engagementImage, setEngagementImage] = useState('');
+  const [technologies, setTechnologies] = useState([]);
+  const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
+
   const handleImageChange = e => {
     console.log('e.target.files[0]', e.target.files[0]);
     setEngagementImage(e.target.files[0]);
+  };
+
+  const handleAddTechnology = item => {
+    setTechnologies([...technologies, item.name]);
   };
 
   const handleCreateClick = async () => {
@@ -48,7 +57,7 @@ export default function AddEngagementPage() {
               status: selectedStatus,
               chargeCode,
               caseStudyIds: [],
-              skills: [],
+              skills: technologies,
               guild: 'swe',
               image: response.imageUrl,
             },
@@ -162,8 +171,15 @@ export default function AddEngagementPage() {
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
               <div className="tech-card-container-add">
+                {technologies?.map((data, index) => (
+                  <TechStack key={index} techName={data} />
+                ))}
                 <div className="tech-card-add">
-                  <p className="px-4 font-semibold text-gray-400 cursor-pointer">Add +</p>
+                  <p
+                    className="px-4 font-semibold text-gray-400 cursor-pointer"
+                    onClick={() => setShowAddTechnologyModal(true)}>
+                    Add +
+                  </p>
                 </div>
               </div>
             </div>
@@ -175,6 +191,9 @@ export default function AddEngagementPage() {
           </div>
         </div>
       </div>
+      {showAddTechnologyModal && (
+        <SearchAndAdd entity="skills" setIsOpen={setShowAddTechnologyModal} handleItem={handleAddTechnology} />
+      )}
     </div>
   );
 }
