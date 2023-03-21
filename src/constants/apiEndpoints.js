@@ -92,6 +92,17 @@ export const UPLOAD_ENGAGEMENT_IMAGE_ROUTE = {
   url: '/image/upload/engagement',
   method: 'post',
 };
+export const UPLOAD_CASE_STUDY_IMAGE_ROUTE = {
+  url: '/image/upload/case-study',
+  method: 'post',
+};
+
+export const GET_USERS_INVOLVED_IN_ENGAGEMENT = id => {
+  return {
+    url: `api/staffing/all-users/${id}`,
+    method: 'get',
+  };
+};
 
 export const GET_USER_SKILL_ROUTE = userId => ({
   url: `api/skills/${userId}`,

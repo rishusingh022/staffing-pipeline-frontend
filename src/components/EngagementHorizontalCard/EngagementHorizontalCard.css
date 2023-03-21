@@ -3,6 +3,7 @@
   display: flex;
   height: 100px;
   background-color: white;
+  box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.2);
   min-width: 250px;
   position: relative;
   align-items: center;

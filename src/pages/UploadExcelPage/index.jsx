@@ -32,8 +32,8 @@ function UploadExcelPage() {
         },
         navigate
       )
-        // eslint-disable-next-line no-unused-vars
-        .then(response => {})
+
+        .then(response => {console.log(response);})
         .catch(error => {
           console.log(error);
         });

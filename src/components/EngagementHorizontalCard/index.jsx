@@ -3,12 +3,24 @@ import './EngagementHorizontalCard.css';
 import ArrowIcon from '../../assets/images/Vector.png';
 import ProjectImage from '../../assets/images/engagement-default.png';
 import PropTypes from 'prop-types';
+import { AiFillCheckCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
-function EngagementHorizontalCard({ engagementImage, engagementId, engagementTitle }) {
+function EngagementHorizontalCard({
+  engagementImage,
+  engagementId,
+  engagementTitle,
+  knowMore,
+  selectedEngagement,
+  setSelectedEngagement,
+}) {
   const navigate = useNavigate();
+  // const [isSelected, setIsSelected] = useState(false);
   const handleViewMore = () => {
     navigate(`/projects/${engagementId}`);
+  };
+  const handleSelect = () => {
+    setSelectedEngagement(engagementId);
   };
   return (
     <div className="engagement-card-container">
@@ -16,11 +28,17 @@ function EngagementHorizontalCard({ engagementImage, engagementId, engagementTit
       <div className="engagement-details">
         <p className="engagement-id">{engagementId}</p>
         <p className="engagement-title">{engagementTitle}</p>
-        <div className="engagement-bottom-btn" onClick={handleViewMore}>
-          <div>
-            <p>View</p>
-            <img src={ArrowIcon}></img>
-          </div>
+        <div className="engagement-bottom-btn" onClick={knowMore ? handleViewMore : handleSelect}>
+          {knowMore ? (
+            <div>
+              <p>View</p>
+              <img src={ArrowIcon}></img>
+            </div>
+          ) : (
+            <div>
+              <AiFillCheckCircle color={selectedEngagement === engagementId ? 'green' : 'gray'} size={20} />
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -31,6 +49,9 @@ EngagementHorizontalCard.propTypes = {
   engagementImage: PropTypes.string,
   engagementId: PropTypes.string,
   engagementTitle: PropTypes.string,
+  knowMore: PropTypes.bool,
+  selectedEngagement: PropTypes.string,
+  setSelectedEngagement: PropTypes.func,
 };
 
 export default EngagementHorizontalCard;

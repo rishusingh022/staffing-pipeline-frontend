@@ -32,7 +32,7 @@ const EngagementDetailsPage = () => {
     return <PageLoader />;
   }
   return (
-    <div className="engagement-container">
+    <div className="engagement-container relative">
       <Header hasNav={true} />
       <EngagementDetails engagementDetails={engagementDetails ? engagementDetails : null} />
     </div>

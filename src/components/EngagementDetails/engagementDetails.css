@@ -12,7 +12,7 @@
 .project-container {
   height: fit-content;
   display: flex;
-  gap:30px;
+  gap: 30px;
 }
 
 .team-members-container {
@@ -95,7 +95,7 @@
 .case-study-comp {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 10px;
 }
 
 .case-study-title {
@@ -121,10 +121,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.id-container button{
+.id-container button {
   padding: 8px 20px;
 }
-.project-details{
+.project-details {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -141,6 +141,6 @@
   font-size: 14px;
   font-weight: bold;
 }
-.case-study-button button{
+.case-study-button button {
   padding: 8px 20px;
 }

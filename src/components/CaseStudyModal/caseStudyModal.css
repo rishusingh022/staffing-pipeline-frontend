@@ -1,0 +1,49 @@
+.modal-content {
+  background-color: white;
+  width: 60%;
+  height: 80%;
+  overflow: auto;
+}
+
+.name {
+  height: 13%;
+}
+
+.modal-image {
+  height: 13%;
+}
+
+.modal-input {
+  padding-left: 30px;
+}
+
+.description {
+  height: 13%;
+}
+.box-link {
+  height: 13%;
+}
+
+.modal-collaborators {
+  height: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: scroll;
+  gap: 20px;
+}
+.modal-engagement-name {
+  height: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: scroll;
+  gap: 20px;
+ 
+}
+
+.enter-btn {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}

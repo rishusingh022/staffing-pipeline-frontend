@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CaseStudiesPage.css';
 import Dropdown from '../../components/Dropdown';
 import { Search } from '../../components';
 import { timeFrameOptions } from '../../mocks/DropDownOptions';
 import Button from '../../components/Button';
 import PropTypes from 'prop-types';
+import CaseStudyModal from '../../components/CaseStudyModal';
 import { RoleContext } from '../../context/RoleContext';
 function ToolBox({
   handleSearchChange,
@@ -29,7 +30,10 @@ function ToolBox({
     handleTimeFrameChange(option);
   };
 
-  const uploadExcel = () => {};
+  const uploadExcel = () => {
+    setIsOpen(true);
+  };
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="case-study-page-filter-container">
       <div className="case-study-page-filter-input-box">
@@ -45,6 +49,7 @@ function ToolBox({
         <Dropdown dropdownName={'Study'} dropdownData={studyOptions} selectOption={selectStudyOption} />
         {userInfo.role === 'pd' && <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />}
       </div>
+      {isOpen && <CaseStudyModal setIsOpen={setIsOpen} />}
     </div>
   );
 }

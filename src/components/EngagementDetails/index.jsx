@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import './engagementDetails.css';
 import Image from '../Image';
 import Button from '../Button';
@@ -7,10 +8,13 @@ import TechStack from '../techStackCard';
 import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
+import CaseStudyModal from '../CaseStudyModal';
 import { useNavigate } from 'react-router-dom';
 import formatDate from '../../utils/dateTime';
 
 export default function EngagementDetails({ engagementDetails }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
   return (
     <div className="container-div">
@@ -62,6 +66,7 @@ export default function EngagementDetails({ engagementDetails }) {
                 userName={data.name}
                 userPosition={data.role}
                 userOffice="Bangalore"
+                knowMore={true}
               />
             ))}
           </div>
@@ -97,9 +102,15 @@ export default function EngagementDetails({ engagementDetails }) {
           ))}
         </div>
         <div className="case-study-button">
-          <Button buttonText={'Upload'} handleClick={() => {}} />
+          <Button
+            buttonText={'upload'}
+            handleClick={() => {
+              setIsOpen(true);
+            }}
+          />
         </div>
       </div>
+      {isOpen && <CaseStudyModal setIsOpen={setIsOpen} />}
     </div>
   );
 }

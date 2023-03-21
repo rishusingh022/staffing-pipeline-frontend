@@ -12,5 +12,5 @@ export default function Button({ buttonText, handleClick }) {
 
 Button.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
 };
