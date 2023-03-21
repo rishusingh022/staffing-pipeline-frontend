@@ -97,7 +97,7 @@ export default function EngagementDetails({ engagementDetails }) {
           ))}
         </div>
         <div className="case-study-button">
-          <Button buttonText={'upload'} handleClick={() => {}} />
+          <Button buttonText={'Upload'} handleClick={() => {}} />
         </div>
       </div>
     </div>

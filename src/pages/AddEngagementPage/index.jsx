@@ -12,10 +12,12 @@ import makeRequest from '../../utils/makeRequest';
 import { CREATE_ENGAGEMENT_DATA_URL, UPLOAD_ENGAGEMENT_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import Notification from '../../components/Notification';
+import { RoleContext } from '../../context/RoleContext';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import TechStack from '../../components/techStackCard';
 
 export default function AddEngagementPage() {
+  const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   const [projectName, setProjectName] = useState();
   const [startDate, setStartDate] = useState();
@@ -24,6 +26,9 @@ export default function AddEngagementPage() {
   const [chargeCode, setChargeCode] = useState();
   const [handleNotification, setHandleNotification] = useState();
   const [engagementImage, setEngagementImage] = useState('');
+  React.useEffect(() => {
+    if (userInfo?.role !== 'pd') navigate('/users');
+  }, []);
   const [technologies, setTechnologies] = useState([]);
   const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
 

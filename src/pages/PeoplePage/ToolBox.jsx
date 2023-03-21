@@ -4,6 +4,7 @@ import { Search } from '../../components';
 import props from 'prop-types';
 import './PeoplePage.css';
 import Button from '../../components/Button';
+import { RoleContext } from '../../context/RoleContext';
 
 function ToolBox({
   handleSearchChange,
@@ -13,6 +14,8 @@ function ToolBox({
   roleOptions,
   navigate,
 }) {
+  const { userInfo } = React.useContext(RoleContext);
+
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
   };
@@ -35,7 +38,9 @@ function ToolBox({
       <div className="people-page-filter-drop-downs">
         <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
         <Dropdown dropdownName={'Role'} dropdownData={roleOptions} selectOption={selectRoleOption} />
-        <Button buttonText={'Add new member'} handleClick={handleAddNewMember} />
+        {userInfo.role === 'pd' && (
+          <Button data-testid="add-new-member" buttonText={'Add new member'} handleClick={handleAddNewMember} />
+        )}
       </div>
       <div></div>
     </div>

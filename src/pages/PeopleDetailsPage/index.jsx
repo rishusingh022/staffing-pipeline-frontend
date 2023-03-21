@@ -11,8 +11,10 @@ import EngagementImage from '../../assets/images/engagement-default.png';
 import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
+import { RoleContext } from '../../context/RoleContext';
 
 const PeopleDetailsPage = () => {
+  const { userInfo } = React.useContext(RoleContext);
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const PeopleDetailsPage = () => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate)
       .then(response => {
         setUserDetails(response);
-        console.log('response', response);
+
         setIsLoading(false);
       })
       .catch(error => {
@@ -43,7 +45,9 @@ const PeopleDetailsPage = () => {
         <div className="user-personal-card">
           <div className="user-image-container">
             <img src={UserImage} className="user-image"></img>
-            <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
+            {(userInfo.role === 'pd' || userInfo?.userId === userId) && (
+              <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
+            )}
           </div>
           <div className="user-details-main">
             <div>

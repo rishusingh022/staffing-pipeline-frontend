@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import PageLoader from '../../components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import makeRequest from '../../utils/makeRequest';
 import { UPLOAD_EXCEL_ROUTE } from '../../constants/apiEndpoints';
+import { RoleContext } from '../../context/RoleContext';
 
 function UploadExcelPage() {
+  const { userInfo } = React.useContext(RoleContext);
+  useEffect(() => {
+    if (userInfo?.role !== 'pd') navigate('/users');
+  }, []);
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
   const navigate = useNavigate();
@@ -27,9 +32,7 @@ function UploadExcelPage() {
         },
         navigate
       )
-        .then(response => {
-          console.log(response);
-        })
+        .then(response => {})
         .catch(error => {
           console.log(error);
         });

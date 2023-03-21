@@ -5,6 +5,7 @@ import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../../constants/apiEndpoints';
 import makeRequest from '../../../utils/makeRequest';
 import { useParams } from 'react-router-dom';
 import { default as mockEngagementData } from '../../../mocks/EngagementDetailsPage';
+import { RoleProvider } from '../../../context/RoleContext';
 
 jest.mock('../../../utils/makeRequest');
 
@@ -21,7 +22,11 @@ describe('EngagementDetailsPage', () => {
     mockUseParams.mockReturnValue({ projectId: mockEngagementData.engagementId });
     const { projectId } = useParams();
     makeRequest.mockResolvedValue({});
-    render(<EngagementDetailsPage />);
+    render(
+      <RoleProvider>
+        <EngagementDetailsPage />
+      </RoleProvider>
+    );
     await waitFor(() => expect(makeRequest).toBeCalledWith(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, mockNavigate));
   });
 });

@@ -14,7 +14,10 @@ import {
   extractCollaboratorsFromCaseStudies,
   extractEngagementNameFromCaseStudies,
 } from '../../utils/common/case-studies';
+import { RoleContext } from '../../context/RoleContext';
+
 export default function CaseStudiesPage() {
+  const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   let [caseStudies, setCaseStudies] = React.useState([]);
   const [error, setError] = React.useState(null);
@@ -51,7 +54,6 @@ export default function CaseStudiesPage() {
   React.useEffect(() => {
     makeRequest(GET_CASE_STUDIES_DATA_URL, {}, navigate)
       .then(response => {
-        console.log(response);
         setCaseStudies(response);
         const { collaboratorMap, uniqueCollaborators } = extractCollaboratorsFromCaseStudies(response);
         const { engagementMap, uniqueEngegementNames } = extractEngagementNameFromCaseStudies(response);

@@ -21,8 +21,10 @@ import { statusOptions } from '../../mocks/DropDownOptions';
 import parseDate from '../../utils/common/parseDate';
 import Notification from '../../components/Notification';
 import SearchAndAdd from '../../components/SearchAndAdd';
+import { RoleContext } from '../../context/RoleContext';
 
 export default function EditEngagementDetailsPage() {
+  const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   const { projectId } = useParams();
   const [engagementDetails, setEngagementDetails] = useState({});
@@ -30,6 +32,10 @@ export default function EditEngagementDetailsPage() {
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
   const [technologies, setTechnologies] = useState([]);
   const [engagementImage, setEngagementImage] = useState('');
+
+  React.useEffect(() => {
+    if (userInfo?.role !== 'pd') navigate('/users');
+  }, []);
 
   const handleImageChange = e => {
     setEngagementImage(e.target.files[0]);

@@ -12,8 +12,10 @@ const { useNavigate } = require('react-router-dom');
 import { CREATE_USER_DATA_URL, ADD_USER_SKILL_ROUTE, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 
 import SearchAndAdd from '../../components/SearchAndAdd';
+import { RoleContext } from '../../context/RoleContext';
 
 function AddNewPeoplePage() {
+  const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = React.useState('skills');
   const [fmno, setFmno] = React.useState('');
@@ -27,6 +29,10 @@ function AddNewPeoplePage() {
   const [setSkill, setSetSkill] = React.useState([]);
   const [userId, setUserId] = React.useState('');
   const [selectedUserImage, setUserImage] = React.useState('');
+
+  React.useEffect(() => {
+    if (userInfo?.role !== 'pd') navigate('/users');
+  }, []);
 
   const handleImageChange = e => {
     setUserImage(e.target.files[0]);

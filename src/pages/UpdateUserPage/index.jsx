@@ -15,8 +15,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { GET_USER_DATA_BY_ID_URL, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { UPDATE_USER_DATA_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
+import { RoleContext } from '../../context/RoleContext';
 
 const UpdateUserPage = () => {
+  const { userInfo } = React.useContext(RoleContext);
+
   const { userId } = useParams();
   // eslint-disable-next-line no-unused-vars
   const [userDetails, setUserDetails] = useState({});
@@ -36,6 +39,7 @@ const UpdateUserPage = () => {
       setUserDetails(response);
     });
   }, []);
+  if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
   const uploadImage = async () => {
     const formData = new FormData();
     formData.append('file', userImage);
@@ -121,7 +125,7 @@ const UpdateUserPage = () => {
                   data.role = optionName.toLowerCase();
                 }}
               />
-              <DropDown dropdownName="Office" dropdownData={['Bengaluru', 'Gurgaon']} selectOption={console.log} />
+              <DropDown dropdownName="Office" dropdownData={['Bengaluru', 'Gurgaon']} selectOption={() => {}} />
             </div>
           </div>
         </div>

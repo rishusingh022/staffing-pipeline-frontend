@@ -5,6 +5,7 @@ import { Search } from '../../components';
 import { timeFrameOptions } from '../../mocks/DropDownOptions';
 import Button from '../../components/Button';
 import PropTypes from 'prop-types';
+import { RoleContext } from '../../context/RoleContext';
 function ToolBox({
   handleSearchChange,
   handleCollaboratorChange,
@@ -13,6 +14,8 @@ function ToolBox({
   collaboratorOptions,
   studyOptions,
 }) {
+  const { userInfo } = React.useContext(RoleContext);
+
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
   };
@@ -26,9 +29,7 @@ function ToolBox({
     handleTimeFrameChange(option);
   };
 
-  const uploadExcel = () => {
-    console.log('upload excel');
-  };
+  const uploadExcel = () => {};
   return (
     <div className="case-study-page-filter-container">
       <div className="case-study-page-filter-input-box">
@@ -42,7 +43,7 @@ function ToolBox({
           selectOption={selectCollaboratorOption}
         />
         <Dropdown dropdownName={'Study'} dropdownData={studyOptions} selectOption={selectStudyOption} />
-        <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />
+        {userInfo.role === 'pd' && <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />}
       </div>
     </div>
   );

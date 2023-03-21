@@ -17,13 +17,24 @@ const LoginPage = () => {
   const handleCredentials = e => {
     setCredentials({ ...credentials, [e.target.placeholder]: e.target.value });
   };
+  // const setUserRole = async () => {
+  //   //
+  //   makeRequest(
+  //     GET_USER_ROLE_URL,
+  //     {
+  //       headers: {
+  //         Authorization: localStorage.getItem('token'),
+  //       },
+  //     },
+  //     navigate
+  //   ).then(data => setUserInfo(data));
+  // };
   const onSubmit = () => {
     makeRequest(AUTH_LOGIN_URL(), { data: credentials }, navigate)
-      .then(res => {
+      .then(async res => {
         localStorage.setItem('token', res.token);
-        setTimeout(() => {
-          navigate('/');
-        }, 1000);
+        // await setUserRole();
+        navigate('/');
       })
       .catch(err => {
         console.log(err.response);
@@ -41,7 +52,7 @@ const LoginPage = () => {
           <p className={'title'}>Hub Capablities and staffing portal</p>
           <InputComponent placeholder={'email'} type={'text'} handleChange={handleCredentials} />
           <InputComponent placeholder={'password'} type={'password'} handleChange={handleCredentials} />
-          <Button buttonText={'login'} handleClick={onSubmit} />
+          <Button buttonText={'Login'} handleClick={onSubmit} />
         </div>
       </div>
       <Footer />

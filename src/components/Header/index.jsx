@@ -3,13 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, UPLOAD_EXCELL_ROUTE, USERS_ROUTE } from '../../constants/routes';
 import logoImage from '../../assets/McK_Logo.png';
+import { RoleContext } from '../../context/RoleContext';
 // eslint-disable-next-line no-unused-vars
 import Button from '../Button';
 export default function Header({ hasNav }) {
   const navigate = useNavigate();
+  const { setUserInfo } = React.useContext(RoleContext);
   const location = window.location.pathname;
 
   const handleLogout = () => {
+    setUserInfo({});
     localStorage.removeItem('token');
     navigate('/login');
   };

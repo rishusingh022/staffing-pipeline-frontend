@@ -45,7 +45,7 @@ exports[`LoginPage Snapshot should render 1`] = `
           class="button"
           data-testid="button"
         >
-          login
+          Login
         </button>
       </div>
     </div>

@@ -14,8 +14,10 @@ import {
   convertStartDate,
 } from '../../utils/common/engagement';
 import { timeFilterUtil } from '../../utils/common/timeFilter';
+import { RoleContext } from '../../context/RoleContext';
 
 const EngagementsPage = () => {
+  const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   let [projects, setProjects] = React.useState([]);
   const [error, setError] = React.useState(null);
@@ -45,6 +47,7 @@ const EngagementsPage = () => {
   };
 
   React.useEffect(() => {
+    if (userInfo?.role !== 'pd') navigate('/users');
     makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)
       .then(response => {
         response = convertStartDate(response);
