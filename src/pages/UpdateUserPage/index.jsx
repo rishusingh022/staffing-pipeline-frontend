@@ -15,7 +15,6 @@ import {
   UPDATE_USER_DATA_URL,
   ADD_USER_SKILL_ROUTE,
 } from '../../constants/apiEndpoints';
-// eslint-disable-next-line no-unused-vars
 import { GET_USER_SKILL_ROUTE } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import { RoleContext } from '../../context/RoleContext';
@@ -39,16 +38,14 @@ const UpdateUserPage = () => {
     });
   }, []);
 
-  // React.useEffect(() => {
-  //   console.log('checking.....');
-  //   makeRequest(GET_USER_SKILL_ROUTE(userId), {}, navigate).then(response => {
-  //     setSetSkill(response);
-  //   });
-  // });
+  React.useEffect(() => {
+    makeRequest(GET_USER_SKILL_ROUTE(userId), {}, navigate).then(response => {
+      setSetSkill(response);
+    });
+  });
 
   const handleAddNewSkill = async item => {
     setSetSkill([...setSkill, item]);
-    console.log(item);
     userId &&
       (await makeRequest(
         ADD_USER_SKILL_ROUTE(userId),
@@ -63,13 +60,7 @@ const UpdateUserPage = () => {
           },
         },
         navigate
-      )
-        .then(response => {
-          console.log('we got the response', response);
-        })
-        .catch(error => {
-          console.log('Error while adding user', error);
-        }));
+      ));
   };
 
   const handleImageChange = e => {
@@ -196,12 +187,12 @@ const UpdateUserPage = () => {
                       <th>Categories</th>
                       <th>Skills</th>
                     </tr>
-                    {setSkill.map((skill, index) => {
+                    {setSkill?.map((skill, index) => {
                       return (
                         <tr key={index}>
                           <td>{skill.area}</td>
                           <td>{skill.category}</td>
-                          <td>{skill.name}</td>
+                          <td>{skill.skill}</td>
                         </tr>
                       );
                     })}
