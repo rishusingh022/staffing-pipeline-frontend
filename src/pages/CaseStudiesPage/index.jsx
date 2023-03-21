@@ -143,9 +143,9 @@ export default function CaseStudiesPage() {
           altText={caseStudy.name}
           key={caseStudy.caseStudyId}
           name={caseStudy.name}
-          identityNumber={caseStudy.engagementId}
+          engagementName={caseStudy.engagement.name}
           handleButtonClick={() => {}}
-          author="John Doe"
+          collaborators={caseStudy.collaborators}
         />
       );
     });

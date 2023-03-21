@@ -1,0 +1,7 @@
+.case-study-collaborators{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+}

@@ -21,10 +21,11 @@ exports[`CaseStudyCard should render correctly 1`] = `
       </div>
       <div
         class="font-medium text-xs mb-1 text-gray-500"
-      >
-        by John Doe
-      </div>
+      />
     </div>
+    <div
+      class="ml-2"
+    />
   </div>
 </DocumentFragment>
 `;
