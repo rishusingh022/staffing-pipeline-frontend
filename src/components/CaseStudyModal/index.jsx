@@ -5,6 +5,7 @@ import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import Button from '../Button';
 import EngagementHorizontalCard from '../EngagementHorizontalCard';
 import makeRequest from '../../utils/makeRequest';
+import Search from '../Search';
 import {
   CREATE_CASE_STUDIES_DATA_URL,
   GET_ENGAGEMENT_DATA_URL,
@@ -12,7 +13,6 @@ import {
   UPLOAD_CASE_STUDY_IMAGE_ROUTE,
 } from '../../constants/apiEndpoints';
 import { useNavigate, useParams } from 'react-router-dom';
-// import { collaborators } from '../../mocks/DropDownOptions';
 
 export default function CaseStudyModal({ setIsOpen }) {
   const { projectId } = useParams();
@@ -21,12 +21,36 @@ export default function CaseStudyModal({ setIsOpen }) {
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [file, setFile] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [userSearch, setUserSearch] = useState('');
   const [inputData, setInputdata] = useState({
     caseStudyname: '',
     description: '',
     boxLink: '',
   });
   const navigate = useNavigate();
+
+  const filteredEngagements = allEngagements.filter(engagement => {
+    if (searchTerm === '') {
+      return true;
+    }
+    return engagement.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  const filteredUsers = users.filter(user => {
+    if (userSearch === '') {
+      return true;
+    }
+    return user.name.toLowerCase().includes(userSearch.toLowerCase());
+  });
+
+  const handleSearch = value => {
+    setSearchTerm(value);
+  };
+
+  const handleUserSearch = value => {
+    setUserSearch(value);
+  };
 
   const handleSelectedEngagementChange = engagementId => {
     setSelectedUsers([]);
@@ -104,10 +128,11 @@ export default function CaseStudyModal({ setIsOpen }) {
   return (
     <>
       <div className="background fixed bg-black/[.85] w-screen h-screen top-0 left-0 flex items-center justify-center">
-        <div className="modal-content divide-y flex flex-col gap-4 p-4">
+        <div className="modal-content flex flex-col gap-4 p-9">
+          <p className="modal-title">Upload Case Study</p>
           <div className="name">
             <input
-              className="w-full px-3 py-2"
+              className="w-full px-3 py-2 border-[1px] border-gray-400"
               placeholder="Enter case study name"
               value={inputData.caseStudyname}
               onChange={event =>
@@ -118,22 +143,12 @@ export default function CaseStudyModal({ setIsOpen }) {
               }
             />
           </div>
-          <div className="modal-image">
-            {file && <p>Selected File: {file.name}</p>}
-            <label htmlFor="upload-case-study-image">
-              <p className="px-3 py-2 ml-2 mt-3 bg-[#051b2c] text-white w-fit hover:cursor-pointer">Select Image</p>
-            </label>
-            <input
-              type={'file'}
-              name="Upload image"
-              id="upload-case-study-image"
-              className="hidden"
-              onChange={e => setFile(e.target.files[0])}
-            />
+          <div className="modal-search">
+            <Search placeHolderValue={'Search Engagement'} handleSearch={handleSearch} />
           </div>
           <div className="modal-engagement-name">
-            {allEngagements.length > 0 &&
-              allEngagements.map((data, index) => (
+            {filteredEngagements.length > 0 &&
+              filteredEngagements.map((data, index) => (
                 <div className="w-[48.5%] h-[90px]" key={index}>
                   <EngagementHorizontalCard
                     engagementTitle={data.name}
@@ -146,7 +161,7 @@ export default function CaseStudyModal({ setIsOpen }) {
           </div>
           <div className="description">
             <input
-              className="w-full px-3 py-2"
+              className="w-full px-3 py-2 border-[1px] border-gray-400"
               placeholder="Enter description"
               value={inputData.description}
               onChange={event =>
@@ -159,7 +174,7 @@ export default function CaseStudyModal({ setIsOpen }) {
           </div>
           <div className="box-link">
             <input
-              className="w-full px-3 py-2"
+              className="w-full px-3 py-2 border-[1px] border-gray-400"
               placeholder="Paste Box Link"
               value={inputData.boxLink}
               onChange={event =>
@@ -170,9 +185,12 @@ export default function CaseStudyModal({ setIsOpen }) {
               }
             />
           </div>
+          <div className="modal-user-search">
+            <Search placeHolderValue={'Search People'} handleSearch={handleUserSearch} />
+          </div>
           <div className="modal-collaborators">
-            {users.length > 0 ? (
-              users.map((data, index) => (
+            {filteredUsers.length > 0 ? (
+              filteredUsers.map((data, index) => (
                 <div className="w-[48.5%] h-[90px] gap-2" key={index}>
                   <PeopleHorizontalCard
                     userFMNO={data.fmno}
@@ -187,12 +205,30 @@ export default function CaseStudyModal({ setIsOpen }) {
                 </div>
               ))
             ) : (
-              <p className="font-light text-gray text-center">No users involved in this engagements.</p>
+              <p className="no-users-involved font-light text-gray text-center">
+                No users involved in this engagements.
+              </p>
             )}
           </div>
-          <div className="enter-btn p-3">
-            <div className="submit-btn">
-              <Button buttonText={'Cancel'} handleClick={() => setIsOpen(false)} />
+
+          <div className="enter-btn p-0">
+            <div className="btn-comp">
+              <div className="submit-btn">
+                <Button buttonText={'Cancel'} handleClick={() => setIsOpen(false)} />
+              </div>
+              <div className="modal-image">
+                <label htmlFor="upload-case-study-image">
+                  <p className="px-3 py-2 ml-2 bg-[#051b2c] text-white w-fit hover:cursor-pointer">Select Image</p>
+                </label>
+                <input
+                  type={'file'}
+                  name="Upload image"
+                  id="upload-case-study-image"
+                  className="hidden"
+                  onChange={e => setFile(e.target.files[0])}
+                />
+                {file && <p className="mt-2 ml-2">Selected File: {file.name}</p>}
+              </div>
             </div>
             <div className="cancel-btn">
               <Button buttonText={'Submit'} handleClick={handleCreateCaseStudy} />
