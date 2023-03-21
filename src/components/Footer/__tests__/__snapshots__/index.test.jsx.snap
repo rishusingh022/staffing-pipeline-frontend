@@ -3,11 +3,11 @@
 exports[`footer should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="footer"
+    class="h-[120px] bottom-0 flex items-center"
   >
     <img
       alt="McKinsey and Company"
-      class="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
+      class="absolute left-44 h-[54px] w-[155px] aspect-autolg:mr-[180px] sm:mr-[90px]"
       src="mckinsey-logo.png"
     />
   </div>

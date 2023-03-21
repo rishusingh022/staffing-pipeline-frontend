@@ -3,9 +3,9 @@ import './footer.css';
 import mckinseyLogo from '../../assets/logo/mckinsey-logo.png';
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className="h-[120px] bottom-0 flex items-center">
       <img
-        className="h-[70px] w-[155px] aspect-auto self-end pl-0 lg:mr-[180px] sm:mr-[90px] pt-0 pb-[5px]"
+        className="absolute left-10 sm:left-44 h-[54px] w-[155px] aspect-autolg:mr-[180px] sm:mr-[90px]"
         src={mckinseyLogo}
         alt="McKinsey and Company"
       />
