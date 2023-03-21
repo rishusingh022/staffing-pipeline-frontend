@@ -54,12 +54,12 @@
 
 .user-details-personal-dropdown{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
 }
 
 .user-details-personal-dropdown .dropdown-container{
-    width: 145px;
+    width: 100%;
 }
 
 .user-engagements{

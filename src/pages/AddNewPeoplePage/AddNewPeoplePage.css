@@ -57,7 +57,7 @@
 
 .new-people-position-office {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
 }
 .new-people-position-office .dropdown-container {

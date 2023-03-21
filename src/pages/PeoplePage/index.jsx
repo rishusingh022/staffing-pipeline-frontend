@@ -85,12 +85,15 @@ const PeoplePage = () => {
         return person.name.toLowerCase().includes(searchValue.toLowerCase());
       });
     }
-
+    people.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    console.log(people);
     const peopleCards = people.map(person => {
       return (
         <UserCard
           key={person.fmno}
-          imageUrl={userImage}
+          imageUrl={person.image !== null ? person.image : userImage}
           altText="person"
           identityNumber={person.fmno}
           name={person.name}

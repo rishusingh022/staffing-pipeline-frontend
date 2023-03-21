@@ -12,11 +12,15 @@ import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
 import { RoleContext } from '../../context/RoleContext';
-
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 const PeopleDetailsPage = () => {
   const { userInfo } = React.useContext(RoleContext);
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
+  const [userData, setUserData] = useState({});
+  const [userSkills, setUserSkills] = useState([]);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('skills');
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +31,8 @@ const PeopleDetailsPage = () => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate)
       .then(response => {
         setUserDetails(response);
-
+        setUserData(response.userData);
+        setUserSkills(response.userSkills);
         setIsLoading(false);
       })
       .catch(error => {
@@ -38,13 +43,15 @@ const PeopleDetailsPage = () => {
   if (isLoading) {
     return <PageLoader />;
   }
+  console.log('userData', userData);
+  console.log('userSkills', userSkills);
   return (
     <div>
       <Header hasNav={true} />
       <div className="user-details-page">
         <div className="user-personal-card">
           <div className="user-image-container">
-            <img src={UserImage} className="user-image"></img>
+            <img src={userData.image !== null ? userData.image : UserImage} className="user-image"></img>
             {(userInfo.role === 'pd' || userInfo?.userId === userId) && (
               <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
             )}
@@ -55,7 +62,7 @@ const PeopleDetailsPage = () => {
               <p className="user-name">{userDetails?.userData?.name}</p>
             </div>
             <div className="user-contact-details">
-              <p>Software Engineering Intern | Bengaluru - Brigade Center</p>
+              <p>{capitalizeFirstLetter(userData.role)} | Bengaluru - Brigade Center</p>
               <p>Email: {userDetails?.userData?.email}</p>
               {/* <p>Phone: +91 9876543211</p> */}
             </div>
@@ -107,11 +114,15 @@ const PeopleDetailsPage = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>SW & Cloud Engg</td>
-                        <td>Architecture</td>
-                        <td>APIs Asynchronous Messaging, Monitoring.</td>
-                      </tr>
+                      {userSkills.map((skill, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{skill.area}</td>
+                            <td>{skill.category}</td>
+                            <td>{skill.skill}</td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

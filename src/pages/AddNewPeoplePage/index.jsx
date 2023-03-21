@@ -60,7 +60,7 @@ function AddNewPeoplePage() {
           },
           navigate
         )
-          .then(() => {
+          .then(response => {
             setHandleNotification(true);
             setUserId(response.userId);
           })
@@ -185,11 +185,6 @@ function AddNewPeoplePage() {
               className={`professional-nav-item ${activeTab === 'skills' && 'professional-nav-item-active'}`}
               onClick={() => setActiveTab('skills')}>
               Professional Information
-            </p>
-            <p
-              className={`professional-nav-item ${activeTab === 'past_engagements' && 'professional-nav-item-active'}`}
-              onClick={() => setActiveTab('past_engagements')}>
-              Past Studies
             </p>
           </div>
           <div className="add-user-all-details-container">
