@@ -18,22 +18,12 @@ exports[`Header should render correctly with a navbar when Navbar boolean is tru
         <button
           class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
         >
-          Engagements
-        </button>
-        <button
-          class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
-        >
           People
         </button>
         <button
           class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
         >
           Case Studies
-        </button>
-        <button
-          class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
-        >
-          Upload Excel
         </button>
       </div>
     </div>
@@ -64,22 +54,12 @@ exports[`Header should render correctly without a navbar when Navbar boolean is 
         <button
           class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
         >
-          Engagements
-        </button>
-        <button
-          class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
-        >
           People
         </button>
         <button
           class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
         >
           Case Studies
-        </button>
-        <button
-          class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
-        >
-          Upload Excel
         </button>
       </div>
     </div>

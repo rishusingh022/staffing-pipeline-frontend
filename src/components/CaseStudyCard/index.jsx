@@ -4,6 +4,7 @@ import './CaseStudyCard.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CircleImage from '../CircleImage';
+import { FiDownload, FiLink2 } from 'react-icons/fi';
 
 export default function CaseStudyCard({ imageUrl, altText, name, collaborators, boxLink, engagementName }) {
   const images = collaborators?.map(collaborator => {
@@ -23,7 +24,19 @@ export default function CaseStudyCard({ imageUrl, altText, name, collaborators, 
         to={boxLink}
         className="link-button self-end text-xs mb-2 font-medium cursor-pointer"
         target="_blank"></Link>
-      <div className="ml-2">{collaborators && <CircleImage images={images} />}</div>
+      <div className="flex justify-between">
+        <div className="ml-2">{collaborators && <CircleImage images={images} />}</div>
+        <div className="button-container flex mr-2">
+          <FiLink2
+            size={20}
+            className="hover:text-electricBlue cursor-pointer"
+            onClick={() => window.open(boxLink)}></FiLink2>
+          <FiDownload
+            size={20}
+            className="ml-3 hover:text-electricBlue cursor-pointer"
+            onClick={() => window.open(boxLink)}></FiDownload>
+        </div>
+      </div>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { RoleContext } from '../../context/RoleContext';
 import Button from '../Button';
 export default function Header({ hasNav }) {
   const navigate = useNavigate();
-  const { setUserInfo } = React.useContext(RoleContext);
+  const { userInfo, setUserInfo } = React.useContext(RoleContext);
   const location = window.location.pathname;
 
   const handleLogout = () => {
@@ -27,11 +27,13 @@ export default function Header({ hasNav }) {
       <div className="h-full  flex box-border">
         {hasNav && (
           <div className="grid grid-cols-4 gap-10 items-end">
-            <button
-              className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
-              onClick={() => navigate(PROJECTS_ROUTE)}>
-              Engagements
-            </button>
+            {userInfo.role === 'pd' && (
+              <button
+                className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
+                onClick={() => navigate(PROJECTS_ROUTE)}>
+                Engagements
+              </button>
+            )}
             <button
               className={location === USERS_ROUTE ? activeClass : inactiveClass}
               onClick={() => navigate(USERS_ROUTE)}>
@@ -42,11 +44,13 @@ export default function Header({ hasNav }) {
               onClick={() => navigate(CASE_STUDIES_ROUTE)}>
               Case Studies
             </button>
-            <button
-              className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
-              onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>
-              Upload Excel
-            </button>
+            {userInfo.role === 'pd' && (
+              <button
+                className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
+                onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>
+                Upload Excel
+              </button>
+            )}
           </div>
         )}
       </div>
