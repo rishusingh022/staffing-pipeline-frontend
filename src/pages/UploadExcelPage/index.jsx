@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import makeRequest from '../../utils/makeRequest';
 import { UPLOAD_EXCEL_ROUTE } from '../../constants/apiEndpoints';
 import { RoleContext } from '../../context/RoleContext';
+import Notification from '../../components/Notification';
 
 function UploadExcelPage() {
   const { userInfo } = React.useContext(RoleContext);
@@ -14,6 +15,7 @@ function UploadExcelPage() {
   }, []);
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
+  const [upload, setUpload] = React.useState(false);
   const navigate = useNavigate();
   const handleFileSelect = event => {
     setFile(event.target.files[0]);
@@ -33,7 +35,9 @@ function UploadExcelPage() {
         navigate
       )
         .then(response => {
-          console.log(response);
+          if (response) {
+            setUpload(true);
+          }
         })
         .catch(error => {
           console.log(error);
@@ -42,7 +46,11 @@ function UploadExcelPage() {
       alert('Please select a file');
     }
   };
-
+  setTimeout(() => {
+    if (upload) {
+      setUpload(false);
+    }
+  }, 2000);
   return isLoading ? (
     <div>
       <PageLoader />
@@ -50,6 +58,7 @@ function UploadExcelPage() {
   ) : (
     <div>
       <Header hasNav />
+      {upload && <Notification message={'Uploaded Successfully'} handleClose={() => setUpload(false)} success={true} />}
       <div className="w-full flex flex-col items-center">
         <p className="text-3xl text-center p-10">Upload Staffing Excel</p>
         <div className="bg-[#f8f8ee] w-4/5 p-8 rounded-xl border-2 border-dotted border-[#ad8a09]">

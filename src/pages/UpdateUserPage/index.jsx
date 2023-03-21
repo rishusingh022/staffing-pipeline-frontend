@@ -93,7 +93,7 @@ const UpdateUserPage = () => {
     makeRequest(UPDATE_USER_DATA_URL(userId), { data: data }, navigate);
     setHandleNotification(true);
   };
-
+  setTimeout(() => setHandleNotification(false), 2000);
   return (
     <div>
       <Header hasNav={true} />

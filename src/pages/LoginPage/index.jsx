@@ -29,7 +29,7 @@ const LoginPage = () => {
         console.log(err);
       });
   };
-  setTimeout(() => (error ? setError(false) : null), 6000);
+  setTimeout(() => (error ? setError(false) : null), 2000);
   return (
     <div className="login-page-container">
       <Header hasNav={false} />
