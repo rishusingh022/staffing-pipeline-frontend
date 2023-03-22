@@ -1,58 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
-.login-page-container{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.login-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-.login-page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background: var(--color-lightgray);
-}
-
-.card{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap:30px;
-    width: 518px;
-    height: 509px;
-    background: var(--color-ghostwhite);
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: var(--color-lightgray);
 }
 
-.card button{
-    width: 289.71px !important;
-    height: 36.48px !important;
-    background-color:  var(--color-darkblue) !important;
-    font-family: 'Inter' !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    font-size: 15px !important;
-    line-height: 18px !important;
-    text-align: center !important;
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 518px;
+  height: 509px;
+  background: var(--color-ghostwhite);
 }
 
-.title{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 18px;
+.card button {
+  width: 289.71px !important;
+  height: 36.48px !important;
+  background-color: var(--color-darkblue) !important;
+  font-family: 'Inter' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 18px !important;
+  text-align: center !important;
 }
 
-.error{
-    color: red;
-    font-size: 12px;
-    font-family: 'Inter';
-    font-weight: 400;
-    margin-top: 10px;   
+.title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  line-height: 18px;
 }
 
-.login-page .notification-card{
-    width: 518px;
+.error {
+  color: red;
+  font-size: 12px;
+  font-family: 'Inter';
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.login-page .notification-card {
+  width: 518px;
 }

@@ -50,7 +50,10 @@ export default function EngagementDetails({ engagementDetails }) {
               <tr>
                 <div className="date-container">
                   <td className="table-row-item">Status:</td>
-                  <td className="text-blue-600">{engagementDetails?.projectData?.status && capitalizeFirstLetter(engagementDetails?.projectData?.status)}</td>
+                  <td className="text-blue-600">
+                    {engagementDetails?.projectData?.status &&
+                      capitalizeFirstLetter(engagementDetails?.projectData?.status)}
+                  </td>
                 </div>
               </tr>
               <tr>

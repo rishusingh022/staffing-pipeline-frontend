@@ -10,7 +10,7 @@ import Notification from '../../components/Notification';
 import makeRequest from '../../utils/makeRequest';
 const { useNavigate } = require('react-router-dom');
 import { CREATE_USER_DATA_URL, ADD_USER_SKILL_ROUTE, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
-import {role} from '../../mocks/DropDownOptions';
+import { role } from '../../mocks/DropDownOptions';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { RoleContext } from '../../context/RoleContext';
 

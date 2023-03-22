@@ -35,10 +35,10 @@ const LoginPage = () => {
       <Header hasNav={false} />
       <div className="login-page">
         {error && <Notification message={'Invalid credentials'} handleClose={() => setError(false)} success={false} />}
-        <div className={'card'}>
-          <p className={'title'}>Hub Capablities and staffing portal</p>
-          <InputComponent placeholder={'email'} type={'text'} handleChange={handleCredentials} />
-          <InputComponent placeholder={'password'} type={'password'} handleChange={handleCredentials} />
+        <div className="card">
+          <p className="title text-2xl mb-5">Hub Capablities and staffing portal</p>
+          <InputComponent placeholder={'Email'} type={'text'} handleChange={handleCredentials} />
+          <InputComponent placeholder={'Password'} type={'password'} handleChange={handleCredentials} />
           <Button buttonText={'Login'} handleClick={onSubmit} />
         </div>
       </div>

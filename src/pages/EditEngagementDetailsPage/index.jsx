@@ -180,9 +180,12 @@ export default function EditEngagementDetailsPage() {
                     setCurrentEngagementChargeCode(e.target.value);
                   }}
                 />
-                
+
                 <Dropdown
-                  dropdownName={engagementDetails?.projectData?.status && capitalizeFirstLetter(engagementDetails?.projectData?.status)}
+                  dropdownName={
+                    engagementDetails?.projectData?.status &&
+                    capitalizeFirstLetter(engagementDetails?.projectData?.status)
+                  }
                   dropdownData={statusOptions}
                   selectOption={optionName => {
                     setCurrentEngagementStatus(optionName);
