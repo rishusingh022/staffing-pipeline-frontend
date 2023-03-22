@@ -25,7 +25,7 @@ exports[`LoginPage Snapshot should render 1`] = `
         <p
           class="title text-2xl mb-5"
         >
-          Hub Capablities and staffing portal
+          Hub Capablities and Staffing Portal
         </p>
         <div>
           <input

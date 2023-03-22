@@ -13,7 +13,11 @@ export default function CircleImage({ images }) {
           </>
         ))}
       </div>
-      <span className="text-xs text-gray-400 ml-1">{`${images.length > 4 ? `+ ${images.length - 4}` : ''}`}</span>
+      {images.length > 4 && (
+        <span className="text-xs text-gray-400 ml-1 rounded-border-container flex-shrink-0 aspect-square flex items-center">{`+${
+          images.length - 4
+        }`}</span>
+      )}
     </div>
   );
 }

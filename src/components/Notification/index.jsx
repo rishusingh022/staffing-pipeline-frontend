@@ -2,7 +2,6 @@ import React from 'react';
 
 import './notification.css';
 import propTypes from 'prop-types';
-import { FiXCircle } from 'react-icons/fi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 

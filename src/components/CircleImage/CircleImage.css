@@ -1,7 +1,13 @@
-.case-study-collaborators{
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: horizontal;
-    -webkit-line-clamp: 1;
-    text-overflow: ellipsis;
+.case-study-collaborators {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+}
+.rounded-border-container {
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 2.5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
