@@ -53,7 +53,7 @@ const UpdateUserPage = () => {
   }, [userDetails]);
 
   const handleAddNewSkill = async item => {
-    setSetSkill([...setSkill, item]);
+    setSetSkill([...setSkill, { ...item, skill: item.name }]);
     userId &&
       (await makeRequest(
         ADD_USER_SKILL_ROUTE(userId),
