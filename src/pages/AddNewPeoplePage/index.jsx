@@ -137,7 +137,7 @@ function AddNewPeoplePage() {
               <div className="new-people-position-office">
                 <Dropdown
                   dropdownName="Position"
-                  dropdownData={['Junior Engineer', 'Engineer1', 'Engineer2']}
+                  dropdownData={['intern', 'junior engineer', 'engineer 1', 'engineer 2', 'unspecified', 'pd']}
                   selectOption={position => {
                     setPosition(position.toLowerCase());
                   }}

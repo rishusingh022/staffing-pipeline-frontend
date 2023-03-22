@@ -9,7 +9,7 @@ export const timeFrameOptions = [
 ];
 export const guildOptions = ['SWE', 'Product', 'Design', 'Marketing'];
 export const technologyOptions = ['Node', 'React Js', 'Angular', 'Java'];
-export const role = ['Junior Engineer', 'Engineer1', 'Engineer2'];
+export const role = ['intern', 'junior engineer', 'engineer 1', 'engineer 2', 'unspecified', 'pd'];
 export const collaborators = ['Collaborator1', 'Collaborator2', 'Collaborator3'];
 export const study = ['Study1', 'Study2', 'Study3'];
-export const statusOptions = ['Upcoming', 'Ongoing', 'Completed'];
+export const statusOptions = ['swe', 'product', 'data', 'unspecified'];

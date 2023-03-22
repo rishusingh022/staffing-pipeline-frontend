@@ -32,9 +32,22 @@ const UpdateUserPage = () => {
   const [userImage, setUserImage] = useState('');
   const [handleNotification, setHandleNotification] = useState(false);
 
+  // state for placeholder
+  const [currentFmno, setCurrentFmno] = useState('');
+  const [currentName, setCurrentName] = useState('');
+  const [currentEmail, setCurrentEmai] = useState('');
+  const [currentRole, setCurrentRole] = useState('');
+  const [currentImage, setCurrentImage] = useState('');
+
   React.useEffect(() => {
     makeRequest(GET_USER_DATA_BY_ID_URL(userId), {}, navigate).then(response => {
       setUserDetails(response);
+      setCurrentFmno(response.userData.fmno);
+      setCurrentName(response.userData.name);
+      setCurrentEmai(response.userData.email);
+      setCurrentRole(response.userData.role);
+      setCurrentImage(response.userData.image);
+      console.log(userDetails);
     });
   }, []);
 
@@ -42,7 +55,7 @@ const UpdateUserPage = () => {
     makeRequest(GET_USER_SKILL_ROUTE(userId), {}, navigate).then(response => {
       setSetSkill(response);
     });
-  });
+  }, [userDetails]);
 
   const handleAddNewSkill = async item => {
     setSetSkill([...setSkill, item]);
@@ -84,13 +97,26 @@ const UpdateUserPage = () => {
     if (userImage !== '') {
       const response = await uploadImage();
       data.image = response.imageUrl;
-      handlClick();
+      setCurrentImage(response.imageUrl);
+      handlClick(response.imageUrl);
     } else {
       handlClick();
     }
   };
-  const handlClick = () => {
-    makeRequest(UPDATE_USER_DATA_URL(userId), { data: data }, navigate);
+  const handlClick = async Image => {
+    // set the current and wait untill the state is set
+    makeRequest(
+      UPDATE_USER_DATA_URL(userId),
+      {
+        data: {
+          fmno: currentFmno,
+          name: currentName,
+          email: currentEmail,
+          image: Image ? Image : currentImage,
+        },
+      },
+      navigate
+    );
     setHandleNotification(true);
   };
   setTimeout(() => setHandleNotification(false), 2000);
@@ -111,7 +137,7 @@ const UpdateUserPage = () => {
           <div className="user-img">
             <Image
               hasOverlay={true}
-              imageUrl={DefaultUser}
+              imageUrl={currentImage ? currentImage : DefaultUser}
               altText="default-user"
               handleImageSelect={handleImageChange}
             />
@@ -127,31 +153,41 @@ const UpdateUserPage = () => {
               name="fmno"
               type="text"
               placeholder="FMNO"
-              defaultValue={userDetails?.userData?.fmno}
-              onChange={e => (data.fmno = e.target.value)}
+              defaultValue={currentFmno}
+              onChange={e => {
+                data.fmno = e.target.value;
+                setCurrentFmno(e.target.value);
+              }}
             />
             <input
               className="user-input"
               name="name"
               type="text"
               placeholder="Name"
-              defaultValue={userDetails?.userData?.name}
-              onChange={e => (data.name = e.target.value)}
+              defaultValue={currentName}
+              onChange={e => {
+                data.name = e.target.value;
+                setCurrentName(e.target.value);
+              }}
             />
             <input
               className="user-input"
               name="email"
               type="text"
               placeholder="E-mail"
-              defaultValue={userDetails?.userData?.email}
-              onChange={e => (data.email = e.target.value)}
+              defaultValue={currentEmail}
+              onChange={e => {
+                data.email = e.target.value;
+                setCurrentEmai(e.target.value);
+              }}
             />
             <div className="user-details-personal-dropdown">
               <DropDown
-                dropdownName={userDetails?.userData?.role}
-                dropdownData={['Senior Engineer', 'Junior Engineer', 'Intern']}
+                dropdownName={currentRole}
+                dropdownData={['intern', 'junior engineer', 'engineer 1', 'engineer 2', 'unspecified', 'pd']}
                 selectOption={optionName => {
                   data.role = optionName.toLowerCase();
+                  setCurrentRole(optionName.toLowerCase());
                 }}
               />
               <DropDown dropdownName="Bengaluru" dropdownData={['Bengaluru', 'Gurgaon']} selectOption={console.log} />
