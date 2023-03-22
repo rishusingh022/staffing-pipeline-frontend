@@ -240,14 +240,7 @@ const UpdateUserPage = () => {
           </div>
         </div>
       </div>
-      {showSkillModal && (
-        <SearchAndAdd
-          setIsOpen={setShowSkillModal}
-          handleItem={handleAddNewSkill}
-          navigate={navigate}
-          entity="skills"
-        />
-      )}
+      {showSkillModal && <SearchAndAdd setIsOpen={setShowSkillModal} handleItem={handleAddNewSkill} entity="skills" />}
     </div>
   );
 };

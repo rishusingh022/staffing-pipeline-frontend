@@ -5,15 +5,13 @@ import PropTypes from 'prop-types';
 import makeRequest from '../../utils/makeRequest';
 import { GET_DATA_BY_SEARCH_URL } from '../../constants/apiEndpoints';
 import { skills } from '../../constants/skills';
+import { useNavigate } from 'react-router-dom';
 
-const SearchAndAdd = ({ setIsOpen, entity, navigate, handleItem }) => {
+const SearchAndAdd = ({ setIsOpen, entity, handleItem }) => {
   const [mactchQueries, setMatchQueries] = useState([]);
   const [input, setInput] = useState('');
   const [debouncedInput] = useDebounce(input, 1000);
-
-  useEffect(() => {
-    setIsOpen(open);
-  }, [open]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleSearch(debouncedInput);
