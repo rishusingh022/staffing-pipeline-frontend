@@ -32,7 +32,13 @@ export default function EditEngagementDetailsPage() {
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
   const [technologies, setTechnologies] = useState([]);
   const [engagementImage, setEngagementImage] = useState('');
-
+  // use state for current engagement details
+  const [currentEngagementName, setCurrentEngagementName] = useState('');
+  const [currentEngagementChargeCode, setCurrentEngagementChargeCode] = useState('');
+  const [currentEngagementStartDate, setCurrentEngagementStartDate] = useState('');
+  const [currentEngagementEndDate, setCurrentEngagementEndDate] = useState('');
+  const [currentEngagementStatus, setCurrentEngagementStatus] = useState('');
+  const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
   React.useEffect(() => {
     if (userInfo?.role !== 'pd') navigate('/users');
   }, []);
@@ -40,7 +46,6 @@ export default function EditEngagementDetailsPage() {
   const handleImageChange = e => {
     setEngagementImage(e.target.files[0]);
   };
-  const data = {};
   const uploadImage = async () => {
     const formData = new FormData();
     formData.append('file', engagementImage);
@@ -56,7 +61,15 @@ export default function EditEngagementDetailsPage() {
     makeRequest(
       UPDATE_ENGAGEMENT_DATA_URL(projectId),
       {
-        data: { ...data, image: imageUrl },
+        data: {
+          image: imageUrl,
+          name: currentEngagementName,
+          chargeCode: currentEngagementChargeCode,
+          startDate: parseDate(currentEngagementStartDate),
+          endDate: parseDate(currentEngagementEndDate),
+          status: currentEngagementStatus.toLowerCase(),
+          skills: currentEngagementTechnologies,
+        },
       },
       navigate
     ).then(() => {
@@ -64,7 +77,7 @@ export default function EditEngagementDetailsPage() {
     });
   };
   const updateEngagement = async () => {
-    data.skills = [...technologies];
+    setCurrentEngagementTechnologies([...technologies]);
     if (engagementImage) {
       const response = await uploadImage();
       await updateEngagementData(response.imageUrl);
@@ -84,6 +97,13 @@ export default function EditEngagementDetailsPage() {
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate).then(response => {
       setEngagementDetails(response);
+      console.log(response);
+      setCurrentEngagementName(response?.projectData?.name);
+      setCurrentEngagementChargeCode(response?.projectData?.chargeCode);
+      setCurrentEngagementStartDate(formatDate(response?.projectData?.startDate));
+      setCurrentEngagementEndDate(formatDate(response?.projectData?.endDate));
+      setCurrentEngagementStatus(response?.projectData?.status);
+      setCurrentEngagementTechnologies(response?.projectData?.skills);
     });
   }, []);
   return (
@@ -116,7 +136,7 @@ export default function EditEngagementDetailsPage() {
                   className="input-style"
                   defaultValue={engagementDetails?.projectData?.name}
                   onChange={e => {
-                    data.name = e.target.value;
+                    setCurrentEngagementName(e.target.value);
                   }}
                 />
                 <input
@@ -125,7 +145,7 @@ export default function EditEngagementDetailsPage() {
                   className="input-style"
                   defaultValue={engagementDetails?.projectData?.chargeCode}
                   onChange={e => {
-                    data.chargeCode = e.target.value;
+                    setCurrentEngagementChargeCode(e.target.value);
                   }}
                 />
                 <div className="flex gap-2">
@@ -133,19 +153,26 @@ export default function EditEngagementDetailsPage() {
                     type="text"
                     placeholder="Start Date"
                     className="input-style w-36"
-                    defaultValue={formatDate(engagementDetails?.projectData?.startDate)}
+                    defaultValue={
+                      formatDate(currentEngagementStartDate) === 'NaN/NaN/NaN'
+                        ? ''
+                        : formatDate(currentEngagementStartDate)
+                    }
                     onChange={e => {
-                      data.startDate = parseDate(e.target.value);
+                      setCurrentEngagementStartDate(e.target.value);
                     }}
                   />
+                  {console.log(formatDate(currentEngagementStartDate))}
                   <p>:</p>
                   <input
                     type="text"
                     placeholder="End Date"
                     className="input-style w-36"
-                    defaultValue={formatDate(engagementDetails?.projectData?.endDate)}
+                    defaultValue={
+                      formatDate(currentEngagementEndDate) === 'NaN/NaN/NaN' ? '' : formatDate(currentEngagementEndDate)
+                    }
                     onChange={e => {
-                      data.endDate = parseDate(e.target.value);
+                      setCurrentEngagementEndDate(e.target.value);
                     }}
                   />
                 </div>
@@ -153,7 +180,7 @@ export default function EditEngagementDetailsPage() {
                   dropdownName={engagementDetails?.projectData?.status}
                   dropdownData={statusOptions}
                   selectOption={optionName => {
-                    data.status = optionName;
+                    setCurrentEngagementStatus(optionName);
                   }}
                 />
                 <div className="flex justify-between w-36 text-gray-400 px-2 border-black border items-center h-8">
