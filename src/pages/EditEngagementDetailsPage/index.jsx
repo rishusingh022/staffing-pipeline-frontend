@@ -5,7 +5,7 @@ import './EditEngagementDetails.css';
 import Dropdown from '../../components/Dropdown';
 import HorizontalCaseStudyCards from '../../components/HorizontalCaseStudyCards';
 import PeopleHorizontalCard from '../../components/PeopleHorizontalCard';
-import TechStack from '../../components/techStackCard';
+import TechStack from '../../components/TechStack';
 import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
 import { useParams } from 'react-router';

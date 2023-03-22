@@ -3,7 +3,7 @@ import './engagementDetails.css';
 import Image from '../Image';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
-import TechStack from '../techStackCard';
+import TechStack from '../TechStack';
 import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';

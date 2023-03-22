@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import Notification from '../../components/Notification';
 import { RoleContext } from '../../context/RoleContext';
 import SearchAndAdd from '../../components/SearchAndAdd';
-import TechStack from '../../components/techStackCard';
+import TechStack from '../../components/TechStack';
 
 export default function AddEngagementPage() {
   const { userInfo } = React.useContext(RoleContext);

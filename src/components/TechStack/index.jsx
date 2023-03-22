@@ -1,5 +1,5 @@
 import React from 'react';
-import './TechStackCard.css';
+import './TechStack.css';
 import { BiCodeBlock } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 
