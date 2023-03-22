@@ -22,7 +22,7 @@ exports[`Horizontal Case-Study Card should render correctly 1`] = `
       <div
         class="case-study-upload-date text-xs text-gray-500"
       >
-        uploaded on 03/21/2023
+        uploaded on 03/22/2023
       </div>
     </div>
   </div>

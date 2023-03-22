@@ -54,7 +54,7 @@ exports[`LoginPage Snapshot should render 1`] = `
     >
       <img
         alt="McKinsey and Company"
-        class="absolute left-44 h-[54px] w-[155px] aspect-autolg:mr-[180px] sm:mr-[90px]"
+        class="absolute left-10 sm:left-44 h-[54px] w-[155px] aspect-autolg:mr-[180px] sm:mr-[90px]"
         src="mckinsey-logo.png"
       />
     </div>
