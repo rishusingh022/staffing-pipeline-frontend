@@ -10,7 +10,7 @@ import Notification from '../../components/Notification';
 import makeRequest from '../../utils/makeRequest';
 const { useNavigate } = require('react-router-dom');
 import { CREATE_USER_DATA_URL, ADD_USER_SKILL_ROUTE, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
-
+import {role} from '../../mocks/DropDownOptions';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { RoleContext } from '../../context/RoleContext';
 
@@ -140,18 +140,18 @@ function AddNewPeoplePage() {
               <div className="new-people-position-office">
                 <Dropdown
                   dropdownName="Position"
-                  dropdownData={['intern', 'junior engineer', 'engineer 1', 'engineer 2', 'unspecified', 'pd']}
+                  dropdownData={role}
                   selectOption={position => {
                     setPosition(position.toLowerCase());
                   }}
                 />
-                <Dropdown
+                {/* <Dropdown
                   dropdownName="Office"
                   dropdownData={['Bangalore', 'Gurgaon']}
                   selectOption={office => {
                     setOffice(office.toLowerCase());
                   }}
-                />
+                /> */}
               </div>
               <div className="new-people-email">
                 <input
@@ -162,7 +162,7 @@ function AddNewPeoplePage() {
                   }}
                 />
               </div>
-              <div className="new-people-phone">
+              {/* <div className="new-people-phone">
                 <input
                   type="text"
                   placeholder="Phone"
@@ -170,7 +170,7 @@ function AddNewPeoplePage() {
                     setPhone(e.target.value);
                   }}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="add-new-people-upper-body-right">

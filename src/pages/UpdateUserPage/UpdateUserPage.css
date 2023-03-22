@@ -63,13 +63,12 @@
 }
 
 .user-engagements{
-    width: 30%;
-    height: 200px;
+    width: 350px;
+    height: 180px;
     gap: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     /* border: 1px solid black; */
 }
 

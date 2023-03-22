@@ -20,7 +20,6 @@ import { RoleContext } from '../../context/RoleContext';
 
 const UpdateUserPage = () => {
   const { userInfo } = React.useContext(RoleContext);
-
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
   const navigate = useNavigate();
@@ -34,8 +33,7 @@ const UpdateUserPage = () => {
   // state for placeholder
   const [currentFmno, setCurrentFmno] = useState('');
   const [currentName, setCurrentName] = useState('');
-  const [currentEmail, setCurrentEmai] = useState('');
-  const [currentRole, setCurrentRole] = useState('');
+  const [currentEmail, setCurrentEmail] = useState('');
   const [currentImage, setCurrentImage] = useState('');
 
   React.useEffect(() => {
@@ -43,10 +41,8 @@ const UpdateUserPage = () => {
       setUserDetails(response);
       setCurrentFmno(response.userData.fmno);
       setCurrentName(response.userData.name);
-      setCurrentEmai(response.userData.email);
-      setCurrentRole(response.userData.role);
+      setCurrentEmail(response.userData.email);
       setCurrentImage(response.userData.image);
-      console.log(userDetails);
     });
   }, []);
 
@@ -179,27 +175,19 @@ const UpdateUserPage = () => {
               defaultValue={currentEmail}
               onChange={e => {
                 data.email = e.target.value;
-                setCurrentEmai(e.target.value);
+                setCurrentEmail(e.target.value);
               }}
             />
             <div className="user-details-personal-dropdown">
-              <DropDown
-                dropdownName={currentRole}
-                dropdownData={['intern', 'junior engineer', 'engineer 1', 'engineer 2', 'unspecified', 'pd']}
-                selectOption={optionName => {
-                  data.role = optionName.toLowerCase();
-                  setCurrentRole(optionName.toLowerCase());
-                }}
-              />
               <DropDown dropdownName="Bengaluru" dropdownData={['Bengaluru', 'Gurgaon']} selectOption={console.log} />
             </div>
           </div>
         </div>
 
         <div className="user-engagements">
-          <h1 className="text-3xl font-semibold">Current Engagements</h1>
+          <h1 className="text-2xl font-semibold">Current Engagements</h1>
           <div className="add-engagements">
-            <GoPlus style={{ color: 'gray', fontSize: '50px', cursor: 'pointer' }} />
+            <GoPlus style={{ color: 'gray', fontSize: '30px', cursor: 'pointer' }} />
           </div>
         </div>
       </div>

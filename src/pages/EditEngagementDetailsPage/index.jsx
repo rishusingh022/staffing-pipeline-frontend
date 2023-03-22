@@ -22,6 +22,7 @@ import parseDate from '../../utils/common/parseDate';
 import Notification from '../../components/Notification';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { RoleContext } from '../../context/RoleContext';
+import capitalizeFirstLetter from '../../utils/common/stringUtil';
 
 export default function EditEngagementDetailsPage() {
   const { userInfo } = React.useContext(RoleContext);
@@ -143,15 +144,6 @@ export default function EditEngagementDetailsPage() {
                     setCurrentEngagementName(e.target.value);
                   }}
                 />
-                <input
-                  type="text"
-                  placeholder="Charge Code"
-                  className="input-style"
-                  defaultValue={engagementDetails?.projectData?.chargeCode}
-                  onChange={e => {
-                    setCurrentEngagementChargeCode(e.target.value);
-                  }}
-                />
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -166,7 +158,6 @@ export default function EditEngagementDetailsPage() {
                       setCurrentEngagementStartDate(e.target.value);
                     }}
                   />
-                  {console.log(formatDate(currentEngagementStartDate))}
                   <p>:</p>
                   <input
                     type="text"
@@ -180,8 +171,18 @@ export default function EditEngagementDetailsPage() {
                     }}
                   />
                 </div>
+                <input
+                  type="text"
+                  placeholder="Charge Code"
+                  className="input-style w-36"
+                  defaultValue={engagementDetails?.projectData?.chargeCode}
+                  onChange={e => {
+                    setCurrentEngagementChargeCode(e.target.value);
+                  }}
+                />
+                
                 <Dropdown
-                  dropdownName={engagementDetails?.projectData?.status}
+                  dropdownName={engagementDetails?.projectData?.status && capitalizeFirstLetter(engagementDetails?.projectData?.status)}
                   dropdownData={statusOptions}
                   selectOption={optionName => {
                     setCurrentEngagementStatus(optionName);
@@ -251,6 +252,7 @@ export default function EditEngagementDetailsPage() {
                 caseStudyName={caseStudy.name}
                 caseStudyImage={caseStudy.image}
                 caseStudyDate={caseStudy.createdAt}
+                boxLink={caseStudy.boxLink}
               />
             ))}
             <Button buttonText="Upload" />

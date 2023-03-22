@@ -42,7 +42,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 20px 0;
+    padding: 20px 2px;
     max-height: 300px;
     overflow-y: scroll;
     justify-content: flex-start;
@@ -54,7 +54,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 20px 0;
+    padding: 20px 5px;
     max-height: 300px;
     overflow-y: scroll;
     justify-content: flex-start;
@@ -67,6 +67,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    min-height: 100px;
 }
 .add-tech-card{
   width: 200px;

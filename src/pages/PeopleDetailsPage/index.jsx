@@ -6,12 +6,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button';
 import EngagementHorizontalCard from '../../components/EngagementHorizontalCard';
 import EngagementCard from '../../components/EngagementCard';
-import EngagementImage from '../../assets/images/engagement-default.png';
 import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
 import { RoleContext } from '../../context/RoleContext';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
+import formatDate from '../../utils/dateTime';
 
 const PeopleDetailsPage = () => {
   const { userInfo } = React.useContext(RoleContext);
@@ -135,9 +135,9 @@ const PeopleDetailsPage = () => {
                           <EngagementCard
                             key={index}
                             name={engagement.name}
-                            imageUrl={EngagementImage}
+                            imageUrl={engagement.image}
                             identityNumber={engagement.engagementId}
-                            startDate={engagement.startDate}
+                            startDate={formatDate(engagement.startDate)}
                             status={engagement.status}
                           />
                         );

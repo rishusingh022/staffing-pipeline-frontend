@@ -24,10 +24,11 @@
     border-radius: 10px 10px;
 }
 .add-engagement-form-container .dropdown-container, .engagement-dropdown-wrapper .dropdown-container{
-    width: 9rem;
+    width: 8rem;
 }
 .add-engagement-form-container .dropdown-container .dropdown-header{
     padding: 0 0.5rem;
+    height: 2rem;
 }
 .engagement-dropdown-wrapper .dropdown-container .dropdown-header{
     padding: 0 0.5rem;
@@ -48,7 +49,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 20px 0;
+    padding: 20px 5px;
     max-height: 300px;
     overflow-y: scroll;
     justify-content: center;
@@ -81,4 +82,7 @@
     width: 100px;
     height: 30px;
     padding: 5px 10px;
+}
+.add-engagement-image-container img{
+    height: 200px;
 }

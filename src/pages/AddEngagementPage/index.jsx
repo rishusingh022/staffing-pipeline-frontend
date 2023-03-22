@@ -94,10 +94,10 @@ export default function AddEngagementPage() {
         />
       )}
       <div className="bg-white min-h-screen mx-32 my-16 px-12 py-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           <div className="flex image-style upper-container justify-between">
-            <div className="flex left-upper">
-              <div>
+            <div className="flex left-upper gap-4">
+              <div className="add-engagement-image-container">
                 <Image
                   imageUrl={EngagementDefault}
                   altText="default"
@@ -106,21 +106,13 @@ export default function AddEngagementPage() {
                 />
                 {engagementImage && <p>File selected: {engagementImage.name}</p>}
               </div>
-              <div className="ml-4 mb-4 flex flex-col gap-2 add-engagement-form-container">
+              <div className="flex flex-col gap-2 add-engagement-form-container">
                 <input
                   type="text"
                   placeholder="Project Name"
                   className="input-style"
                   onChange={e => {
                     setProjectName(e.target.value);
-                  }}
-                />
-                <input
-                  type="text"
-                  placeholder="Charge Code"
-                  className="input-style w-32"
-                  onChange={e => {
-                    setChargeCode(e.target.value);
                   }}
                 />
                 <div className="flex gap-2">
@@ -142,6 +134,14 @@ export default function AddEngagementPage() {
                     }}
                   />
                 </div>
+                <input
+                  type="text"
+                  placeholder="Charge Code"
+                  className="input-style w-32"
+                  onChange={e => {
+                    setChargeCode(e.target.value);
+                  }}
+                />
                 <Dropdown
                   dropdownName="Status"
                   dropdownData={statusOptions}
@@ -149,13 +149,9 @@ export default function AddEngagementPage() {
                     setSelectedStatus(option.toLowerCase());
                   }}
                 />
-                <div className="flex justify-between w-36 text-gray-400 px-2 border-black border">
+                <div className="flex justify-between w-32 text-gray-400 px-2 border-black border h-8 items-center">
                   <p>Tags</p>
                   <p>+</p>
-                </div>
-                <div className="flex gap-2">
-                  <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Front-End</div>
-                  <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Back-End</div>
                 </div>
               </div>
             </div>
@@ -193,7 +189,7 @@ export default function AddEngagementPage() {
             </div>
           </div>
           <div className="flex flex-col gap-2 case-study-container-add-engagement">
-            <p className="font-bold">Case Studies & Knowledge Materials</p>
+            <p className="font-bold text-2xl">Case Studies & Knowledge Materials</p>
             <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
             <Button buttonText="Upload" />
           </div>
