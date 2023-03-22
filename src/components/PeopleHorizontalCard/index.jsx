@@ -46,9 +46,9 @@ function PeopleHorizontalCard({
         <p className="user-horizontal-office">{userOffice}</p>
         <div className="user-horizontal-bottom-btn" onClick={knowMore ? handleKnowMore : handleSelect}>
           {knowMore ? (
-            <div>
+            <div className="hover:text-blue-800">
               <p>Know More</p>
-              <BsArrowRight color="blue" />
+              <BsArrowRight />
             </div>
           ) : (
             <div>

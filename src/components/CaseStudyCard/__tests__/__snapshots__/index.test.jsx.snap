@@ -31,55 +31,7 @@ exports[`CaseStudyCard should render correctly 1`] = `
       />
       <div
         class="button-container flex mr-2"
-      >
-        <svg
-          class="hover:text-electricBlue cursor-pointer"
-          fill="none"
-          height="20"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"
-          />
-          <line
-            x1="8"
-            x2="16"
-            y1="12"
-            y2="12"
-          />
-        </svg>
-        <svg
-          class="ml-3 hover:text-electricBlue cursor-pointer"
-          fill="none"
-          height="20"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-          />
-          <polyline
-            points="7 10 12 15 17 10"
-          />
-          <line
-            x1="12"
-            x2="12"
-            y1="15"
-            y2="3"
-          />
-        </svg>
-      </div>
+      />
     </div>
   </div>
 </DocumentFragment>

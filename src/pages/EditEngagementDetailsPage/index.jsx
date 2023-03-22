@@ -72,8 +72,12 @@ export default function EditEngagementDetailsPage() {
         },
       },
       navigate
-    ).then(() => {
+    ).then(response => {
+      console.log(response);
       setHandleNotification(true);
+      setTimeout(() => {
+        navigate(`/projects/${response.engagementId}`);
+      }, 1000);
     });
   };
   const updateEngagement = async () => {
@@ -208,8 +212,10 @@ export default function EditEngagementDetailsPage() {
                     userFMNO={data.fmno}
                     userId={data.userId}
                     userName={data.name}
+                    userImage={data.image}
                     userPosition={data.role}
                     userOffice="Bangalore"
+                    knowMore={true}
                   />
                 ))}
                 <div className="update-user-card cursor-pointer">
@@ -242,7 +248,7 @@ export default function EditEngagementDetailsPage() {
             {engagementDetails?.caseStudiesInEngagement?.map((caseStudy, index) => (
               <HorizontalCaseStudyCards
                 key={index}
-                caseStudyName={caseStudy.caseStudyId}
+                caseStudyName={caseStudy.name}
                 caseStudyImage={caseStudy.image}
                 caseStudyDate={caseStudy.createdAt}
               />

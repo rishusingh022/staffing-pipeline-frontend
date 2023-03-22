@@ -3,7 +3,6 @@ import { Header } from '../../components';
 // import Footer from '../../components/Footer';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import UserImage from '../../assets/images/user-default.png';
 import Button from '../../components/Button';
 import EngagementHorizontalCard from '../../components/EngagementHorizontalCard';
 import EngagementCard from '../../components/EngagementCard';
@@ -12,9 +11,8 @@ import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
 import { RoleContext } from '../../context/RoleContext';
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import capitalizeFirstLetter from '../../utils/common/stringUtil';
+
 const PeopleDetailsPage = () => {
   const { userInfo } = React.useContext(RoleContext);
   const { userId } = useParams();
@@ -51,7 +49,7 @@ const PeopleDetailsPage = () => {
       <div className="user-details-page">
         <div className="user-personal-card">
           <div className="user-image-container">
-            <img src={userData.image !== null ? userData.image : UserImage} className="user-image"></img>
+            <img src={userDetails?.userData?.image} className="user-image"></img>
             {(userInfo.role === 'pd' || userInfo?.userId === userId) && (
               <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
             )}
@@ -64,7 +62,6 @@ const PeopleDetailsPage = () => {
             <div className="user-contact-details">
               <p>{capitalizeFirstLetter(userData.role)} | Bengaluru - Brigade Center</p>
               <p>Email: {userDetails?.userData?.email}</p>
-              {/* <p>Phone: +91 9876543211</p> */}
             </div>
           </div>
           <div className="user-current-engagement">
@@ -79,7 +76,8 @@ const PeopleDetailsPage = () => {
                       key={index}
                       engagementId={engagement.engagementId}
                       engagementTitle={engagement.name}
-                      engagementImage={EngagementImage}
+                      engagementImage={engagement.image}
+                      knowMore
                     />
                   );
                 })

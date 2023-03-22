@@ -144,7 +144,7 @@ export default function CaseStudiesPage() {
           key={caseStudy.caseStudyId}
           name={caseStudy.name}
           engagementName={caseStudy.engagement.name}
-          handleButtonClick={() => {}}
+          boxLink={caseStudy.boxLink}
           collaborators={caseStudy.collaborators}
         />
       );

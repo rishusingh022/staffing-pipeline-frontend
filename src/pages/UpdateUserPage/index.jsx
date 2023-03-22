@@ -4,7 +4,6 @@ import Header from '../../components/Header';
 import Image from '../../components/Image';
 import DropDown from '../../components/Dropdown';
 import { GoPlus } from 'react-icons/go';
-import DefaultUser from '../../assets/images/user-default.png';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { useState } from 'react';
 import Notification from '../../components/Notification';
@@ -98,13 +97,12 @@ const UpdateUserPage = () => {
       const response = await uploadImage();
       data.image = response.imageUrl;
       setCurrentImage(response.imageUrl);
-      handlClick(response.imageUrl);
+      handleClick(response.imageUrl);
     } else {
-      handlClick();
+      handleClick();
     }
   };
-  const handlClick = async Image => {
-    // set the current and wait untill the state is set
+  const handleClick = async Image => {
     makeRequest(
       UPDATE_USER_DATA_URL(userId),
       {
@@ -116,10 +114,13 @@ const UpdateUserPage = () => {
         },
       },
       navigate
-    );
-    setHandleNotification(true);
+    ).then(response => {
+      setHandleNotification(true);
+      setTimeout(() => {
+        navigate(`/users/${response.userId}`);
+      }, 1000);
+    });
   };
-  setTimeout(() => setHandleNotification(false), 2000);
   return (
     <div>
       <Header hasNav={true} />
@@ -137,7 +138,7 @@ const UpdateUserPage = () => {
           <div className="user-img">
             <Image
               hasOverlay={true}
-              imageUrl={currentImage ? currentImage : DefaultUser}
+              imageUrl={userDetails?.userData?.image}
               altText="default-user"
               handleImageSelect={handleImageChange}
             />

@@ -27,14 +27,12 @@ export default function CaseStudyCard({ imageUrl, altText, name, collaborators, 
       <div className="flex justify-between">
         <div className="ml-2">{collaborators && <CircleImage images={images} />}</div>
         <div className="button-container flex mr-2">
-          <FiLink2
-            size={20}
-            className="hover:text-electricBlue cursor-pointer"
-            onClick={() => window.open(boxLink)}></FiLink2>
-          <FiDownload
-            size={20}
-            className="ml-3 hover:text-electricBlue cursor-pointer"
-            onClick={() => window.open(boxLink)}></FiDownload>
+          <Link to={boxLink} target="_blank">
+            <FiLink2 size={20} className="hover:text-electricBlue cursor-pointer"></FiLink2>
+          </Link>
+          <Link to={boxLink} target="_blank">
+            <FiDownload size={20} className="ml-3 hover:text-electricBlue cursor-pointer"></FiDownload>
+          </Link>
         </div>
       </div>
     </div>

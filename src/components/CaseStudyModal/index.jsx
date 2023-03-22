@@ -94,7 +94,9 @@ export default function CaseStudyModal({ setIsOpen }) {
       },
       navigate
     )
-      .then(() => {})
+      .then(() => {
+        window.location.reload(false);
+      })
       .catch(err => {
         console.log(err);
       });
@@ -108,7 +110,6 @@ export default function CaseStudyModal({ setIsOpen }) {
       selectedEngagement &&
       selectedUsers.length > 0
     ) {
-      console.log(selectedUsers);
       const image = await handleCaseStudyImage();
       const newCaseStudy = {
         name: inputData.caseStudyname,
@@ -153,6 +154,7 @@ export default function CaseStudyModal({ setIsOpen }) {
                   <EngagementHorizontalCard
                     engagementTitle={data.name}
                     engagementId={data.engagementId}
+                    engagementImage={data.image}
                     selectedEngagement={selectedEngagement}
                     setSelectedEngagement={handleSelectedEngagementChange}
                   />
@@ -196,6 +198,7 @@ export default function CaseStudyModal({ setIsOpen }) {
                     userFMNO={data.fmno}
                     userId={data.userId}
                     userName={data.name}
+                    userImage={data.image}
                     userPosition={data.role}
                     userOffice="Bangalore"
                     selectedUsers={selectedUsers}

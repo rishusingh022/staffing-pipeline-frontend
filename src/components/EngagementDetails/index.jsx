@@ -19,7 +19,7 @@ export default function EngagementDetails({ engagementDetails }) {
     <div className="container-div">
       <div className="project-container">
         <div className="image-container">
-          <Image imageUrl={'http://surl.li/fkwje'} altText={'test-image'} />
+          <Image imageUrl={engagementDetails?.projectData?.image} altText={'test-image'} />
         </div>
         <div className="detail-container">
           <div className="project-details">
@@ -80,6 +80,7 @@ export default function EngagementDetails({ engagementDetails }) {
                 userName={data.name}
                 userPosition={data.role}
                 userOffice="Bangalore"
+                userImage={data.image}
                 knowMore={true}
               />
             ))}
@@ -113,6 +114,7 @@ export default function EngagementDetails({ engagementDetails }) {
               caseStudyImage={data.image}
               caseStudyName={data.name}
               caseStudyDate={data.createdAt}
+              boxLink={data.boxLink}
             />
           ))}
         </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import './EngagementHorizontalCard.css';
-import ArrowIcon from '../../assets/images/Vector.png';
 import ProjectImage from '../../assets/images/engagement-default.png';
 import PropTypes from 'prop-types';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { BsArrowRight } from 'react-icons/bs';
 
 function EngagementHorizontalCard({
   engagementImage,
@@ -30,9 +30,9 @@ function EngagementHorizontalCard({
         <p className="engagement-title">{engagementTitle}</p>
         <div className="engagement-bottom-btn" onClick={knowMore ? handleViewMore : handleSelect}>
           {knowMore ? (
-            <div>
+            <div className="hover:text-blue-800">
               <p>View</p>
-              <img src={ArrowIcon}></img>
+              <BsArrowRight size={20} />
             </div>
           ) : (
             <div>

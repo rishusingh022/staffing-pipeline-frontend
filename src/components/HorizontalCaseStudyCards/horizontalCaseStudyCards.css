@@ -2,9 +2,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 400px;
 }
 .case-study-image {
-  width: 120px;
+  width: 25%;
   height: 60px;
   border-radius: 15px 15px;
 }
@@ -13,4 +14,7 @@
 }
 .case-study-upload-date {
   font-family: 'Poppins', sans-serif;
+}
+.case-study-detail-box{
+  width: 75%;
 }
