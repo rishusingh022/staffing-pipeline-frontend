@@ -22,7 +22,7 @@ export default function Header({ hasNav }) {
     'text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]';
 
   return (
-    <div className="font-light lg:h-[88px] h-[120px] text-white flex justify-center bg-deepBlue header-container relative items-center">
+    <div className="font-light lg:h-[88px] h-[120px] flex-shrink-0 text-white flex justify-center bg-deepBlue header-container relative items-center">
       <img
         src={logoImage}
         className="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute xl:left-44 left-10 top-4"
