@@ -114,6 +114,17 @@ const EngagementsPage = () => {
       });
     }
 
+    // sort projects by alphabetical order
+    projects.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
+
     const projectCards = projects.map(project => {
       return (
         <EngagementCard

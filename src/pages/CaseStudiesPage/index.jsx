@@ -136,6 +136,17 @@ export default function CaseStudiesPage() {
         return caseStudy.name.toLowerCase().includes(searchValue.toLowerCase());
       });
     }
+    // name basis sorting of case studies
+    caseStudies.sort((a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+
     const caseStudiesCards = caseStudies.map(caseStudy => {
       return (
         <CaseStudyCard
