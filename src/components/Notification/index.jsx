@@ -2,6 +2,9 @@ import React from 'react';
 
 import './notification.css';
 import propTypes from 'prop-types';
+import { FiXCircle } from 'react-icons/fi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function Notification({ message, handleClose, success }) {
   return (
@@ -13,7 +16,7 @@ export default function Notification({ message, handleClose, success }) {
         className={`close-button ${success ? 'success-bg success-text' : 'error-bg error-text'} `}
         data-testid="X"
         onClick={() => handleClose()}>
-        X
+        <FontAwesomeIcon icon={faCircleXmark} size={20} />
       </div>
     </div>
   );
