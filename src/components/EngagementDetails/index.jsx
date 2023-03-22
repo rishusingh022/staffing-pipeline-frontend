@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './engagementDetails.css';
 import Image from '../Image';
@@ -20,7 +19,7 @@ export default function EngagementDetails({ engagementDetails }) {
     <div className="container-div">
       <div className="project-container">
         <div className="image-container">
-          <Image imageUrl={engagementDetails?.projectData?.image} altText={'enagagement-image'} />
+          <Image imageUrl={'http://surl.li/fkwje'} altText={'test-image'} />
         </div>
         <div className="detail-container">
           <div className="id-container">
@@ -29,22 +28,33 @@ export default function EngagementDetails({ engagementDetails }) {
           </div>
           <div className="project-details">
             <p className="project-text">{engagementDetails?.projectData?.name}</p>
-            <div className="date-container">
-              <p>Start Date:</p>
-              <p>{formatDate(engagementDetails?.projectData?.startDate)}</p>
-            </div>
-            <div className="date-container">
-              <p>End Date:</p>
-              <p>{formatDate(engagementDetails?.projectData?.endDate)}</p>
-            </div>
-            <div className="date-container">
-              <p>Status:</p>
-              <p className="text-blue-600">{engagementDetails?.projectData?.status}</p>
-            </div>
-            <div className="date-container">
-              <p>Tags:</p>
-              <p>#{engagementDetails?.projectData?.tags}</p>
-            </div>
+            <table>
+              <tr>
+                <div className="date-container">
+                  <td className="table-row-item">Start Date:</td>
+                  <td>{formatDate(engagementDetails?.projectData?.startDate)}</td>
+                </div>
+              </tr>
+
+              <tr>
+                <div className="date-container">
+                  <td className="table-row-item">End Date:</td>
+                  <td>{formatDate(engagementDetails?.projectData?.endDate)}</td>
+                </div>
+              </tr>
+              <tr>
+                <div className="date-container">
+                  <td className="table-row-item">Status:</td>
+                  <td className="text-blue-600">{engagementDetails?.projectData?.status}</td>
+                </div>
+              </tr>
+              <tr>
+                <div className="date-container">
+                  <td className="table-row-item">Tags:</td>
+                  <td>#{engagementDetails?.projectData?.tags}</td>
+                </div>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
@@ -71,6 +81,7 @@ export default function EngagementDetails({ engagementDetails }) {
             ))}
           </div>
         </div>
+
         <div className="technology">
           <div className="technology-title">
             <div className="title-box">Technology</div>
@@ -93,12 +104,7 @@ export default function EngagementDetails({ engagementDetails }) {
         <div className="case-study-comp">
           {engagementDetails?.caseStudiesInEngagement?.length === 0 && <p>No Case Studies are uploaded</p>}
           {engagementDetails?.caseStudiesInEngagement?.map((data, index) => (
-            <HorizontalCaseStudyCards
-              key={index}
-              caseStudyName={data.name}
-              caseStudyDate={data.createdAt}
-              caseStudyImage={data.image}
-            />
+            <HorizontalCaseStudyCards key={index} caseStudyName={data.name} caseStudyDate={data.createdAt} />
           ))}
         </div>
         <div className="case-study-button">

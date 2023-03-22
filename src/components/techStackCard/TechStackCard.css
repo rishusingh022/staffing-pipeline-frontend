@@ -9,8 +9,8 @@
 }
 
 .tech-stack-card {
-  width: 230px;
-  height: 54px;
+  width: 200px;
+  height: 45px;
   background-color: var(--color-white);
   display: flex;
   justify-content: flex-start;
@@ -20,13 +20,13 @@
 }
 
 .tech-icon {
-  height: 40px;
+  height: 30px;
   width: 45px;
   color: var(--color-lightblue);
 }
 
 .tech-stack-name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--color-black);
 }

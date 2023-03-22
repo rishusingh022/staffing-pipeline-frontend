@@ -31,6 +31,14 @@
   height: 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  /* transform: translateY(10px); */
+
+}
+
+.title-box{
+  transform: translateY(-9px);
+  /* border: 2px solid red; */
 }
 
 .title-box{
@@ -63,10 +71,16 @@ padding-top: 0px;
   height: 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .user-dropdown {
   margin-right: 50px;
 }
+
+.text-sm{
+  color: gray;
+}
+
 .title-box {
   width: 266px;
   height: 50px;
@@ -148,4 +162,9 @@ padding-top: 0px;
 }
 .case-study-button button {
   padding: 8px 20px;
+}
+
+.table-row-item{
+  width: 80px;
+  /* border: 1px solid black */
 }
