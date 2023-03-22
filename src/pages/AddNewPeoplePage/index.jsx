@@ -29,48 +29,60 @@ function AddNewPeoplePage() {
   const [setSkill, setSetSkill] = React.useState([]);
   const [userId, setUserId] = React.useState('');
   const [selectedUserImage, setUserImage] = React.useState('');
+  const [uploadedImageUrl, setUploadedImageUrl] = React.useState('');
 
   React.useEffect(() => {
     if (userInfo?.role !== 'pd') navigate('/users');
   }, []);
 
-  const handleImageChange = e => {
-    setUserImage(e.target.files[0]);
+  const handleImageChange = async e => {
+    await handleUserImageUpload(e.target.files[0]);
   };
-  const handleAddNewUser = async () => {
-    if (name !== '' && email !== '' && fmno !== '' && position !== '' && selectedUserImage !== '') {
-      const formData = new FormData();
-      formData.append('file', selectedUserImage);
-      await makeRequest(UPLOAD_USER_IMAGE_ROUTE, {
-        data: formData,
-      }).then(response => {
-        makeRequest(
-          CREATE_USER_DATA_URL,
-          {
-            data: {
-              name: name,
-              email: email,
-              fmno: fmno,
-              caseStudyIds: [],
-              skills: [],
-              role: position,
-              guild: null,
-              image: response.imageUrl,
-            },
-          },
-          navigate
-        )
-          .then(response => {
-            setHandleNotification(true);
-            setUserId(response.userId);
-            setTimeout(() => {
-              navigate(`/users/${response.userId}`);
-            }, 1000);
-          })
-          .catch(error => {
-            console.log('Error while adding user', error);
-          });
+
+  const handleUploadUserData = async imageUrl => {
+    makeRequest(
+      CREATE_USER_DATA_URL,
+      {
+        data: {
+          name: name,
+          email: email,
+          fmno: fmno,
+          caseStudyIds: [],
+          skills: [],
+          role: position,
+          guild: null,
+          image: imageUrl,
+        },
+      },
+      navigate
+    )
+      .then(response => {
+        setHandleNotification(true);
+        setUserId(response.userId);
+      })
+      .catch(error => {
+        console.log('Error while adding user', error);
       });
+  };
+  const handleUserImageUpload = async image => {
+    const formData = new FormData();
+    formData.append('file', image);
+    makeRequest(UPLOAD_USER_IMAGE_ROUTE, {
+      data: formData,
+    })
+      .then(response => {
+        setUploadedImageUrl(response.imageUrl);
+      })
+      .catch(error => {
+        console.log('Error while uploading image', error);
+      });
+  };
+
+  const handleAddNewUser = async () => {
+    if (name !== '' && email !== '' && fmno !== '' && position !== '' && uploadedImageUrl !== '') {
+      await handleUploadUserData(uploadedImageUrl);
+    } else {
+      alert('Please fill all the fields');
     }
   };
 
@@ -114,9 +126,13 @@ function AddNewPeoplePage() {
         <div className="add-new-people-upper-body">
           <div className="add-new-people-upper-body-left">
             <div className="add-new-people-upper-body-left-left">
-              <Image imageUrl={userImage} altText="user" hasOverlay handleImageSelect={handleImageChange} />
+              <Image
+                imageUrl={uploadedImageUrl ? uploadedImageUrl : userImage}
+                altText="user"
+                hasOverlay
+                handleImageSelect={handleImageChange}
+              />
               <Button handleClick={handleAddNewUser} buttonText="Add New User" />
-              {selectedUserImage && <p>file selected : {selectedUserImage.name}</p>}
             </div>
             <div className="add-new-people-upper-body-left-right">
               <div className="new-people-fmno">

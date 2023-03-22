@@ -15,9 +15,12 @@ function UploadExcelPage() {
   }, []);
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
+  const [success, setSuccess] = React.useState(false);
+  const inputFileRef = React.useRef(null);
   const [upload, setUpload] = React.useState(false);
   const navigate = useNavigate();
   const handleFileSelect = event => {
+    setSuccess(false);
     setFile(event.target.files[0]);
   };
   const handleUpload = () => {
@@ -37,9 +40,15 @@ function UploadExcelPage() {
         .then(response => {
           if (response) {
             setUpload(true);
+            setSuccess(true);
+            setFile(null);
+            inputFileRef.current.value = '';
           }
         })
         .catch(error => {
+          setSuccess(false);
+          setFile(null);
+          inputFileRef.current.value = '';
           console.log(error);
         });
     } else {
@@ -88,6 +97,11 @@ function UploadExcelPage() {
             <p>{file.name}</p>
           </div>
         )}
+        {success && (
+          <div className="flex gap-4 p-4 bg-green-100 my-4">
+            <p className="font-bold text-green-500">Excel uploaded successfully</p>
+          </div>
+        )}
         <div className="flex gap-4 py-4">
           <label
             htmlFor="excelUpload"
@@ -96,6 +110,7 @@ function UploadExcelPage() {
           </label>
           <input
             onChange={handleFileSelect}
+            ref={inputFileRef}
             id="excelUpload"
             className="hidden"
             type={'file'}

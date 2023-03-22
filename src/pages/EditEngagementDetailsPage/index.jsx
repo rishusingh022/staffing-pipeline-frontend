@@ -32,7 +32,9 @@ export default function EditEngagementDetailsPage() {
   const [handleNotification, setHandleNotification] = useState(false);
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
   const [technologies, setTechnologies] = useState([]);
-  const [engagementImage, setEngagementImage] = useState('');
+  const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
+
+  // const [engagementImage, setEngagementImage] = useState('');
   // use state for current engagement details
   const [currentEngagementName, setCurrentEngagementName] = useState('');
   const [currentEngagementChargeCode, setCurrentEngagementChargeCode] = useState('');
@@ -44,19 +46,22 @@ export default function EditEngagementDetailsPage() {
     if (userInfo?.role !== 'pd') navigate('/users');
   }, []);
 
-  const handleImageChange = e => {
-    setEngagementImage(e.target.files[0]);
+  const handleImageChange = async e => {
+    await uploadImage(e.target.files[0]);
   };
-  const uploadImage = async () => {
+  const data = {};
+  const uploadImage = async image => {
     const formData = new FormData();
-    formData.append('file', engagementImage);
-    return await makeRequest(
+    formData.append('file', image);
+    await makeRequest(
       UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
       {
         data: formData,
       },
       navigate
-    );
+    ).then(response => {
+      setUploadedEngagementImage(response.imageUrl);
+    });
   };
   const updateEngagementData = async imageUrl => {
     makeRequest(
@@ -82,10 +87,9 @@ export default function EditEngagementDetailsPage() {
     });
   };
   const updateEngagement = async () => {
-    setCurrentEngagementTechnologies([...technologies]);
-    if (engagementImage) {
-      const response = await uploadImage();
-      await updateEngagementData(response.imageUrl);
+    data.skills = [...technologies];
+    if (uploadedEngagementImage) {
+      await updateEngagementData(uploadedEngagementImage);
     } else {
       await updateEngagementData(engagementDetails?.projectData?.image);
     }
@@ -128,12 +132,12 @@ export default function EditEngagementDetailsPage() {
           <div className="flex image-style upper-container justify-between">
             <div className="flex">
               <Image
-                imageUrl={engagementDetails?.projectData?.image}
+                imageUrl={uploadedEngagementImage ? uploadedEngagementImage : engagementDetails?.projectData?.image}
                 altText="default"
                 hasOverlay
                 handleImageSelect={handleImageChange}
               />
-              {engagementImage && <p>File Selected : {engagementImage.name} </p>}
+
               <div className="ml-4 my-4 flex flex-col gap-2 engagement-form-container">
                 <input
                   type="text"

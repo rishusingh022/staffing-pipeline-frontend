@@ -25,60 +25,68 @@ export default function AddEngagementPage() {
   const [selectedStatus, setSelectedStatus] = useState();
   const [chargeCode, setChargeCode] = useState();
   const [handleNotification, setHandleNotification] = useState();
-  const [engagementImage, setEngagementImage] = useState('');
+  const [technologies, setTechnologies] = useState([]);
+  const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
+  const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
+
   React.useEffect(() => {
     if (userInfo?.role !== 'pd') navigate('/users');
   }, []);
-  const [technologies, setTechnologies] = useState([]);
-  const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
 
   const handleImageChange = e => {
-    console.log('e.target.files[0]', e.target.files[0]);
-    setEngagementImage(e.target.files[0]);
+    handleEngagementImageUpload(e.target.files[0]);
   };
 
   const handleAddTechnology = item => {
     setTechnologies([...technologies, item.name]);
   };
 
-  const handleCreateClick = async () => {
-    if (projectName && startDate && endDate && selectedStatus && chargeCode && engagementImage !== '') {
-      const formData = new FormData();
-      formData.append('file', engagementImage);
-      await makeRequest(
-        UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
-        {
-          data: formData,
+  const handleEngagementImageUpload = async image => {
+    const formData = new FormData();
+    formData.append('file', image);
+    await makeRequest(
+      UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
+      {
+        data: formData,
+      },
+      navigate
+    ).then(response => {
+      setUploadedEngagementImage(response.imageUrl);
+    });
+  };
+
+  const handleUploadEngagementData = async () => {
+    makeRequest(
+      CREATE_ENGAGEMENT_DATA_URL,
+      {
+        data: {
+          name: projectName,
+          startDate: parseDate(startDate),
+          endDate: parseDate(endDate),
+          status: selectedStatus,
+          chargeCode,
+          caseStudyIds: [],
+          skills: technologies,
+          guild: 'swe',
+          image: uploadedEngagementImage,
         },
-        navigate
-      ).then(response => {
-        makeRequest(
-          CREATE_ENGAGEMENT_DATA_URL,
-          {
-            data: {
-              name: projectName,
-              startDate: parseDate(startDate),
-              endDate: parseDate(endDate),
-              status: selectedStatus,
-              chargeCode,
-              caseStudyIds: [],
-              skills: technologies,
-              guild: 'swe',
-              image: response.imageUrl,
-            },
-          },
-          navigate
-        )
-          .then(response => {
-            setHandleNotification(true);
-            setTimeout(() => {
-              navigate(`/projects/${response.engagementId}`);
-            }, 1000);
-          })
-          .catch(error => {
-            console.log('Error while adding engagement', error);
-          });
+      },
+      navigate
+    )
+      .then(() => {
+        setHandleNotification(true);
+      })
+      .catch(error => {
+        console.log('Error while adding engagement', error);
       });
+  };
+
+  const handleCreateClick = async () => {
+    console.log(projectName, startDate, endDate, selectedStatus, chargeCode, technologies);
+    if (projectName && startDate && endDate && selectedStatus && chargeCode) {
+      handleUploadEngagementData();
+    } else {
+      alert('Please fill all the fields');
     }
   };
   return (
@@ -99,12 +107,11 @@ export default function AddEngagementPage() {
             <div className="flex left-upper gap-4">
               <div className="add-engagement-image-container">
                 <Image
-                  imageUrl={EngagementDefault}
+                  imageUrl={uploadedEngagementImage ? uploadedEngagementImage : EngagementDefault}
                   altText="default"
                   hasOverlay
                   handleImageSelect={handleImageChange}
                 />
-                {engagementImage && <p>File selected: {engagementImage.name}</p>}
               </div>
               <div className="flex flex-col gap-2 add-engagement-form-container">
                 <input

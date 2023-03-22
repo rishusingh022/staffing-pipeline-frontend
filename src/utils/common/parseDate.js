@@ -6,6 +6,6 @@ export default function parseDate(date) {
   const day = dateArr[1] ? dateArr[1] : '';
   // return parsedDate;
   const newDate = new Date(year, month, day, 0, 0, 0);
-  return newDate.toISOString;
+  return newDate.toISOString();
   // return new Date(year, month, day).toISOString();
 }

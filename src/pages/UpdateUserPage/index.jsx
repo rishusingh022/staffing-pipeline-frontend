@@ -19,6 +19,7 @@ import { default as makeRequest } from '../../utils/makeRequest';
 import { RoleContext } from '../../context/RoleContext';
 
 const UpdateUserPage = () => {
+  if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
   const { userInfo } = React.useContext(RoleContext);
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
@@ -27,8 +28,8 @@ const UpdateUserPage = () => {
   const data = {};
   const [showSkillModal, setShowSkillModal] = useState(false);
   const [setSkill, setSetSkill] = React.useState([]);
-  const [userImage, setUserImage] = useState('');
   const [handleNotification, setHandleNotification] = useState(false);
+  const [uploadedUserImage, setUploadedUserImage] = useState('');
 
   // state for placeholder
   const [currentFmno, setCurrentFmno] = useState('');
@@ -72,24 +73,25 @@ const UpdateUserPage = () => {
   };
 
   const handleImageChange = e => {
-    setUserImage(e.target.files[0]);
+    uploadImage(e.target.files[0]);
   };
 
-  if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
-  const uploadImage = async () => {
+  const uploadImage = async image => {
     const formData = new FormData();
-    formData.append('file', userImage);
-    return await makeRequest(
+    formData.append('file', image);
+    makeRequest(
       UPLOAD_USER_IMAGE_ROUTE,
       {
         data: formData,
       },
       navigate
-    );
+    ).then(response => {
+      setUploadedUserImage(response.imageUrl);
+    });
   };
 
   const updateUser = async () => {
-    if (userImage !== '') {
+    if (uploadedUserImage !== '') {
       const response = await uploadImage();
       data.image = response.imageUrl;
       setCurrentImage(response.imageUrl);
@@ -98,24 +100,9 @@ const UpdateUserPage = () => {
       handleClick();
     }
   };
-  const handleClick = async Image => {
-    makeRequest(
-      UPDATE_USER_DATA_URL(userId),
-      {
-        data: {
-          fmno: currentFmno,
-          name: currentName,
-          email: currentEmail,
-          image: Image ? Image : currentImage,
-        },
-      },
-      navigate
-    ).then(response => {
-      setHandleNotification(true);
-      setTimeout(() => {
-        navigate(`/users/${response.userId}`);
-      }, 1000);
-    });
+  const handleClick = () => {
+    makeRequest(UPDATE_USER_DATA_URL(userId), { data: { ...data, imageUrl: currentImage } }, navigate);
+    setHandleNotification(true);
   };
   return (
     <div>
@@ -134,14 +121,13 @@ const UpdateUserPage = () => {
           <div className="user-img">
             <Image
               hasOverlay={true}
-              imageUrl={userDetails?.userData?.image}
+              imageUrl={uploadedUserImage ? uploadedUserImage : userDetails?.userData?.image}
               altText="default-user"
               handleImageSelect={handleImageChange}
             />
             <button className="update-profile-button" onClick={updateUser}>
               Update profile
             </button>
-            {userImage && <p>File selected : {userImage.name}</p>}
           </div>
 
           <div className="user-details-personal">

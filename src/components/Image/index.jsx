@@ -32,7 +32,7 @@ export default function Image({ imageUrl, altText, hasOverlay, caseStudyOverlay,
           </div>
         </>
       ) : (
-        <img src={imageUrl} alt={altText} className="image-component" />
+        <img src={imageUrl} alt={altText} className="image-component bg-gray-200" />
       )}
     </>
   );
