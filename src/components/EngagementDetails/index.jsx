@@ -23,10 +23,14 @@ export default function EngagementDetails({ engagementDetails }) {
         </div>
         <div className="detail-container">
           <div className="project-details">
-            <p className="project-text">{engagementDetails?.projectData?.name}</p>
+            <div className="project-name-update">
+              <p className="project-text">{engagementDetails?.projectData?.name}</p>
+              <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} />
+            </div>
+
             <div className="id-container">
               <p className="text-sm">Charge Code: {engagementDetails?.projectData?.chargeCode}</p>
-              <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} />
+              {/* <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} /> */}
             </div>
             <table>
               <tr>
@@ -104,7 +108,12 @@ export default function EngagementDetails({ engagementDetails }) {
         <div className="case-study-comp">
           {engagementDetails?.caseStudiesInEngagement?.length === 0 && <p>No Case Studies are uploaded</p>}
           {engagementDetails?.caseStudiesInEngagement?.map((data, index) => (
-            <HorizontalCaseStudyCards key={index} caseStudyImage={data.image} caseStudyName={data.name} caseStudyDate={data.createdAt} />
+            <HorizontalCaseStudyCards
+              key={index}
+              caseStudyImage={data.image}
+              caseStudyName={data.name}
+              caseStudyDate={data.createdAt}
+            />
           ))}
         </div>
         <div className="case-study-button">

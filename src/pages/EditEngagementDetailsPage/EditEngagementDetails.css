@@ -12,6 +12,7 @@
 .input-style{
     border: 1px solid black;
     padding: 0 10px;
+    height: 35px;
 }
 .input-style:focus{
     border: 1px solid black;
@@ -23,12 +24,16 @@
     object-fit: cover;
     border-radius: 10px 10px;
 }
+.engagement-form-container{
+    transform: translateY(-16px);
+}
 .engagement-form-container .dropdown-container, .engagement-dropdown-wrapper .dropdown-container{
     width: 9rem;
 }
 .engagement-form-container .dropdown-container .dropdown-header{
     padding: 0 0.5rem;
     color: rgb(156 163 175);
+    height: 2rem;
 }
 .engagement-dropdown-wrapper .dropdown-container .dropdown-header{
     padding: 0 0.5rem;
@@ -40,7 +45,7 @@
     padding: 20px 0;
     max-height: 300px;
     overflow-y: scroll;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .people-card-container .user-horizontal-card-container{
     width: 250px;
@@ -52,7 +57,7 @@
     padding: 20px 0;
     max-height: 300px;
     overflow-y: scroll;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .update-user-card{
     background-color: white;
@@ -64,8 +69,8 @@
     justify-content: center;
 }
 .add-tech-card{
-  width: 230px;
-  height: 54px;
+  width: 200px;
+  height: 45px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -77,7 +82,7 @@
     width: 100px;
     padding: 5px 10px;
 }
-.upper-container button{
-    width: 100px;
-    height: 30px;
+.upper-container .button{
+    width: 137px;
+    height: 41px;
 }

@@ -156,21 +156,21 @@ export default function EditEngagementDetailsPage() {
                     data.status = optionName;
                   }}
                 />
-                <div className="flex justify-between w-36 text-gray-400 px-2 border-black border">
+                <div className="flex justify-between w-36 text-gray-400 px-2 border-black border items-center h-8">
                   <p>Tags</p>
                   <p>+</p>
                 </div>
-                <div className="flex gap-2">
+                {/* <div className="flex gap-2">
                   <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Front-End</div>
                   <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Back-End</div>
-                </div>
+                </div> */}
               </div>
             </div>
-            <Button buttonText="Update" handleClick={updateEngagement} />
+            <Button buttonText={'Update'} handleClick={updateEngagement} />
           </div>
-          <div className="mid-container grid grid-cols-2 gap-2">
+          <div className="mid-container grid grid-cols-2 gap-8">
             <div className="flex w-1/2 gap-2 flex-col">
-              <div className="flex gap-16 items-center">
+              <div className="flex justify-between">
                 <p className="font-bold text-2xl">Team Members</p>
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
@@ -191,7 +191,7 @@ export default function EditEngagementDetailsPage() {
               </div>
             </div>
             <div className="flex w-1/2 gap-2 flex-col">
-              <div className="flex gap-16 items-center">
+              <div className="flex justify-between">
                 <p className="font-bold text-2xl">Technology</p>
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
@@ -210,7 +210,7 @@ export default function EditEngagementDetailsPage() {
             </div>
           </div>
           <div className="flex flex-col gap-2 case-study-container-update-engagement">
-            <p className="font-bold">Case Studies & Knowledge Materials</p>
+            <p className="font-bold text-2xl">Case Studies & Knowledge Materials</p>
             <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
             {engagementDetails?.caseStudiesInEngagement?.map((caseStudy, index) => (
               <HorizontalCaseStudyCards

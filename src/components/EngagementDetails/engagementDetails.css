@@ -168,3 +168,8 @@ padding-top: 0px;
   width: 80px;
   /* border: 1px solid black */
 }
+
+.project-name-update{
+  display: flex;
+  justify-content: space-between;
+}
