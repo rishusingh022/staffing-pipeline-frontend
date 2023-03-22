@@ -59,7 +59,7 @@ export default function EngagementDetails({ engagementDetails }) {
               <tr>
                 <div className="date-container">
                   <td className="table-row-item">Tags:</td>
-                  <td>#{engagementDetails?.projectData?.tags}</td>
+                  <td>{engagementDetails?.projectData?.tags && `#${engagementDetails?.projectData?.tags}`}</td>
                 </div>
               </tr>
             </table>
@@ -124,7 +124,7 @@ export default function EngagementDetails({ engagementDetails }) {
         </div>
         <div className="case-study-button">
           <Button
-            buttonText={'upload'}
+            buttonText={'Upload'}
             handleClick={() => {
               setIsOpen(true);
             }}

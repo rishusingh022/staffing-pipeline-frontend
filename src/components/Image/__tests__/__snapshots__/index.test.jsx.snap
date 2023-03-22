@@ -4,7 +4,7 @@ exports[`Image Component should render correctly 1`] = `
 <DocumentFragment>
   <img
     alt="Google.com"
-    class="image-component"
+    class="image-component bg-gray-200"
     src="http://surl.li/ffpzg"
   />
 </DocumentFragment>

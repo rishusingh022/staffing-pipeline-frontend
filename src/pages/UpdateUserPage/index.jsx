@@ -19,7 +19,6 @@ import { default as makeRequest } from '../../utils/makeRequest';
 import { RoleContext } from '../../context/RoleContext';
 
 const UpdateUserPage = () => {
-  if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
   const { userInfo } = React.useContext(RoleContext);
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
@@ -30,6 +29,10 @@ const UpdateUserPage = () => {
   const [setSkill, setSetSkill] = React.useState([]);
   const [handleNotification, setHandleNotification] = useState(false);
   const [uploadedUserImage, setUploadedUserImage] = useState('');
+
+  useState(() => {
+    if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
+  });
 
   // state for placeholder
   const [currentFmno, setCurrentFmno] = useState('');
