@@ -9,6 +9,7 @@ exports[`LoginPage Snapshot should render 1`] = `
       class="font-light lg:h-[88px] h-[120px] flex-shrink-0 text-white flex justify-center bg-deepBlue header-container relative items-center"
     >
       <img
+        alt="logo"
         class="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute xl:left-44 left-10 top-4"
         src="McK_Logo.png"
       />
