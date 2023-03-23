@@ -24,13 +24,14 @@ export default function Header({ hasNav }) {
   return (
     <div className="font-light lg:h-[88px] h-[120px] flex-shrink-0 text-white flex justify-center bg-deepBlue header-container relative items-center">
       <img
+        alt="logo"
         src={logoImage}
         className="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute xl:left-44 left-10 top-4"
       />
       <div className="h-full  flex box-border">
         {hasNav && (
           <div className="grid grid-cols-4 gap-10 items-end">
-            {userInfo.role === 'pd' && (
+            {userInfo?.role === 'pd' && (
               <button
                 className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(PROJECTS_ROUTE)}>
@@ -47,7 +48,7 @@ export default function Header({ hasNav }) {
               onClick={() => navigate(CASE_STUDIES_ROUTE)}>
               Case Studies
             </button>
-            {userInfo.role === 'pd' && (
+            {userInfo?.role === 'pd' && (
               <button
                 className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>

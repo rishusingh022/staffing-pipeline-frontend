@@ -68,7 +68,7 @@ export default function EngagementDetails({ engagementDetails }) {
       </div>
       <div className="team-members-container grid grid-cols-2 gap-2">
         <div className="team-members">
-          <div className="team-member-title flex grid grid-cols-2 gap-2">
+          <div className="team-member-title grid grid-cols-2 gap-2">
             <div className="title-box">Team Members</div>
             <div className="user-dropdown">
               <Dropdown dropdownName="All" />
