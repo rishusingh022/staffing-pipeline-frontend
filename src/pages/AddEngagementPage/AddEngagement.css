@@ -52,7 +52,7 @@
     padding: 20px 5px;
     max-height: 300px;
     overflow-y: scroll;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .user-card-add{
     background-color: white;
