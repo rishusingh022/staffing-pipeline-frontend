@@ -20,3 +20,7 @@
 .case-study-detail-box{
   width: 75%;
 }
+
+.case-study-image .image-component{
+object-fit: contain;
+}

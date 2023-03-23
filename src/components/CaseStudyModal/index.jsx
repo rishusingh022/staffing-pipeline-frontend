@@ -56,6 +56,7 @@ export default function CaseStudyModal({ setIsOpen }) {
     setSelectedUsers([]);
     setSelectedEngagement(engagementId);
   };
+
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)
       .then(response => {
@@ -75,6 +76,7 @@ export default function CaseStudyModal({ setIsOpen }) {
         console.log(err);
       });
   }, [selectedEngagement]);
+
   const handleCaseStudyImage = async () => {
     const formData = new FormData();
     formData.append('file', file);
@@ -86,6 +88,7 @@ export default function CaseStudyModal({ setIsOpen }) {
       navigate
     );
   };
+
   const uploadCaseStudy = async newCaseStudy => {
     makeRequest(
       CREATE_CASE_STUDIES_DATA_URL,

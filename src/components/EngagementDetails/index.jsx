@@ -30,7 +30,7 @@ export default function EngagementDetails({ engagementDetails }) {
             </div>
 
             <div className="id-container">
-              <p className="text-sm">Charge Code: {engagementDetails?.projectData?.chargeCode}</p>
+              <p className="text-sm text-gray-500">Charge Code: {engagementDetails?.projectData?.chargeCode}</p>
               {/* <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} /> */}
             </div>
             <table>

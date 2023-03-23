@@ -14,7 +14,9 @@ export default function CaseStudyCard({ imageUrl, altText, name, collaborators, 
     };
   });
   return (
-    <div className="bg-white shadow-lg flex flex-col w-64 case-study-card-style" data-testid="image-card">
+    <div
+      className="case-study-card-image bg-white shadow-lg flex flex-col w-64 case-study-card-style"
+      data-testid="image-card">
       <Image imageUrl={imageUrl} altText={altText} />
       <div className="px-3 py-1">
         <div className="font-bold text-xl mb-1 case-study-name">{name}</div>
