@@ -30,9 +30,7 @@ const UpdateUserPage = () => {
   const [handleNotification, setHandleNotification] = useState(false);
   const [uploadedUserImage, setUploadedUserImage] = useState('');
 
-  useState(() => {
-    if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
-  });
+  if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
 
   // state for placeholder
   const [currentFmno, setCurrentFmno] = useState('');

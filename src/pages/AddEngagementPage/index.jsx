@@ -30,9 +30,7 @@ export default function AddEngagementPage() {
   const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
   const [imageNotification, setImageNotification] = useState(false);
 
-  React.useEffect(() => {
-    if (userInfo?.role !== 'pd') navigate('/users');
-  }, []);
+  if (userInfo?.role !== 'pd') navigate('/users');
 
   const handleImageChange = e => {
     handleEngagementImageUpload(e.target.files[0]);

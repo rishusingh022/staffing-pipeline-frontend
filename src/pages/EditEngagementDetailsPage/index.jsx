@@ -42,9 +42,8 @@ export default function EditEngagementDetailsPage() {
   const [currentEngagementEndDate, setCurrentEngagementEndDate] = useState('');
   const [currentEngagementStatus, setCurrentEngagementStatus] = useState('');
   const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
-  React.useEffect(() => {
-    if (userInfo?.role !== 'pd') navigate('/users');
-  }, []);
+
+  if (userInfo?.role !== 'pd') navigate('/users');
 
   const handleImageChange = async e => {
     await uploadImage(e.target.files[0]);

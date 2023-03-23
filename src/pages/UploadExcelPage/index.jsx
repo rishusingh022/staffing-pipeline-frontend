@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import PageLoader from '../../components/Spinner';
@@ -10,9 +10,7 @@ import Notification from '../../components/Notification';
 
 function UploadExcelPage() {
   const { userInfo } = React.useContext(RoleContext);
-  useEffect(() => {
-    if (userInfo?.role !== 'pd') navigate('/users');
-  }, []);
+  if (userInfo?.role !== 'pd') navigate('/users');
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
   const [success, setSuccess] = React.useState(false);

@@ -16,11 +16,11 @@ const EngagementDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
+  if (userInfo?.role !== 'pd') navigate('/users');
+
   useEffect(() => {
-    if (userInfo?.role !== 'pd') navigate('/users');
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate)
       .then(response => {
-        console.log('responseeeeee', response);
         setEngagementDetails(response);
         setIsLoading(false);
       })

@@ -41,8 +41,6 @@ const PeopleDetailsPage = () => {
   if (isLoading) {
     return <PageLoader />;
   }
-  console.log('userData', userData);
-  console.log('userSkills', userSkills);
   return (
     <div>
       <Header hasNav={true} />

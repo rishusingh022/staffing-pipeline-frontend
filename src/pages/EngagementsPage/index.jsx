@@ -46,8 +46,9 @@ const EngagementsPage = () => {
     setTimeFrameSelected(option);
   };
 
+  if (userInfo?.role !== 'pd') navigate('/users');
+
   React.useEffect(() => {
-    if (userInfo?.role !== 'pd') navigate('/users');
     makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)
       .then(response => {
         response = convertStartDate(response);

@@ -88,7 +88,6 @@ const PeoplePage = () => {
     people.sort((a, b) => {
       return a.name.localeCompare(b.name);
     });
-    console.log(people);
     const peopleCards = people.map(person => {
       return (
         <UserCard
