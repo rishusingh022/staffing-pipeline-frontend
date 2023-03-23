@@ -28,8 +28,8 @@ function AddNewPeoplePage() {
   const [showSkillModal, setShowSkillModal] = React.useState(false);
   const [setSkill, setSetSkill] = React.useState([]);
   const [userId, setUserId] = React.useState('');
-  const [selectedUserImage, setUserImage] = React.useState('');
   const [uploadedImageUrl, setUploadedImageUrl] = React.useState('');
+  const [imageNotification, setImageNotification] = React.useState(false);
 
   if (userInfo?.role !== 'pd') navigate('/users');
 
@@ -80,7 +80,8 @@ function AddNewPeoplePage() {
     if (name !== '' && email !== '' && fmno !== '' && position !== '' && uploadedImageUrl !== '') {
       await handleUploadUserData(uploadedImageUrl);
     } else {
-      alert('Please fill all the fields');
+      // alert('Please fill all the fields');
+      setImageNotification(true);
     }
   };
 
@@ -108,6 +109,14 @@ function AddNewPeoplePage() {
           console.log('Error while adding user', error);
         }));
   };
+  setTimeout(() => {
+    setImageNotification(false);
+  }, 2000);
+  setTimeout(() => {
+    if (handleNotification) {
+      setHandleNotification(false);
+    }
+  }, 2000);
   return (
     <div>
       <Header hasNav />
@@ -118,6 +127,14 @@ function AddNewPeoplePage() {
             setHandleNotification(false);
           }}
           success
+        />
+      )}
+      {imageNotification && (
+        <Notification
+          message="Please fill all the fields"
+          handleClose={() => {
+            setImageNotification(false);
+          }}
         />
       )}
       <div className="add-new-people-container">
