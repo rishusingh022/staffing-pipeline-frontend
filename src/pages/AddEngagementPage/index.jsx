@@ -28,6 +28,7 @@ export default function AddEngagementPage() {
   const [technologies, setTechnologies] = useState([]);
   const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
   const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
+  const [imageNotification, setImageNotification] = useState(false);
 
   React.useEffect(() => {
     if (userInfo?.role !== 'pd') navigate('/users');
@@ -56,6 +57,10 @@ export default function AddEngagementPage() {
   };
 
   const handleUploadEngagementData = async () => {
+    if (uploadedEngagementImage === '') {
+      setImageNotification(true);
+      return;
+    }
     makeRequest(
       CREATE_ENGAGEMENT_DATA_URL,
       {
@@ -80,7 +85,14 @@ export default function AddEngagementPage() {
         console.log('Error while adding engagement', error);
       });
   };
-
+  setTimeout(() => {
+    setImageNotification(false);
+  }, 2000);
+  setTimeout(() => {
+    if (handleNotification) {
+      setHandleNotification(false);
+    }
+  }, 2000);
   const handleCreateClick = async () => {
     console.log(projectName, startDate, endDate, selectedStatus, chargeCode, technologies);
     if (projectName && startDate && endDate && selectedStatus && chargeCode) {
@@ -99,6 +111,14 @@ export default function AddEngagementPage() {
             setHandleNotification(false);
           }}
           success
+        />
+      )}
+      {imageNotification && (
+        <Notification
+          message="Providing an image is mandatory"
+          handleClose={() => {
+            setImageNotification(false);
+          }}
         />
       )}
       <div className="bg-white min-h-screen mx-32 my-16 px-12 py-10">
