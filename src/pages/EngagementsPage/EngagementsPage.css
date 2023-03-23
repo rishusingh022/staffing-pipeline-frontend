@@ -52,9 +52,21 @@
   align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1030px) {
   .filter-container {
     flex-direction: column;
-    padding: 1rem 0.5rem 1rem 18.7%;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+  .fiter-search-box {
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .filter-input-box {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .filter-drop-downs {
+    align-items: center;
+    justify-content: center;
   }
 }

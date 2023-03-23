@@ -54,9 +54,20 @@
   padding: 10px 15px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1030px) {
   .people-page-filter-container {
     flex-direction: column;
-    padding: 1rem 0.5rem 1rem 18.7%;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+  .people-page-filter-search-box {
+    width: 100%;
+  }
+  .people-page-filter-input-box {
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .people-page-filter-drop-downs {
+    align-items: center;
+    justify-content: center;
   }
 }
