@@ -24,11 +24,10 @@ const UpdateUserPage = () => {
   const [userDetails, setUserDetails] = useState({});
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('skills');
-  const data = {};
   const [showSkillModal, setShowSkillModal] = useState(false);
   const [setSkill, setSetSkill] = React.useState([]);
   const [handleNotification, setHandleNotification] = useState(false);
-  const [uploadedUserImage, setUploadedUserImage] = useState('');
+  // const [uploadedUserImage, setUploadedUserImage] = useState('');
 
   if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
 
@@ -87,22 +86,21 @@ const UpdateUserPage = () => {
       },
       navigate
     ).then(response => {
-      setUploadedUserImage(response.imageUrl);
+      setCurrentImage(response.imageUrl);
     });
   };
 
   const updateUser = async () => {
-    if (uploadedUserImage !== '') {
-      const response = await uploadImage();
-      data.image = response.imageUrl;
-      setCurrentImage(response.imageUrl);
-      handleClick(response.imageUrl);
-    } else {
-      handleClick();
-    }
+    handleClick();
   };
   const handleClick = () => {
-    makeRequest(UPDATE_USER_DATA_URL(userId), { data: { ...data, imageUrl: currentImage } }, navigate);
+    const updatedUser = {
+      fmno: currentFmno,
+      name: currentName,
+      email: currentEmail,
+      image: currentImage,
+    };
+    makeRequest(UPDATE_USER_DATA_URL(userId), { data: updatedUser }, navigate);
     setHandleNotification(true);
   };
   return (
@@ -122,7 +120,7 @@ const UpdateUserPage = () => {
           <div className="user-img">
             <Image
               hasOverlay={true}
-              imageUrl={uploadedUserImage ? uploadedUserImage : userDetails?.userData?.image}
+              imageUrl={currentImage ? currentImage : userDetails?.userData?.image}
               altText="default-user"
               handleImageSelect={handleImageChange}
             />
@@ -139,7 +137,6 @@ const UpdateUserPage = () => {
               placeholder="FMNO"
               defaultValue={currentFmno}
               onChange={e => {
-                data.fmno = e.target.value;
                 setCurrentFmno(e.target.value);
               }}
             />
@@ -150,7 +147,6 @@ const UpdateUserPage = () => {
               placeholder="Name"
               defaultValue={currentName}
               onChange={e => {
-                data.name = e.target.value;
                 setCurrentName(e.target.value);
               }}
             />
@@ -161,7 +157,6 @@ const UpdateUserPage = () => {
               placeholder="E-mail"
               defaultValue={currentEmail}
               onChange={e => {
-                data.email = e.target.value;
                 setCurrentEmail(e.target.value);
               }}
             />
