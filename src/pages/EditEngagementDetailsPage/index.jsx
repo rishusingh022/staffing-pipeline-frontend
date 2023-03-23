@@ -101,11 +101,9 @@ export default function EditEngagementDetailsPage() {
       setEngagementDetails({ ...engagementDetails });
     }
   };
-  setTimeout(() => (handleNotification ? setHandleNotification(false) : null), 2000);
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate).then(response => {
       setEngagementDetails(response);
-      console.log(response);
       setCurrentEngagementName(response?.projectData?.name);
       setCurrentEngagementChargeCode(response?.projectData?.chargeCode);
       setCurrentEngagementStartDate(formatDate(response?.projectData?.startDate));

@@ -19,7 +19,9 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
     const errorStatus = e.response?.status;
     if (errorStatus) {
       const message = e.response.data.error;
-      if ((message && message === 'jwt expired') || errorStatus === 401) {
+      if (apiEndPoint.url === 'excel/upload') {
+        return { errorStatus, error: message };
+      } else if ((message && message === 'jwt expired') || errorStatus === 401) {
         navigate('/login');
       } else {
         navigate(`${ERROR_ROUTE}/${errorStatus}`, {

@@ -57,6 +57,9 @@ function AddNewPeoplePage() {
       .then(response => {
         setHandleNotification(true);
         setUserId(response.userId);
+        setTimeout(() => {
+          navigate(`/users/${response.userId}`);
+        }, 1000);
       })
       .catch(error => {
         console.log('Error while adding user', error);

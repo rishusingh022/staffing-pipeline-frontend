@@ -13,6 +13,7 @@ function UploadExcelPage() {
   if (userInfo?.role !== 'pd') navigate('/users');
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
+  const [error, setError] = React.useState('');
   const inputFileRef = React.useRef(null);
   const [upload, setUpload] = React.useState(false);
   const navigate = useNavigate();
@@ -35,9 +36,13 @@ function UploadExcelPage() {
       )
         .then(response => {
           if (response) {
-            setUpload(true);
-            setFile(null);
-            inputFileRef.current.value = '';
+            if (response.error) {
+              setError("Couldn't upload file");
+            } else {
+              setUpload(true);
+              setFile(null);
+              inputFileRef.current.value = '';
+            }
           }
         })
         .catch(error => {
@@ -46,9 +51,14 @@ function UploadExcelPage() {
           console.log(error);
         });
     } else {
-      alert('Please select a file');
+      setError('Please select a file');
     }
   };
+  setTimeout(() => {
+    if (error.length) {
+      setError('');
+    }
+  }, 2000);
   setTimeout(() => {
     if (upload) {
       setUpload(false);
@@ -61,6 +71,7 @@ function UploadExcelPage() {
   ) : (
     <div>
       <Header hasNav />
+      {error.length && <Notification message={error} handleClose={() => setError('')} />}
       {upload && <Notification message={'Uploaded Successfully'} handleClose={() => setUpload(false)} success={true} />}
       <div className="w-full flex flex-col items-center">
         <p className="text-3xl text-center p-10">Upload Staffing Excel</p>

@@ -76,8 +76,11 @@ export default function AddEngagementPage() {
       },
       navigate
     )
-      .then(() => {
+      .then(response => {
         setHandleNotification(true);
+        setTimeout(() => {
+          navigate(`/projects/${response.engagementId}`);
+        }, 1000);
       })
       .catch(error => {
         console.log('Error while adding engagement', error);
