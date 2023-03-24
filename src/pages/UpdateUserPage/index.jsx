@@ -100,8 +100,12 @@ const UpdateUserPage = () => {
       email: currentEmail,
       image: currentImage,
     };
-    makeRequest(UPDATE_USER_DATA_URL(userId), { data: updatedUser }, navigate);
-    setHandleNotification(true);
+    makeRequest(UPDATE_USER_DATA_URL(userId), { data: updatedUser }, navigate).then(() => {
+      setHandleNotification(true);
+      setTimeout(() => {
+        navigate(`/users/${userId}`);
+      }, 1000);
+    });
   };
   return (
     <div>

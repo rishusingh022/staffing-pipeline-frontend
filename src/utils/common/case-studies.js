@@ -9,8 +9,8 @@ export const extractCollaboratorsFromCaseStudies = caseStudies => {
       }
     });
   });
-  uniqueCollaborators.push('All');
   uniqueCollaborators.sort();
+  uniqueCollaborators.unshift('All');
   return {
     collaboratorMap,
     uniqueCollaborators,

@@ -13,11 +13,6 @@ exports[`EngagementHorizontalCard should render 1`] = `
       class="engagement-details"
     >
       <p
-        class="engagement-id"
-      >
-        123456
-      </p>
-      <p
         class="engagement-title"
       >
         Project

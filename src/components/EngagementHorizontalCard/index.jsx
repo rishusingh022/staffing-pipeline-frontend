@@ -26,7 +26,7 @@ function EngagementHorizontalCard({
     <div className="engagement-card-container">
       <img className="engagement-img" src={engagementImage ? engagementImage : ProjectImage}></img>
       <div className="engagement-details">
-        <p className="engagement-id">{engagementId}</p>
+        {/* <p className="engagement-id">{engagementId}</p> */}
         <p className="engagement-title">{engagementTitle}</p>
         <div className="engagement-bottom-btn" onClick={knowMore ? handleViewMore : handleSelect}>
           {knowMore ? (

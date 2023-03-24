@@ -5,6 +5,7 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import UserImage from '../../assets/images/user-default.png';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import capitalizeFirstLetter from '../../utils/common/stringUtil';
 
 function PeopleHorizontalCard({
   userImage,
@@ -42,7 +43,7 @@ function PeopleHorizontalCard({
       <div className="user-horizontal-details">
         <p className="user-horizontal-id">FMNO: {userFMNO}</p>
         <p className="user-horizontal-name">{userName}</p>
-        <p className="user-horizontal-position">{userPosition}</p>
+        <p className="user-horizontal-position">{capitalizeFirstLetter(userPosition)}</p>
         <p className="user-horizontal-office">{userOffice}</p>
         <div className="user-horizontal-bottom-btn" onClick={knowMore ? handleKnowMore : handleSelect}>
           {knowMore ? (
