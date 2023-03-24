@@ -29,6 +29,7 @@ export default function AddEngagementPage() {
   const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
   const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
   const [imageNotification, setImageNotification] = useState(false);
+  const [fieldError, setFieldError] = useState(false);
 
   if (userInfo?.role !== 'pd') navigate('/users');
 
@@ -99,7 +100,7 @@ export default function AddEngagementPage() {
     if (projectName && startDate && endDate && selectedStatus && chargeCode) {
       handleUploadEngagementData();
     } else {
-      alert('Please fill all the fields');
+      setFieldError(true);
     }
   };
   return (
@@ -112,6 +113,15 @@ export default function AddEngagementPage() {
             setHandleNotification(false);
           }}
           success
+        />
+      )}
+      {fieldError && (
+        <Notification
+          message="Please fill all the fields"
+          handleClose={() => {
+            setFieldError(false);
+          }}
+          success={false}
         />
       )}
       {imageNotification && (
