@@ -211,9 +211,7 @@ export default function CaseStudyModal({ setIsOpen }) {
                 </div>
               ))
             ) : (
-              <p className="no-users-involved font-light text-gray text-center">
-                No users involved in this engagements.
-              </p>
+              <p className="no-users-involved font-light text-gray text-center">No users involved in this Engagement</p>
             )}
           </div>
 

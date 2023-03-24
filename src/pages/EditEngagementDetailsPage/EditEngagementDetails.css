@@ -1,75 +1,76 @@
-.container .overlay-image-style img{
-    width: 180px;
-    height: 180px;   
+.container .overlay-image-style img {
+  width: 180px;
+  height: 180px;
 }
-.container{
-    width: 180px;
-    height: 180px;
+.container {
+  width: 180px;
+  height: 180px;
 }
-.mid-container{
-    display: flex;
+.mid-container {
+  display: flex;
 }
-.input-style{
-    border: 1px solid black;
-    padding: 0 10px;
-    height: 35px;
+.input-style {
+  border: 1px solid black;
+  padding: 0 10px;
+  height: 35px;
 }
-.input-style:focus{
-    border: 1px solid black;
-    outline: none
+.input-style:focus {
+  border: 1px solid black;
+  outline: none;
 }
-.case-study-image-container img{
-    width: 100px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 10px 10px;
+.case-study-image-container img {
+  width: 100px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 10px 10px;
 }
-.engagement-form-container{
-    transform: translateY(-16px);
+.engagement-form-container {
+  transform: translateY(-16px);
 }
-.engagement-form-container .dropdown-container, .engagement-dropdown-wrapper .dropdown-container{
-    width: 9rem;
+.engagement-form-container .dropdown-container,
+.engagement-dropdown-wrapper .dropdown-container {
+  width: 9rem;
 }
-.engagement-form-container .dropdown-container .dropdown-header{
-    padding: 0 0.5rem;
-    color: rgb(156 163 175);
-    height: 2rem;
+.engagement-form-container .dropdown-container .dropdown-header {
+  padding: 0 0.5rem;
+  color: rgb(156 163 175);
+  height: 2rem;
 }
-.engagement-dropdown-wrapper .dropdown-container .dropdown-header{
-    padding: 0 0.5rem;
+.engagement-dropdown-wrapper .dropdown-container .dropdown-header {
+  padding: 0 0.5rem;
 }
-.people-card-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px 2px;
-    max-height: 300px;
-    overflow-y: scroll;
-    justify-content: flex-start;
+.people-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 2px;
+  max-height: 300px;
+  overflow-y: scroll;
+  justify-content: flex-start;
 }
-.people-card-container .user-horizontal-card-container{
-    width: 250px;
+.people-card-container .user-horizontal-card-container {
+  width: 250px;
 }
-.tech-card-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px 5px;
-    max-height: 300px;
-    overflow-y: scroll;
-    justify-content: flex-start;
+.tech-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 5px;
+  max-height: 300px;
+  overflow-y: scroll;
+  justify-content: flex-start;
 }
-.update-user-card{
-    background-color: white;
-    min-width: 250px;
-    padding: 10px;
-    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.2);
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-height: 100px;
+.update-user-card {
+  background-color: white;
+  min-width: 250px;
+  padding: 10px;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100px;
 }
-.add-tech-card{
+.add-tech-card {
   width: 200px;
   height: 45px;
   display: flex;
@@ -78,12 +79,12 @@
   box-shadow: 0px 3px 7px 0px #00000040;
   gap: 10px;
 }
-.case-study-container-update-engagement button{
-    margin-top: 10px;
-    width: 100px;
-    padding: 5px 10px;
+.case-study-container-update-engagement button {
+  margin-top: 10px;
+  width: 100px;
+  padding: 5px 10px;
 }
-.upper-container .button{
-    width: 137px;
-    height: 41px;
+.upper-container .button {
+  width: 137px;
+  height: 41px;
 }

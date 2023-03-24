@@ -95,7 +95,7 @@ export default function EngagementDetails({ engagementDetails }) {
           <div className="technology-title">
             <div className="title-box">Technology</div>
             <div>
-              <Dropdown dropdownName="Technology" dropdownData={['React', 'NodeJs', 'Express']} />
+              <Dropdown dropdownName="All" dropdownData={[]} />
             </div>
           </div>
           <div className="tech-stack grid grid-cols-2">
@@ -122,14 +122,14 @@ export default function EngagementDetails({ engagementDetails }) {
             />
           ))}
         </div>
-        <div className="case-study-button">
+        {/* <div className="case-study-button">
           <Button
             buttonText={'Upload'}
             handleClick={() => {
               setIsOpen(true);
             }}
           />
-        </div>
+        </div> */}
       </div>
       {isOpen && <CaseStudyModal setIsOpen={setIsOpen} />}
     </div>

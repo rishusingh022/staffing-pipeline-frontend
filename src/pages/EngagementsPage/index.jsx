@@ -46,7 +46,11 @@ const EngagementsPage = () => {
     setTimeFrameSelected(option);
   };
 
-  if (userInfo?.role !== 'pd') navigate('/users');
+  if (userInfo?.role !== 'pd') {
+    setTimeout(() => {
+      navigate('/projects');
+    }, 1000);
+  }
 
   React.useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)

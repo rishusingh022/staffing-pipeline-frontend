@@ -219,7 +219,7 @@ export default function AddEngagementPage() {
           <div className="flex flex-col gap-2 case-study-container-add-engagement">
             <p className="font-bold text-2xl">Case Studies & Knowledge Materials</p>
             <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
-            <Button buttonText="Upload" />
+            {/* <Button buttonText="Upload" /> */}
           </div>
         </div>
       </div>

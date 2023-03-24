@@ -259,7 +259,7 @@ export default function EditEngagementDetailsPage() {
                 boxLink={caseStudy.boxLink}
               />
             ))}
-            <Button buttonText="Upload" />
+            {/* <Button buttonText="Upload" /> */}
           </div>
         </div>
       </div>

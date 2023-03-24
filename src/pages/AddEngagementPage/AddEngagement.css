@@ -1,70 +1,72 @@
-.container .overlay-image-style img{
-    width: 180px;
-    height: 180px;   
+.container .overlay-image-style img {
+  width: 180px;
+  height: 180px;
 }
-.container{
-    width: 180px;
-    height: 180px;
+.container {
+  width: 180px;
+  height: 180px;
 }
-.mid-container{
-    display: flex;
+.mid-container {
+  display: flex;
 }
-.input-style{
-    border: 1px solid black;
-    padding: 0 10px;
+.input-style {
+  border: 1px solid black;
+  padding: 0 10px;
 }
-.input-style:focus{
-    border: 1px solid black;
-    outline: none
+.input-style:focus {
+  border: 1px solid black;
+  outline: none;
 }
-.case-study-image-container img{
-    width: 100px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 10px 10px;
+.case-study-image-container img {
+  width: 100px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 10px 10px;
 }
-.add-engagement-form-container .dropdown-container, .engagement-dropdown-wrapper .dropdown-container{
-    width: 8rem;
+.add-engagement-form-container .dropdown-container,
+.engagement-dropdown-wrapper .dropdown-container {
+  width: 8rem;
 }
-.add-engagement-form-container .dropdown-container .dropdown-header{
-    padding: 0 0.5rem;
-    height: 2rem;
+.add-engagement-form-container .dropdown-container .dropdown-header {
+  padding: 0 0.5rem;
+  height: 2rem;
 }
-.engagement-dropdown-wrapper .dropdown-container .dropdown-header{
-    padding: 0 0.5rem;
+.engagement-dropdown-wrapper .dropdown-container .dropdown-header {
+  padding: 0 0.5rem;
 }
-.people-card-container-add{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px 0;
-    max-height: 300px;
-    overflow-y: scroll;
-    justify-content: center;
+.people-card-container-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 0;
+  max-height: 300px;
+  overflow-y: scroll;
+  justify-content: flex-start;
+  padding: 8px;
 }
-.people-card-container-add .user-horizontal-card-container{
-    width: 250px;
+.people-card-container-add .user-horizontal-card-container {
+  width: 250px;
 }
-.tech-card-container-add{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px 5px;
-    max-height: 300px;
-    overflow-y: scroll;
-    justify-content: flex-start;
+.tech-card-container-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 5px;
+  max-height: 300px;
+  overflow-y: scroll;
+  justify-content: flex-start;
 }
-.user-card-add{
-    background-color: white;
-    min-width: 250px;
-    padding: 10px;
-    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.2);
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-height: 100px;
+.user-card-add {
+  background-color: white;
+  min-width: 250px;
+  padding: 10px;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100px;
 }
-.tech-card-add{
+.tech-card-add {
   width: 200px;
   height: 45px;
   display: flex;
@@ -73,13 +75,13 @@
   box-shadow: 0px 3px 7px 0px #00000040;
   gap: 10px;
 }
-.case-study-container-add-engagement button{
-    margin-top: 10px;
-    width: 100px;
-    padding: 5px 10px;
+.case-study-container-add-engagement button {
+  margin-top: 10px;
+  width: 100px;
+  padding: 5px 10px;
 }
-.upper-container button{
-    width: 100px;
-    height: 30px;
-    padding: 5px 10px;
+.upper-container button {
+  width: 100px;
+  height: 30px;
+  padding: 5px 10px;
 }

@@ -38,7 +38,7 @@ function AddNewPeoplePage() {
   };
 
   const handleUploadUserData = async imageUrl => {
-    makeRequest(
+    await makeRequest(
       CREATE_USER_DATA_URL,
       {
         data: {
@@ -57,6 +57,30 @@ function AddNewPeoplePage() {
       .then(response => {
         setHandleNotification(true);
         setUserId(response.userId);
+        setSkill.map(async item => {
+          console.log('Here');
+          response.userId &&
+            (await makeRequest(
+              ADD_USER_SKILL_ROUTE(response.userId),
+              {
+                data: {
+                  area: `${item.area}`,
+                  category: `${item.category}`,
+                  skill: `${item.name}`,
+                },
+                params: {
+                  userId: userId,
+                },
+              },
+              navigate
+            )
+              .then(response => {
+                console.log(response);
+              })
+              .catch(error => {
+                console.log('Error while adding user', error);
+              }));
+        });
         setTimeout(() => {
           navigate(`/users/${response.userId}`);
         }, 1000);
@@ -89,28 +113,29 @@ function AddNewPeoplePage() {
   };
 
   const handleAddNewSkill = async item => {
+    console.log('Here');
     setSetSkill([...setSkill, item]);
-    userId &&
-      (await makeRequest(
-        ADD_USER_SKILL_ROUTE(userId),
-        {
-          data: {
-            area: `${item.area}`,
-            category: `${item.category}`,
-            skill: `${item.name}`,
-          },
-          params: {
-            userId: userId,
-          },
-        },
-        navigate
-      )
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log('Error while adding user', error);
-        }));
+    // userId &&
+    //   (await makeRequest(
+    //     ADD_USER_SKILL_ROUTE(userId),
+    //     {
+    //       data: {
+    //         area: `${item.area}`,
+    //         category: `${item.category}`,
+    //         skill: `${item.name}`,
+    //       },
+    //       params: {
+    //         userId: userId,
+    //       },
+    //     },
+    //     navigate
+    //   )
+    //     .then(response => {
+    //       console.log(response);
+    //     })
+    //     .catch(error => {
+    //       console.log('Error while adding user', error);
+    //     }));
   };
   setTimeout(() => {
     setImageNotification(false);
