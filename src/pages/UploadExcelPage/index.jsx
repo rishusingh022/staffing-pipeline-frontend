@@ -71,7 +71,8 @@ function UploadExcelPage() {
   ) : (
     <div>
       <Header hasNav />
-      {error.length && <Notification message={error} handleClose={() => setError('')} />}
+      {console.log(error)}
+      {error && <Notification message={error} handleClose={() => setError('')} />}
       {upload && <Notification message={'Uploaded Successfully'} handleClose={() => setUpload(false)} success={true} />}
       <div className="w-full flex flex-col items-center">
         <p className="text-3xl text-center p-10">Upload Staffing Excel</p>

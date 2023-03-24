@@ -48,7 +48,7 @@ const EngagementsPage = () => {
 
   if (userInfo?.role !== 'pd') {
     setTimeout(() => {
-      navigate('/projects');
+      navigate('/users');
     }, 1000);
   }
 
