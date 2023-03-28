@@ -17,6 +17,7 @@ import {
 import { GET_USER_SKILL_ROUTE } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import { RoleContext } from '../../context/RoleContext';
+import PageLoader from '../../components/Spinner';
 
 const UpdateUserPage = () => {
   const { userInfo } = React.useContext(RoleContext);
@@ -27,6 +28,7 @@ const UpdateUserPage = () => {
   const [showSkillModal, setShowSkillModal] = useState(false);
   const [setSkill, setSetSkill] = React.useState([]);
   const [handleNotification, setHandleNotification] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
   // const [uploadedUserImage, setUploadedUserImage] = useState('');
 
   if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
@@ -79,6 +81,7 @@ const UpdateUserPage = () => {
   const uploadImage = async image => {
     const formData = new FormData();
     formData.append('file', image);
+    setUploadingImage(true);
     makeRequest(
       UPLOAD_USER_IMAGE_ROUTE,
       {
@@ -86,6 +89,7 @@ const UpdateUserPage = () => {
       },
       navigate
     ).then(response => {
+      setUploadingImage(false);
       setCurrentImage(response.imageUrl);
     });
   };
@@ -122,12 +126,20 @@ const UpdateUserPage = () => {
       <div className="user-content">
         <div className="user-details">
           <div className="user-img">
-            <Image
-              hasOverlay={true}
-              imageUrl={currentImage ? currentImage : userDetails?.userData?.image}
-              altText="default-user"
-              handleImageSelect={handleImageChange}
-            />
+            {!uploadingImage ? (
+              <Image
+                hasOverlay={true}
+                imageUrl={currentImage ? currentImage : userDetails?.userData?.image}
+                altText="default-user"
+                handleImageSelect={handleImageChange}
+              />
+            ) : (
+              <div className="container">
+                <div className="loader-container">
+                  <PageLoader />
+                </div>
+              </div>
+            )}
             <button className="update-profile-button" onClick={updateUser}>
               Update profile
             </button>

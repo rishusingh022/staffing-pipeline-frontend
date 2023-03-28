@@ -15,6 +15,7 @@ import Notification from '../../components/Notification';
 import { RoleContext } from '../../context/RoleContext';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import TechStack from '../../components/TechStack';
+import PageLoader from '../../components/Spinner';
 
 export default function AddEngagementPage() {
   const { userInfo } = React.useContext(RoleContext);
@@ -30,10 +31,12 @@ export default function AddEngagementPage() {
   const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
   const [imageNotification, setImageNotification] = useState(false);
   const [fieldError, setFieldError] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   if (userInfo?.role !== 'pd') navigate('/users');
 
   const handleImageChange = e => {
+    setUploadingImage(true);
     handleEngagementImageUpload(e.target.files[0]);
   };
 
@@ -44,6 +47,7 @@ export default function AddEngagementPage() {
   const handleEngagementImageUpload = async image => {
     const formData = new FormData();
     formData.append('file', image);
+    setUploadingImage(true);
     await makeRequest(
       UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
       {
@@ -51,6 +55,7 @@ export default function AddEngagementPage() {
       },
       navigate
     ).then(response => {
+      setUploadingImage(false);
       setUploadedEngagementImage(response.imageUrl);
     });
   };
@@ -137,12 +142,20 @@ export default function AddEngagementPage() {
           <div className="flex image-style upper-container justify-between">
             <div className="flex left-upper gap-4">
               <div className="add-engagement-image-container">
-                <Image
-                  imageUrl={uploadedEngagementImage ? uploadedEngagementImage : EngagementDefault}
-                  altText="default"
-                  hasOverlay
-                  handleImageSelect={handleImageChange}
-                />
+                {!uploadingImage ? (
+                  <Image
+                    imageUrl={uploadedEngagementImage ? uploadedEngagementImage : EngagementDefault}
+                    altText="default"
+                    hasOverlay
+                    handleImageSelect={handleImageChange}
+                  />
+                ) : (
+                  <div className="container">
+                    <div className="loader-container">
+                      <PageLoader />
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-2 add-engagement-form-container">
                 <input

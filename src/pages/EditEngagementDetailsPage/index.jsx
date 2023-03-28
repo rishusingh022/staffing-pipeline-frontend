@@ -8,6 +8,7 @@ import PeopleHorizontalCard from '../../components/PeopleHorizontalCard';
 import TechStack from '../../components/TechStack';
 import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
+import PageLoader from '../../components/Spinner';
 import { useParams } from 'react-router';
 import {
   GET_ENGAGEMENT_DATA_BY_ID_URL,
@@ -42,6 +43,7 @@ export default function EditEngagementDetailsPage() {
   const [currentEngagementEndDate, setCurrentEngagementEndDate] = useState('');
   const [currentEngagementStatus, setCurrentEngagementStatus] = useState('');
   const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   if (userInfo?.role !== 'pd') navigate('/users');
 
@@ -51,6 +53,7 @@ export default function EditEngagementDetailsPage() {
   const data = {};
   const uploadImage = async image => {
     const formData = new FormData();
+    setUploadingImage(true);
     formData.append('file', image);
     await makeRequest(
       UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
@@ -60,6 +63,7 @@ export default function EditEngagementDetailsPage() {
       navigate
     ).then(response => {
       setUploadedEngagementImage(response.imageUrl);
+      setUploadingImage(false);
     });
   };
   const updateEngagementData = async imageUrl => {
@@ -128,12 +132,20 @@ export default function EditEngagementDetailsPage() {
         <div className="flex flex-col gap-4">
           <div className="flex image-style upper-container justify-between">
             <div className="flex">
-              <Image
-                imageUrl={uploadedEngagementImage ? uploadedEngagementImage : engagementDetails?.projectData?.image}
-                altText="default"
-                hasOverlay
-                handleImageSelect={handleImageChange}
-              />
+              {!uploadingImage ? (
+                <Image
+                  imageUrl={uploadedEngagementImage ? uploadedEngagementImage : engagementDetails?.projectData?.image}
+                  altText="default"
+                  hasOverlay
+                  handleImageSelect={handleImageChange}
+                />
+              ) : (
+                <div className="container">
+                  <div className="loader-container">
+                    <PageLoader />
+                  </div>
+                </div>
+              )}
 
               <div className="ml-4 my-4 flex flex-col gap-2 engagement-form-container">
                 <input

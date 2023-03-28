@@ -13,6 +13,7 @@ import { CREATE_USER_DATA_URL, ADD_USER_SKILL_ROUTE, UPLOAD_USER_IMAGE_ROUTE } f
 import { role } from '../../mocks/DropDownOptions';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { RoleContext } from '../../context/RoleContext';
+import PageLoader from '../../components/Spinner';
 
 function AddNewPeoplePage() {
   const { userInfo } = React.useContext(RoleContext);
@@ -30,6 +31,7 @@ function AddNewPeoplePage() {
   const [userId, setUserId] = React.useState('');
   const [uploadedImageUrl, setUploadedImageUrl] = React.useState('');
   const [imageNotification, setImageNotification] = React.useState(false);
+  const [uploadingImage, setUploadingImage] = React.useState(false);
 
   if (userInfo?.role !== 'pd') navigate('/users');
 
@@ -92,10 +94,12 @@ function AddNewPeoplePage() {
   const handleUserImageUpload = async image => {
     const formData = new FormData();
     formData.append('file', image);
+    setUploadingImage(true);
     makeRequest(UPLOAD_USER_IMAGE_ROUTE, {
       data: formData,
     })
       .then(response => {
+        setUploadingImage(false);
         setUploadedImageUrl(response.imageUrl);
       })
       .catch(error => {
@@ -169,12 +173,20 @@ function AddNewPeoplePage() {
         <div className="add-new-people-upper-body">
           <div className="add-new-people-upper-body-left">
             <div className="add-new-people-upper-body-left-left">
-              <Image
-                imageUrl={uploadedImageUrl ? uploadedImageUrl : userImage}
-                altText="user"
-                hasOverlay
-                handleImageSelect={handleImageChange}
-              />
+              {!uploadingImage ? (
+                <Image
+                  imageUrl={uploadedImageUrl ? uploadedImageUrl : userImage}
+                  altText="user"
+                  hasOverlay
+                  handleImageSelect={handleImageChange}
+                />
+              ) : (
+                <div className="container">
+                  <div className="loader-container">
+                    <PageLoader />
+                  </div>
+                </div>
+              )}
               <Button handleClick={handleAddNewUser} buttonText="Add New User" />
             </div>
             <div className="add-new-people-upper-body-left-right">
