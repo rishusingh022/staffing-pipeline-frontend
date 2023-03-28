@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BACKEND_URL } from '../../constants/apiEndpoints';
 import { ERROR_ROUTE } from '../../constants/routes';
+
 const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
   try {
     const requestDetails = {
@@ -9,7 +10,6 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
       method: apiEndPoint.method,
       ...dynamicConfig,
       headers: {
-        authorization: localStorage.getItem('token'),
         ...dynamicConfig.headers,
       },
     };

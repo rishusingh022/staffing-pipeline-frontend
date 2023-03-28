@@ -3,6 +3,14 @@ import { render } from '@testing-library/react';
 import Header from '..';
 import { RoleProvider } from '../../../context/RoleContext';
 
+jest.mock('@okta/okta-react', () => ({
+  useOktaAuth: () => ({
+    authState: {
+      isAuthenticated: true,
+    },
+  }),
+}));
+
 jest.mock('react-router-dom', () => ({
   useNavigate: () => ({
     mockedNavigate: jest.fn(),

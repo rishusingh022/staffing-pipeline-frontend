@@ -33,7 +33,7 @@ export default function AddEngagementPage() {
   const [fieldError, setFieldError] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  if (userInfo?.role !== 'pd') navigate('/users');
+  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
 
   const handleImageChange = e => {
     setUploadingImage(true);

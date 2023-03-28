@@ -33,7 +33,7 @@ function AddNewPeoplePage() {
   const [imageNotification, setImageNotification] = React.useState(false);
   const [uploadingImage, setUploadingImage] = React.useState(false);
 
-  if (userInfo?.role !== 'pd') navigate('/users');
+  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
 
   const handleImageChange = async e => {
     await handleUserImageUpload(e.target.files[0]);

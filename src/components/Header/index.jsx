@@ -1,20 +1,20 @@
+/* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, UPLOAD_EXCELL_ROUTE, USERS_ROUTE } from '../../constants/routes';
 import logoImage from '../../assets/McK_Logo.png';
 import { RoleContext } from '../../context/RoleContext';
-// eslint-disable-next-line no-unused-vars
+import { useOktaAuth } from '@okta/okta-react';
 import Button from '../Button';
 export default function Header({ hasNav }) {
+  const { oktaAuth } = useOktaAuth();
   const navigate = useNavigate();
-  const { userInfo, setUserInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(RoleContext);
   const location = window.location.pathname;
 
-  const handleLogout = () => {
-    setUserInfo({});
-    localStorage.removeItem('token');
-    navigate('/login');
+  const handleLogout = async() => {
+    oktaAuth.signOut('/login'); 
   };
 
   const activeClass = 'text-cyan border-b-[5px] border-b-cyan border-solid pt-0 pb-2.5 px-[5px]';
@@ -31,7 +31,7 @@ export default function Header({ hasNav }) {
       <div className="h-full  flex box-border">
         {hasNav && (
           <div className="grid grid-cols-4 gap-10 items-end">
-            {userInfo?.role === 'pd' && (
+            {(userInfo?.role === 'pd' || userInfo?.role === 'leadership') && (
               <button
                 className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(PROJECTS_ROUTE)}>

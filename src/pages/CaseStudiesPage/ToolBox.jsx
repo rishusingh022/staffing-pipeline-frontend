@@ -6,7 +6,6 @@ import { timeFrameOptions } from '../../mocks/DropDownOptions';
 import Button from '../../components/Button';
 import PropTypes from 'prop-types';
 import CaseStudyModal from '../../components/CaseStudyModal';
-import { RoleContext } from '../../context/RoleContext';
 function ToolBox({
   handleSearchChange,
   handleCollaboratorChange,
@@ -15,7 +14,6 @@ function ToolBox({
   collaboratorOptions,
   studyOptions,
 }) {
-  const { userInfo } = React.useContext(RoleContext);
 
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
@@ -47,7 +45,7 @@ function ToolBox({
           selectOption={selectCollaboratorOption}
         />
         <Dropdown dropdownName={'Study'} dropdownData={studyOptions} selectOption={selectStudyOption} />
-        {userInfo.role === 'pd' && <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />}
+        <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />
       </div>
       {isOpen && <CaseStudyModal setIsOpen={setIsOpen} />}
     </div>
