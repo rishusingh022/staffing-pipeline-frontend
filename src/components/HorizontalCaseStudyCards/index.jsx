@@ -2,7 +2,7 @@ import React from 'react';
 import Image from '../Image';
 import './horizontalCaseStudyCards.css';
 import PropTypes from 'prop-types';
-import formatDate from '../../utils/dateTime';
+import { formatDate } from '../../utils/dateTime';
 import { FiLink2 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import defaultImage from '../../assets/images/engagement-default.png';

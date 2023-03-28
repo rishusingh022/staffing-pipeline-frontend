@@ -168,8 +168,7 @@ export default function AddEngagementPage() {
                 />
                 <div className="flex gap-2">
                   <input
-                    type="text"
-                    placeholder="MM/DD/YYYY"
+                    type="date"
                     className="input-style w-32"
                     onChange={e => {
                       setStartDate(e.target.value);
@@ -177,8 +176,7 @@ export default function AddEngagementPage() {
                   />
                   <p>:</p>
                   <input
-                    type="text"
-                    placeholder="MM/DD/YYYY"
+                    type="date"
                     className="input-style w-32"
                     onChange={e => {
                       setEndDate(e.target.value);

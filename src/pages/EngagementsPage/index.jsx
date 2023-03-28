@@ -6,7 +6,7 @@ import makeRequest from '../../utils/makeRequest';
 import { GET_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import EngagementCard from './../../components/EngagementCard';
-import formatDate from './../../utils/dateTime';
+import { formatDate } from './../../utils/dateTime';
 import ToolBox from './ToolBox';
 import {
   extractSkillsFromEngagement,

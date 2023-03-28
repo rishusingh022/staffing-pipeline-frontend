@@ -9,7 +9,7 @@ import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
 import CaseStudyModal from '../CaseStudyModal';
 import { useNavigate } from 'react-router-dom';
-import formatDate from '../../utils/dateTime';
+import { formatDate } from '../../utils/dateTime';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
 
 export default function EngagementDetails({ engagementDetails }) {

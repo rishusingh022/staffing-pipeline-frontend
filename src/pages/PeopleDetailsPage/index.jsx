@@ -11,7 +11,7 @@ import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
 import { RoleContext } from '../../context/RoleContext';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
-import formatDate from '../../utils/dateTime';
+import { formatDate } from '../../utils/dateTime';
 
 const PeopleDetailsPage = () => {
   const { userInfo } = React.useContext(RoleContext);

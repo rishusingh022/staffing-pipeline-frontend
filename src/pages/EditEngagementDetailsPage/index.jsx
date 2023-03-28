@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Header from '../../components/Header';
 import Image from '../../components/Image';
 import './EditEngagementDetails.css';
@@ -17,7 +18,7 @@ import {
 } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import { useNavigate } from 'react-router-dom';
-import formatDate from '../../utils/dateTime';
+import { formatDate, dateFormater } from '../../utils/dateTime';
 import { statusOptions } from '../../mocks/DropDownOptions';
 import parseDate from '../../utils/common/parseDate';
 import Notification from '../../components/Notification';
@@ -67,6 +68,7 @@ export default function EditEngagementDetailsPage() {
     });
   };
   const updateEngagementData = async imageUrl => {
+    console.log(startDateInput.current.value);
     makeRequest(
       UPDATE_ENGAGEMENT_DATA_URL(projectId),
       {
@@ -74,8 +76,8 @@ export default function EditEngagementDetailsPage() {
           image: imageUrl,
           name: currentEngagementName,
           chargeCode: currentEngagementChargeCode,
-          startDate: parseDate(currentEngagementStartDate),
-          endDate: parseDate(currentEngagementEndDate),
+          startDate: parseDate(startDateInput.current.value),
+          endDate: parseDate(endDateInput.current.value),
           status: currentEngagementStatus.toLowerCase(),
           skills: currentEngagementTechnologies,
         },
@@ -114,8 +116,12 @@ export default function EditEngagementDetailsPage() {
       setCurrentEngagementEndDate(formatDate(response?.projectData?.endDate));
       setCurrentEngagementStatus(response?.projectData?.status);
       setCurrentEngagementTechnologies(response?.projectData?.skills);
+      $('#stDate').val(dateFormater(response?.projectData?.startDate));
+      $('#edDate').val(dateFormater(response?.projectData?.endDate));
     });
   }, []);
+  const startDateInput = useRef();
+  const endDateInput = useRef();
   return (
     <div className="bg-gray-200">
       <Header hasNav />
@@ -159,27 +165,24 @@ export default function EditEngagementDetailsPage() {
                 />
                 <div className="flex gap-2">
                   <input
-                    type="text"
+                    ref={startDateInput}
+                    type="date"
+                    id="stDate"
                     placeholder="Start Date"
                     className="input-style w-36"
-                    defaultValue={
-                      formatDate(currentEngagementStartDate) === 'NaN/NaN/NaN'
-                        ? ''
-                        : formatDate(currentEngagementStartDate)
-                    }
                     onChange={e => {
                       setCurrentEngagementStartDate(e.target.value);
                     }}
                   />
                   <p>:</p>
                   <input
-                    type="text"
+                    type="date"
+                    ref={endDateInput}
+                    id="edDate"
                     placeholder="End Date"
                     className="input-style w-36"
-                    defaultValue={
-                      formatDate(currentEngagementEndDate) === 'NaN/NaN/NaN' ? '' : formatDate(currentEngagementEndDate)
-                    }
                     onChange={e => {
+                      console.log(e.target.value);
                       setCurrentEngagementEndDate(e.target.value);
                     }}
                   />
@@ -223,6 +226,9 @@ export default function EditEngagementDetailsPage() {
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
               <div className="people-card-container">
+                <div className="update-user-card cursor-pointer">
+                  <BiPlus size={24} />
+                </div>
                 {engagementDetails?.usersInEngagement?.map((data, index) => (
                   <PeopleHorizontalCard
                     key={index}
@@ -235,9 +241,6 @@ export default function EditEngagementDetailsPage() {
                     knowMore={true}
                   />
                 ))}
-                <div className="update-user-card cursor-pointer">
-                  <BiPlus size={24} />
-                </div>
               </div>
             </div>
             <div className="flex w-1/2 gap-2 flex-col">
@@ -246,9 +249,6 @@ export default function EditEngagementDetailsPage() {
                 <Dropdown dropdownName="All" dropdownData={[]} selectOption={() => {}} />
               </div>
               <div className="tech-card-container">
-                {engagementDetails?.projectData?.skills?.map((data, index) => (
-                  <TechStack key={index} techName={data} />
-                ))}
                 <div
                   className="add-tech-card"
                   onClick={() => {
@@ -256,6 +256,9 @@ export default function EditEngagementDetailsPage() {
                   }}>
                   <p className="px-4 font-semibold text-gray-400 cursor-pointer">Add +</p>
                 </div>
+                {engagementDetails?.projectData?.skills?.map((data, index) => (
+                  <TechStack key={index} techName={data} />
+                ))}
               </div>
             </div>
           </div>
