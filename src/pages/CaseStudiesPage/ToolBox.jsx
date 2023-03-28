@@ -14,7 +14,6 @@ function ToolBox({
   collaboratorOptions,
   studyOptions,
 }) {
-
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
   };

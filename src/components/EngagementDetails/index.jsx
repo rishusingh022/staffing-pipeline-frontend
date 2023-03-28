@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import './engagementDetails.css';
 import Image from '../Image';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
+import { teamMembersoption } from '../../mocks/DropDownOptions';
 import TechStack from '../TechStack';
 import PropTypes from 'prop-types';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
@@ -10,10 +12,46 @@ import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
 import CaseStudyModal from '../CaseStudyModal';
 import { useNavigate } from 'react-router-dom';
 import { formatDate } from '../../utils/dateTime';
+import { GET_USERS_INVOLVED_IN_ENGAGEMENT, CURRENT_USER_IN_ENGAGEMENTS } from '../../constants/apiEndpoints';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
+import makeRequest from '../../utils/makeRequest';
 
 export default function EngagementDetails({ engagementDetails }) {
+  const engagementId = engagementDetails.projectData.engagementId;
   const [isOpen, setIsOpen] = useState(false);
+  const [currentUsers, setCurrentUsers] = useState([]);
+  const [pastUsers, setPastUsers] = useState([]);
+  const [isCurrentUsers, setIsCurrentUsers] = useState(true);
+
+  useEffect(() => {
+    makeRequest(CURRENT_USER_IN_ENGAGEMENTS(engagementId), {}, navigate).then(response => {
+      setCurrentUsers(response);
+    });
+  }, []);
+
+  const handleCurrentUsers = async () => {
+    await makeRequest(CURRENT_USER_IN_ENGAGEMENTS(engagementId), {}, navigate).then(response => {
+      setCurrentUsers(
+        response.map(data => {
+          return data;
+        })
+      );
+    });
+    setIsCurrentUsers(true);
+  };
+
+  const handlePastUsers = async () => {
+    await makeRequest(GET_USERS_INVOLVED_IN_ENGAGEMENT(engagementId), {}, navigate).then(response => {
+      setPastUsers(
+        response.map(data => {
+          return data;
+        })
+      );
+    });
+    setPastUsers(prev => prev.filter(user => !currentUsers.find(x => x.userId === user.userId)));
+    setIsCurrentUsers(false);
+    console.log(isCurrentUsers);
+  };
 
   const navigate = useNavigate();
   return (
@@ -31,7 +69,6 @@ export default function EngagementDetails({ engagementDetails }) {
 
             <div className="id-container">
               <p className="text-sm text-gray-500">Charge Code: {engagementDetails?.projectData?.chargeCode}</p>
-              {/* <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} /> */}
             </div>
             <table>
               <tr>
@@ -71,12 +108,22 @@ export default function EngagementDetails({ engagementDetails }) {
           <div className="team-member-title grid grid-cols-2 gap-2">
             <div className="title-box">Team Members</div>
             <div className="user-dropdown">
-              <Dropdown dropdownName="All" />
+              <Dropdown
+                dropdownName="Current members"
+                dropdownData={teamMembersoption}
+                selectOption={option => {
+                  if (option === 'Current members') {
+                    handleCurrentUsers();
+                  } else if (option === 'Past members') {
+                    handlePastUsers();
+                  }
+                }}
+              />
             </div>
           </div>
           <div className="team-member-detail">
-            {engagementDetails?.usersInEngagement?.length === 0 && <p>No Teams Members are assigned</p>}
-            {engagementDetails?.usersInEngagement?.map((data, index) => (
+            {(isCurrentUsers ? currentUsers : pastUsers)?.length === 0 && <p>No Teams Members found</p>}
+            {(isCurrentUsers ? currentUsers : pastUsers)?.map((data, index) => (
               <PeopleHorizontalCard
                 key={index}
                 userFMNO={data.fmno}
@@ -88,6 +135,7 @@ export default function EngagementDetails({ engagementDetails }) {
                 knowMore={true}
               />
             ))}
+            {console.log('vchadvn', currentUsers)}
           </div>
         </div>
 

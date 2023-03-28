@@ -23,15 +23,13 @@ export default function SecureRoute() {
       const originalUri = toRelativeUrl(globalThis.location.href, globalThis.location.origin);
       oktaAuth.setOriginalUri(originalUri);
       oktaAuth.signInWithRedirect();
-    }
-    else if(authState?.isAuthenticated === true) {
+    } else if (authState?.isAuthenticated === true) {
       makeRequest(GET_USER_ROLE_URL, {}, navigate).then(data => {
         setUserInfo(data);
-        if(data?.role === 'pd') navigate('/upload');
-        else if(data?.role === 'leadership') navigate('/projects');
+        if (data?.role === 'pd') navigate('/upload');
+        else if (data?.role === 'leadership') navigate('/projects');
         else navigate('/users');
-      }
-      );
+      });
     }
   }, [oktaAuth, authState?.isAuthenticated]);
 

@@ -20,7 +20,7 @@ function PeopleHorizontalCard({
   selected,
 }) {
   const navigate = useNavigate();
-  // const [isSelected, setIsSelected] = useState(false);
+  console.log(userImage, userFMNO, userName, userPosition);
   const handleSelect = () => {
     if (selectedUsers.includes(userId)) {
       setSelectedUsers(prev => {

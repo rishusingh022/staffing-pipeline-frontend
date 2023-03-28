@@ -127,3 +127,8 @@ export const UPLOAD_USER_IMAGE_ROUTE = {
   url: '/image/upload/user',
   method: 'post',
 };
+
+export const CURRENT_USER_IN_ENGAGEMENTS = engagementId => ({
+  url: `api/staffing/current-users/${engagementId}`,
+  method: 'get',
+});

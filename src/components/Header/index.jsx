@@ -13,8 +13,8 @@ export default function Header({ hasNav }) {
   const { userInfo } = React.useContext(RoleContext);
   const location = window.location.pathname;
 
-  const handleLogout = async() => {
-    oktaAuth.signOut('/login'); 
+  const handleLogout = async () => {
+    oktaAuth.signOut('/login');
   };
 
   const activeClass = 'text-cyan border-b-[5px] border-b-cyan border-solid pt-0 pb-2.5 px-[5px]';

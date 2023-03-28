@@ -13,3 +13,4 @@ export const role = ['Intern', 'Junior Engineer', 'Engineer 1', 'Engineer 2', 'U
 export const collaborators = ['Collaborator1', 'Collaborator2', 'Collaborator3'];
 export const study = ['Study1', 'Study2', 'Study3'];
 export const statusOptions = ['Ongoing', 'Completed', 'Upcoming'];
+export const teamMembersoption = ['Current members', 'Past members'];

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import Header from '../../components/Header';
