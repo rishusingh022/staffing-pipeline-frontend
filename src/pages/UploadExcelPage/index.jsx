@@ -9,6 +9,7 @@ import { RoleContext } from '../../context/RoleContext';
 import Notification from '../../components/Notification';
 
 function UploadExcelPage() {
+  const navigate = useNavigate();
   const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   if (userInfo?.role !== 'pd') navigate('/users');

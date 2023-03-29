@@ -26,9 +26,6 @@ export default function SecureRoute() {
     } else if (authState?.isAuthenticated === true) {
       makeRequest(GET_USER_ROLE_URL, {}, navigate).then(data => {
         setUserInfo(data);
-        if (data?.role === 'pd') navigate('/upload');
-        else if (data?.role === 'leadership') navigate('/projects');
-        else navigate('/users');
       });
     }
   }, [oktaAuth, authState?.isAuthenticated]);
