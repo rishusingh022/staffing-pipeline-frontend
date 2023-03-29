@@ -2,11 +2,24 @@ import * as React from 'react';
 import './DashboardPage.css';
 import { Header } from '../../components';
 import BarChart from '../../components/BarChart';
+import PieChart from '../../components/PieChart';
 import { RoleContext } from '../../context/RoleContext';
 import makeRequest from '../../utils/makeRequest';
 import { GET_PROJECTS_METRICS, GET_USER_METRICS } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
+
 const DashboardPage = () => {
+  const engagementStatusData = [
+    { name: 'Ongoing', y: 30 },
+    { name: 'Completed', y: 20 },
+    { name: 'Upcoming', y: 5 },
+  ];
+
+  const userStatusData = [
+    { name: 'Beach', y: 10 },
+    { name: 'Staffed', y: 20 },
+  ];
+
   const navigate = useNavigate();
   const { userInfo } = React.useContext(RoleContext);
 
@@ -47,8 +60,14 @@ const DashboardPage = () => {
           <div className="main-chart">
             <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
           </div>
-          <div className="side-chart1"></div>
-          <div className="side-chart2"></div>
+
+          <div className="side-chart1">
+            <PieChart data={userStatusData} />
+          </div>
+          <div className="side-chart2">
+            <PieChart data={engagementStatusData} />
+          </div>
+
         </div>
       </>
     );
