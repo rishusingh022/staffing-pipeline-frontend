@@ -55,12 +55,14 @@ const EngagementsPage = () => {
   const fetchEngagementData = () => {
     makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)
       .then(response => {
+        console.log(response);
         response = convertStartDate(response);
         setProjects(response);
         setTechnologyOptions(extractSkillsFromEngagement(response));
         setGuildOptions(extractGuildFromEngagement(response));
       })
       .catch(error => {
+        console.log(error);
         setError(error);
       });
   };
@@ -72,7 +74,7 @@ const EngagementsPage = () => {
     return (
       <div>
         <Header hasNav={true} />
-        <h1>People Page</h1>
+        <h1>Engagement Page</h1>
         <p>{error.message}</p>
       </div>
     );
@@ -140,7 +142,7 @@ const EngagementsPage = () => {
           altText={project.name}
           key={project.engagementId}
           name={project.name}
-          startDate={formatDate(project.startDate)}
+          startDate={project.startDate ? formatDate(project.startDate) : null}
           status={project.status}
           identityNumber={project.engagementId}
           handleButtonClick={() => {

@@ -7,6 +7,7 @@ import Dropdown from '../Dropdown';
 import { teamMembersoption } from '../../mocks/DropDownOptions';
 import TechStack from '../TechStack';
 import PropTypes from 'prop-types';
+import DefaultImage from '../../assets/images/engagement-default.png';
 import PeopleHorizontalCard from '../PeopleHorizontalCard';
 import HorizontalCaseStudyCards from '../HorizontalCaseStudyCards';
 import CaseStudyModal from '../CaseStudyModal';
@@ -58,7 +59,10 @@ export default function EngagementDetails({ engagementDetails }) {
     <div className="container-div">
       <div className="project-container">
         <div className="image-container">
-          <Image imageUrl={engagementDetails?.projectData?.image} altText={'test-image'} />
+          <Image
+            imageUrl={engagementDetails?.projectData?.image ? engagementDetails?.projectData?.image : DefaultImage}
+            altText={'test-image'}
+          />
         </div>
         <div className="detail-container">
           <div className="project-details">
@@ -74,14 +78,22 @@ export default function EngagementDetails({ engagementDetails }) {
               <tr>
                 <div className="date-container">
                   <td className="table-row-item">Start Date:</td>
-                  <td>{formatDate(engagementDetails?.projectData?.startDate)}</td>
+                  <td>
+                    {engagementDetails?.projectData?.startDate
+                      ? formatDate(engagementDetails?.projectData?.startDate)
+                      : null}
+                  </td>
                 </div>
               </tr>
 
               <tr>
                 <div className="date-container">
                   <td className="table-row-item">End Date:</td>
-                  <td>{formatDate(engagementDetails?.projectData?.endDate)}</td>
+                  <td>
+                    {engagementDetails?.projectData?.endDate
+                      ? formatDate(engagementDetails?.projectData?.endDate)
+                      : null}
+                  </td>
                 </div>
               </tr>
               <tr>
