@@ -10,7 +10,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "jest"],
+  "plugins": ["react", "jest"],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],

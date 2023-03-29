@@ -11,7 +11,6 @@ import Notification from '../../components/Notification';
 function UploadExcelPage() {
   const navigate = useNavigate();
   const { userInfo } = React.useContext(RoleContext);
-  const navigate = useNavigate();
   if (userInfo?.role !== 'pd') navigate('/users');
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);

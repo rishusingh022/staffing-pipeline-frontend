@@ -1,35 +1,54 @@
 .dashboard {
   background-color: #f5f5f5;
   display: grid;
-  grid-template-areas: 'metrics metrics' 'main-chart side-chart1' 'main-chart side-chart2';
+  grid-template-areas: 'main-chart side-chart1' 'main-chart side-chart2';
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr;
+  grid-template-rows: 1fr 1fr;
   flex-grow: 1;
   grid-gap: 1rem;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .dashboard > * {
   padding: 1rem;
   box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.2);
+  background-color: white;
 }
 
 .metrics {
   grid-area: metrics;
-  /* border: 2px solid black; */
+}
+
+.main-area {
+  grid-area: main-chart;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .main-chart {
-  grid-area: main-chart;
-  /* border: 2px solid red; */
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .side-chart1 {
   grid-area: side-chart1;
-  border: 2px solid blue;
 }
 
 .side-chart2 {
   grid-area: side-chart2;
-  border: 2px solid green;
+}
+
+.metrics {
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: gray;
 }

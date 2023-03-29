@@ -26,8 +26,8 @@ const DashboardPage = () => {
   const [numberOfEngagements, setNumberofEngagements] = React.useState([]);
   const [numberOfPeopleStaffed, setNumberofPeopleStaffed] = React.useState([]);
   const [error, setError] = React.useState(null);
-  if (userInfo?.role !== 'leadership') navigate('/users');
   React.useEffect(() => {
+    if (userInfo?.role !== 'leadership') navigate('/users');
     makeRequest(GET_PROJECTS_METRICS, {}, navigate)
       .then(response => {
         setNumberofEngagements(response);
@@ -38,6 +38,7 @@ const DashboardPage = () => {
       });
   }, []);
   React.useEffect(() => {
+    if (userInfo?.role !== 'leadership') navigate('/users');
     makeRequest(GET_USER_METRICS, {}, navigate)
       .then(response => {
         console.log(response);
@@ -55,9 +56,14 @@ const DashboardPage = () => {
       <>
         <Header hasNav={true} />
         <div className="dashboard">
-          <div className="metrics"></div>
-          <div className="main-chart">
-            <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
+          <div className="main-area">
+            <div className="metrics">
+              <div className="metric-label">This month:</div>
+              People staffed : 65%
+            </div>
+            <div className="main-chart">
+              <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
+            </div>
           </div>
 
           <div className="side-chart1">
@@ -66,7 +72,6 @@ const DashboardPage = () => {
           <div className="side-chart2">
             <PieChart data={engagementStatusData} />
           </div>
-
         </div>
       </>
     );
