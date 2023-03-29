@@ -90,6 +90,7 @@ export default function CaseStudyModal({ setIsOpen }) {
   };
 
   const uploadCaseStudy = async newCaseStudy => {
+    console.log(newCaseStudy);
     makeRequest(
       CREATE_CASE_STUDIES_DATA_URL,
       {
@@ -235,7 +236,13 @@ export default function CaseStudyModal({ setIsOpen }) {
               </div>
             </div>
             <div className="cancel-btn">
-              <Button buttonText={'Submit'} handleClick={handleCreateCaseStudy} />
+              <Button
+                buttonText={'Submit'}
+                handleClick={() => {
+                  handleCreateCaseStudy();
+                  setIsOpen(false);
+                }}
+              />
             </div>
           </div>
         </div>

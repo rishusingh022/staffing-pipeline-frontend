@@ -47,12 +47,8 @@ const DashboardPage = () => {
           <div className="main-chart">
             <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
           </div>
-          <div className="side-chart1">
-
-          </div>
-          <div className="side-chart2">
-            
-          </div>
+          <div className="side-chart1"></div>
+          <div className="side-chart2"></div>
         </div>
       </>
     );
