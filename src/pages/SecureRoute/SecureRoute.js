@@ -12,6 +12,8 @@ export default function SecureRoute() {
   // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
 
+  const [loading, setLoading] = React.useState(true);
+
   const { oktaAuth, authState } = useOktaAuth();
 
   axios.defaults.headers.common['Authorization'] = authState?.accessToken?.accessToken;
@@ -25,10 +27,11 @@ export default function SecureRoute() {
       oktaAuth.signInWithRedirect();
     } else if (authState?.isAuthenticated === true) {
       makeRequest(GET_USER_ROLE_URL, {}, navigate).then(data => {
+        setLoading(false);
         setUserInfo(data);
       });
     }
   }, [oktaAuth, authState?.isAuthenticated]);
 
-  return authState?.isAuthenticated ? <Outlet /> : <Spinner />;
+  return (authState?.isAuthenticated && !loading) ? <Outlet /> : <Spinner />;
 }

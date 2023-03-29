@@ -49,7 +49,7 @@ const EngagementsPage = () => {
   const handleTimeFrameChange = option => {
     setTimeFrameSelected(option);
   };
-
+  
   if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
 
   const fetchEngagementData = () => {
@@ -162,7 +162,7 @@ const EngagementsPage = () => {
           handleTimeFrameChange={handleTimeFrameChange}
           handleSearchChange={handleSearch}
         />
-        <div className="container-in-engagements">
+        <div className="container-in-engagements flex flex-col">
           <Count type="engagements" objectCount={objectCount} setObjectCount={setObjectCount} />
           <CardContainer>{projectCards}</CardContainer>
           <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />

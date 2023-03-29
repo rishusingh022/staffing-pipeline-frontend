@@ -8,7 +8,7 @@ export default function parseDate(date) {
   const day = dateArr[2] ? dateArr[2] : '';
   // return parsedDate;
 
-  const newDate = new Date(year, month, day, 0, 0, 0);
+  const newDate = new Date(year, month-1, day, 0, 0, 0);
   console.log(newDate);
   return newDate.toISOString();
   // return new Date(year, month, day).toISOString();

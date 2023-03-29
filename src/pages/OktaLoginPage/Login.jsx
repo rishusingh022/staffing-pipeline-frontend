@@ -1,8 +1,11 @@
 import React from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import Spinner from '../../components/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 function Loggedin() {
+  const navigate = useNavigate();
+  navigate('/casestudies');
   return (
     <div>
       <p>Logged in!</p>

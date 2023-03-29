@@ -38,7 +38,7 @@ function ToolBox({
       <div className="people-page-filter-drop-downs">
         <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
         <Dropdown dropdownName={'Role'} dropdownData={roleOptions} selectOption={selectRoleOption} />
-        {userInfo.role === 'pd' && (
+        {(userInfo.role === 'pd' || userInfo.role === 'leadership') && (
           <Button data-testid="add-new-member" buttonText={'Add new member'} handleClick={handleAddNewMember} />
         )}
       </div>

@@ -51,7 +51,7 @@ export default function EditEngagementDetailsPage() {
   const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
+  if ((userInfo?.role !== 'pd' || userInfo?.role!=='leadership') && userInfo?.role !== 'leadership') navigate('/users');
 
   const handleImageChange = async e => {
     await uploadImage(e.target.files[0]);
