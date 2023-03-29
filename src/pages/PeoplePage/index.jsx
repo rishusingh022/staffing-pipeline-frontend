@@ -13,6 +13,8 @@ import { Header } from '../../components';
 import ToolBox from './ToolBox';
 import PageLoader from '../../components/Spinner';
 import { extractSkillFromUsers, extractRoleFromUsers } from '../../utils/common/user';
+import PaginationControl from '../../components/PaginationControl';
+import Count from '../../components/Count';
 
 const PeoplePage = () => {
   const navigate = useNavigate();
@@ -24,6 +26,8 @@ const PeoplePage = () => {
   const [technologySelected, setTechnologySelected] = React.useState('');
   const [roleSelected, setRoleSelected] = React.useState('');
   const [searchValue, setSearchValue] = React.useState('');
+  const [pageNumber, setPageNumber] = React.useState(1);
+  const [objectCount, setObjectCount] = React.useState(0);
 
   const handleSearch = searchValue => {
     setSearchValue(() => searchValue);
@@ -116,7 +120,9 @@ const PeoplePage = () => {
           navigate={navigate}
         />
         <div className="container-in-people">
+          <Count type="users" objectCount={objectCount} setObjectCount={setObjectCount} />
           <CardContainer>{peopleCards}</CardContainer>
+          <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />
         </div>
       </div>
     );

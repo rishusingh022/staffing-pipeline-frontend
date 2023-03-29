@@ -30,6 +30,7 @@ export default function AddEngagementPage() {
   const [showAddTechnologyModal, setShowAddTechnologyModal] = useState(false);
   const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
   const [imageNotification, setImageNotification] = useState(false);
+  const [dateNotification, setDateNotification] = useState(false);
   const [fieldError, setFieldError] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
@@ -93,7 +94,7 @@ export default function AddEngagementPage() {
       });
   };
   setTimeout(() => {
-    setImageNotification(false);
+    if (imageNotification) setImageNotification(false);
   }, 2000);
   setTimeout(() => {
     if (handleNotification) {
@@ -101,8 +102,11 @@ export default function AddEngagementPage() {
     }
   }, 2000);
   const handleCreateClick = async () => {
-    console.log(projectName, startDate, endDate, selectedStatus, chargeCode, technologies);
     if (projectName && startDate && endDate && selectedStatus && chargeCode) {
+      if (new Date(parseDate(startDate)).getTime() > new Date(parseDate(endDate)).getTime()) {
+        setDateNotification(true);
+        return;
+      }
       handleUploadEngagementData();
     } else {
       setFieldError(true);
@@ -134,6 +138,14 @@ export default function AddEngagementPage() {
           message="Providing an image is mandatory"
           handleClose={() => {
             setImageNotification(false);
+          }}
+        />
+      )}
+      {dateNotification && (
+        <Notification
+          message="Start date cannot be after end date"
+          handleClose={() => {
+            setDateNotification(false);
           }}
         />
       )}

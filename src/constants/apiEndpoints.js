@@ -132,6 +132,20 @@ export const GET_PROJECTS_METRICS = {
   method: 'get',
 };
 
+export const GET_ENGAGEMENT_COUNT = {
+  url: 'api/count/projects',
+  method: 'get',
+};
+
+export const GET_CASE_STUDY_COUNT = {
+  url: 'api/count/case-studies',
+  method: 'get',
+};
+
+export const GET_USER_COUNT = {
+  url: 'api/count/users',
+  method: 'get',
+};
 export const CURRENT_USER_IN_ENGAGEMENTS = engagementId => ({
   url: `api/staffing/current-users/${engagementId}`,
   method: 'get',

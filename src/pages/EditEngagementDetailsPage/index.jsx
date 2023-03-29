@@ -37,12 +37,15 @@ export default function EditEngagementDetailsPage() {
   const [showTechnologyModal, setShowTechnologyModal] = useState(false);
   const [technologies, setTechnologies] = useState([]);
   const [uploadedEngagementImage, setUploadedEngagementImage] = useState('');
+  const [dateNotification, setDateNotification] = useState(false);
 
   // const [engagementImage, setEngagementImage] = useState('');
   // use state for current engagement details
   const [currentEngagementName, setCurrentEngagementName] = useState('');
   const [currentEngagementChargeCode, setCurrentEngagementChargeCode] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [currentEngagementStartDate, setCurrentEngagementStartDate] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [currentEngagementEndDate, setCurrentEngagementEndDate] = useState('');
   const [currentEngagementStatus, setCurrentEngagementStatus] = useState('');
   const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
@@ -71,6 +74,12 @@ export default function EditEngagementDetailsPage() {
   };
   const updateEngagementData = async imageUrl => {
     console.log(startDateInput.current.value);
+    const startDate = new Date(parseDate(startDateInput.current.value)).getTime();
+    const endDate = new Date(parseDate(endDateInput.current.value)).getTime();
+    if (startDate > endDate) {
+      setDateNotification(true);
+      return;
+    }
     makeRequest(
       UPDATE_ENGAGEMENT_DATA_URL(projectId),
       {
@@ -86,7 +95,6 @@ export default function EditEngagementDetailsPage() {
       },
       navigate
     ).then(response => {
-      console.log(response);
       setHandleNotification(true);
       setTimeout(() => {
         navigate(`/projects/${response.engagementId}`);
@@ -118,8 +126,8 @@ export default function EditEngagementDetailsPage() {
       setCurrentEngagementEndDate(formatDate(response?.projectData?.endDate));
       setCurrentEngagementStatus(response?.projectData?.status);
       setCurrentEngagementTechnologies(response?.projectData?.skills);
-      $('#stDate').val(dateFormater(response?.projectData?.startDate));
-      $('#edDate').val(dateFormater(response?.projectData?.endDate));
+      // '#stDate'.val(dateFormater(response?.projectData?.startDate));
+      // '#edDate'.val(dateFormater(response?.projectData?.endDate));
     });
   }, []);
   const startDateInput = useRef();
@@ -134,6 +142,15 @@ export default function EditEngagementDetailsPage() {
             setHandleNotification(false);
           }}
           success={true}
+        />
+      )}
+      {dateNotification && (
+        <Notification
+          message="Start Date should be less than End Date"
+          handleClose={() => {
+            setDateNotification(false);
+          }}
+          success={false}
         />
       )}
       <div className="bg-white min-h-screen mx-32 my-16 px-12 py-10">
@@ -170,6 +187,7 @@ export default function EditEngagementDetailsPage() {
                     ref={startDateInput}
                     type="date"
                     id="stDate"
+                    defaultValue={dateFormater(engagementDetails?.projectData?.startDate)}
                     placeholder="Start Date"
                     className="input-style w-36"
                     onChange={e => {
@@ -182,6 +200,7 @@ export default function EditEngagementDetailsPage() {
                     ref={endDateInput}
                     id="edDate"
                     placeholder="End Date"
+                    defaultValue={dateFormater(engagementDetails?.projectData?.endDate)}
                     className="input-style w-36"
                     onChange={e => {
                       console.log(e.target.value);

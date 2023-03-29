@@ -10,13 +10,13 @@ import Notification from '../../components/Notification';
 
 function UploadExcelPage() {
   const { userInfo } = React.useContext(RoleContext);
+  const navigate = useNavigate();
   if (userInfo?.role !== 'pd') navigate('/users');
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
   const [error, setError] = React.useState('');
   const inputFileRef = React.useRef(null);
   const [upload, setUpload] = React.useState(false);
-  const navigate = useNavigate();
   const handleFileSelect = event => {
     setFile(event.target.files[0]);
   };

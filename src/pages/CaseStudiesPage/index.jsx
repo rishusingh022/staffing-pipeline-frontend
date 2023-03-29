@@ -15,6 +15,8 @@ import {
   extractEngagementNameFromCaseStudies,
 } from '../../utils/common/case-studies';
 import { RoleContext } from '../../context/RoleContext';
+import PaginationControl from '../../components/PaginationControl';
+import Count from '../../components/Count';
 
 export default function CaseStudiesPage() {
   const { userInfo } = React.useContext(RoleContext);
@@ -32,6 +34,8 @@ export default function CaseStudiesPage() {
   const [studySelected, setStudySelected] = React.useState('');
   const [collaboratorIdNameMap, setCollaboratorIdNameMap] = React.useState({});
   const [studyIdNameMap, setStudyIdNameMap] = React.useState({});
+  const [pageNumber, setPageNumber] = React.useState(1);
+  const [objectCount, setObjectCount] = React.useState(0);
 
   const handleSearch = searchValue => {
     setSearchValue(() => searchValue);
@@ -50,9 +54,16 @@ export default function CaseStudiesPage() {
   const handleTimeFrameChange = option => {
     setTimeFrameSelected(option);
   };
-
-  React.useEffect(() => {
-    makeRequest(GET_CASE_STUDIES_DATA_URL, {}, navigate)
+  const fetchCaseStudiesData = () => {
+    makeRequest(
+      GET_CASE_STUDIES_DATA_URL,
+      {
+        params: {
+          page: pageNumber,
+        },
+      },
+      navigate
+    )
       .then(response => {
         setCaseStudies(response);
         const { collaboratorMap, uniqueCollaborators } = extractCollaboratorsFromCaseStudies(response);
@@ -67,7 +78,11 @@ export default function CaseStudiesPage() {
         setError(error);
         setIsLoading(false);
       });
-  }, []);
+  };
+
+  React.useEffect(() => {
+    fetchCaseStudiesData();
+  }, [pageNumber]);
   if (error) {
     return (
       <div>
@@ -174,7 +189,9 @@ export default function CaseStudiesPage() {
           studyOptions={studyOptions}
         />
         <div className="container-in-case-studies">
+          <Count type="case-studies" objectCount={objectCount} setObjectCount={setObjectCount} />
           <CardContainer>{caseStudiesCards}</CardContainer>
+          <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />
         </div>
       </div>
     );

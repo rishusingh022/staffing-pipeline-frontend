@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './EngagementsPage.css';
 import { Header } from '../../components';
+import Count from '../../components/Count';
 import CardContainer from './../../components/CardContainer';
 import makeRequest from '../../utils/makeRequest';
 import { GET_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
@@ -9,12 +10,13 @@ import EngagementCard from './../../components/EngagementCard';
 import { formatDate } from './../../utils/dateTime';
 import ToolBox from './ToolBox';
 import {
+  convertStartDate,
   extractSkillsFromEngagement,
   extractGuildFromEngagement,
-  convertStartDate,
 } from '../../utils/common/engagement';
 import { timeFilterUtil } from '../../utils/common/timeFilter';
 import { RoleContext } from '../../context/RoleContext';
+import PaginationControl from '../../components/PaginationControl';
 
 const EngagementsPage = () => {
   const { userInfo } = React.useContext(RoleContext);
@@ -27,6 +29,8 @@ const EngagementsPage = () => {
   const [guildSelected, setGuildSelected] = React.useState('');
   const [timeFrameSelected, setTimeFrameSelected] = React.useState('');
   const [searchValue, setSearchValue] = React.useState('');
+  const [pageNumber, setPageNumber] = React.useState(1);
+  const [objectCount, setObjectCount] = React.useState(0);
 
   const handleSearch = searchValue => {
     setSearchValue(() => searchValue);
@@ -48,7 +52,7 @@ const EngagementsPage = () => {
 
   if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
 
-  React.useEffect(() => {
+  const fetchEngagementData = () => {
     makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)
       .then(response => {
         response = convertStartDate(response);
@@ -59,7 +63,10 @@ const EngagementsPage = () => {
       .catch(error => {
         setError(error);
       });
-  }, []);
+  };
+  React.useEffect(() => {
+    fetchEngagementData();
+  }, [pageNumber]);
 
   if (error) {
     return (
@@ -142,7 +149,7 @@ const EngagementsPage = () => {
         />
       );
     });
-
+    React.useEffect(() => {}, []);
     return (
       <div className="engagements-page">
         <Header hasNav={true} />
@@ -156,7 +163,9 @@ const EngagementsPage = () => {
           handleSearchChange={handleSearch}
         />
         <div className="container-in-engagements">
+          <Count type="engagements" objectCount={objectCount} setObjectCount={setObjectCount} />
           <CardContainer>{projectCards}</CardContainer>
+          <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />
         </div>
       </div>
     );

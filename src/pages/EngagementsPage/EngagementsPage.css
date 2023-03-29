@@ -7,13 +7,13 @@
 }
 .container-in-engagements {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--color-whitesmoke);
   overflow: scroll;
   flex-grow: 1;
   min-height: 70vh;
-  padding-top: 30px;
   padding-bottom: 20px;
 }
 

@@ -12,6 +12,9 @@ const makeRequest = async (apiEndPoint, dynamicConfig = {}, navigate) => {
       headers: {
         ...dynamicConfig.headers,
       },
+      params: {
+        ...dynamicConfig.params,
+      },
     };
     const { data } = await axios(requestDetails);
     return data.data;

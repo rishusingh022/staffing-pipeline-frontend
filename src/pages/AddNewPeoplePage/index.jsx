@@ -60,7 +60,6 @@ function AddNewPeoplePage() {
         setHandleNotification(true);
         setUserId(response.userId);
         setSkill.map(async item => {
-          console.log('Here');
           response.userId &&
             (await makeRequest(
               ADD_USER_SKILL_ROUTE(response.userId),
@@ -117,7 +116,6 @@ function AddNewPeoplePage() {
   };
 
   const handleAddNewSkill = async item => {
-    console.log('Here');
     setSetSkill([...setSkill, item]);
     // userId &&
     //   (await makeRequest(
