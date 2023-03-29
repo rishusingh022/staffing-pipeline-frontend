@@ -40,14 +40,21 @@ const DashboardPage = () => {
     return <div>Something went wrong</div>;
   } else {
     return (
-      <div className="dashboard-page">
-        <div className="header-in-dashboard">
-          <Header hasNav={true} />
+      <>
+        <Header hasNav={true} />
+        <div className="dashboard">
+          <div className="metrics"></div>
+          <div className="main-chart">
+            <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
+          </div>
+          <div className="side-chart1">
+
+          </div>
+          <div className="side-chart2">
+            
+          </div>
         </div>
-        <div className="container-in-dashboard">
-          <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
-        </div>
-      </div>
+      </>
     );
   }
 };
