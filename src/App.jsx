@@ -18,6 +18,8 @@ import UploadExcelPage from './pages/UploadExcelPage';
 // import ProtectedRoute from './utils/ProtectedRoute';
 import { RoleProvider } from './context/RoleContext';
 import LoginCallbackPage from './pages/OktaLoginPage/LoginCallbackPage';
+import DashboardPage from './pages/DashboardPage';
+
 import './App.css';
 import {
   CASE_STUDIES_ROUTE,
@@ -34,6 +36,7 @@ import {
   ADD_PROJECT_ROUTE,
   UPLOAD_EXCELL_ROUTE,
   DEFAULT_ROUTE,
+  DASHBOARD_ROUTE,
 } from './constants/routes';
 
 import { Security } from '@okta/okta-react';
@@ -73,6 +76,7 @@ function App() {
                 <Route path={UPLOAD_EXCELL_ROUTE} element={<UploadExcelPage />} />
                 <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
                 <Route path={DEFAULT_ROUTE} element={<Navigate to={CASE_STUDIES_ROUTE} />} />
+                <Route path={DASHBOARD_ROUTE} element={<DashboardPage />} />
               </Route>
               <Route path="/login/callback" element={<LoginCallbackPage />} />
             </Routes>

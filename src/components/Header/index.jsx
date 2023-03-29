@@ -2,7 +2,13 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CASE_STUDIES_ROUTE, PROJECTS_ROUTE, UPLOAD_EXCELL_ROUTE, USERS_ROUTE } from '../../constants/routes';
+import {
+  CASE_STUDIES_ROUTE,
+  DASHBOARD_ROUTE,
+  PROJECTS_ROUTE,
+  UPLOAD_EXCELL_ROUTE,
+  USERS_ROUTE,
+} from '../../constants/routes';
 import logoImage from '../../assets/McK_Logo.png';
 import { RoleContext } from '../../context/RoleContext';
 import { useOktaAuth } from '@okta/okta-react';
@@ -53,6 +59,13 @@ export default function Header({ hasNav }) {
                 className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>
                 Upload Excel
+              </button>
+            )}
+            {userInfo?.role === 'leadership' && (
+              <button
+                className={location === DASHBOARD_ROUTE ? activeClass : inactiveClass}
+                onClick={() => navigate(DASHBOARD_ROUTE)}>
+                Dashboard
               </button>
             )}
           </div>

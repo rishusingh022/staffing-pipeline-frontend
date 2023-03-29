@@ -127,8 +127,16 @@ export const UPLOAD_USER_IMAGE_ROUTE = {
   url: '/image/upload/user',
   method: 'post',
 };
+export const GET_PROJECTS_METRICS = {
+  url: '/api/projects/metrics',
+  method: 'get',
+};
 
 export const CURRENT_USER_IN_ENGAGEMENTS = engagementId => ({
   url: `api/staffing/current-users/${engagementId}`,
   method: 'get',
 });
+export const GET_USER_METRICS = {
+  url: '/api/users/metrics',
+  method: 'get',
+};

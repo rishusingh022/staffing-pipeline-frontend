@@ -12,3 +12,4 @@ export const NOT_FOUND_ROUTE = '*';
 export const ADD_USER_ROUTE = '/users/add';
 export const UPLOAD_EXCELL_ROUTE = '/upload';
 export const DEFAULT_ROUTE = '/';
+export const DASHBOARD_ROUTE = '/dashboard';
