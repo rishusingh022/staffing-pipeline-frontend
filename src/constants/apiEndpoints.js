@@ -154,3 +154,12 @@ export const GET_USER_METRICS = {
   url: '/api/users/metrics',
   method: 'get',
 };
+export const GET_ENGAGEMENT_STATUS = {
+  url: 'api/projects/engagementStatus',
+  method: 'get',
+};
+
+export const GET_USERS_STAFFING_METRICS = {
+  url: 'api/metrics/staffing/users',
+  method: 'get',
+};
