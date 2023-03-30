@@ -127,10 +127,6 @@ export const UPLOAD_USER_IMAGE_ROUTE = {
   url: '/image/upload/user',
   method: 'post',
 };
-export const GET_PROJECTS_METRICS = {
-  url: '/api/projects/metrics',
-  method: 'get',
-};
 
 export const GET_ENGAGEMENT_COUNT = {
   url: 'api/count/projects',
@@ -150,16 +146,22 @@ export const CURRENT_USER_IN_ENGAGEMENTS = engagementId => ({
   url: `api/staffing/current-users/${engagementId}`,
   method: 'get',
 });
-export const GET_USER_METRICS = {
-  url: '/api/users/metrics',
-  method: 'get',
-};
-export const GET_ENGAGEMENT_STATUS = {
-  url: 'api/projects/engagementStatus',
-  method: 'get',
-};
 
 export const GET_USERS_STAFFING_METRICS = {
   url: 'api/metrics/staffing/users',
+  method: 'get',
+};
+
+export const GET_PROJECTS_METRICS = {
+  url: '/api/metrics/projects',
+  method: 'get',
+};
+
+export const GET_ENGAGEMENT_STATUS = {
+  url: 'api/metrics/engagementStatus',
+  method: 'get',
+};
+export const GET_USER_METRICS = {
+  url: '/api/metrics/users',
   method: 'get',
 };
