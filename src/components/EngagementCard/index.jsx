@@ -16,7 +16,7 @@ export default function EngagementCard({ imageUrl, altText, identityNumber, name
         {/* <div className="text-xs mb-1">{identityNumber}</div> */}
         <div className="font-bold text-xl mb-1 engagement-name">{name}</div>
         <div className={'font-semibold text-xs mb-1'}>
-          Start Date: <div className={!startDate ? 'text-red-600' : ''}>{startDate ? startDate : 'not defined'}</div>
+          Start Date: <span className={!startDate ? 'text-red-600' : ''}>{startDate ? startDate : 'not defined'}</span>
         </div>
         <div className="font-medium text-xs mb-1 text-gray-500">
           {status ? capitalizeFirstLetter(status) : 'Status'}

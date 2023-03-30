@@ -49,7 +49,7 @@ const EngagementsPage = () => {
   const handleTimeFrameChange = option => {
     setTimeFrameSelected(option);
   };
-  
+
   if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
 
   const fetchEngagementData = () => {

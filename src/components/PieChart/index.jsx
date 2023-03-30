@@ -5,13 +5,13 @@ import HC_more from 'highcharts/highcharts-more';
 HC_more(Highcharts);
 
 // eslint-disable-next-line react/prop-types
-const PieChart = ({ data }) => {
+const PieChart = ({ data, name }) => {
   const options = {
     chart: {
       type: 'pie',
     },
     title: {
-      text: 'User Status',
+      text: name,
     },
     series: [
       {

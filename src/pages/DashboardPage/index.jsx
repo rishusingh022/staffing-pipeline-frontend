@@ -96,12 +96,11 @@ const DashboardPage = () => {
               <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
             </div>
           </div>
-
           <div className="side-chart1">
-            <PieChart data={userStatusData} />
+            <PieChart data={userStatusData} name={'User Status'} />
           </div>
           <div className="side-chart2">
-            <PieChart data={engagementStatusData} />
+            <PieChart data={engagementStatusData} name={'Engagement Status'} />
           </div>
         </div>
       </>

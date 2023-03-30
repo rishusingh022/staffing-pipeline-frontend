@@ -33,5 +33,5 @@ export default function SecureRoute() {
     }
   }, [oktaAuth, authState?.isAuthenticated]);
 
-  return (authState?.isAuthenticated && !loading) ? <Outlet /> : <Spinner />;
+  return authState?.isAuthenticated && !loading ? <Outlet /> : <Spinner />;
 }
