@@ -1,12 +1,16 @@
 import Highcharts from 'highcharts';
 const OPTIONS = (numberOfEngagements, percentagePeopleStaffed) => {
+  const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var thisMonth = new Date().toLocaleString('default', { month: 'short' });
+  const thisMonthIndex = allMonths.indexOf(thisMonth);
+  const newCategories = allMonths.slice(thisMonthIndex, 12).concat(allMonths.slice(0, thisMonthIndex));
   return {
     title: {
       text: 'Staffing Metrics',
     },
     xAxis: [
       {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: newCategories,
         crosshair: true,
       },
     ],

@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import PropTypes from 'prop-types';
 import HighchartsReact from 'highcharts-react-official';
 import OPTIONS from '../../constants/barChartOptions';
+require('highcharts/modules/exporting')(Highcharts);
 
 const BarChart = ({ numberOfEngagements, peopleStaffed }) => {
   // const people = [50, 60, 10, 24, 88, 12, 89, 78, 56, 90, 87, 23];
