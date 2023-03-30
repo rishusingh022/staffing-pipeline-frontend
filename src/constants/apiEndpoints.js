@@ -165,3 +165,7 @@ export const GET_USER_METRICS = {
   url: '/api/metrics/users',
   method: 'get',
 };
+export const GET_ENGAGEMENT_STATUS_MONTHLY = {
+  url: 'api/projects/projects-monthly',
+  method: 'post',
+};

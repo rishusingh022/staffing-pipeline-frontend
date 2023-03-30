@@ -95,7 +95,11 @@ const DashboardPage = () => {
               People staffed : {staffingPercentage} %
             </div>
             <div className="main-chart">
-              <BarChart numberOfEngagements={numberOfEngagements} peopleStaffed={numberOfPeopleStaffed} />
+              <BarChart
+                numberOfEngagements={numberOfEngagements}
+                peopleStaffed={numberOfPeopleStaffed}
+                setEngagementStatusData={setEngagementStatusData}
+              />
             </div>
           </div>
           <div className="side-chart1">
