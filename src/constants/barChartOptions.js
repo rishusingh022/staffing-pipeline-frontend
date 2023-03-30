@@ -5,6 +5,9 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed) => {
   const thisMonthIndex = allMonths.indexOf(thisMonth);
   const newCategories = allMonths.slice(thisMonthIndex, 12).concat(allMonths.slice(0, thisMonthIndex));
   return {
+    chart: {
+      height: 650,
+    },
     title: {
       text: 'Staffing Metrics',
     },
@@ -40,10 +43,10 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed) => {
     },
     legend: {
       layout: 'vertical',
-      align: 'left',
-      x: 80,
+      align: 'right',
+      x: -80,
       verticalAlign: 'top',
-      y: 55,
+      y: -10,
       floating: true,
       backgroundColor: 'rgba(255,255,255,0.25)',
     },

@@ -8,7 +8,7 @@ require('highcharts/modules/exporting')(Highcharts);
 const BarChart = ({ numberOfEngagements, peopleStaffed }) => {
   // const people = [50, 60, 10, 24, 88, 12, 89, 78, 56, 90, 87, 23];
   return (
-    <div className="self-center w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center">
       <div className="w-full">
         <HighchartsReact highcharts={Highcharts} options={OPTIONS(numberOfEngagements, peopleStaffed)} />
       </div>

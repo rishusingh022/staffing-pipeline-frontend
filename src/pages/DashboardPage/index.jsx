@@ -13,6 +13,7 @@ import {
   GET_USERS_STAFFING_METRICS,
 } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
+import applyTheme from '../../utils/chartsTheme';
 
 const DashboardPage = () => {
   const [engagementStatusData, setEngagementStatusData] = React.useState([{}]);
@@ -23,6 +24,7 @@ const DashboardPage = () => {
   React.useEffect(() => {
     makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
       setStaffedData(response);
+      applyTheme();
     });
   }, []);
 
