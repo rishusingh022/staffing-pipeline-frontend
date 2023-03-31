@@ -13,6 +13,9 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStat
     title: {
       text: 'Staffing Metrics',
     },
+    credits: {
+      enabled: false,
+    },
     xAxis: [
       {
         categories: newCategories,
@@ -104,7 +107,6 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStat
         type: 'spline',
         yAxis: 2,
         data: percentagePeopleStaffed,
-        // data: percentagePeopleStaffed,
         tooltip: {
           valueSuffix: ' %',
         },

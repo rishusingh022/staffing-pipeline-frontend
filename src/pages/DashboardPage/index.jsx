@@ -103,9 +103,11 @@ const DashboardPage = () => {
             </div>
           </div>
           <div className="side-chart1">
+            <p className="pie-chart-title">Staffing Status</p>
             <PieChart data={userStatusData} name={'User Status'} />
           </div>
           <div className="side-chart2">
+            <p className="pie-chart-title">Engagement Status</p>
             <PieChart data={engagementStatusData} name={'Engagement Status'} />
           </div>
         </div>

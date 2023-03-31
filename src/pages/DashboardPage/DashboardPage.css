@@ -52,3 +52,9 @@
   font-size: 0.9rem;
   color: gray;
 }
+
+.pie-chart-title{
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 20px;
+}

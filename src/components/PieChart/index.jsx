@@ -8,21 +8,17 @@ HC_more(Highcharts);
 import exportingModule from 'highcharts/modules/exporting';
 exportingModule(Highcharts);
 
-// eslint-disable-next-line react/prop-types
+// eslint-disable-next-line react/prop-types, no-unused-vars
 const PieChart = ({ data, name }) => {
   const chartComponent = useRef(null);
-  // const printChartAsImage = () => {
-  //   // chart to image
-  //   const chart = chartComponent.current.chart;
-  //   console.log(chart.getSVG());
-  // };
 
   const options = {
     chart: {
       type: 'pie',
+      marginTop: 50,
     },
     title: {
-      text: name,
+      text: undefined,
     },
     series: [
       {
@@ -37,7 +33,6 @@ const PieChart = ({ data, name }) => {
 
   return (
     <div>
-      {/* <button onClick={printChartAsImage}>Download</button> */}
       <div id="element-to-print">
         <HighchartsReact highcharts={Highcharts} options={options} ref={chartComponent} />
       </div>
