@@ -1,8 +1,8 @@
 const colorPallete = {
   dataVisualisation: [
     '#2B5580',
-    '#75F0E6',
-    '#6ECBF7',
+    '#20E9D9',
+    '#33B4F3',
     '#FECD75',
     '#ED97EC',
     '#F17E7E',

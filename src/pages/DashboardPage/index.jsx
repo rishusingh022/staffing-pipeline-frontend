@@ -59,7 +59,7 @@ const DashboardPage = () => {
 
   const navigate = useNavigate();
   const { userInfo } = React.useContext(FeatureContext);
-  if (!userInfo?.featureAccess.includes(allFeatures.read_metrics)) navigate('/casestudies');
+  if (!userInfo?.featureAccess?.includes(allFeatures.read_metrics)) navigate('/casestudies');
 
   const [numberOfEngagements, setNumberofEngagements] = React.useState([]);
   const [numberOfPeopleStaffed, setNumberofPeopleStaffed] = React.useState([]);

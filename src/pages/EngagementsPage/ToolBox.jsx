@@ -40,7 +40,7 @@ function ToolBox({
         <Dropdown dropdownName={'Time Frame'} dropdownData={timeFrameOptions} selectOption={selectTimeFrameOption} />
         <Dropdown dropdownName={'Guilds'} dropdownData={guildOptions} selectOption={selectGuildOption} />
         <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
-        {userInfo?.featureAccess.includes(allFeatures.create_engagement) && (
+        {userInfo?.featureAccess?.includes(allFeatures.create_engagement) && (
           <Button buttonText={'Add new engagement'} handleClick={handleAddNewEngagement} />
         )}
       </div>

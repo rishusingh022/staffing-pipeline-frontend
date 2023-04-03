@@ -31,7 +31,7 @@ function EngagementHorizontalCard({
       <div className="engagement-details">
         {/* <p className="engagement-id">{engagementId}</p> */}
         <p className="engagement-title">{engagementTitle}</p>
-        {userInfo?.featureAccess.includes(allFeatures.read_engagement) && (
+        {userInfo?.featureAccess?.includes(allFeatures.read_engagement) && (
           <div className="engagement-bottom-btn" onClick={knowMore ? handleViewMore : handleSelect}>
             {knowMore ? (
               <div className="hover:text-blue-800">

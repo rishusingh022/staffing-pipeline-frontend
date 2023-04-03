@@ -70,7 +70,7 @@ export default function EngagementDetails({ engagementDetails }) {
           <div className="project-details">
             <div className="project-name-update">
               <p className="project-text">{engagementDetails?.projectData?.name}</p>
-              {userInfo?.featureAccess.includes(allFeatures.edit_engagement) && (
+              {userInfo?.featureAccess?.includes(allFeatures.edit_engagement) && (
                 <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} />
               )}
             </div>

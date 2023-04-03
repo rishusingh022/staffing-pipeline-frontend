@@ -38,7 +38,7 @@ export default function Header({ hasNav }) {
       <div className="h-full  flex box-border">
         {hasNav && (
           <div className="grid grid-cols-4 gap-10 items-end">
-            {userInfo?.featureAccess.includes(allFeatures.read_engagement) && (
+            {userInfo?.featureAccess?.includes(allFeatures.read_engagement) && (
               <button
                 className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(PROJECTS_ROUTE)}>
@@ -55,14 +55,14 @@ export default function Header({ hasNav }) {
               onClick={() => navigate(CASE_STUDIES_ROUTE)}>
               Case Studies
             </button>
-            {userInfo?.featureAccess.includes(allFeatures.upload_excel) && (
+            {userInfo?.featureAccess?.includes(allFeatures.upload_excel) && (
               <button
                 className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>
                 Upload Excel
               </button>
             )}
-            {userInfo?.featureAccess.includes(allFeatures.read_metrics) && (
+            {userInfo?.featureAccess?.includes(allFeatures.read_metrics) && (
               <button
                 className={location === DASHBOARD_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(DASHBOARD_ROUTE)}>

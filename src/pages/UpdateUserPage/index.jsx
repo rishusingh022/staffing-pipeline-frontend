@@ -33,7 +33,7 @@ const UpdateUserPage = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
   // const [uploadedUserImage, setUploadedUserImage] = useState('');
 
-  if (userInfo?.featureAccess.includes(allFeatures.edit_user) || userInfo?.userId !== userId)
+  if (!userInfo?.featureAccess?.includes(allFeatures.edit_user) && userInfo?.userId !== userId)
     navigate(`/users/${userId}`);
 
   // state for placeholder
@@ -166,7 +166,7 @@ const UpdateUserPage = () => {
               onChange={e => {
                 setCurrentFmno(e.target.value);
               }}
-              disabled={!userInfo?.featureAccess.includes(allFeatures.edit_user)}
+              disabled={!userInfo?.featureAccess?.includes(allFeatures.edit_user)}
             />
             <input
               className="user-input"
@@ -177,7 +177,7 @@ const UpdateUserPage = () => {
               onChange={e => {
                 setCurrentName(e.target.value);
               }}
-              disabled={!userInfo?.featureAccess.includes(allFeatures.edit_user)}
+              disabled={!userInfo?.featureAccess?.includes(allFeatures.edit_user)}
             />
             <input
               className="user-input"
@@ -188,7 +188,7 @@ const UpdateUserPage = () => {
               onChange={e => {
                 setCurrentEmail(e.target.value);
               }}
-              disabled={!userInfo?.featureAccess.includes(allFeatures.edit_user)}
+              disabled={!userInfo?.featureAccess?.includes(allFeatures.edit_user)}
             />
             <div className="user-details-personal-dropdown ">
               <DropDown dropdownName="Bengaluru" dropdownData={[]} selectOption={console.log} />

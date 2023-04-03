@@ -49,7 +49,7 @@ const PeopleDetailsPage = () => {
         <div className="user-personal-card">
           <div className="user-image-container">
             <img src={userDetails?.userData?.image} className="user-image"></img>
-            {(userInfo?.featureAccess.includes(allFeatures.edit_user) || userInfo?.userId === userId) && (
+            {(userInfo?.featureAccess?.includes(allFeatures.edit_user) || userInfo?.userId === userId) && (
               <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
             )}
           </div>

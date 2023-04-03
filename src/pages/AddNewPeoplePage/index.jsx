@@ -34,7 +34,7 @@ function AddNewPeoplePage() {
   const [uploadingImage, setUploadingImage] = React.useState(false);
 
   useEffect(() => {
-    if (!userInfo?.featureAccess.includes('create_user')) navigate('/users');
+    if (!userInfo?.featureAccess?.includes('create_user')) navigate('/users');
   }, [navigate, userInfo]);
 
   const handleImageChange = async e => {

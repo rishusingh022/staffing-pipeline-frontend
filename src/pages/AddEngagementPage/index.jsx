@@ -36,8 +36,8 @@ export default function AddEngagementPage() {
   const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
-    if (!userInfo?.featureAccess.includes(allFeatures.create_engagement)) {
-      if (userInfo?.featureAccess.includes(allFeatures.read_engagement)) navigate('/projects');
+    if (!userInfo?.featureAccess?.includes(allFeatures.create_engagement)) {
+      if (userInfo?.featureAccess?.includes(allFeatures.read_engagement)) navigate('/projects');
     } else {
       navigate('/users');
     }

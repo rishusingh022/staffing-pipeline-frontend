@@ -48,7 +48,7 @@ function ToolBox({
           selectOption={selectCollaboratorOption}
         />
         <Dropdown dropdownName={'Study'} dropdownData={studyOptions} selectOption={selectStudyOption} />
-        {userInfo?.featureAccess.includes(allFeatures.create_case_study) && (
+        {userInfo?.featureAccess?.includes(allFeatures.create_case_study) && (
           <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />
         )}
       </div>

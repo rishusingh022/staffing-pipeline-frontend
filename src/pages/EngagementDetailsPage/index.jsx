@@ -17,7 +17,7 @@ const EngagementDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  if (!userInfo?.featureAccess.includes(allFeatures.read_engagement)) navigate('/users');
+  if (!userInfo?.featureAccess?.includes(allFeatures.read_engagement)) navigate('/users');
 
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate)

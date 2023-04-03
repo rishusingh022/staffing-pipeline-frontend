@@ -51,10 +51,10 @@ const EngagementsPage = () => {
     setTimeFrameSelected(option);
   };
 
-  if (!userInfo?.featureAccess.includes(allFeatures.read_engagement)) navigate('/users');
+  if (!userInfo?.featureAccess?.includes(allFeatures.read_engagement)) navigate('/users');
 
   const fetchEngagementData = () => {
-    makeRequest(GET_ENGAGEMENT_DATA_URL, {}, ()=>{})
+    makeRequest(GET_ENGAGEMENT_DATA_URL, {}, () => {})
       .then(response => {
         console.log(response);
         response = convertStartDate(response);

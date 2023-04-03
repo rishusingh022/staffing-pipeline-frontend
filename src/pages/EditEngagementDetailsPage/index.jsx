@@ -53,7 +53,7 @@ export default function EditEngagementDetailsPage() {
   const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
-    if (!userInfo?.featureAccess.includes(allFeatures.edit_engagement)) navigate(`/projects/${projectId}`);
+    if (!userInfo?.featureAccess?.includes(allFeatures.edit_engagement)) navigate(`/projects/${projectId}`);
   }, [userInfo, navigate, projectId]);
 
   const handleImageChange = async e => {

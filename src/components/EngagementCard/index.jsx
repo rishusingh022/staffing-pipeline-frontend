@@ -25,7 +25,7 @@ export default function EngagementCard({ imageUrl, altText, identityNumber, name
           {status ? capitalizeFirstLetter(status) : 'Status'}
         </div>
       </div>
-      {userInfo?.featureAccess.includes(allFeatures.read_engagement) && (
+      {userInfo?.featureAccess?.includes(allFeatures.read_engagement) && (
         <div
           className="link-button self-end text-xs mb-2 font-medium cursor-pointer hover:text-blue-800"
           onClick={() => {

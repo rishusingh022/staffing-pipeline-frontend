@@ -12,7 +12,7 @@ import allFeatures from '../../constants/allFeatures';
 function UploadExcelPage() {
   const navigate = useNavigate();
   const { userInfo } = React.useContext(FeatureContext);
-  if (!userInfo?.featureAccess.includes(allFeatures.upload_excel)) navigate('/casestudies');
+  if (!userInfo?.featureAccess?.includes(allFeatures.upload_excel)) navigate('/casestudies');
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
   const [error, setError] = React.useState('');
