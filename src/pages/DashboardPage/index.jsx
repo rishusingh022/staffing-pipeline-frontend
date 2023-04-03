@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import './DashboardPage.css';
 import { Header } from '../../components';
@@ -26,12 +25,6 @@ const DashboardPage = () => {
   const formatValue = value => value.toFixed(2);
 
   React.useEffect(() => {
-    makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
-      setStaffedData(response);
-    });
-  }, []);
-
-  React.useEffect(() => {
     makeRequest(GET_ENGAGEMENT_STATUS, {}, navigate).then(response => {
       const statusData = [
         { name: 'Ongoing', y: response['ongoing'] },
@@ -40,15 +33,15 @@ const DashboardPage = () => {
       ];
       setEngagementStatusData(statusData);
     });
-  }, []);
-
-  React.useEffect(() => {
     makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
       const statusData = [
         { name: 'Beach', y: response['unstaffedUsers'] },
         { name: 'Staffed', y: response['staffedUsers'] },
       ];
       setUserStatusData(statusData);
+    });
+    makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
+      setStaffedData(response);
     });
   }, []);
 
