@@ -10,13 +10,14 @@ import {
   USERS_ROUTE,
 } from '../../constants/routes';
 import logoImage from '../../assets/McK_Logo.png';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import { useOktaAuth } from '@okta/okta-react';
 import Button from '../Button';
+import allFeatures from '../../constants/allFeatures';
 export default function Header({ hasNav }) {
   const { oktaAuth } = useOktaAuth();
   const navigate = useNavigate();
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const location = window.location.pathname;
 
   const handleLogout = async () => {
@@ -37,7 +38,7 @@ export default function Header({ hasNav }) {
       <div className="h-full  flex box-border">
         {hasNav && (
           <div className="grid grid-cols-4 gap-10 items-end">
-            {(userInfo?.role === 'pd' || userInfo?.role === 'leadership') && (
+            {userInfo?.featureAccess.includes(allFeatures.read_engagement) && (
               <button
                 className={location === PROJECTS_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(PROJECTS_ROUTE)}>
@@ -54,14 +55,14 @@ export default function Header({ hasNav }) {
               onClick={() => navigate(CASE_STUDIES_ROUTE)}>
               Case Studies
             </button>
-            {userInfo?.role === 'pd' && (
+            {userInfo?.featureAccess.includes(allFeatures.upload_excel) && (
               <button
                 className={location === UPLOAD_EXCELL_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(UPLOAD_EXCELL_ROUTE)}>
                 Upload Excel
               </button>
             )}
-            {userInfo?.role === 'leadership' && (
+            {userInfo?.featureAccess.includes(allFeatures.read_metrics) && (
               <button
                 className={location === DASHBOARD_ROUTE ? activeClass : inactiveClass}
                 onClick={() => navigate(DASHBOARD_ROUTE)}>

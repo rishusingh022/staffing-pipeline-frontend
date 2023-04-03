@@ -9,12 +9,13 @@ import EngagementCard from '../../components/EngagementCard';
 import { GET_USER_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
 import { formatDate } from '../../utils/dateTime';
+import allFeatures from '../../constants/allFeatures';
 
 const PeopleDetailsPage = () => {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
   const [userData, setUserData] = useState({});
@@ -48,7 +49,7 @@ const PeopleDetailsPage = () => {
         <div className="user-personal-card">
           <div className="user-image-container">
             <img src={userDetails?.userData?.image} className="user-image"></img>
-            {(userInfo.role === 'pd' || userInfo?.userId === userId) && (
+            {(userInfo?.featureAccess.includes(allFeatures.edit_user) || userInfo?.userId === userId) && (
               <Button buttonText="Update Profile" handleClick={handleUpdateUser} />
             )}
           </div>

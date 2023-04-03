@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import './AddNewPeoplePage.css';
 import Header from '../../components/Header';
 import Image from '../../components/Image';
@@ -12,11 +12,11 @@ const { useNavigate } = require('react-router-dom');
 import { CREATE_USER_DATA_URL, ADD_USER_SKILL_ROUTE, UPLOAD_USER_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { role } from '../../mocks/DropDownOptions';
 import SearchAndAdd from '../../components/SearchAndAdd';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import PageLoader from '../../components/Spinner';
 
 function AddNewPeoplePage() {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = React.useState('skills');
   const [fmno, setFmno] = React.useState('');
@@ -33,7 +33,9 @@ function AddNewPeoplePage() {
   const [imageNotification, setImageNotification] = React.useState(false);
   const [uploadingImage, setUploadingImage] = React.useState(false);
 
-  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
+  useEffect(() => {
+    if (!userInfo?.featureAccess.includes('create_user')) navigate('/users');
+  }, [navigate, userInfo]);
 
   const handleImageChange = async e => {
     await handleUserImageUpload(e.target.files[0]);

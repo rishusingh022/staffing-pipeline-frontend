@@ -169,3 +169,8 @@ export const GET_ENGAGEMENT_STATUS_MONTHLY = {
   url: 'api/projects/projects-monthly',
   method: 'post',
 };
+
+export const UPDATE_SELF_USER_DATA_URL = id => ({
+  url: `api/self/users/${id}`,
+  method: 'put',
+});

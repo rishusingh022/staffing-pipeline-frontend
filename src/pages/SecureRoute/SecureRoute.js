@@ -7,7 +7,7 @@ import axios from 'axios';
 import Spinner from '../../components/Spinner';
 import makeRequest from '../../utils/makeRequest';
 import { GET_USER_ROLE_URL } from '../../constants/apiEndpoints';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 export default function SecureRoute() {
   // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function SecureRoute() {
 
   axios.defaults.headers.common['Authorization'] = authState?.accessToken?.accessToken;
 
-  const { setUserInfo } = React.useContext(RoleContext);
+  const { setUserInfo } = React.useContext(FeatureContext);
 
   useEffect(() => {
     if (authState?.isAuthenticated === false) {
@@ -29,6 +29,7 @@ export default function SecureRoute() {
       makeRequest(GET_USER_ROLE_URL, {}, navigate).then(data => {
         setLoading(false);
         setUserInfo(data);
+        console.log('data', data);
       });
     }
   }, [oktaAuth, authState?.isAuthenticated]);

@@ -25,11 +25,12 @@ import { statusOptions } from '../../mocks/DropDownOptions';
 import parseDate from '../../utils/common/parseDate';
 import Notification from '../../components/Notification';
 import SearchAndAdd from '../../components/SearchAndAdd';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
+import allFeatures from '../../constants/allFeatures';
 
 export default function EditEngagementDetailsPage() {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const navigate = useNavigate();
   const { projectId } = useParams();
   const [engagementDetails, setEngagementDetails] = useState({});
@@ -51,7 +52,9 @@ export default function EditEngagementDetailsPage() {
   const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  if (userInfo?.role !== 'pd' || userInfo?.role !== 'leadership') navigate('/users');
+  useEffect(() => {
+    if (!userInfo?.featureAccess.includes(allFeatures.edit_engagement)) navigate(`/projects/${projectId}`);
+  }, [userInfo, navigate, projectId]);
 
   const handleImageChange = async e => {
     await uploadImage(e.target.files[0]);

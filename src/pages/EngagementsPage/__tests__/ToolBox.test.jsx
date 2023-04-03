@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { RoleProvider } from '../../../context/RoleContext';
+import { FeatureProvider } from '../../../context/FeatureContext';
 
 import ToolBox from '../ToolBox';
 
 describe('ToolBox', () => {
   it('renders ToolBox component', () => {
     render(
-      <RoleProvider>
+      <FeatureProvider>
         <ToolBox />
-      </RoleProvider>
+      </FeatureProvider>
     );
     expect(screen.getByText('Time Frame')).toBeTruthy();
     expect(screen.getByText('Guilds')).toBeTruthy();
@@ -17,17 +17,17 @@ describe('ToolBox', () => {
   });
   it('renders ToolBox component with search button', () => {
     render(
-      <RoleProvider>
+      <FeatureProvider>
         <ToolBox />
-      </RoleProvider>
+      </FeatureProvider>
     );
     expect(screen.getByText('Search')).toBeTruthy();
   });
   it('should show Time Frame drop down options when time frame drop down is clicked', () => {
     render(
-      <RoleProvider>
+      <FeatureProvider>
         <ToolBox />
-      </RoleProvider>
+      </FeatureProvider>
     );
     const timeFrame = screen.getByText('Time Frame');
     timeFrame.click();
@@ -37,18 +37,18 @@ describe('ToolBox', () => {
   });
   it('should show Guilds drop down options when Guilds drop down is clicked', () => {
     render(
-      <RoleProvider>
+      <FeatureProvider>
         <ToolBox />
-      </RoleProvider>
+      </FeatureProvider>
     );
     const guilds = screen.getByText('Guilds');
     guilds.click();
   });
   it('should show Technology drop down options when Technology drop down is clicked', () => {
     render(
-      <RoleProvider>
+      <FeatureProvider>
         <ToolBox />
-      </RoleProvider>
+      </FeatureProvider>
     );
     const technology = screen.getByText('Technology');
     technology.click();

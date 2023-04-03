@@ -1,7 +1,7 @@
 import React from 'react';
 import PeopleDetailsPage from '..';
 import { waitFor, render } from '@testing-library/react';
-import { RoleProvider } from '../../../context/RoleContext';
+import { FeatureProvider } from '../../../context/FeatureContext';
 import makeRequest from '../../../utils/makeRequest/';
 import { default as mockUserData } from '../../../mocks/PeopleDetailsPage';
 
@@ -20,9 +20,9 @@ describe('PeopleDetailsPage', () => {
     mockUseParams.mockReturnValue({ userId: mockUserData.userId });
     makeRequest.mockResolvedValue({});
     render(
-      <RoleProvider>
+      <FeatureProvider>
         <PeopleDetailsPage />
-      </RoleProvider>
+      </FeatureProvider>
     );
     await waitFor(() => expect(makeRequest).toHaveBeenCalledTimes(1));
   });

@@ -4,7 +4,7 @@ import './DashboardPage.css';
 import { Header } from '../../components';
 import BarChart from '../../components/BarChart';
 import PieChart from '../../components/PieChart';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import makeRequest from '../../utils/makeRequest';
 import {
   GET_PROJECTS_METRICS,
@@ -14,6 +14,7 @@ import {
 } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import applyTheme from '../../utils/chartsTheme';
+import allFeatures from '../../constants/allFeatures';
 import AnimatedNumber from 'animated-number-react';
 
 const DashboardPage = () => {
@@ -57,14 +58,14 @@ const DashboardPage = () => {
   }, [staffedData]);
 
   const navigate = useNavigate();
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
+  if (!userInfo?.featureAccess.includes(allFeatures.read_metrics)) navigate('/casestudies');
 
   const [numberOfEngagements, setNumberofEngagements] = React.useState([]);
   const [numberOfPeopleStaffed, setNumberofPeopleStaffed] = React.useState([]);
   const [error, setError] = React.useState(null);
   React.useEffect(() => {
-    if (userInfo?.role !== 'leadership') navigate('/users');
-    makeRequest(GET_PROJECTS_METRICS, {}, navigate)
+    makeRequest(GET_PROJECTS_METRICS, {}, () => {})
       .then(response => {
         setNumberofEngagements(response);
       })
@@ -74,8 +75,7 @@ const DashboardPage = () => {
       });
   }, []);
   React.useEffect(() => {
-    if (userInfo?.role !== 'leadership') navigate('/users');
-    makeRequest(GET_USER_METRICS, {}, navigate)
+    makeRequest(GET_USER_METRICS, {}, () => {})
       .then(response => {
         setNumberofPeopleStaffed(response);
       })

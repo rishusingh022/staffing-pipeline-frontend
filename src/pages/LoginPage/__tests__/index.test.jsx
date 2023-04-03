@@ -2,7 +2,7 @@ import React from 'react';
 import LoginPage from '..';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { RoleProvider } from '../../../context/RoleContext';
+import { FeatureProvider } from '../../../context/FeatureContext';
 
 jest.mock('@okta/okta-react', () => ({
   useOktaAuth: () => ({
@@ -15,9 +15,9 @@ describe('LoginPage Snapshot', () => {
   it('should render', () => {
     const { asFragment } = render(
       <BrowserRouter>
-        <RoleProvider>
+        <FeatureProvider>
           <LoginPage />
-        </RoleProvider>
+        </FeatureProvider>
       </BrowserRouter>
     );
     expect(asFragment()).toMatchSnapshot();

@@ -6,6 +6,8 @@ import { timeFrameOptions } from '../../mocks/DropDownOptions';
 import Button from '../../components/Button';
 import PropTypes from 'prop-types';
 import CaseStudyModal from '../../components/CaseStudyModal';
+import { FeatureContext } from '../../context/FeatureContext';
+import allFeatures from '../../constants/allFeatures';
 function ToolBox({
   handleSearchChange,
   handleCollaboratorChange,
@@ -30,6 +32,8 @@ function ToolBox({
   const uploadExcel = () => {
     setIsOpen(true);
   };
+  const { userInfo } = React.useContext(FeatureContext);
+
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="case-study-page-filter-container">
@@ -44,7 +48,9 @@ function ToolBox({
           selectOption={selectCollaboratorOption}
         />
         <Dropdown dropdownName={'Study'} dropdownData={studyOptions} selectOption={selectStudyOption} />
-        <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />
+        {userInfo?.featureAccess.includes(allFeatures.create_case_study) && (
+          <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />
+        )}
       </div>
       {isOpen && <CaseStudyModal setIsOpen={setIsOpen} />}
     </div>

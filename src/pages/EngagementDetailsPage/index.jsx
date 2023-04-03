@@ -7,16 +7,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { GET_ENGAGEMENT_DATA_BY_ID_URL } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
+import allFeatures from '../../constants/allFeatures';
 
 const EngagementDetailsPage = () => {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const { projectId } = useParams();
   const [engagementDetails, setEngagementDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
+  if (!userInfo?.featureAccess.includes(allFeatures.read_engagement)) navigate('/users');
 
   useEffect(() => {
     makeRequest(GET_ENGAGEMENT_DATA_BY_ID_URL(projectId), {}, navigate)

@@ -16,8 +16,10 @@ import { formatDate } from '../../utils/dateTime';
 import { GET_USERS_INVOLVED_IN_ENGAGEMENT, CURRENT_USER_IN_ENGAGEMENTS } from '../../constants/apiEndpoints';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
 import makeRequest from '../../utils/makeRequest';
-
+import allFeatures from '../../constants/allFeatures';
+import { FeatureContext } from '../../context/FeatureContext';
 export default function EngagementDetails({ engagementDetails }) {
+  const { userInfo } = React.useContext(FeatureContext);
   const engagementId = engagementDetails.projectData.engagementId;
   const [isOpen, setIsOpen] = useState(false);
   const [currentUsers, setCurrentUsers] = useState([]);
@@ -68,7 +70,9 @@ export default function EngagementDetails({ engagementDetails }) {
           <div className="project-details">
             <div className="project-name-update">
               <p className="project-text">{engagementDetails?.projectData?.name}</p>
-              <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} />
+              {userInfo?.featureAccess.includes(allFeatures.edit_engagement) && (
+                <Button buttonText={'Update Project'} handleClick={() => navigate('edit')} />
+              )}
             </div>
 
             <div className="id-container">

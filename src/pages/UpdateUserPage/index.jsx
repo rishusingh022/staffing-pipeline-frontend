@@ -13,14 +13,16 @@ import {
   UPLOAD_USER_IMAGE_ROUTE,
   UPDATE_USER_DATA_URL,
   ADD_USER_SKILL_ROUTE,
+  GET_USER_SKILL_ROUTE,
+  UPDATE_SELF_USER_DATA_URL,
 } from '../../constants/apiEndpoints';
-import { GET_USER_SKILL_ROUTE } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import PageLoader from '../../components/Spinner';
+import allFeatures from '../../constants/allFeatures';
 
 const UpdateUserPage = () => {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState({});
   const navigate = useNavigate();
@@ -31,7 +33,8 @@ const UpdateUserPage = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
   // const [uploadedUserImage, setUploadedUserImage] = useState('');
 
-  if (userInfo?.role !== 'pd' && userInfo?.userId !== userId) navigate(`/users/${userId}`);
+  if (userInfo?.featureAccess.includes(allFeatures.edit_user) || userInfo?.userId !== userId)
+    navigate(`/users/${userId}`);
 
   // state for placeholder
   const [currentFmno, setCurrentFmno] = useState('');
@@ -98,6 +101,15 @@ const UpdateUserPage = () => {
     handleClick();
   };
   const handleClick = () => {
+    if (userInfo?.userId === userId) {
+      makeRequest(UPDATE_SELF_USER_DATA_URL(userId), { data: { image: currentImage } }, navigate).then(() => {
+        setHandleNotification(true);
+        setTimeout(() => {
+          navigate(`/users/${userId}`);
+        }, 1000);
+      });
+      return;
+    }
     const updatedUser = {
       fmno: currentFmno,
       name: currentName,
@@ -144,7 +156,6 @@ const UpdateUserPage = () => {
               Update profile
             </button>
           </div>
-
           <div className="user-details-personal">
             <input
               className="user-input"
@@ -155,6 +166,7 @@ const UpdateUserPage = () => {
               onChange={e => {
                 setCurrentFmno(e.target.value);
               }}
+              disabled={!userInfo?.featureAccess.includes(allFeatures.edit_user)}
             />
             <input
               className="user-input"
@@ -165,6 +177,7 @@ const UpdateUserPage = () => {
               onChange={e => {
                 setCurrentName(e.target.value);
               }}
+              disabled={!userInfo?.featureAccess.includes(allFeatures.edit_user)}
             />
             <input
               className="user-input"
@@ -175,9 +188,10 @@ const UpdateUserPage = () => {
               onChange={e => {
                 setCurrentEmail(e.target.value);
               }}
+              disabled={!userInfo?.featureAccess.includes(allFeatures.edit_user)}
             />
-            <div className="user-details-personal-dropdown">
-              <DropDown dropdownName="Bengaluru" dropdownData={['Bengaluru', 'Gurgaon']} selectOption={console.log} />
+            <div className="user-details-personal-dropdown ">
+              <DropDown dropdownName="Bengaluru" dropdownData={[]} selectOption={console.log} />
             </div>
           </div>
         </div>

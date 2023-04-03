@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import Header from '..';
-import { RoleProvider } from '../../../context/RoleContext';
+import { FeatureProvider } from '../../../context/FeatureContext';
 
 jest.mock('@okta/okta-react', () => ({
   useOktaAuth: () => ({
@@ -20,17 +20,17 @@ jest.mock('react-router-dom', () => ({
 describe('Header', () => {
   it('should render correctly with a navbar when Navbar boolean is true', () => {
     const { asFragment } = render(
-      <RoleProvider>
+      <FeatureProvider>
         <Header {...{ hasNav: true }} />
-      </RoleProvider>
+      </FeatureProvider>
     );
     expect(asFragment()).toMatchSnapshot();
   });
   it('should render correctly without a navbar when Navbar boolean is false', () => {
     const { asFragment } = render(
-      <RoleProvider>
+      <FeatureProvider>
         <Header {...{ hasNav: true }} />
-      </RoleProvider>
+      </FeatureProvider>
     );
     expect(asFragment()).toMatchSnapshot();
   });

@@ -16,7 +16,7 @@ import AddNewPeoplePage from './pages/AddNewPeoplePage';
 import AddEngagementPage from './pages/AddEngagementPage';
 import UploadExcelPage from './pages/UploadExcelPage';
 // import ProtectedRoute from './utils/ProtectedRoute';
-import { RoleProvider } from './context/RoleContext';
+import { FeatureProvider } from './context/FeatureContext';
 import LoginCallbackPage from './pages/OktaLoginPage/LoginCallbackPage';
 import DashboardPage from './pages/DashboardPage';
 
@@ -58,18 +58,17 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-          <RoleProvider>
+          <FeatureProvider>
             <Routes>
               <Route path={LOGIN_ROUTE} element={<Login />} />
               <Route exact path="/" element={<SecureRoute />}>
                 <Route path={CASE_STUDIES_ROUTE} element={<CaseStudiesPage />} />
-                <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />\
-                <Route path={ADD_USER_ROUTE} element={<AddNewPeoplePage />} />
+                <Route path={USERS_ROUTE} element={<PeoplePage />} />
                 <Route path={PROJECTS_ROUTE} element={<EngagementsPage />} />
+                <Route path={ADD_USER_ROUTE} element={<AddNewPeoplePage />} />
                 <Route path={ADD_PROJECT_ROUTE} element={<AddEngagementPage />} />
                 <Route path={PROJECT_DETAILS_ROUTE} element={<EngagementDetailsPage />} />
                 <Route path={PROJECT_DETAILS_EDIT_ROUTE} element={<EditEngagementDetailsPage />} />
-                <Route path={USERS_ROUTE} element={<PeoplePage />} />
                 <Route path={USER_DETAILS_ROUTE} element={<PeopleDetailsPage />} />
                 <Route path={UPDATE_USER_ROUTE} element={<UpdateUserPage />} />
                 <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
@@ -80,7 +79,7 @@ function App() {
               </Route>
               <Route path="/login/callback" element={<LoginCallbackPage />} />
             </Routes>
-          </RoleProvider>
+          </FeatureProvider>
         </Security>
       </BrowserRouter>
     </div>

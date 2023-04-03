@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from '../Image';
 import './EngagementCard.css';
 import { BsArrowRight } from 'react-icons/bs';
@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import DefaultImage from '../../assets/images/engagement-default.png';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
+import { FeatureContext } from '../../context/FeatureContext';
+import allFeatures from '../../constants/allFeatures';
 
 export default function EngagementCard({ imageUrl, altText, identityNumber, name, startDate, status }) {
   const navigate = useNavigate();
+  const { userInfo } = useContext(FeatureContext);
   return (
     <div className="bg-white shadow-lg flex flex-col w-56 engagement-card-style" data-testid="image-card">
       <Image imageUrl={imageUrl ? imageUrl : DefaultImage} altText={altText} />
@@ -22,12 +25,16 @@ export default function EngagementCard({ imageUrl, altText, identityNumber, name
           {status ? capitalizeFirstLetter(status) : 'Status'}
         </div>
       </div>
-      <div
-        className="link-button self-end text-xs mb-2 font-medium cursor-pointer hover:text-blue-800"
-        onClick={() => navigate(`/projects/${identityNumber}`)}>
-        Read More
-        <BsArrowRight className="inline-block mx-2" />
-      </div>
+      {userInfo?.featureAccess.includes(allFeatures.read_engagement) && (
+        <div
+          className="link-button self-end text-xs mb-2 font-medium cursor-pointer hover:text-blue-800"
+          onClick={() => {
+            navigate(`/projects/${identityNumber}`);
+          }}>
+          Read More
+          <BsArrowRight className="inline-block mx-2" />
+        </div>
+      )}
     </div>
   );
 }

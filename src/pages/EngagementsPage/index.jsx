@@ -15,11 +15,12 @@ import {
   extractGuildFromEngagement,
 } from '../../utils/common/engagement';
 import { timeFilterUtil } from '../../utils/common/timeFilter';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import PaginationControl from '../../components/PaginationControl';
+import allFeatures from '../../constants/allFeatures';
 
 const EngagementsPage = () => {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const navigate = useNavigate();
   let [projects, setProjects] = React.useState([]);
   const [error, setError] = React.useState(null);
@@ -50,10 +51,10 @@ const EngagementsPage = () => {
     setTimeFrameSelected(option);
   };
 
-  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
+  if (!userInfo?.featureAccess.includes(allFeatures.read_engagement)) navigate('/users');
 
   const fetchEngagementData = () => {
-    makeRequest(GET_ENGAGEMENT_DATA_URL, {}, navigate)
+    makeRequest(GET_ENGAGEMENT_DATA_URL, {}, ()=>{})
       .then(response => {
         console.log(response);
         response = convertStartDate(response);

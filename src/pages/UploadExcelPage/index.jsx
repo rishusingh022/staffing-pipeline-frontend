@@ -5,13 +5,14 @@ import PageLoader from '../../components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import makeRequest from '../../utils/makeRequest';
 import { UPLOAD_EXCEL_ROUTE } from '../../constants/apiEndpoints';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import Notification from '../../components/Notification';
+import allFeatures from '../../constants/allFeatures';
 
 function UploadExcelPage() {
   const navigate = useNavigate();
-  const { userInfo } = React.useContext(RoleContext);
-  if (userInfo?.role !== 'pd') navigate('/users');
+  const { userInfo } = React.useContext(FeatureContext);
+  if (!userInfo?.featureAccess.includes(allFeatures.upload_excel)) navigate('/casestudies');
   const [isLoading] = React.useState(false);
   const [file, setFile] = React.useState(null);
   const [error, setError] = React.useState('');

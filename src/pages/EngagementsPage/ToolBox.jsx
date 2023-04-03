@@ -5,6 +5,8 @@ import { Search } from '../../components';
 import Button from '../../components/Button';
 import PropTypes from 'prop-types';
 import { timeFrameOptions } from '../../mocks/DropDownOptions';
+import { FeatureContext } from '../../context/FeatureContext';
+import allFeatures from '../../constants/allFeatures';
 function ToolBox({
   guildOptions,
   technologyOptions,
@@ -26,6 +28,7 @@ function ToolBox({
   const selectTimeFrameOption = option => {
     handleTimeFrameChange(option);
   };
+  const { userInfo } = React.useContext(FeatureContext);
   return (
     <div className="filter-container">
       <div className="fiter-search-box">
@@ -37,7 +40,9 @@ function ToolBox({
         <Dropdown dropdownName={'Time Frame'} dropdownData={timeFrameOptions} selectOption={selectTimeFrameOption} />
         <Dropdown dropdownName={'Guilds'} dropdownData={guildOptions} selectOption={selectGuildOption} />
         <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
-        <Button buttonText={'Add new engagement'} handleClick={handleAddNewEngagement} />
+        {userInfo?.featureAccess.includes(allFeatures.create_engagement) && (
+          <Button buttonText={'Add new engagement'} handleClick={handleAddNewEngagement} />
+        )}
       </div>
     </div>
   );

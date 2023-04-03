@@ -14,12 +14,10 @@ import {
   extractCollaboratorsFromCaseStudies,
   extractEngagementNameFromCaseStudies,
 } from '../../utils/common/case-studies';
-import { RoleContext } from '../../context/RoleContext';
 import PaginationControl from '../../components/PaginationControl';
 import Count from '../../components/Count';
 
 export default function CaseStudiesPage() {
-  const { userInfo } = React.useContext(RoleContext);
   const navigate = useNavigate();
   let [caseStudies, setCaseStudies] = React.useState([]);
   const [error, setError] = React.useState(null);

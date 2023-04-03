@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import Image from '../../components/Image';
 import EngagementDefault from '../../assets/images/engagement-default.png';
@@ -12,13 +12,14 @@ import makeRequest from '../../utils/makeRequest';
 import { CREATE_ENGAGEMENT_DATA_URL, UPLOAD_ENGAGEMENT_IMAGE_ROUTE } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import Notification from '../../components/Notification';
-import { RoleContext } from '../../context/RoleContext';
+import { FeatureContext } from '../../context/FeatureContext';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import TechStack from '../../components/TechStack';
 import PageLoader from '../../components/Spinner';
+import allFeatures from '../../constants/allFeatures';
 
 export default function AddEngagementPage() {
-  const { userInfo } = React.useContext(RoleContext);
+  const { userInfo } = React.useContext(FeatureContext);
   const navigate = useNavigate();
   const [projectName, setProjectName] = useState();
   const [startDate, setStartDate] = useState();
@@ -34,7 +35,13 @@ export default function AddEngagementPage() {
   const [fieldError, setFieldError] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  if (userInfo?.role !== 'pd' && userInfo?.role !== 'leadership') navigate('/users');
+  useEffect(() => {
+    if (!userInfo?.featureAccess.includes(allFeatures.create_engagement)) {
+      if (userInfo?.featureAccess.includes(allFeatures.read_engagement)) navigate('/projects');
+    } else {
+      navigate('/users');
+    }
+  }, [userInfo, navigate]);
 
   const handleImageChange = e => {
     setUploadingImage(true);

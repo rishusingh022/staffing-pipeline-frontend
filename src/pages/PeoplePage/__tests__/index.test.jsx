@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import PeoplePage from '..';
-import { RoleProvider } from '../../../context/RoleContext';
+import { FeatureProvider } from '../../../context/FeatureContext';
 
 jest.mock('react-router-dom');
 describe('PeoplePage', () => {
   it('should render without crashing', () => {
     const { asFragment } = render(
-      <RoleProvider>
+      <FeatureProvider>
         <PeoplePage />
-      </RoleProvider>
+      </FeatureProvider>
     );
     expect(asFragment()).toMatchSnapshot();
   });
