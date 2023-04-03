@@ -22,5 +22,6 @@ const BarChart = ({ numberOfEngagements, peopleStaffed, setEngagementStatusData 
 BarChart.propTypes = {
   numberOfEngagements: PropTypes.arrayOf(PropTypes.number).isRequired,
   peopleStaffed: PropTypes.arrayOf(PropTypes.number).isRequired,
+  setEngagementStatusData: PropTypes.object.isRequired,
 };
 export default BarChart;

@@ -1,4 +1,3 @@
-import Highcharts from 'highcharts';
 import { GET_ENGAGEMENT_STATUS_MONTHLY } from './apiEndpoints';
 import makeRequest from '../utils/makeRequest';
 const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStatusData) => {
@@ -33,12 +32,12 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStat
         title: {
           text: '% people staffed',
           style: {
-            color: Highcharts.getOptions().colors[1],
+            color: 'gray',
           },
         },
         labels: {
           style: {
-            color: Highcharts.getOptions().colors[1],
+            color: 'gray',
           },
         },
         opposite: true,

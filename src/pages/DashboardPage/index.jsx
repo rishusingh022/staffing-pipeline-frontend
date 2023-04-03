@@ -14,17 +14,19 @@ import {
 } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import applyTheme from '../../utils/chartsTheme';
+import AnimatedNumber from 'animated-number-react';
 
 const DashboardPage = () => {
   const [engagementStatusData, setEngagementStatusData] = React.useState([{}]);
   const [userStatusData, setUserStatusData] = React.useState([{}]);
   const [staffedData, setStaffedData] = React.useState();
-  const [staffingPercentage, setStaffingPercentage] = React.useState();
+  const [staffingPercentage, setStaffingPercentage] = React.useState(0);
+  applyTheme();
+  const formatValue = value => value.toFixed(2);
 
   React.useEffect(() => {
     makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
       setStaffedData(response);
-      applyTheme();
     });
   }, []);
 
@@ -50,7 +52,7 @@ const DashboardPage = () => {
   }, []);
 
   React.useEffect(() => {
-    setStaffingPercentage(((staffedData?.staffedUsers / staffedData?.totalUsers) * 100).toFixed(2));
+    setStaffingPercentage(staffedData ? ((staffedData?.staffedUsers / staffedData?.totalUsers) * 100).toFixed(2) : 0);
     console.log('abbsbsbd', staffingPercentage);
   }, [staffedData]);
 
@@ -92,7 +94,7 @@ const DashboardPage = () => {
           <div className="main-area">
             <div className="metrics">
               <div className="metric-label">This month:</div>
-              People staffed : {staffingPercentage} %
+              People staffed : <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
             </div>
             <div className="main-chart">
               <p className="bar-chart-title">Staffing Metrics</p>
@@ -104,11 +106,11 @@ const DashboardPage = () => {
             </div>
           </div>
           <div className="side-chart1">
-            <p className="pie-chart-title">Staffing Status</p>
+            <p className="side-chart-title">Staffing Status</p>
             <PieChart data={userStatusData} name={'User Status'} />
           </div>
           <div className="side-chart2">
-            <p className="pie-chart-title">Engagement Status</p>
+            <p className="side-chart-title">Engagement Status</p>
             <PieChart data={engagementStatusData} name={'Engagement Status'} />
           </div>
         </div>

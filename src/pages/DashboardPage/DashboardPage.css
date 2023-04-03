@@ -59,8 +59,39 @@
   color: gray;
 }
 
-.pie-chart-title{
+.side-chart-title{
   font-size: 1.5rem;
   font-weight: 600;
   padding-bottom: 20px;
+}
+
+.main-chart-title{
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 20px;
+  padding-left: 16px;
+}
+
+.number {
+  font-size: 24px;
+  animation: count-up 2s;
+}
+
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  
+  /* Add the following keyframes */
+  0% {
+    content: "0";
+  }
+  100% {
+    content: "100";
+  }
 }
