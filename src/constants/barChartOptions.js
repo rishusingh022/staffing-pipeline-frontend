@@ -9,9 +9,10 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStat
   return {
     chart: {
       height: 650,
+      marginTop: 100,
     },
     title: {
-      text: 'Staffing Metrics',
+      text: undefined,
     },
     credits: {
       enabled: false,
@@ -51,7 +52,7 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStat
       align: 'right',
       x: -80,
       verticalAlign: 'top',
-      y: -10,
+      y: -6,
       floating: true,
       backgroundColor: 'rgba(255,255,255,0.25)',
     },
@@ -100,7 +101,6 @@ const OPTIONS = (numberOfEngagements, percentagePeopleStaffed, setEngagementStat
             },
           },
         },
-        // data: numberOfEngagements,
       },
       {
         name: '% people staffed',

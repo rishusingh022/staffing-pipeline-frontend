@@ -95,6 +95,7 @@ const DashboardPage = () => {
               People staffed : {staffingPercentage} %
             </div>
             <div className="main-chart">
+              <p className="bar-chart-title">Staffing Metrics</p>
               <BarChart
                 numberOfEngagements={numberOfEngagements}
                 peopleStaffed={numberOfPeopleStaffed}
