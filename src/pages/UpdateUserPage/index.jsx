@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Image from '../../components/Image';
 import DropDown from '../../components/Dropdown';
 import { GoPlus } from 'react-icons/go';
+import { TiDelete } from 'react-icons/ti';
 import SearchAndAdd from '../../components/SearchAndAdd';
 import { useState } from 'react';
 import Notification from '../../components/Notification';
@@ -15,6 +16,7 @@ import {
   ADD_USER_SKILL_ROUTE,
   GET_USER_SKILL_ROUTE,
   UPDATE_SELF_USER_DATA_URL,
+  DELETE_USER_SKILL,
 } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import { FeatureContext } from '../../context/FeatureContext';
@@ -123,6 +125,12 @@ const UpdateUserPage = () => {
       }, 1000);
     });
   };
+  const handleDeleteSkill = async index => {
+    const skillId = setSkill[index].skillId;
+    const filteredSkill = setSkill.filter((item, i) => i !== index);
+    await makeRequest(DELETE_USER_SKILL(userId), { data: { skillId: skillId } }, navigate);
+    setSetSkill(filteredSkill);
+  };
   return (
     <div>
       <Header hasNav={true} />
@@ -223,6 +231,7 @@ const UpdateUserPage = () => {
                       <th>Areas</th>
                       <th>Categories</th>
                       <th>Skills</th>
+                      <th className="right-aligned">{'    '}</th>
                     </tr>
                     {setSkill?.map((skill, index) => {
                       return (
@@ -230,6 +239,14 @@ const UpdateUserPage = () => {
                           <td>{skill.area}</td>
                           <td>{skill.category}</td>
                           <td>{skill.skill}</td>
+                          <td className="delete">
+                            <TiDelete
+                              style={{ fontSize: '30px', alignContent: 'flex-end' }}
+                              onClick={() => {
+                                handleDeleteSkill(index);
+                              }}
+                            />
+                          </td>
                         </tr>
                       );
                     })}

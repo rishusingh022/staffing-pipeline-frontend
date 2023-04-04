@@ -1,127 +1,132 @@
-.user-content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-bottom: 50px;
-    padding-left: 200px;
-    padding-right: 200px;
-    background-color: rgb(241, 241, 241);
-    /* gap: 100px; */
+.user-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+  background-color: rgb(241, 241, 241);
+  /* gap: 100px; */
 }
 
-.user-details{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    gap: 50px;
-    /* flex-wrap: wrap; */
+.user-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+  /* flex-wrap: wrap; */
 }
 
-.user-img{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 30px;
+.user-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
 }
 
-.update-profile-button{
-    background-color: #051B2C;
-    color: white;
-    margin-top: 20px;
-    padding: 10px;
-    width: 162px;
-    height: 45px;
+.update-profile-button {
+  background-color: #051b2c;
+  color: white;
+  margin-top: 20px;
+  padding: 10px;
+  width: 162px;
+  height: 45px;
 }
 
-
-.user-details-personal{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 30px;
+.user-details-personal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 30px;
 }
 
-.user-input{
-    width: 300px;
-    padding: 10px;
-    border: 1px solid rgb(0, 0, 0);
+.user-input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid rgb(0, 0, 0);
 }
 
-.user-details-personal-dropdown{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.user-details-personal-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.user-details-personal-dropdown .dropdown-container{
-    width: 100%;
+.user-details-personal-dropdown .dropdown-container {
+  width: 100%;
 }
 
-.user-engagements{
-    width: 350px;
-    height: 180px;
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* border: 1px solid black; */
+.user-engagements {
+  width: 350px;
+  height: 180px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 1px solid black; */
 }
 
-.add-engagements{
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    border: 3px solid whitesmoke;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.add-engagements {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border: 3px solid whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-.user-content-professional{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: rgb(241, 241, 241);
-    gap: 30px;
+.user-content-professional {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(241, 241, 241);
+  gap: 30px;
 }
 
-.user-content-professional-button{
-    padding: 10px;
-    width: 400px;
+.user-content-professional-button {
+  padding: 10px;
+  width: 400px;
 }
 
-.add-skill-button{
-    background-color: #051B2C;
-    color: white;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.add-skill-button {
+  background-color: #051b2c;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-
-.add-skill-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
+.right-alinged {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-skill-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
 @media only screen and (max-width: 1160px) {
-    .user-content{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .user-engagements{
-        padding-top: 20px ;
-    }
+  .user-content {
+    display: flex;
+    flex-direction: column;
   }
+
+  .user-engagements {
+    padding-top: 20px;
+  }
+}

@@ -174,3 +174,9 @@ export const UPDATE_SELF_USER_DATA_URL = id => ({
   url: `api/self/users/${id}`,
   method: 'put',
 });
+export const DELETE_USER_SKILL = userId => {
+  return {
+    url: '/api/skills/' + userId,
+    method: 'delete',
+  };
+};
