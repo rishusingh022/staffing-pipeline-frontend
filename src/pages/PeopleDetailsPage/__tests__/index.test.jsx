@@ -24,6 +24,6 @@ describe('PeopleDetailsPage', () => {
         <PeopleDetailsPage />
       </FeatureProvider>
     );
-    await waitFor(() => expect(makeRequest).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(makeRequest).toHaveBeenCalledTimes(2));
   });
 });

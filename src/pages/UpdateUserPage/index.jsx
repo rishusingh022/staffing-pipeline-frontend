@@ -61,9 +61,8 @@ const UpdateUserPage = () => {
   }, [userDetails]);
 
   const handleAddNewSkill = async item => {
-    setSetSkill([...setSkill, { ...item, skill: item.name }]);
-    userId &&
-      (await makeRequest(
+    if (userId) {
+      const newSkill = await makeRequest(
         ADD_USER_SKILL_ROUTE(userId),
         {
           data: {
@@ -76,7 +75,10 @@ const UpdateUserPage = () => {
           },
         },
         navigate
-      ));
+      );
+      console.log(newSkill);
+      setSetSkill([...setSkill, newSkill]);
+    }
   };
 
   const handleImageChange = e => {
@@ -125,11 +127,14 @@ const UpdateUserPage = () => {
       }, 1000);
     });
   };
-  const handleDeleteSkill = async index => {
-    const skillId = setSkill[index].skillId;
-    const filteredSkill = setSkill.filter((item, i) => i !== index);
-    await makeRequest(DELETE_USER_SKILL(userId), { data: { skillId: skillId } }, navigate);
-    setSetSkill(filteredSkill);
+  const handleDeleteSkill = async skill => {
+    const skillId = skill.skillId;
+    console.log('handleDeleteSkill called', skill);
+    const filteredSkills = setSkill.filter(skill => {
+      return skill.skillId !== skillId;
+    });
+    setSetSkill(filteredSkills);
+    await makeRequest(DELETE_USER_SKILL(userId), { data: { skillId } }, () => {});
   };
   return (
     <div>
@@ -243,7 +248,7 @@ const UpdateUserPage = () => {
                             <TiDelete
                               style={{ fontSize: '30px', alignContent: 'flex-end' }}
                               onClick={() => {
-                                handleDeleteSkill(index);
+                                handleDeleteSkill(skill);
                               }}
                             />
                           </td>
