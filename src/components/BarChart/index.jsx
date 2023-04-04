@@ -12,6 +12,8 @@ const BarChart = ({
   setEngagementStatusData,
   setUserStatusData,
   numberOfPeopleStaffed,
+  setStaffingPercentage,
+  setCurrentMonth,
 }) => {
   // const people = [50, 60, 10, 24, 88, 12, 89, 78, 56, 90, 87, 23];
   return (
@@ -24,7 +26,9 @@ const BarChart = ({
             peopleStaffed,
             setEngagementStatusData,
             setUserStatusData,
-            numberOfPeopleStaffed
+            numberOfPeopleStaffed,
+            setStaffingPercentage,
+            setCurrentMonth
           )}
         />
       </div>

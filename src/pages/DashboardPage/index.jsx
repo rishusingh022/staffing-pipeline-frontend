@@ -21,6 +21,7 @@ const DashboardPage = () => {
   const [userStatusData, setUserStatusData] = React.useState([{}]);
   const [staffedData, setStaffedData] = React.useState();
   const [staffingPercentage, setStaffingPercentage] = React.useState(0);
+  const [currentMonth, setCurrentMonth] = React.useState('');
   applyTheme();
   const formatValue = value => value.toFixed(2);
 
@@ -28,6 +29,11 @@ const DashboardPage = () => {
     makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
       setStaffedData(response);
     });
+    setCurrentMonth(
+      new Date().toLocaleString('default', { month: 'long' }) +
+        ' ' +
+        new Date().toLocaleString('default', { year: 'numeric' })
+    );
   }, []);
 
   React.useEffect(() => {
@@ -53,7 +59,6 @@ const DashboardPage = () => {
 
   React.useEffect(() => {
     setStaffingPercentage(staffedData ? ((staffedData?.staffedUsers / staffedData?.totalUsers) * 100).toFixed(2) : 0);
-    console.log('abbsbsbd', staffingPercentage);
   }, [staffedData]);
 
   const navigate = useNavigate();
@@ -94,7 +99,7 @@ const DashboardPage = () => {
           <div className="main-area">
             <div className="metrics">
               <p className="bar-chart-title">Staffing Metrics</p>
-              <div className="metric-label">This month:</div>
+              <div className="metric-label">{currentMonth}</div>
               People staffed : <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
             </div>
             <div className="main-chart">
@@ -105,6 +110,8 @@ const DashboardPage = () => {
                 setEngagementStatusData={setEngagementStatusData}
                 setUserStatusData={setUserStatusData}
                 numberOfPeopleStaffed={numberOfPeopleStaffed}
+                setStaffingPercentage={setStaffingPercentage}
+                setCurrentMonth={setCurrentMonth}
               />
             </div>
           </div>
