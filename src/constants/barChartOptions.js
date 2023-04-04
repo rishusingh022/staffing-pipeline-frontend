@@ -80,7 +80,7 @@ const OPTIONS = (
               const date = new Date();
               const month = date.getMonth();
               const year = date.getFullYear();
-              const monthIndex = allMonths.indexOf(this.category);
+              const monthIndex = newCategories.indexOf(this.category);
               let dateString = '';
               if (monthIndex < month) {
                 dateString = `${year}-${monthIndex + 1}-${1}`;
@@ -133,7 +133,7 @@ const OPTIONS = (
               const date = new Date();
               const month = date.getMonth();
               const year = date.getFullYear();
-              const monthIndex = allMonths.indexOf(this.category);
+              const monthIndex = newCategories.indexOf(this.category);
               let dateString = '';
               if (monthIndex < month) {
                 dateString = `${year}-${monthIndex + 1}-${1}`;

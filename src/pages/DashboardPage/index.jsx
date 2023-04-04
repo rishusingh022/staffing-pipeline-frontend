@@ -98,6 +98,7 @@ const DashboardPage = () => {
               People staffed : <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
             </div>
             <div className="main-chart">
+              <p className="bar-chart-title">Staffing Metrics</p>
               <BarChart
                 numberOfEngagements={numberOfEngagements}
                 peopleStaffed={numberOfPeopleStaffed}
