@@ -34,10 +34,9 @@
 }
 
 .bar-chart-title{
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   padding-bottom: 24px;
-  padding-left: 16px;
 }
 
 .side-chart1 {
@@ -49,9 +48,10 @@
 }
 
 .metrics {
-  font-size: 2.5rem;
-  font-weight: 600;
-  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  /* padding: 1rem; */
+  padding-left: 1rem;
 }
 
 .metric-label {
@@ -60,7 +60,7 @@
 }
 
 .side-chart-title{
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   padding-bottom: 20px;
 }

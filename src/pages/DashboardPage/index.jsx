@@ -93,11 +93,11 @@ const DashboardPage = () => {
         <div className="dashboard">
           <div className="main-area">
             <div className="metrics">
+              <p className="bar-chart-title">Staffing Metrics</p>
               <div className="metric-label">This month:</div>
               People staffed : <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
             </div>
             <div className="main-chart">
-              <p className="bar-chart-title">Staffing Metrics</p>
               <BarChart
                 numberOfEngagements={numberOfEngagements}
                 peopleStaffed={numberOfPeopleStaffed}
