@@ -13,7 +13,7 @@
   background-color: var(--color-whitesmoke);
   overflow: scroll;
   flex-grow: 1;
-  min-height: 70vh;
+  min-height: 100vh;
   padding-top: 30px;
   padding-bottom: 20px;
 }

@@ -10,11 +10,15 @@ import allFeatures from '../../constants/allFeatures';
 function ToolBox({
   guildOptions,
   technologyOptions,
+  sectorOptions,
+  sectorSelected,
   handleAddNewEngagement,
   handleTechnologyChange,
   handleGuildChange,
   handleTimeFrameChange,
   handleSearchChange,
+  handleSectorChange,
+  handleSubSectorChange,
 }) {
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
@@ -40,6 +44,20 @@ function ToolBox({
         <Dropdown dropdownName={'Time Frame'} dropdownData={timeFrameOptions} selectOption={selectTimeFrameOption} />
         <Dropdown dropdownName={'Guilds'} dropdownData={guildOptions} selectOption={selectGuildOption} />
         <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
+        <div className="flex flex-col gap-4">
+          <Dropdown
+            dropdownName={'Sector'}
+            dropdownData={['All', ...sectorOptions.map(sector => sector.name)]}
+            selectOption={handleSectorChange}
+          />
+          {sectorSelected?.sub_sectors?.length > 0 && (
+            <Dropdown
+              dropdownName={'Sub Sector'}
+              dropdownData={['All', ...sectorSelected.sub_sectors.map(sector => sector.name)]}
+              selectOption={handleSubSectorChange}
+            />
+          )}
+        </div>
         {userInfo?.featureAccess?.includes(allFeatures.create_engagement) && (
           <Button buttonText={'Add new engagement'} handleClick={handleAddNewEngagement} />
         )}
@@ -51,9 +69,13 @@ ToolBox.propTypes = {
   handleAddNewEngagement: PropTypes.func.isRequired,
   technologyOptions: PropTypes.array.isRequired,
   guildOptions: PropTypes.array.isRequired,
+  sectorOptions: PropTypes.array.isRequired,
+  sectorSelected: PropTypes.object.isRequired,
   handleTechnologyChange: PropTypes.func.isRequired,
   handleGuildChange: PropTypes.func.isRequired,
   handleTimeFrameChange: PropTypes.func.isRequired,
   handleSearchChange: PropTypes.func.isRequired,
+  handleSectorChange: PropTypes.func.isRequired,
+  handleSubSectorChange: PropTypes.func.isRequired,
 };
 export default ToolBox;

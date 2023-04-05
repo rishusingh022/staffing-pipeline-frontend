@@ -120,6 +120,8 @@ export default function CaseStudyModal({ setIsOpen }) {
         description: inputData.description,
         boxLink: inputData.boxLink,
         engagementId: selectedEngagement,
+        sectorId: allEngagements.find(engagement => engagement.engagementId === selectedEngagement).sectorId,
+        subSectorId: allEngagements.find(engagement => engagement.engagementId === selectedEngagement).subSectorId,
         collaboratorsIds: selectedUsers,
         image: image.imageUrl,
       };
@@ -132,7 +134,7 @@ export default function CaseStudyModal({ setIsOpen }) {
 
   return (
     <>
-      <div className="background fixed bg-black/[.85] w-screen h-screen top-0 left-0 flex items-center justify-center">
+      <div className="background fixed bg-black/[.85] w-screen h-screen top-0 left-0 flex items-center justify-center z-10">
         <div className="modal-content flex flex-col gap-4 p-9">
           <p className="modal-title">Upload Case Study</p>
           <div className="name">

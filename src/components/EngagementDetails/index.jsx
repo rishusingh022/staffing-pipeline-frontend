@@ -109,12 +109,26 @@ export default function EngagementDetails({ engagementDetails }) {
                   </td>
                 </div>
               </tr>
-              <tr>
+              {/* <tr>
                 <div className="date-container">
                   <td className="table-row-item">Tags:</td>
                   <td>{engagementDetails?.projectData?.tags && `#${engagementDetails?.projectData?.tags}`}</td>
                 </div>
+              </tr> */}
+              <tr>
+                <div className="date-container">
+                  <td className="table-row-item">Sector:</td>
+                  <td className="text-gray-500">{engagementDetails?.projectData?.sector?.name}</td>
+                </div>
               </tr>
+              {engagementDetails?.projectData?.sub_sector && (
+                <tr>
+                  <div className="date-container">
+                    <td className="table-row-item">Sub Sector:</td>
+                    <td className="text-gray-500">{engagementDetails?.projectData?.sub_sector?.name}</td>
+                  </div>
+                </tr>
+              )}
             </table>
           </div>
         </div>
@@ -151,7 +165,6 @@ export default function EngagementDetails({ engagementDetails }) {
                 knowMore={true}
               />
             ))}
-            {console.log('vchadvn', currentUsers)}
           </div>
         </div>
 

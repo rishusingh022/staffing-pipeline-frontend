@@ -28,7 +28,7 @@ exports[`Dropdown should render correctly 1`] = `
       class="hidden"
     >
       <ul
-        class="bg-white mt-2 overflow-y-auto max-h-60 border border-black-300"
+        class="bg-white mt-2 overflow-y-auto max-h-60 border border-black-300 z-20"
       >
         <div
           class="flex items-center sticky top-0 h-10 bg-white"

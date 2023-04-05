@@ -4,7 +4,7 @@ import { Header } from '../../components';
 import Count from '../../components/Count';
 import CardContainer from './../../components/CardContainer';
 import makeRequest from '../../utils/makeRequest';
-import { GET_ENGAGEMENT_DATA_URL } from '../../constants/apiEndpoints';
+import { GET_ENGAGEMENT_DATA_URL, GET_ALL_SECTORS } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import EngagementCard from './../../components/EngagementCard';
 import { formatDate } from './../../utils/dateTime';
@@ -29,6 +29,9 @@ const EngagementsPage = () => {
   const [technologySelected, setTechnologySelected] = React.useState('');
   const [guildSelected, setGuildSelected] = React.useState('');
   const [timeFrameSelected, setTimeFrameSelected] = React.useState('');
+  const [sectorSelected, setSectorSelected] = React.useState({});
+  const [subSectorSelected, setSubSectorSelected] = React.useState({});
+  const [allSectors, setAllSectors] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
   const [pageNumber, setPageNumber] = React.useState(1);
   const [objectCount, setObjectCount] = React.useState(0);
@@ -51,6 +54,23 @@ const EngagementsPage = () => {
     setTimeFrameSelected(option);
   };
 
+  const handleSectorChange = option => {
+    if (option === 'All') {
+      setSectorSelected({});
+      setSubSectorSelected({});
+      return;
+    }
+    setSectorSelected(allSectors.find(sector => sector.name === option));
+  };
+
+  const handleSubSectorChange = option => {
+    if (option === 'All') {
+      setSubSectorSelected({});
+      return;
+    }
+    setSubSectorSelected(sectorSelected.sub_sectors.find(subSector => subSector.name === option));
+  };
+
   if (!userInfo?.featureAccess?.includes(allFeatures.read_engagement)) navigate('/users');
 
   const fetchEngagementData = () => {
@@ -67,8 +87,20 @@ const EngagementsPage = () => {
         setError(error);
       });
   };
+  const fetchAllSectors = () => {
+    makeRequest(GET_ALL_SECTORS, {}, () => {})
+      .then(response => {
+        console.log(response);
+        setAllSectors(response);
+      })
+      .catch(error => {
+        console.log(error);
+        setError(error);
+      });
+  };
   React.useEffect(() => {
     fetchEngagementData();
+    fetchAllSectors();
   }, [pageNumber]);
 
   if (error) {
@@ -118,7 +150,12 @@ const EngagementsPage = () => {
     } else if (guildSelected) {
       projects = projects.filter(project => project.guild === guildSelected);
     }
-
+    if (sectorSelected?.name) {
+      projects = projects.filter(project => project?.sector?.name === sectorSelected?.name);
+    }
+    if (subSectorSelected?.name) {
+      projects = projects.filter(project => project?.sub_sector?.name === subSectorSelected?.name);
+    }
     if (searchValue) {
       projects = projects.filter(project => {
         return project.name.toLowerCase().includes(searchValue.toLowerCase());
@@ -160,14 +197,22 @@ const EngagementsPage = () => {
           handleAddNewEngagement={() => navigate('/projects/add')}
           technologyOptions={technologyOptions}
           guildOptions={guildOptions}
+          sectorOptions={allSectors}
+          sectorSelected={sectorSelected}
           handleTechnologyChange={handleTechnologyChange}
           handleGuildChange={handleGuildChange}
           handleTimeFrameChange={handleTimeFrameChange}
           handleSearchChange={handleSearch}
+          handleSectorChange={handleSectorChange}
+          handleSubSectorChange={handleSubSectorChange}
         />
         <div className="container-in-engagements flex flex-col">
           <Count type="engagements" objectCount={objectCount} setObjectCount={setObjectCount} />
-          <CardContainer>{projectCards}</CardContainer>
+          {projectCards.length === 0 ? (
+            <p className="w-full h-full text-center text-gray-400">No Engagements...</p>
+          ) : (
+            <CardContainer>{projectCards}</CardContainer>
+          )}
           <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />
         </div>
       </div>

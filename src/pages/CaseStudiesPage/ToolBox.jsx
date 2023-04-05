@@ -15,6 +15,10 @@ function ToolBox({
   handleTimeFrameChange,
   collaboratorOptions,
   studyOptions,
+  sectorSelected,
+  sectorOptions,
+  handleSectorChange,
+  handleSubSectorChange,
 }) {
   const handleSearch = searchValue => {
     handleSearchChange(searchValue);
@@ -48,6 +52,20 @@ function ToolBox({
           selectOption={selectCollaboratorOption}
         />
         <Dropdown dropdownName={'Study'} dropdownData={studyOptions} selectOption={selectStudyOption} />
+        <div className="flex flex-col gap-4">
+          <Dropdown
+            dropdownName={'Sector'}
+            dropdownData={['All', ...sectorOptions.map(sector => sector.name)]}
+            selectOption={handleSectorChange}
+          />
+          {sectorSelected?.sub_sectors?.length > 0 && (
+            <Dropdown
+              dropdownName={'Sub Sector'}
+              dropdownData={['All', ...sectorSelected.sub_sectors.map(sector => sector.name)]}
+              selectOption={handleSubSectorChange}
+            />
+          )}
+        </div>
         {userInfo?.featureAccess?.includes(allFeatures.create_case_study) && (
           <Button buttonText={'Upload Case Study'} handleClick={uploadExcel} />
         )}
@@ -64,6 +82,10 @@ ToolBox.propTypes = {
   handleTimeFrameChange: PropTypes.func.isRequired,
   collaboratorOptions: PropTypes.array.isRequired,
   studyOptions: PropTypes.array.isRequired,
+  sectorSelected: PropTypes.object,
+  sectorOptions: PropTypes.array.isRequired,
+  handleSectorChange: PropTypes.func.isRequired,
+  handleSubSectorChange: PropTypes.func.isRequired,
 };
 
 export default ToolBox;

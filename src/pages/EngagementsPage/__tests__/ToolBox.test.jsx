@@ -8,7 +8,7 @@ describe('ToolBox', () => {
   it('renders ToolBox component', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     expect(screen.getByText('Time Frame')).toBeTruthy();
@@ -18,7 +18,7 @@ describe('ToolBox', () => {
   it('renders ToolBox component with search button', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     expect(screen.getByText('Search')).toBeTruthy();
@@ -26,7 +26,7 @@ describe('ToolBox', () => {
   it('should show Time Frame drop down options when time frame drop down is clicked', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     const timeFrame = screen.getByText('Time Frame');
@@ -38,7 +38,7 @@ describe('ToolBox', () => {
   it('should show Guilds drop down options when Guilds drop down is clicked', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     const guilds = screen.getByText('Guilds');
@@ -47,7 +47,7 @@ describe('ToolBox', () => {
   it('should show Technology drop down options when Technology drop down is clicked', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     const technology = screen.getByText('Technology');

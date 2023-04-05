@@ -27,13 +27,13 @@
   object-fit: cover;
   border-radius: 10px 10px;
 }
-.add-engagement-form-container .dropdown-container,
+/* .add-engagement-form-container .dropdown-container,
 .engagement-dropdown-wrapper .dropdown-container {
-  width: 8rem;
-}
+  min-width: fit-content;
+} */
 .add-engagement-form-container .dropdown-container .dropdown-header {
   padding: 0 0.5rem;
-  height: 2rem;
+  min-height: 2rem;
 }
 .engagement-dropdown-wrapper .dropdown-container .dropdown-header {
   padding: 0 0.5rem;
@@ -95,4 +95,8 @@
   align-items: center;
   height: 100%;
   width: 100%;
+}
+
+.add-engagement-form-container .sector-dropdown{
+  min-width: max-content;
 }

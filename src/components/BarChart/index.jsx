@@ -38,6 +38,6 @@ const BarChart = ({
 BarChart.propTypes = {
   numberOfEngagements: PropTypes.arrayOf(PropTypes.number).isRequired,
   peopleStaffed: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setEngagementStatusData: PropTypes.object.isRequired,
+  setEngagementStatusData: PropTypes.func.isRequired,
 };
 export default BarChart;

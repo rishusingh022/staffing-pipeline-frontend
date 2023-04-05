@@ -4,7 +4,7 @@ import './CaseStudiesPage.css';
 import { Header } from '../../components';
 import CardContainer from './../../components/CardContainer';
 import makeRequest from '../../utils/makeRequest';
-import { GET_CASE_STUDIES_DATA_URL } from '../../constants/apiEndpoints';
+import { GET_CASE_STUDIES_DATA_URL, GET_ALL_SECTORS } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import CaseStudyCard from './../../components/CaseStudyCard';
 import ToolBox from './ToolBox';
@@ -34,6 +34,20 @@ export default function CaseStudiesPage() {
   const [studyIdNameMap, setStudyIdNameMap] = React.useState({});
   const [pageNumber, setPageNumber] = React.useState(1);
   const [objectCount, setObjectCount] = React.useState(0);
+  const [allSectors, setAllSectors] = React.useState([]);
+  const [sectorSelected, setSectorSelected] = React.useState({});
+  const [subSectorSelected, setSubSectorSelected] = React.useState({});
+  const fetchAllSectors = () => {
+    makeRequest(GET_ALL_SECTORS, {}, () => {})
+      .then(response => {
+        console.log(response);
+        setAllSectors(response);
+      })
+      .catch(error => {
+        console.log(error);
+        setError(error);
+      });
+  };
 
   const handleSearch = searchValue => {
     setSearchValue(() => searchValue);
@@ -52,6 +66,22 @@ export default function CaseStudiesPage() {
   const handleTimeFrameChange = option => {
     setTimeFrameSelected(option);
   };
+  const handleSectorChange = option => {
+    if (option === 'All') {
+      setSectorSelected({});
+      setSubSectorSelected({});
+      return;
+    }
+    setSectorSelected(allSectors.find(sector => sector.name === option));
+  };
+
+  const handleSubSectorChange = option => {
+    if (option === 'All') {
+      setSubSectorSelected({});
+      return;
+    }
+    setSubSectorSelected(sectorSelected.sub_sectors.find(subSector => subSector.name === option));
+  };
   const fetchCaseStudiesData = () => {
     makeRequest(
       GET_CASE_STUDIES_DATA_URL,
@@ -63,6 +93,7 @@ export default function CaseStudiesPage() {
       navigate
     )
       .then(response => {
+        console.log(response);
         setCaseStudies(response);
         const { collaboratorMap, uniqueCollaborators } = extractCollaboratorsFromCaseStudies(response);
         const { engagementMap, uniqueEngegementNames } = extractEngagementNameFromCaseStudies(response);
@@ -80,6 +111,7 @@ export default function CaseStudiesPage() {
 
   React.useEffect(() => {
     fetchCaseStudiesData();
+    fetchAllSectors();
   }, [pageNumber]);
   if (error) {
     return (
@@ -144,6 +176,16 @@ export default function CaseStudiesPage() {
         return caseStudy.engagementId === studyIdNameMap[studySelected];
       });
     }
+    if (sectorSelected?.name) {
+      caseStudies = caseStudies.filter(caseStudy => {
+        return caseStudy.sector?.name === sectorSelected?.name;
+      });
+    }
+    if (subSectorSelected?.name) {
+      caseStudies = caseStudies.filter(caseStudy => {
+        return caseStudy.sub_sector?.name === subSectorSelected?.name;
+      });
+    }
     if (searchValue) {
       caseStudies = caseStudies.filter(caseStudy => {
         return caseStudy.name.toLowerCase().includes(searchValue.toLowerCase());
@@ -185,6 +227,10 @@ export default function CaseStudiesPage() {
           handleTimeFrameChange={handleTimeFrameChange}
           collaboratorOptions={collaboratorOptions}
           studyOptions={studyOptions}
+          handleSectorChange={handleSectorChange}
+          handleSubSectorChange={handleSubSectorChange}
+          sectorOptions={allSectors}
+          sectorSelected={sectorSelected}
         />
         <div className="container-in-case-studies">
           <Count type="case-studies" objectCount={objectCount} setObjectCount={setObjectCount} />

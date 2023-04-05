@@ -8,7 +8,7 @@ describe('ToolBox', () => {
   it('renders ToolBox component', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     expect(screen.getByText('Time Frame')).toBeTruthy();
@@ -17,7 +17,7 @@ describe('ToolBox', () => {
   it('renders ToolBox component with search button', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     expect(screen.getByText('Search')).toBeTruthy();
@@ -25,7 +25,7 @@ describe('ToolBox', () => {
   it('should show Time Frame drop down options when time frame drop down is clicked', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     const timeFrame = screen.getByText('Time Frame');
@@ -37,7 +37,7 @@ describe('ToolBox', () => {
   it('should show collaborator drop down options when collaborator drop down is clicked', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     const collaborators = screen.getByText('Collaborators');
@@ -46,7 +46,7 @@ describe('ToolBox', () => {
   it('should show study drop down options when study drop down is clicked', () => {
     render(
       <FeatureProvider>
-        <ToolBox />
+        <ToolBox sectorOptions={[{ name: 'something' }]} />
       </FeatureProvider>
     );
     const study = screen.getByText('Study');

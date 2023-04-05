@@ -174,6 +174,11 @@ export const UPDATE_SELF_USER_DATA_URL = id => ({
   url: `api/self/users/${id}`,
   method: 'put',
 });
+
+export const GET_ALL_SECTORS = {
+  url: 'api/projects/sectors',
+  method: 'get',
+};
 export const DELETE_USER_SKILL = userId => {
   return {
     url: '/api/skills/' + userId,

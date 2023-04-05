@@ -9,7 +9,11 @@ import { BiPlus } from 'react-icons/bi';
 import Button from '../../components/Button';
 import parseDate from '../../utils/common/parseDate';
 import makeRequest from '../../utils/makeRequest';
-import { CREATE_ENGAGEMENT_DATA_URL, UPLOAD_ENGAGEMENT_IMAGE_ROUTE } from '../../constants/apiEndpoints';
+import {
+  CREATE_ENGAGEMENT_DATA_URL,
+  UPLOAD_ENGAGEMENT_IMAGE_ROUTE,
+  GET_ALL_SECTORS,
+} from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import Notification from '../../components/Notification';
 import { FeatureContext } from '../../context/FeatureContext';
@@ -17,6 +21,7 @@ import SearchAndAdd from '../../components/SearchAndAdd';
 import TechStack from '../../components/TechStack';
 import PageLoader from '../../components/Spinner';
 import allFeatures from '../../constants/allFeatures';
+// import allSectors from '../../constants/sectors';
 
 export default function AddEngagementPage() {
   const { userInfo } = React.useContext(FeatureContext);
@@ -34,14 +39,31 @@ export default function AddEngagementPage() {
   const [dateNotification, setDateNotification] = useState(false);
   const [fieldError, setFieldError] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [sector, setSector] = useState('');
+  const [subSector, setSubSector] = useState('');
+  const [allSectors, setAllSectors] = useState([]);
+  const fetchAllSectors = async () => {
+    makeRequest(GET_ALL_SECTORS, {}, () => {})
+      .then(response => {
+        console.log(response);
+        setAllSectors(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
+    if (userInfo?.featureAccess?.includes(allFeatures.create_engagement)) return;
     if (!userInfo?.featureAccess?.includes(allFeatures.create_engagement)) {
       if (userInfo?.featureAccess?.includes(allFeatures.read_engagement)) navigate('/projects');
     } else {
       navigate('/users');
     }
   }, [userInfo, navigate]);
+  useEffect(() => {
+    fetchAllSectors();
+  }, []);
 
   const handleImageChange = e => {
     setUploadingImage(true);
@@ -73,6 +95,19 @@ export default function AddEngagementPage() {
       setImageNotification(true);
       return;
     }
+    console.log({
+      name: projectName,
+      startDate: parseDate(startDate),
+      endDate: parseDate(endDate),
+      status: selectedStatus,
+      chargeCode,
+      caseStudyIds: [],
+      skills: technologies,
+      guild: 'swe',
+      image: uploadedEngagementImage,
+      sectorId: sector.sectorId,
+      subSectorId: subSector.subSectorId,
+    });
     makeRequest(
       CREATE_ENGAGEMENT_DATA_URL,
       {
@@ -86,6 +121,8 @@ export default function AddEngagementPage() {
           skills: technologies,
           guild: 'swe',
           image: uploadedEngagementImage,
+          sectorId: sector.sectorId,
+          subSectorId: subSector.subSectorId,
         },
       },
       navigate
@@ -188,7 +225,7 @@ export default function AddEngagementPage() {
                 <div className="flex gap-2">
                   <input
                     type="date"
-                    className="input-style w-32"
+                    className="input-style w-40"
                     onChange={e => {
                       setStartDate(e.target.value);
                     }}
@@ -196,7 +233,7 @@ export default function AddEngagementPage() {
                   <p>:</p>
                   <input
                     type="date"
-                    className="input-style w-32"
+                    className="input-style w-40"
                     onChange={e => {
                       setEndDate(e.target.value);
                     }}
@@ -217,10 +254,30 @@ export default function AddEngagementPage() {
                     setSelectedStatus(option.toLowerCase());
                   }}
                 />
-                <div className="flex justify-between w-32 text-gray-400 px-2 border-black border h-8 items-center">
+                {/* <div className="flex justify-between w-32 text-gray-400 px-2 border-black border h-8 items-center">
                   <p>Tags</p>
                   <p>+</p>
+                </div> */}
+                <div className="sector-dropdown">
+                  <Dropdown
+                    dropdownName={'Sector'}
+                    dropdownData={allSectors.map(item => item.name)}
+                    selectOption={optionName => {
+                      setSector(allSectors.find(item => item.name === optionName));
+                    }}
+                  />
                 </div>
+                {sector?.sub_sectors?.length > 0 && (
+                  <div className="sector-dropdown">
+                    <Dropdown
+                      dropdownName={'Sub Sector'}
+                      dropdownData={sector.sub_sectors.map(item => item.name)}
+                      selectOption={optionName => {
+                        setSubSector(sector.sub_sectors.find(item => item.name === optionName));
+                      }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <Button buttonText="Create" handleClick={handleCreateClick} />

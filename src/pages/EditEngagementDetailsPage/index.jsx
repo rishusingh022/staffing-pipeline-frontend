@@ -28,6 +28,7 @@ import SearchAndAdd from '../../components/SearchAndAdd';
 import { FeatureContext } from '../../context/FeatureContext';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
 import allFeatures from '../../constants/allFeatures';
+import allSectors from '../../constants/sectors';
 
 export default function EditEngagementDetailsPage() {
   const { userInfo } = React.useContext(FeatureContext);
@@ -50,6 +51,8 @@ export default function EditEngagementDetailsPage() {
   const [currentEngagementEndDate, setCurrentEngagementEndDate] = useState('');
   const [currentEngagementStatus, setCurrentEngagementStatus] = useState('');
   const [currentEngagementTechnologies, setCurrentEngagementTechnologies] = useState([]);
+  const [currentEngagementSector, setCurrentEngagementSector] = useState(allSectors[0]);
+  const [currentEngagementSubSector, setCurrentEngagementSubSector] = useState(allSectors[0].subSectors[0]);
   const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
@@ -129,6 +132,8 @@ export default function EditEngagementDetailsPage() {
       setCurrentEngagementEndDate(formatDate(response?.projectData?.endDate));
       setCurrentEngagementStatus(response?.projectData?.status);
       setCurrentEngagementTechnologies(response?.projectData?.skills);
+      setCurrentEngagementSector(response?.projectData?.sector || allSectors[0]);
+      setCurrentEngagementSubSector(response?.projectData?.subSector || allSectors[0].subSectors[0]);
       // '#stDate'.val(dateFormater(response?.projectData?.startDate));
       // '#edDate'.val(dateFormater(response?.projectData?.endDate));
     });
@@ -157,7 +162,7 @@ export default function EditEngagementDetailsPage() {
         />
       )}
       <div className="bg-white min-h-screen mx-32 my-16 px-12 py-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 relative">
           <div className="flex image-style upper-container justify-between">
             <div className="flex">
               {!uploadingImage ? (
@@ -179,7 +184,7 @@ export default function EditEngagementDetailsPage() {
                 <input
                   type="text"
                   placeholder="Project Name"
-                  className="input-style"
+                  className="input-style w-[19.3rem]"
                   defaultValue={engagementDetails?.projectData?.name}
                   onChange={e => {
                     setCurrentEngagementName(e.target.value);
@@ -231,10 +236,30 @@ export default function EditEngagementDetailsPage() {
                     setCurrentEngagementStatus(optionName);
                   }}
                 />
-                <div className="flex justify-between w-36 text-gray-400 px-2 border-black border items-center h-8">
+                <div className="sector-dropdown w-[19.3rem]">
+                  <Dropdown
+                    dropdownName={'Sector'}
+                    dropdownData={allSectors.map(item => item.name)}
+                    selectOption={optionName => {
+                      setCurrentEngagementSector(allSectors.find(item => item.name === optionName));
+                    }}
+                  />
+                </div>
+                {currentEngagementSector.subSectors && (
+                  <div className="sector-dropdown w-[19.3rem]">
+                    <Dropdown
+                      dropdownName={'Sub Sector'}
+                      dropdownData={currentEngagementSector.subSectors.map(item => item.name)}
+                      selectOption={optionName => {
+                        setCurrentEngagementSubSector(optionName);
+                      }}
+                    />
+                  </div>
+                )}
+                {/* <div className="flex justify-between w-36 text-gray-400 px-2 border-black border items-center h-8">
                   <p>Tags</p>
                   <p>+</p>
-                </div>
+                </div> */}
                 {/* <div className="flex gap-2">
                   <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Front-End</div>
                   <div className="rounded-xl bg-black text-white w-20 text-xs py-1 text-center">Back-End</div>
