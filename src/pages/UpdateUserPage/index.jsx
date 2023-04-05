@@ -258,7 +258,7 @@ const UpdateUserPage = () => {
                   </thead>
                 </table>
 
-                <div className="add-skill-container">
+                <div className="add-skill-container mb-3">
                   <button
                     className="add-skill-button"
                     onClick={() => {

@@ -72,7 +72,7 @@ export default function CaseStudiesPage() {
       setSubSectorSelected({});
       return;
     }
-    setSectorSelected(allSectors.find(sector => sector.name === option));
+    setSectorSelected(allSectors?.find(sector => sector.name === option));
   };
 
   const handleSubSectorChange = option => {
@@ -80,7 +80,7 @@ export default function CaseStudiesPage() {
       setSubSectorSelected({});
       return;
     }
-    setSubSectorSelected(sectorSelected.sub_sectors.find(subSector => subSector.name === option));
+    setSubSectorSelected(sectorSelected?.sub_sectors?.find(subSector => subSector.name === option));
   };
   const fetchCaseStudiesData = () => {
     makeRequest(

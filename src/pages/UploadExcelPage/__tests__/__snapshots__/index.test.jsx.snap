@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload Excel Page should render without crashing 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="font-light lg:h-[88px] h-[120px] flex-shrink-0 text-white flex justify-center bg-deepBlue header-container relative items-center"
+    >
+      <img
+        alt="logo"
+        class="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute xl:left-44 left-10 top-4"
+        src="McK_Logo.png"
+      />
+      <div
+        class="h-full  flex box-border"
+      >
+        <div
+          class="grid grid-cols-4 gap-10 items-end"
+        >
+          <button
+            class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
+          >
+            People
+          </button>
+          <button
+            class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
+          >
+            Case Studies
+          </button>
+        </div>
+      </div>
+      <button
+        class="absolute top-7 right-[5%] border-[1px] py-1 px-3 hover:text-cyan hover:border-cyan"
+      >
+        Logout
+      </button>
+    </div>
+    <div
+      class="w-full flex flex-col items-center"
+    >
+      <p
+        class="text-3xl text-center p-10"
+      >
+        Upload Staffing Excel
+      </p>
+      <div
+        class="bg-[#f8f8ee] w-4/5 p-8 rounded-xl border-2 border-dotted border-[#ad8a09]"
+      >
+        <p
+          class="text-lg pb-4"
+        >
+          Rules to upload excel: 
+        </p>
+        <ul
+          class="list-disc list-inside"
+        >
+          <li>
+            Excel file must be in 
+            <b>
+              .xlsx
+            </b>
+             format
+          </li>
+          <li>
+            Excel file must have atleast 4 columns: 
+            <b>
+              UserId, EngagmentId, AssignmentStartDate
+            </b>
+             and 
+            <b>
+              AssignmentEndDate.
+            </b>
+          </li>
+          <li>
+            Excel file must have 
+            <b>
+              1 header
+            </b>
+             row
+          </li>
+          <li>
+            Excel file must have at least 
+            <b>
+              1 data
+            </b>
+             row
+          </li>
+          <li>
+            Excel file must 
+            <b>
+              not
+            </b>
+             have any 
+            <b>
+              empty
+            </b>
+             cells
+          </li>
+        </ul>
+      </div>
+      <div
+        class="flex gap-4 py-4"
+      >
+        <label
+          class="bg-[#051b2c] text-white px-3 py-2 text-sm flex items-center cursor-pointer"
+          for="excelUpload"
+        >
+          Select Excel
+        </label>
+        <input
+          accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          class="hidden"
+          id="excelUpload"
+          type="file"
+        />
+        <button
+          class="button"
+          data-testid="button"
+        >
+          Upload
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

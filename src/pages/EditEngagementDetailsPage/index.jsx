@@ -29,6 +29,7 @@ import { FeatureContext } from '../../context/FeatureContext';
 import capitalizeFirstLetter from '../../utils/common/stringUtil';
 import allFeatures from '../../constants/allFeatures';
 import allSectors from '../../constants/sectors';
+import EngagementDefaultImage from '../../assets/images/engagement-default.png';
 
 export default function EditEngagementDetailsPage() {
   const { userInfo } = React.useContext(FeatureContext);
@@ -167,7 +168,13 @@ export default function EditEngagementDetailsPage() {
             <div className="flex">
               {!uploadingImage ? (
                 <Image
-                  imageUrl={uploadedEngagementImage ? uploadedEngagementImage : engagementDetails?.projectData?.image}
+                  imageUrl={
+                    uploadedEngagementImage
+                      ? uploadedEngagementImage
+                      : engagementDetails?.projectData?.image
+                        ? engagementDetails?.projectData?.image
+                        : EngagementDefaultImage
+                  }
                   altText="default"
                   hasOverlay
                   handleImageSelect={handleImageChange}
@@ -228,8 +235,9 @@ export default function EditEngagementDetailsPage() {
 
                 <Dropdown
                   dropdownName={
-                    engagementDetails?.projectData?.status &&
-                    capitalizeFirstLetter(engagementDetails?.projectData?.status)
+                    engagementDetails?.projectData?.status
+                      ? capitalizeFirstLetter(engagementDetails?.projectData?.status)
+                      : 'Status'
                   }
                   dropdownData={statusOptions}
                   selectOption={optionName => {

@@ -18,7 +18,7 @@ export default function LoginCallbackPage() {
       setUserInfo(data);
       if (data?.featureAccess.includes(allFeatures.upload_excel)) navigate('/upload');
       else if (data?.featureAccess.includes(allFeatures.read_metrics)) navigate('/dashboard');
-      else navigate(`/users/${data.userId}`);
+      else navigate(`/casestudies`);
     });
   }
   return <LoginCallback />;

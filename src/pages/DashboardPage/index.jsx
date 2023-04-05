@@ -80,7 +80,6 @@ const DashboardPage = () => {
   const [numberOfEngagements, setNumberofEngagements] = React.useState([]);
   const [numberOfPeopleStaffed, setNumberofPeopleStaffed] = React.useState([]);
   const [error, setError] = React.useState(null);
-  if (userInfo?.role !== 'leadership') navigate('/users');
   React.useEffect(() => {
     makeRequest(GET_PROJECTS_METRICS, {}, navigate)
       .then(response => {
