@@ -37,7 +37,7 @@ function ToolBox({
         </div>
       </div>
       <div className="people-page-filter-drop-downs">
-        <Dropdown dropdownName={'Technology'} dropdownData={technologyOptions} selectOption={selectTechOption} />
+        <Dropdown dropdownName={'Skills'} dropdownData={technologyOptions} selectOption={selectTechOption} />
         <Dropdown dropdownName={'Role'} dropdownData={roleOptions} selectOption={selectRoleOption} />
         {userInfo?.featureAccess?.includes(allFeatures.create_user) && (
           <Button data-testid="add-new-member" buttonText={'Add new member'} handleClick={handleAddNewMember} />

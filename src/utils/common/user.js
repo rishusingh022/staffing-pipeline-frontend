@@ -1,16 +1,29 @@
-export const extractSkillFromUsers = users => {
+import { GET_USER_SKILL_ROUTE } from '../../constants/apiEndpoints';
+import makeRequest from '../makeRequest';
+
+export const extractSkillFromUsers = (users, navigate) => {
   let uniqueSkills = [];
+  // create a map of skill and corresponding users array
+  let skillMap = new Map();
   users.map(user => {
-    const skills = user.skills;
-    skills.map(skill => {
-      if (!uniqueSkills.includes(skill)) {
-        uniqueSkills.push(skill);
-      }
+    makeRequest(GET_USER_SKILL_ROUTE(user.userId), {}, navigate).then(response => {
+      response.map(skills => {
+        if (!uniqueSkills.includes(skills.skill)) {
+          uniqueSkills.push(skills.skill);
+          // create a new array for each skill
+          skillMap.set(skills.skill, []);
+        }
+        // push the user to the corresponding skill array
+        skillMap.get(skills.skill).push(user.userId);
+      });
     });
   });
   uniqueSkills.push('All');
   uniqueSkills.sort();
-  return uniqueSkills;
+  return {
+    uniqueSkills,
+    skillMap,
+  };
 };
 
 export const extractRoleFromUsers = users => {

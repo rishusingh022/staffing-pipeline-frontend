@@ -68,8 +68,9 @@ const DashboardPage = () => {
   const [numberOfEngagements, setNumberofEngagements] = React.useState([]);
   const [numberOfPeopleStaffed, setNumberofPeopleStaffed] = React.useState([]);
   const [error, setError] = React.useState(null);
+  if (userInfo?.role !== 'leadership') navigate('/users');
   React.useEffect(() => {
-    makeRequest(GET_PROJECTS_METRICS, {}, () => {})
+    makeRequest(GET_PROJECTS_METRICS, {}, navigate)
       .then(response => {
         setNumberofEngagements(response);
       })
@@ -79,7 +80,7 @@ const DashboardPage = () => {
       });
   }, []);
   React.useEffect(() => {
-    makeRequest(GET_USER_METRICS, {}, () => {})
+    makeRequest(GET_USER_METRICS, {}, navigate)
       .then(response => {
         console.log('response', response);
         setNumberofPeopleStaffed(response);

@@ -89,4 +89,28 @@ export const skills = [
     category: 'Programming Languages',
     area: 'Backend',
   },
+  {
+    id: 16,
+    name: 'Swift',
+    category: 'Programming Languages',
+    area: 'Mobile',
+  },
+  {
+    id: 17,
+    name: 'Flutter',
+    category: 'Frameworks',
+    area: 'Mobile',
+  },
+  {
+    id: 18,
+    name: 'Leadership',
+    category: 'Soft Skills',
+    area: 'General',
+  },
+  {
+    id: 19,
+    name: 'Monitoring',
+    category: 'Soft Skills',
+    area: 'General',
+  },
 ];

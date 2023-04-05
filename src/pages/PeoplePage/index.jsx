@@ -28,6 +28,7 @@ const PeoplePage = () => {
   const [searchValue, setSearchValue] = React.useState('');
   const [pageNumber, setPageNumber] = React.useState(1);
   const [objectCount, setObjectCount] = React.useState(0);
+  const [userSkillMap, setUserSkillMap] = React.useState({});
 
   const handleSearch = searchValue => {
     setSearchValue(() => searchValue);
@@ -48,7 +49,9 @@ const PeoplePage = () => {
       .then(data => {
         setPeople(data);
         setIsLoading(false);
-        setTechnologyOptions(extractSkillFromUsers(data));
+        const { uniqueSkills, skillMap } = extractSkillFromUsers(data, navigate);
+        setTechnologyOptions(uniqueSkills);
+        setUserSkillMap(skillMap);
         setRoleOptions(extractRoleFromUsers(data));
       })
       .catch(error => {
@@ -73,11 +76,11 @@ const PeoplePage = () => {
   if (people) {
     if (technologySelected && roleSelected) {
       people = people.filter(person => {
-        return person.skills.includes(technologySelected) && person.role === roleSelected;
+        return userSkillMap.get(`${technologySelected}`).includes(person.userId) && person.role === roleSelected;
       });
     } else if (technologySelected) {
       people = people.filter(person => {
-        return person.skills.includes(technologySelected);
+        return userSkillMap.get(`${technologySelected}`).includes(person.userId);
       });
     } else if (roleSelected) {
       people = people.filter(person => {

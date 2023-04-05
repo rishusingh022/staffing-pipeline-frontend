@@ -11,7 +11,7 @@ describe('ToolBox', () => {
         <ToolBox />
       </FeatureProvider>
     );
-    expect(screen.getByText('Technology')).toBeTruthy();
+    expect(screen.getByText('Skills')).toBeTruthy();
     expect(screen.getByText('Role')).toBeTruthy();
   });
   it('renders ToolBox component with search button', () => {
@@ -28,7 +28,7 @@ describe('ToolBox', () => {
         <ToolBox />
       </FeatureProvider>
     );
-    const technology = screen.getByText('Technology');
+    const technology = screen.getByText('Skills');
     technology.click();
   });
   it('should show Role drop down options when Role drop down is clicked', () => {
