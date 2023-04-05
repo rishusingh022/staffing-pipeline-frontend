@@ -185,3 +185,12 @@ export const DELETE_USER_SKILL = userId => {
     method: 'delete',
   };
 };
+
+export const GET_PROJECTS_SECTOR_METRICS = {
+  url: '/api/metrics/projects/sectors',
+  method: 'get',
+};
+export const GET_CASE_STUDIES_SECTOR_METRICS = {
+  url: '/api/metrics/case-studies/sectors',
+  method: 'get',
+};

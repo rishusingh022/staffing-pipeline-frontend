@@ -10,6 +10,8 @@ import {
   GET_USER_METRICS,
   GET_ENGAGEMENT_STATUS,
   GET_USERS_STAFFING_METRICS,
+  GET_PROJECTS_SECTOR_METRICS,
+  GET_CASE_STUDIES_SECTOR_METRICS,
 } from '../../constants/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import applyTheme from '../../utils/chartsTheme';
@@ -22,6 +24,8 @@ const DashboardPage = () => {
   const [staffedData, setStaffedData] = React.useState();
   const [staffingPercentage, setStaffingPercentage] = React.useState(0);
   const [currentMonth, setCurrentMonth] = React.useState('');
+  const [projectSectorMetrics, setProjectSectorMetrics] = React.useState([{}]);
+  const [caseStudySectorMetrics, setCaseStudySectorMetrics] = React.useState([{}]);
   applyTheme();
   const formatValue = value => value.toFixed(2);
 
@@ -54,6 +58,14 @@ const DashboardPage = () => {
     });
     makeRequest(GET_USERS_STAFFING_METRICS, {}, navigate).then(response => {
       setStaffedData(response);
+    });
+    makeRequest(GET_PROJECTS_SECTOR_METRICS, {}, navigate).then(response => {
+      console.log(response);
+      setProjectSectorMetrics(response);
+    });
+    makeRequest(GET_CASE_STUDIES_SECTOR_METRICS, {}, navigate).then(response => {
+      console.log(response);
+      setCaseStudySectorMetrics(response);
     });
   }, []);
 
@@ -104,7 +116,6 @@ const DashboardPage = () => {
               People staffed : <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
             </div>
             <div className="main-chart">
-              <p className="bar-chart-title">Staffing Metrics</p>
               <BarChart
                 numberOfEngagements={numberOfEngagements}
                 peopleStaffed={numberOfPeopleStaffed}
@@ -123,6 +134,16 @@ const DashboardPage = () => {
           <div className="side-chart2">
             <p className="side-chart-title">Engagement Status</p>
             <PieChart data={engagementStatusData} name={'Engagement Status'} />
+          </div>
+        </div>
+        <div className="sector-charts">
+          <div className="sector-chart-item">
+            <p className="side-chart-title">Engagements in Sectors</p>
+            <PieChart data={projectSectorMetrics} name={'Engagements in Sectors'} />
+          </div>
+          <div className="sector-chart-item">
+            <p className="side-chart-title">Case Studies in Sectors</p>
+            <PieChart data={caseStudySectorMetrics} name={'Case Studies in Sectors'} />
           </div>
         </div>
       </>

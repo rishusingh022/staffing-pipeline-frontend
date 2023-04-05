@@ -77,6 +77,18 @@
   animation: count-up 2s;
 }
 
+.sector-charts{
+  display: flex;
+  box-sizing: border-box;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.sector-chart-item{
+  width: 100%;
+}
+
 @keyframes count-up {
   from {
     opacity: 0;

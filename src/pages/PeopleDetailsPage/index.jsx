@@ -6,12 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button';
 import EngagementHorizontalCard from '../../components/EngagementHorizontalCard';
 import EngagementCard from '../../components/EngagementCard';
-import {
-  DELETE_USER_SKILL,
-  GET_USER_DATA_BY_ID_URL,
-  GET_USER_SKILLS,
-  GET_USER_SKILL_ROUTE,
-} from '../../constants/apiEndpoints';
+import { GET_USER_DATA_BY_ID_URL, GET_USER_SKILL_ROUTE } from '../../constants/apiEndpoints';
 import { default as makeRequest } from '../../utils/makeRequest';
 import PageLoader from '../../components/Spinner';
 import { FeatureContext } from '../../context/FeatureContext';
