@@ -27,6 +27,7 @@ export default function EngagementCard({ imageUrl, altText, identityNumber, name
       </div>
       {userInfo?.featureAccess?.includes(allFeatures.read_engagement) && (
         <div
+          data-testid="read-more-button"
           className="link-button self-end text-xs mb-2 font-medium cursor-pointer hover:text-blue-800"
           onClick={() => {
             navigate(`/projects/${identityNumber}`);

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EngagementCard should render correctly 1`] = `<DocumentFragment />`;
+
+exports[`EngagementCard should render correctly with no image 1`] = `<DocumentFragment />`;
