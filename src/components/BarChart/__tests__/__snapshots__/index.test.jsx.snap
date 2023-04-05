@@ -15,17 +15,17 @@ exports[`Bar chart should render correctly 1`] = `
         <div
           class="highcharts-container "
           dir="ltr"
-          id="highcharts-e42p9z4-0"
-          style="position: relative; overflow: hidden; width: 600px; height: 650px; text-align: left; line-height: normal; z-index: 0; user-select: none; outline: none;"
+          id="highcharts-gj5fpag-0"
+          style="position: relative; overflow: hidden; width: 600px; height: 550px; text-align: left; line-height: normal; z-index: 0; user-select: none; outline: none;"
         >
           <svg
             aria-label=""
             class="highcharts-root"
-            height="650"
+            height="550"
             role="img"
             style="font-family: \\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Arial, Helvetica, sans-serif; font-size: 12px;"
             version="1.1"
-            viewBox="0 0 600 650"
+            viewBox="0 0 600 550"
             width="600"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -34,7 +34,7 @@ exports[`Bar chart should render correctly 1`] = `
             </desc>
             <defs>
               <clippath
-                id="highcharts-e42p9z4-1-"
+                id="highcharts-gj5fpag-1-"
               >
                 <rect
                   fill="none"
@@ -45,7 +45,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-e42p9z4-4-"
+                id="highcharts-gj5fpag-4-"
               >
                 <rect
                   fill="none"
@@ -56,7 +56,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-e42p9z4-7-"
+                id="highcharts-gj5fpag-7-"
               >
                 <rect
                   fill="none"
@@ -67,7 +67,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-e42p9z4-8-"
+                id="highcharts-gj5fpag-8-"
               >
                 <rect
                   class="highcharts-animating"
@@ -79,7 +79,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-e42p9z4-9-"
+                id="highcharts-gj5fpag-9-"
               >
                 <rect
                   fill="none"
@@ -93,7 +93,7 @@ exports[`Bar chart should render correctly 1`] = `
             <rect
               class="highcharts-background"
               fill="#ffffff"
-              height="650"
+              height="550"
               rx="0"
               ry="0"
               width="600"
@@ -221,51 +221,11 @@ exports[`Bar chart should render correctly 1`] = `
                 stroke-dasharray="none"
                 stroke-width="1"
               />
-              <path
-                class="highcharts-grid-line"
-                d="M 0 0"
-                data-z-index="1"
-                fill="none"
-                opacity="1"
-                stroke="#e6e6e6"
-                stroke-dasharray="none"
-                stroke-width="1"
-              />
-              <path
-                class="highcharts-grid-line"
-                d="M 0 0"
-                data-z-index="1"
-                fill="none"
-                opacity="1"
-                stroke="#e6e6e6"
-                stroke-dasharray="none"
-                stroke-width="1"
-              />
             </g>
             <g
               class="highcharts-grid highcharts-yaxis-grid"
               data-z-index="1"
             >
-              <path
-                class="highcharts-grid-line"
-                d="M 0 0"
-                data-z-index="1"
-                fill="none"
-                opacity="1"
-                stroke="#e6e6e6"
-                stroke-dasharray="none"
-                stroke-width="0"
-              />
-              <path
-                class="highcharts-grid-line"
-                d="M 0 0"
-                data-z-index="1"
-                fill="none"
-                opacity="1"
-                stroke="#e6e6e6"
-                stroke-dasharray="none"
-                stroke-width="0"
-              />
               <path
                 class="highcharts-grid-line"
                 d="M 0 0"
@@ -439,7 +399,7 @@ exports[`Bar chart should render correctly 1`] = `
             >
               <g
                 class="highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker"
-                clip-path="url(#highcharts-e42p9z4-4-)"
+                clip-path="url(#highcharts-gj5fpag-4-)"
                 data-z-index="0.1"
                 opacity="1"
                 style="cursor: pointer;"
@@ -477,7 +437,7 @@ exports[`Bar chart should render correctly 1`] = `
               />
               <g
                 class="highcharts-series highcharts-series-1 highcharts-spline-series"
-                clip-path="url(#highcharts-e42p9z4-8-)"
+                clip-path="url(#highcharts-gj5fpag-8-)"
                 data-z-index="0.1"
                 opacity="1"
                 transform="translate(NaN,100) scale(1 1)"
@@ -506,7 +466,7 @@ exports[`Bar chart should render correctly 1`] = `
               </g>
               <g
                 class="highcharts-markers highcharts-series-1 highcharts-spline-series highcharts-tracker"
-                clip-path="url(#highcharts-e42p9z4-9-)"
+                clip-path="url(#highcharts-gj5fpag-9-)"
                 data-z-index="0.1"
                 opacity="1"
                 style="cursor: pointer;"
@@ -576,7 +536,7 @@ exports[`Bar chart should render correctly 1`] = `
               style="color: rgb(102, 102, 102); fill: #666666;"
               text-anchor="start"
               x="10"
-              y="647"
+              y="547"
             />
             <g
               class="highcharts-legend highcharts-no-tooltip"
@@ -698,7 +658,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                0.3
+                0.4
               </text>
               <text
                 style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
@@ -706,15 +666,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                0.6
-              </text>
-              <text
-                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
-                text-anchor="end"
-                transform="translate(0,0)"
-                x="0"
-              >
-                0.9
+                0.8
               </text>
               <text
                 style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
@@ -730,7 +682,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                1.5
+                1.6
               </text>
               <text
                 style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
@@ -738,15 +690,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                1.8
-              </text>
-              <text
-                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
-                text-anchor="end"
-                transform="translate(0,0)"
-                x="0"
-              >
-                2.1
+                2
               </text>
               <text
                 style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
@@ -767,7 +711,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                3.9
+                3.75
               </text>
               <text
                 style="color: gray; cursor: default; font-size: 11px; fill: gray;"
@@ -775,7 +719,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                4.05
+                4
               </text>
               <text
                 style="color: gray; cursor: default; font-size: 11px; fill: gray;"
@@ -783,15 +727,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                4.2
-              </text>
-              <text
-                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
-                text-anchor="start"
-                transform="translate(0,0)"
-                x="0"
-              >
-                4.35
+                4.25
               </text>
               <text
                 style="color: gray; cursor: default; font-size: 11px; fill: gray;"
@@ -807,7 +743,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                4.65
+                4.75
               </text>
               <text
                 style="color: gray; cursor: default; font-size: 11px; fill: gray;"
@@ -815,7 +751,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                4.8
+                5
               </text>
               <text
                 style="color: gray; cursor: default; font-size: 11px; fill: gray;"
@@ -823,15 +759,7 @@ exports[`Bar chart should render correctly 1`] = `
                 transform="translate(0,0)"
                 x="0"
               >
-                4.95
-              </text>
-              <text
-                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
-                text-anchor="start"
-                transform="translate(0,0)"
-                x="0"
-              >
-                5.1
+                5.25
               </text>
             </g>
           </svg>

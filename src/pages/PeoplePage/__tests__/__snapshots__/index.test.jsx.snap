@@ -3,6 +3,38 @@
 exports[`PeoplePage should render without crashing 1`] = `
 <DocumentFragment>
   <div
+    class="font-light lg:h-[88px] h-[120px] flex-shrink-0 text-white flex justify-center bg-deepBlue header-container relative items-center"
+  >
+    <img
+      alt="logo"
+      class="h-[70px] w-[155px] aspect-auto self-end pl-0 pt-0 pb-[5px] absolute xl:left-44 left-10 top-4"
+      src="McK_Logo.png"
+    />
+    <div
+      class="h-full  flex box-border"
+    >
+      <div
+        class="grid grid-cols-4 gap-10 items-end"
+      >
+        <button
+          class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
+        >
+          People
+        </button>
+        <button
+          class="text-[white] hover:text-cyan hover:border-b-[5px] hover:border-b-cyan hover:border-solid pt-0 pb-[15px] hover:pb-2.5 px-[5px]"
+        >
+          Case Studies
+        </button>
+      </div>
+    </div>
+    <button
+      class="absolute top-7 right-[5%] border-[1px] py-1 px-3 hover:text-cyan hover:border-cyan"
+    >
+      Logout
+    </button>
+  </div>
+  <div
     class="pt-32 w-full flex justify-center undefined"
   >
     <div
