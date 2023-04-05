@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Count engagements, users and case-studies should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full px-10 flex justify-end py-4 text-gray-400"
+  >
+    <p>
+      12 Users
+    </p>
+  </div>
+</DocumentFragment>
+`;

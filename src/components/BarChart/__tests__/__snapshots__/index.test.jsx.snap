@@ -1,0 +1,843 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bar chart should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full flex flex-col justify-center items-center"
+  >
+    <div
+      class="w-full"
+    >
+      <div
+        data-highcharts-chart="0"
+        style="overflow: hidden;"
+      >
+        <div
+          class="highcharts-container "
+          dir="ltr"
+          id="highcharts-x5gl9lb-0"
+          style="position: relative; overflow: hidden; width: 600px; height: 650px; text-align: left; line-height: normal; z-index: 0; user-select: none; outline: none;"
+        >
+          <svg
+            aria-label=""
+            class="highcharts-root"
+            height="650"
+            role="img"
+            style="font-family: \\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Arial, Helvetica, sans-serif; font-size: 12px;"
+            version="1.1"
+            viewBox="0 0 600 650"
+            width="600"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <desc>
+              Created with Highcharts 10.3.3
+            </desc>
+            <defs>
+              <clippath
+                id="highcharts-x5gl9lb-1-"
+              >
+                <rect
+                  fill="none"
+                  height="NaN"
+                  width="NaN"
+                  x="0"
+                  y="0"
+                />
+              </clippath>
+              <clippath
+                id="highcharts-x5gl9lb-4-"
+              >
+                <rect
+                  fill="none"
+                  height="NaN"
+                  width="NaN"
+                  x="0"
+                  y="0"
+                />
+              </clippath>
+              <clippath
+                id="highcharts-x5gl9lb-7-"
+              >
+                <rect
+                  fill="none"
+                  height="NaN"
+                  width="NaN"
+                  x="0"
+                  y="0"
+                />
+              </clippath>
+              <clippath
+                id="highcharts-x5gl9lb-8-"
+              >
+                <rect
+                  class="highcharts-animating"
+                  fill="none"
+                  height="NaNNaN"
+                  width="NaN"
+                  x="0"
+                  y="0"
+                />
+              </clippath>
+              <clippath
+                id="highcharts-x5gl9lb-9-"
+              >
+                <rect
+                  fill="none"
+                  height="NaN"
+                  width="99"
+                  x="-99"
+                  y="-99"
+                />
+              </clippath>
+            </defs>
+            <rect
+              class="highcharts-background"
+              fill="#ffffff"
+              height="650"
+              rx="0"
+              ry="0"
+              width="600"
+              x="0"
+              y="0"
+            />
+            <rect
+              class="highcharts-plot-background"
+              fill="none"
+              height="NaN"
+              width="NaN"
+              x="NaN"
+              y="100"
+            />
+            <g
+              class="highcharts-grid highcharts-xaxis-grid"
+              data-z-index="1"
+            >
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+            </g>
+            <g
+              class="highcharts-grid highcharts-yaxis-grid"
+              data-z-index="1"
+            />
+            <g
+              class="highcharts-grid highcharts-yaxis-grid"
+              data-z-index="1"
+            >
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="1"
+              />
+            </g>
+            <g
+              class="highcharts-grid highcharts-yaxis-grid"
+              data-z-index="1"
+            >
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+              <path
+                class="highcharts-grid-line"
+                d="M 0 0"
+                data-z-index="1"
+                fill="none"
+                opacity="1"
+                stroke="#e6e6e6"
+                stroke-dasharray="none"
+                stroke-width="0"
+              />
+            </g>
+            <rect
+              class="highcharts-plot-border"
+              data-z-index="1"
+              fill="none"
+              height="0"
+              stroke="#cccccc"
+              stroke-width="0"
+              width="0"
+              x="0"
+              y="100"
+            />
+            <g
+              class="highcharts-axis highcharts-xaxis"
+              data-z-index="2"
+            >
+              <path
+                class="highcharts-axis-line"
+                d="M 0 0"
+                data-z-index="7"
+                fill="none"
+                stroke="#ccd6eb"
+                stroke-width="1"
+              />
+            </g>
+            <g
+              class="highcharts-axis highcharts-yaxis"
+              data-z-index="2"
+            >
+              <text
+                class="highcharts-axis-title"
+                data-z-index="7"
+                style="color: rgb(102, 102, 102); fill: #666666;"
+                text-anchor="middle"
+                transform="translate(0,0) rotate(90 NaN NaN)"
+                x="NaN"
+                y="NaN"
+              >
+                Values
+              </text>
+              <path
+                class="highcharts-axis-line"
+                d="M 0 0"
+                data-z-index="7"
+                fill="none"
+                stroke="#ccd6eb"
+                stroke-width="0"
+              />
+            </g>
+            <g
+              class="highcharts-axis highcharts-yaxis"
+              data-z-index="2"
+            >
+              <text
+                class="highcharts-axis-title"
+                data-z-index="7"
+                style="color: rgb(102, 102, 102); fill: #666666;"
+                text-anchor="middle"
+                transform="translate(0,0) rotate(270 NaN NaN)"
+                x="NaN"
+                y="NaN"
+              >
+                Values
+              </text>
+              <path
+                class="highcharts-axis-line"
+                d="M 0 0"
+                data-z-index="7"
+                fill="none"
+                stroke="#ccd6eb"
+                stroke-width="0"
+              />
+            </g>
+            <g
+              class="highcharts-axis highcharts-yaxis"
+              data-z-index="2"
+            >
+              <text
+                class="highcharts-axis-title"
+                data-z-index="7"
+                style="color: gray; fill: gray;"
+                text-anchor="middle"
+                transform="translate(0,0) rotate(90 NaN NaN)"
+                x="NaN"
+                y="NaN"
+              >
+                % people staffed
+              </text>
+              <path
+                class="highcharts-axis-line"
+                d="M 0 0"
+                data-z-index="7"
+                fill="none"
+                stroke="#ccd6eb"
+                stroke-width="0"
+              />
+            </g>
+            <g
+              class="highcharts-series-group"
+              data-z-index="3"
+            >
+              <g
+                class="highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker"
+                clip-path="url(#highcharts-x5gl9lb-4-)"
+                data-z-index="0.1"
+                opacity="1"
+                style="cursor: pointer;"
+                transform="translate(NaN,100) scale(1 0.001)"
+              >
+                <rect
+                  class="highcharts-point highcharts-color-0"
+                  fill="#7cb5ec"
+                  height="NaN"
+                  opacity="1"
+                  stroke="#ffffff"
+                  stroke-width="1"
+                  width="NaN"
+                  x="NaN"
+                  y="NaN"
+                />
+                <rect
+                  class="highcharts-point highcharts-color-0"
+                  fill="#7cb5ec"
+                  height="NaN"
+                  opacity="1"
+                  stroke="#ffffff"
+                  stroke-width="1"
+                  width="NaN"
+                  x="NaN"
+                  y="NaN"
+                />
+              </g>
+              <g
+                class="highcharts-markers highcharts-series-0 highcharts-column-series highcharts-color-0"
+                clip-path="none"
+                data-z-index="0.1"
+                opacity="1"
+                transform="translate(NaN,100) scale(1 1)"
+              />
+              <g
+                class="highcharts-series highcharts-series-1 highcharts-spline-series"
+                clip-path="url(#highcharts-x5gl9lb-8-)"
+                data-z-index="0.1"
+                opacity="1"
+                transform="translate(NaN,100) scale(1 1)"
+              >
+                <path
+                  class="highcharts-graph"
+                  d="M -100000 -100000 C -100000 -100000 -100000 -100000 -100000 -100000"
+                  data-z-index="1"
+                  fill="none"
+                  stroke="#FECD75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+                <path
+                  class="highcharts-tracker-line"
+                  d="M -100000 -100000 C -100000 -100000 -100000 -100000 -100000 -100000"
+                  data-z-index="2"
+                  fill="none"
+                  stroke="rgba(192,192,192,0.002)"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="22"
+                  style="cursor: pointer;"
+                />
+              </g>
+              <g
+                class="highcharts-markers highcharts-series-1 highcharts-spline-series highcharts-tracker"
+                clip-path="url(#highcharts-x5gl9lb-9-)"
+                data-z-index="0.1"
+                opacity="1"
+                style="cursor: pointer;"
+                transform="translate(NaN,100) scale(1 1)"
+              />
+            </g>
+            <g
+              class="highcharts-exporting-group"
+              data-z-index="3"
+            >
+              <g
+                class="highcharts-no-tooltip highcharts-button highcharts-contextbutton"
+                stroke-linecap="round"
+                style="cursor: pointer;"
+                transform="translate(566,10)"
+              >
+                <title>
+                  Chart context menu
+                </title>
+                <rect
+                  class="highcharts-button-box"
+                  fill="#ffffff"
+                  height="22"
+                  rx="2"
+                  ry="2"
+                  stroke="none"
+                  stroke-width="1"
+                  width="24"
+                  x="0.5"
+                  y="0.5"
+                />
+                <path
+                  class="highcharts-button-symbol"
+                  d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5"
+                  data-z-index="1"
+                  fill="#666666"
+                  stroke="#666666"
+                  stroke-width="3"
+                />
+                <text
+                  data-z-index="1"
+                  style="color: rgb(51, 51, 51); font-weight: normal; fill: #333333;"
+                  x="0"
+                  y="15.5"
+                />
+              </g>
+            </g>
+            <text
+              class="highcharts-title"
+              data-z-index="4"
+              style="color: rgb(51, 51, 51); font-size: 18px; fill: #333333;"
+              text-anchor="middle"
+              x="300"
+              y="24"
+            />
+            <text
+              class="highcharts-subtitle"
+              data-z-index="4"
+              style="color: rgb(102, 102, 102); fill: #666666;"
+              text-anchor="middle"
+              x="300"
+              y="10"
+            />
+            <text
+              class="highcharts-caption"
+              data-z-index="4"
+              style="color: rgb(102, 102, 102); fill: #666666;"
+              text-anchor="start"
+              x="10"
+              y="647"
+            />
+            <g
+              class="highcharts-legend highcharts-no-tooltip"
+              data-z-index="7"
+              transform="translate(510,4)"
+            >
+              <rect
+                class="highcharts-legend-box"
+                fill="rgba(255,255,255,0.25)"
+                rx="0"
+                ry="0"
+                stroke="#999999"
+                stroke-width="0"
+              />
+              <g
+                data-z-index="1"
+              >
+                <g>
+                  <g
+                    class="highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0"
+                    data-z-index="1"
+                    transform="translate(8,3)"
+                  >
+                    <text
+                      data-z-index="2"
+                      style="color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: bold; fill: #333333;"
+                      text-anchor="start"
+                      x="21"
+                      y="15"
+                    >
+                      Number of Engagements
+                    </text>
+                    <rect
+                      class="highcharts-point"
+                      data-z-index="3"
+                      fill="#7cb5ec"
+                      height="12"
+                      rx="6"
+                      ry="6"
+                      width="12"
+                      x="2"
+                      y="4"
+                    />
+                  </g>
+                  <g
+                    class="highcharts-legend-item highcharts-spline-series highcharts-color-undefined highcharts-series-1"
+                    data-z-index="1"
+                    transform="translate(8,18)"
+                  >
+                    <path
+                      class="highcharts-graph"
+                      d="M 1 11 L 15 11"
+                      fill="none"
+                      stroke="#FECD75"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                    />
+                    <path
+                      class="highcharts-point"
+                      d="M 8 15 A 4 4 0 1 1 8.003999999333336 14.999998000000167 Z"
+                      fill="#FECD75"
+                      opacity="1"
+                      stroke="#ffffff"
+                      stroke-width="0"
+                    />
+                    <text
+                      data-z-index="2"
+                      style="color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: bold; fill: #333333;"
+                      text-anchor="start"
+                      x="21"
+                      y="15"
+                    >
+                      % people staffed
+                    </text>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g
+              class="highcharts-axis-labels highcharts-xaxis-labels"
+              data-z-index="7"
+            >
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="middle"
+                transform="translate(0,0)"
+                x="0"
+              >
+                Apr
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="middle"
+                transform="translate(0,0)"
+                x="0"
+              >
+                May
+              </text>
+            </g>
+            <g
+              class="highcharts-axis-labels highcharts-yaxis-labels"
+              data-z-index="7"
+            />
+            <g
+              class="highcharts-axis-labels highcharts-yaxis-labels"
+              data-z-index="7"
+            >
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                0
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                0.3
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                0.6
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                0.9
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                1.2
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                1.5
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                1.8
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                2.1
+              </text>
+              <text
+                style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: #666666;"
+                text-anchor="end"
+                transform="translate(0,0)"
+                x="0"
+              >
+                2.4
+              </text>
+            </g>
+            <g
+              class="highcharts-axis-labels highcharts-yaxis-labels"
+              data-z-index="7"
+            >
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                3.9
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.05
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.2
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.35
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.5
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.65
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.8
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                4.95
+              </text>
+              <text
+                style="color: gray; cursor: default; font-size: 11px; fill: gray;"
+                text-anchor="start"
+                transform="translate(0,0)"
+                x="0"
+              >
+                5.1
+              </text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
