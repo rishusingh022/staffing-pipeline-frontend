@@ -15,7 +15,7 @@ exports[`Bar chart should render correctly 1`] = `
         <div
           class="highcharts-container "
           dir="ltr"
-          id="highcharts-x5gl9lb-0"
+          id="highcharts-mqme4ea-0"
           style="position: relative; overflow: hidden; width: 600px; height: 650px; text-align: left; line-height: normal; z-index: 0; user-select: none; outline: none;"
         >
           <svg
@@ -34,7 +34,7 @@ exports[`Bar chart should render correctly 1`] = `
             </desc>
             <defs>
               <clippath
-                id="highcharts-x5gl9lb-1-"
+                id="highcharts-mqme4ea-1-"
               >
                 <rect
                   fill="none"
@@ -45,7 +45,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-x5gl9lb-4-"
+                id="highcharts-mqme4ea-4-"
               >
                 <rect
                   fill="none"
@@ -56,7 +56,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-x5gl9lb-7-"
+                id="highcharts-mqme4ea-7-"
               >
                 <rect
                   fill="none"
@@ -67,7 +67,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-x5gl9lb-8-"
+                id="highcharts-mqme4ea-8-"
               >
                 <rect
                   class="highcharts-animating"
@@ -79,7 +79,7 @@ exports[`Bar chart should render correctly 1`] = `
                 />
               </clippath>
               <clippath
-                id="highcharts-x5gl9lb-9-"
+                id="highcharts-mqme4ea-9-"
               >
                 <rect
                   fill="none"
@@ -439,7 +439,7 @@ exports[`Bar chart should render correctly 1`] = `
             >
               <g
                 class="highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker"
-                clip-path="url(#highcharts-x5gl9lb-4-)"
+                clip-path="url(#highcharts-mqme4ea-4-)"
                 data-z-index="0.1"
                 opacity="1"
                 style="cursor: pointer;"
@@ -477,7 +477,7 @@ exports[`Bar chart should render correctly 1`] = `
               />
               <g
                 class="highcharts-series highcharts-series-1 highcharts-spline-series"
-                clip-path="url(#highcharts-x5gl9lb-8-)"
+                clip-path="url(#highcharts-mqme4ea-8-)"
                 data-z-index="0.1"
                 opacity="1"
                 transform="translate(NaN,100) scale(1 1)"
@@ -506,7 +506,7 @@ exports[`Bar chart should render correctly 1`] = `
               </g>
               <g
                 class="highcharts-markers highcharts-series-1 highcharts-spline-series highcharts-tracker"
-                clip-path="url(#highcharts-x5gl9lb-9-)"
+                clip-path="url(#highcharts-mqme4ea-9-)"
                 data-z-index="0.1"
                 opacity="1"
                 style="cursor: pointer;"

@@ -9,7 +9,7 @@ import exportingModule from 'highcharts/modules/exporting';
 exportingModule(Highcharts);
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
-const PieChart = ({ data, name }) => {
+const PieChart = ({ data }) => {
   const chartComponent = useRef(null);
 
   const options = {

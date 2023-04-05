@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pie chart should render correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      id="element-to-print"
+    >
+      <div
+        data-highcharts-chart="0"
+        style="overflow: hidden;"
+      >
+        <div
+          class="highcharts-container "
+          dir="ltr"
+          id="highcharts-66dxp6u-0"
+          style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; user-select: none; outline: none;"
+        >
+          <svg
+            aria-label=""
+            class="highcharts-root"
+            height="400"
+            role="img"
+            style="font-family: \\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Arial, Helvetica, sans-serif; font-size: 12px;"
+            version="1.1"
+            viewBox="0 0 600 400"
+            width="600"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <desc>
+              Created with Highcharts 10.3.3
+            </desc>
+            <defs>
+              <clippath
+                id="highcharts-66dxp6u-1-"
+              >
+                <rect
+                  fill="none"
+                  height="335"
+                  width="580"
+                  x="0"
+                  y="0"
+                />
+              </clippath>
+            </defs>
+            <rect
+              class="highcharts-background"
+              fill="#ffffff"
+              height="400"
+              rx="0"
+              ry="0"
+              width="600"
+              x="0"
+              y="0"
+            />
+            <rect
+              class="highcharts-plot-background"
+              fill="none"
+              height="335"
+              width="580"
+              x="10"
+              y="50"
+            />
+            <g
+              class="highcharts-pane-group"
+              data-z-index="0"
+            />
+            <rect
+              class="highcharts-plot-border"
+              data-z-index="1"
+              fill="none"
+              height="335"
+              stroke="#cccccc"
+              stroke-width="0"
+              width="580"
+              x="10"
+              y="50"
+            />
+            <g
+              class="highcharts-series-group"
+              data-z-index="3"
+            >
+              <g
+                class="highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker"
+                data-z-index="0.1"
+                opacity="1"
+                transform="translate(10,50) scale(1 1)"
+              >
+                <path
+                  class="highcharts-empty-series"
+                  d="M 290 10 A 157.5 157.5 0 1 1 289.8425000262499 10.000078749993435 M 290 167.5 A 0 0 0 1 0 290 167.5"
+                  fill="none"
+                  stroke="#cccccc"
+                  stroke-width="1"
+                />
+              </g>
+              <g
+                class="highcharts-markers highcharts-series-0 highcharts-pie-series"
+                data-z-index="0.1"
+                opacity="1"
+                transform="translate(10,50) scale(1 1)"
+              />
+            </g>
+            <g
+              class="highcharts-exporting-group"
+              data-z-index="3"
+            >
+              <g
+                class="highcharts-no-tooltip highcharts-button highcharts-contextbutton"
+                stroke-linecap="round"
+                style="cursor: pointer;"
+                transform="translate(566,10)"
+              >
+                <title>
+                  Chart context menu
+                </title>
+                <rect
+                  class="highcharts-button-box"
+                  fill="#ffffff"
+                  height="22"
+                  rx="2"
+                  ry="2"
+                  stroke="none"
+                  stroke-width="1"
+                  width="24"
+                  x="0.5"
+                  y="0.5"
+                />
+                <path
+                  class="highcharts-button-symbol"
+                  d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5"
+                  data-z-index="1"
+                  fill="#666666"
+                  stroke="#666666"
+                  stroke-width="3"
+                />
+                <text
+                  data-z-index="1"
+                  style="color: rgb(51, 51, 51); font-weight: normal; fill: #333333;"
+                  x="0"
+                  y="15.5"
+                />
+              </g>
+            </g>
+            <text
+              class="highcharts-title"
+              data-z-index="4"
+              style="color: rgb(51, 51, 51); font-size: 18px; fill: #333333;"
+              text-anchor="middle"
+              x="300"
+              y="24"
+            />
+            <text
+              class="highcharts-subtitle"
+              data-z-index="4"
+              style="color: rgb(102, 102, 102); fill: #666666;"
+              text-anchor="middle"
+              x="300"
+              y="10"
+            />
+            <text
+              class="highcharts-caption"
+              data-z-index="4"
+              style="color: rgb(102, 102, 102); fill: #666666;"
+              text-anchor="start"
+              x="10"
+              y="397"
+            />
+            <g
+              class="highcharts-data-labels highcharts-series-0 highcharts-pie-series highcharts-tracker"
+              data-z-index="6"
+              opacity="0"
+              transform="translate(10,50) scale(1 1)"
+            />
+            <g
+              class="highcharts-legend highcharts-no-tooltip"
+              data-z-index="7"
+              visibility="hidden"
+            >
+              <rect
+                class="highcharts-legend-box"
+                fill="none"
+                height="8"
+                rx="0"
+                ry="0"
+                stroke="#999999"
+                stroke-width="0"
+                width="8"
+                x="0"
+                y="0"
+              />
+              <g
+                data-z-index="1"
+              >
+                <g />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
