@@ -3,10 +3,14 @@
 exports[`CardContainer should render without crashing 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-cols-1 h-full gap-x-14 gap-y-8 lg:grid-cols-4 md:grid-cols-2 mb-4"
+    class="grow-1"
   >
-    <div>
-      Test
+    <div
+      class="grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-4"
+    >
+      <div>
+        Test
+      </div>
     </div>
   </div>
 </DocumentFragment>

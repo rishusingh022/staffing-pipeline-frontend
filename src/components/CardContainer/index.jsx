@@ -3,7 +3,9 @@ import './CardContainer.css';
 import PropTypes from 'prop-types';
 const CardContainer = props => {
   return (
-    <div className="grid grid-cols-1 h-full gap-x-14 gap-y-8 lg:grid-cols-4 md:grid-cols-2 mb-4">{props.children}</div>
+    <div className="grow-1">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-4">{props.children}</div>
+    </div>
   );
 };
 export default CardContainer;

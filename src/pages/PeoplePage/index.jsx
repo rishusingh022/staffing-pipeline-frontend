@@ -71,7 +71,12 @@ const PeoplePage = () => {
     );
   }
   if (isLoading) {
-    return <PageLoader />;
+    return (
+      <>
+        <Header hasNav={true} />
+        <PageLoader />
+      </>
+    );
   }
   if (people) {
     if (technologySelected && roleSelected) {
@@ -122,7 +127,7 @@ const PeoplePage = () => {
           roleOptions={roleOptions}
           navigate={navigate}
         />
-        <div className="container-in-people">
+        <div className="container-in-people flex flex-col">
           <Count type="users" objectCount={objectCount} setObjectCount={setObjectCount} />
           <CardContainer>{peopleCards}</CardContainer>
           <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />

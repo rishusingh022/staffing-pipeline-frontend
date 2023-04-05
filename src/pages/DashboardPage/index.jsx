@@ -107,13 +107,23 @@ const DashboardPage = () => {
     return (
       <>
         <Header hasNav={true} />
+
         <div className="dashboard">
-          <div className="main-area">
-            <div className="metrics">
-              <p className="bar-chart-title">Staffing Metrics</p>
-              <div className="metric-label">{currentMonth}</div>
-              People staffed : <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
+          <div className="metrics">
+            <div className="metric-info">
+              <div>
+                <div className="metric-label">For the month:</div>
+                {currentMonth}
+              </div>
+              <div>
+                <div className="metric-label">People staffed : </div>
+                <AnimatedNumber value={staffingPercentage} formatValue={formatValue} /> %
+              </div>
             </div>
+          </div>
+          <div className="main-area">
+            <p className="side-chart-title">Staffing Metrics</p>
+
             <div className="main-chart">
               <BarChart
                 numberOfEngagements={numberOfEngagements}
@@ -134,13 +144,11 @@ const DashboardPage = () => {
             <p className="side-chart-title">Engagement Status</p>
             <PieChart data={engagementStatusData} name={'Engagement Status'} />
           </div>
-        </div>
-        <div className="sector-charts">
-          <div className="sector-chart-item">
+          <div className="sector-chart1">
             <p className="side-chart-title">Engagements in Sectors</p>
             <PieChart data={projectSectorMetrics} name={'Engagements in Sectors'} />
           </div>
-          <div className="sector-chart-item">
+          <div className="sector-chart2">
             <p className="side-chart-title">Case Studies in Sectors</p>
             <PieChart data={caseStudySectorMetrics} name={'Case Studies in Sectors'} />
           </div>

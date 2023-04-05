@@ -123,7 +123,12 @@ export default function CaseStudiesPage() {
     );
   }
   if (isLoading) {
-    return <PageLoader />;
+    return (
+      <>
+        <Header hasNav={true} />
+        <PageLoader />
+      </>
+    );
   }
   if (caseStudies) {
     const { startDate, endDate } = timeFilterUtil(timeFrameSelected);

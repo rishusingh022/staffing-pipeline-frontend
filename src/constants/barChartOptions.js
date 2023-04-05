@@ -14,7 +14,7 @@ const OPTIONS = (
   const newCategories = allMonths.slice(thisMonthIndex, 12).concat(allMonths.slice(0, thisMonthIndex));
   return {
     chart: {
-      height: 650,
+      height: 550,
       marginTop: 100,
     },
     title: {
