@@ -30,7 +30,7 @@
 .notification-card .message {
   font-size: 1rem;
   font-weight: 400;
-  font-family: 'Inter';
+  font-family: 'Arial', sans-serif;
   margin: 10px;
 }
 

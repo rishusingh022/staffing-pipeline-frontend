@@ -42,7 +42,7 @@ function PaginationControl({ pageNumber, setPageNumber, objectCount }) {
   };
 
   return (
-    <div className="relative min-h-[50px] py-4 flex w-full px-10 justify-center">
+    <div className="relative min-h-[50px] py-10 flex w-full px-10 justify-center">
       <div className="flex gap-12 items-center justify-center">
         <GrFormPreviousLink className="hover:cursor-pointer" onClick={goPrev} size={24} />
         <input

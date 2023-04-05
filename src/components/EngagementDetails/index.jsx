@@ -184,9 +184,9 @@ export default function EngagementDetails({ engagementDetails }) {
       </div>
       <div className="case-study-container">
         <div className="case-study-title">Case Studies & Knowledge Materials</div>
-        <div className="case-dropdown">
+        {/* <div className="case-dropdown">
           <Dropdown dropdownName="All" />
-        </div>
+        </div> */}
         <div className="case-study-comp">
           {engagementDetails?.caseStudiesInEngagement?.length === 0 && <p>No Case Studies are uploaded</p>}
           {engagementDetails?.caseStudiesInEngagement?.map((data, index) => (

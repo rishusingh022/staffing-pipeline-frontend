@@ -33,7 +33,7 @@
 } */
 .add-engagement-form-container .dropdown-container .dropdown-header {
   padding: 0 0.5rem;
-  min-height: 2rem;
+  min-height: 2.2rem;
 }
 .engagement-dropdown-wrapper .dropdown-container .dropdown-header {
   padding: 0 0.5rem;
@@ -99,4 +99,9 @@
 
 .add-engagement-form-container .sector-dropdown{
   min-width: max-content;
+}
+
+.status-dropdown .dropdown-container{
+  width: 10rem;
+  height: 2rem;
 }

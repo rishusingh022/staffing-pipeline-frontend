@@ -91,6 +91,7 @@
 
 .sector-dropdown .dropdown-container{
   width: max-content;
-  width : 19.3rem;
-  height: fit-content;
+  width : 21.2rem;
+  /* height: fit-content; */
+  min-height: 2rem;
 }

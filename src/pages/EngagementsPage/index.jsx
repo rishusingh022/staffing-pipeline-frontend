@@ -74,7 +74,11 @@ const EngagementsPage = () => {
   if (!userInfo?.featureAccess?.includes(allFeatures.read_engagement)) navigate('/users');
 
   const fetchEngagementData = () => {
-    makeRequest(GET_ENGAGEMENT_DATA_URL, {}, () => {})
+    makeRequest(GET_ENGAGEMENT_DATA_URL, {
+      params: {
+        page: pageNumber,
+      }
+    }, () => {})
       .then(response => {
         console.log(response);
         response = convertStartDate(response);

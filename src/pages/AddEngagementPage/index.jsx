@@ -239,21 +239,25 @@ export default function AddEngagementPage() {
                     }}
                   />
                 </div>
-                <input
-                  type="text"
-                  placeholder="Charge Code"
-                  className="input-style w-32"
-                  onChange={e => {
-                    setChargeCode(e.target.value);
-                  }}
-                />
-                <Dropdown
-                  dropdownName="Status"
-                  dropdownData={statusOptions}
-                  selectOption={option => {
-                    setSelectedStatus(option.toLowerCase());
-                  }}
-                />
+                <div className='flex gap-4 justify-between'>
+                  <input
+                    type="text"
+                    placeholder="Charge Code"
+                    className="input-style w-40"
+                    onChange={e => {
+                      setChargeCode(e.target.value);
+                    }}
+                  />
+                  <div className='status-dropdown'>
+                    <Dropdown
+                      dropdownName="Status"
+                      dropdownData={statusOptions}
+                      selectOption={option => {
+                        setSelectedStatus(option.toLowerCase());
+                      }}
+                    />
+                  </div>
+                </div>
                 {/* <div className="flex justify-between w-32 text-gray-400 px-2 border-black border h-8 items-center">
                   <p>Tags</p>
                   <p>+</p>
