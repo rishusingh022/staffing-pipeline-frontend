@@ -13,7 +13,7 @@ exports[`Pie chart should render correctly 1`] = `
         <div
           class="highcharts-container "
           dir="ltr"
-          id="highcharts-66dxp6u-0"
+          id="highcharts-61584w5-0"
           style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; user-select: none; outline: none;"
         >
           <svg
@@ -32,7 +32,7 @@ exports[`Pie chart should render correctly 1`] = `
             </desc>
             <defs>
               <clippath
-                id="highcharts-66dxp6u-1-"
+                id="highcharts-61584w5-1-"
               >
                 <rect
                   fill="none"

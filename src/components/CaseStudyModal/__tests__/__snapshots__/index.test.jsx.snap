@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Case study modal should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="background fixed bg-black/[.85] w-screen h-screen top-0 left-0 flex items-center justify-center z-10"
+  >
+    <div
+      class="modal-content flex flex-col gap-4 p-9"
+    >
+      <p
+        class="modal-title"
+      >
+        Upload Case Study
+      </p>
+      <div
+        class="name"
+      >
+        <input
+          class="w-full px-3 py-2 border-[1px] border-gray-400"
+          placeholder="Enter case study name"
+          value=""
+        />
+      </div>
+      <div
+        class="modal-search"
+      >
+        <div
+          class="search-container"
+        >
+          <input
+            placeholder="Search Engagement"
+            type="text"
+          />
+          <div
+            class="filter-search-button"
+          >
+            <button
+              class="button"
+              data-testid="button"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal-engagement-name"
+      />
+      <div
+        class="description"
+      >
+        <input
+          class="w-full px-3 py-2 border-[1px] border-gray-400"
+          placeholder="Enter description"
+          value=""
+        />
+      </div>
+      <div
+        class="box-link"
+      >
+        <input
+          class="w-full px-3 py-2 border-[1px] border-gray-400"
+          placeholder="Paste Box Link"
+          value=""
+        />
+      </div>
+      <div
+        class="modal-user-search"
+      >
+        <div
+          class="search-container"
+        >
+          <input
+            placeholder="Search People"
+            type="text"
+          />
+          <div
+            class="filter-search-button"
+          >
+            <button
+              class="button"
+              data-testid="button"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal-collaborators"
+      >
+        <p
+          class="no-users-involved font-light text-gray text-center"
+        >
+          No users involved in this Engagement
+        </p>
+      </div>
+      <div
+        class="enter-btn p-0"
+      >
+        <div
+          class="btn-comp"
+        >
+          <div
+            class="submit-btn"
+          >
+            <button
+              class="button"
+              data-testid="button"
+            >
+              Cancel
+            </button>
+          </div>
+          <div
+            class="modal-image"
+          >
+            <label
+              for="upload-case-study-image"
+            >
+              <p
+                class="px-3 py-2 ml-2 bg-[#051b2c] text-white w-fit hover:cursor-pointer"
+              >
+                Select Image
+              </p>
+            </label>
+            <input
+              class="hidden"
+              id="upload-case-study-image"
+              name="Upload image"
+              type="file"
+            />
+          </div>
+        </div>
+        <div
+          class="cancel-btn"
+        >
+          <button
+            class="button"
+            data-testid="button"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
