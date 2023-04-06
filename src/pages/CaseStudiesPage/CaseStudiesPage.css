@@ -1,6 +1,5 @@
 .case-studies-page {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
