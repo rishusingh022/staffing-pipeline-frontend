@@ -45,11 +45,15 @@ const PeoplePage = () => {
   };
 
   React.useEffect(() => {
-    makeRequest(GET_USER_DATA_URL, {
-      params: {
-        page: pageNumber,
-      }
-    }, navigate)
+    makeRequest(
+      GET_USER_DATA_URL,
+      {
+        params: {
+          page: pageNumber,
+        },
+      },
+      navigate
+    )
       .then(data => {
         setPeople(data);
         setIsLoading(false);

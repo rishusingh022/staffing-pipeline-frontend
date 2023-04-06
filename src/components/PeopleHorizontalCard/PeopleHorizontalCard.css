@@ -1,15 +1,15 @@
-.user-horizontal-card-container{
+.user-horizontal-card-container {
   width: 100%;
   display: flex;
   gap: 10px;
   background-color: white;
   min-width: 260px;
   padding: 10px;
-  box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
   align-items: center;
 }
 
-.user-horizontal-img-container{
+.user-horizontal-img-container {
   height: 70px;
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -18,13 +18,13 @@
   box-sizing: border-box;
 }
 
-.user-horizontal-img{
+.user-horizontal-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.user-horizontal-details{
+.user-horizontal-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,45 +32,45 @@
   width: 100%;
 }
 
-.user-horizontal-id{
+.user-horizontal-id {
   font-size: 13px;
   font-weight: 600;
   font-weight: 400;
 }
-.user-horizontal-name{
+.user-horizontal-name {
   font-size: 20px;
   font-weight: 600;
 }
 
-.user-horizontal-position{
+.user-horizontal-position {
   font-size: 15px;
   font-weight: 600;
 }
 
-.user-horizontal-office{
+.user-horizontal-office {
   font-size: 12px;
   font-weight: 600;
-  color: #8C8C8C;
+  color: #8c8c8c;
 }
 
-.user-horizontal-bottom-btn{
+.user-horizontal-bottom-btn {
   display: flex;
   justify-content: flex-end;
   bottom: 0;
   right: 0;
 }
 
-.user-horizontal-bottom-btn > div{
+.user-horizontal-bottom-btn > div {
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
 }
-.user-horizontal-bottom-btn  p{
+.user-horizontal-bottom-btn p {
   font-size: 12px;
   font-weight: 600;
 }
 
-.active{
+.active {
   background-color: rgb(136, 206, 136);
 }

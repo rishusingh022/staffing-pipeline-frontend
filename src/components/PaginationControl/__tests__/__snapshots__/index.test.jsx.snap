@@ -3,7 +3,7 @@
 exports[`Pagination control should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="relative min-h-[50px] py-4 flex w-full px-10 justify-center"
+    class="relative min-h-[50px] py-10 flex w-full px-10 justify-center"
   >
     <div
       class="flex gap-12 items-center justify-center"
@@ -56,7 +56,7 @@ exports[`Pagination control should render correctly 1`] = `
 exports[`Pagination control should render correctly with props 1`] = `
 <DocumentFragment>
   <div
-    class="relative min-h-[50px] py-4 flex w-full px-10 justify-center"
+    class="relative min-h-[50px] py-10 flex w-full px-10 justify-center"
   >
     <div
       class="flex gap-12 items-center justify-center"

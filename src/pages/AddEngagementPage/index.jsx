@@ -239,7 +239,7 @@ export default function AddEngagementPage() {
                     }}
                   />
                 </div>
-                <div className='flex gap-4 justify-between'>
+                <div className="flex gap-4 justify-between">
                   <input
                     type="text"
                     placeholder="Charge Code"
@@ -248,7 +248,7 @@ export default function AddEngagementPage() {
                       setChargeCode(e.target.value);
                     }}
                   />
-                  <div className='status-dropdown'>
+                  <div className="status-dropdown">
                     <Dropdown
                       dropdownName="Status"
                       dropdownData={statusOptions}
