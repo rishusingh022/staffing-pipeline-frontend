@@ -1,8 +1,16 @@
+
+@import url(https://cdn.mckinsey.com/assets/fonts/web/Bower-Bold.woff);
+@import url(https://cdn.mckinsey.com/assets/fonts/web/McKinseySans-Regular.woff);
+@import url(https://cdn.mckinsey.com/assets/fonts/web/McKinseySans-Light.woff);
+@import url(https://cdn.mckinsey.com/assets/fonts/web/McKinseySans-Medium.woff);
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   user-select: none;
+  font-family: 'McKinseySans', sans-serif;
+  font-weight: 400;
 }
 
 .app {
