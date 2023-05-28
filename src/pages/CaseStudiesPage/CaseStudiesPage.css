@@ -12,7 +12,7 @@
   background-color: var(--color-whitesmoke);
   overflow: scroll;
   flex-grow: 1;
-  padding-top: 10px;
+  padding-top: 30px;
   padding-bottom: 20px;
 }
 .case-study-page-filter-container{

@@ -2,15 +2,15 @@
   background-color: #f5f5f5;
   display: grid;
   grid-template-areas:
-  'main-chart main-chart main-chart main-chart  metrics metrics'
-  'main-chart main-chart main-chart main-chart side-chart1 side-chart1'
-  'main-chart main-chart main-chart main-chart side-chart1 side-chart1'
-  'sector-chart1 sector-chart1 sector-chart2 sector-chart2 side-chart2 side-chart2'
-  'sector-chart1 sector-chart1 sector-chart2 sector-chart2 side-chart2 side-chart2';
+  'main-chart main-chart main-chart main-chart vr metrics metrics'
+  'main-chart main-chart main-chart main-chart vr side-chart1 side-chart1'
+  'main-chart main-chart main-chart main-chart vr side-chart1 side-chart1'
+  'sector-chart1 sector-chart1 sector-chart2 sector-chart2 vr side-chart2 side-chart2'
+  'sector-chart1 sector-chart1 sector-chart2 sector-chart2 vr side-chart2 side-chart2';
   /* 'sector-chart1 sector-chart1 sector-chart1 sector-chart2 sector-chart2 sector-chart2'
   'sector-chart1 sector-chart1 sector-chart1 sector-chart2 sector-chart2 sector-chart2'; */
 
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 20fr 20fr 20fr 20fr 0.005fr 20fr 20fr;
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
   flex-grow: 1;
   grid-gap: 1rem;
@@ -25,6 +25,17 @@
 
 .metrics {
   grid-area: metrics;
+}
+
+.vr {
+  grid-area: vr;
+  box-shadow: none;
+  background-color: #f5f5f5;
+}
+
+.vr-line {
+  border-left: 3px solid #e0e0e0;
+  height: 100%;
 }
 
 .main-area {
@@ -73,11 +84,18 @@
   color: gray;
 }
 
-.side-chart-title{
+.side-chart-title {
   font-size: 2rem;
   font-weight: 600;
-  padding-bottom: 20px;
   padding-left: 5px;
+}
+
+.side-chart-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: gray;
+  padding-left: 5px;
+  line-height: 1.1rem;
 }
 
 .main-chart-title{

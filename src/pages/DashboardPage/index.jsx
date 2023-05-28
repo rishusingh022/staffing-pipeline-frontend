@@ -136,20 +136,27 @@ const DashboardPage = () => {
               />
             </div>
           </div>
+          <div className="vr">
+            <div className="vr-line"></div>
+          </div>
           <div className="side-chart1">
             <p className="side-chart-title">Staffing Status</p>
+            <p className="side-chart-subtitle">By month</p>
             <PieChart data={userStatusData} name={'User Status'} />
           </div>
           <div className="side-chart2">
             <p className="side-chart-title">Engagement Status</p>
+            <p className="side-chart-subtitle">By month</p>
             <PieChart data={engagementStatusData} name={'Engagement Status'} />
           </div>
           <div className="sector-chart1">
             <p className="side-chart-title">Engagements in Sectors</p>
+            <p className="side-chart-subtitle">By year</p>
             <PieChart data={projectSectorMetrics} name={'Engagements in Sectors'} />
           </div>
           <div className="sector-chart2">
             <p className="side-chart-title">Case Studies in Sectors</p>
+            <p className="side-chart-subtitle">By year</p>
             <PieChart data={caseStudySectorMetrics} name={'Case Studies in Sectors'} />
           </div>
         </div>

@@ -122,6 +122,7 @@
 
 .user-skills-table{
   width: 100%;
+  table-layout: fixed;
 }
 
 .user-skills-table th{
@@ -129,25 +130,25 @@
   padding: 10px 40px;
 }
 
-.user-skills-table th:first-child {
+.user-skills-table th {
   text-align: left;
 }
 
-.user-skills-table td:first-child{
+.user-skills-table td{
   text-align: left;
 }
 
 .user-skills-table td{
   padding: 20px 40px;
-  text-align: center;
+  text-align: left;
 }
 
 .user-skills-table th:last-child{
-  text-align: right;
+  text-align: left;
 }
 
 .user-skills-table td:last-child{
-  text-align: right;
+  text-align: left;
 }
 
 .user-past-engagements-info{
