@@ -238,7 +238,12 @@ export default function CaseStudiesPage() {
           sectorSelected={sectorSelected}
         />
         <div className="container-in-case-studies">
-          <Count type="case-studies" objectCount={objectCount} setObjectCount={setObjectCount} />
+          <Count
+            type="case-studies"
+            objectCount={objectCount}
+            setObjectCount={setObjectCount}
+            searchCount={caseStudies.length}
+          />
           <CardContainer>{caseStudiesCards}</CardContainer>
           <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />
         </div>

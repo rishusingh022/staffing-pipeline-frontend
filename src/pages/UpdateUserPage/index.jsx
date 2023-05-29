@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './UpdateUserPage.css';
 import Header from '../../components/Header';
@@ -33,6 +34,7 @@ const UpdateUserPage = () => {
   const [setSkill, setSetSkill] = React.useState([]);
   const [handleNotification, setHandleNotification] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [skillNotAdded, setSkillNotAdded] = useState(false);
   // const [uploadedUserImage, setUploadedUserImage] = useState('');
 
   if (!userInfo?.featureAccess?.includes(allFeatures.edit_user) && userInfo?.userId !== userId)
@@ -61,6 +63,12 @@ const UpdateUserPage = () => {
   }, [userDetails]);
 
   const handleAddNewSkill = async item => {
+    for (let skill of setSkill) {
+      if (skill.skill === item.name) {
+        setSkillNotAdded(true);
+        return;
+      }
+    }
     if (userId) {
       const newSkill = await makeRequest(
         ADD_USER_SKILL_ROUTE(userId),
@@ -146,6 +154,15 @@ const UpdateUserPage = () => {
             setHandleNotification(false);
           }}
           success={true}
+        />
+      )}
+      {skillNotAdded && (
+        <Notification
+          message="Skill already exits"
+          handleClose={() => {
+            setSkillNotAdded(false);
+          }}
+          success={false}
         />
       )}
       <div className="user-content">

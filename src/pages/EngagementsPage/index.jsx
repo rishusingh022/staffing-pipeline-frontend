@@ -215,7 +215,14 @@ const EngagementsPage = () => {
           handleSubSectorChange={handleSubSectorChange}
         />
         <div className="container-in-engagements flex flex-col">
-          <Count type="engagements" objectCount={objectCount} setObjectCount={setObjectCount} />
+          {projects.length != 0 && (
+            <Count
+              type="engagements"
+              objectCount={objectCount}
+              setObjectCount={setObjectCount}
+              searchCount={projects.length}
+            />
+          )}
           {projectCards.length === 0 ? (
             <p className="w-full h-full text-center text-gray-400">No Engagements...</p>
           ) : (

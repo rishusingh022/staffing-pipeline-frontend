@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import makeRequest from '../../utils/makeRequest';
 import { GET_ENGAGEMENT_COUNT, GET_USER_COUNT, GET_CASE_STUDY_COUNT } from '../../constants/apiEndpoints';
 import PropTypes from 'prop-types';
-
 const capitalize = s => {
   if (typeof s !== 'string') return '';
   const words = s.split('-');
@@ -11,7 +10,7 @@ const capitalize = s => {
   return capitalizedWords.join(' ');
 };
 
-function Count({ type, setObjectCount, objectCount }) {
+function Count({ type, setObjectCount, objectCount, searchCount }) {
   const navigate = useNavigate();
   const getCount = () => {
     if (type === 'engagements') {
@@ -33,10 +32,13 @@ function Count({ type, setObjectCount, objectCount }) {
   useEffect(() => {
     getCount();
   }, []);
+  console.log('objectCount', objectCount);
   return (
-    <div className="w-full px-10 flex justify-end py-4 text-gray-400">
+    <div
+      style={{ marginRight: type !== 'case-studies' ? '32%' : '24%' }}
+      className="w-full px-10 flex justify-end py-4 text-gray-400">
       <p>
-        {objectCount} {capitalize(type)}
+        {searchCount} {capitalize(type)}
       </p>
     </div>
   );
@@ -46,6 +48,7 @@ Count.propTypes = {
   type: PropTypes.string.isRequired,
   setObjectCount: PropTypes.func.isRequired,
   objectCount: PropTypes.number.isRequired,
+  searchCount: PropTypes.number.isRequired,
 };
 
 export default Count;

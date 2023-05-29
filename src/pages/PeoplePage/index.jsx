@@ -124,6 +124,7 @@ const PeoplePage = () => {
         />
       );
     });
+    console.log(people.length);
     return (
       <div className="people-page">
         <Header hasNav={true} />
@@ -136,7 +137,7 @@ const PeoplePage = () => {
           navigate={navigate}
         />
         <div className="container-in-people flex flex-col">
-          <Count type="users" objectCount={objectCount} setObjectCount={setObjectCount} />
+          <Count type="users" objectCount={objectCount} setObjectCount={setObjectCount} searchCount={people.length} />
           <CardContainer>{peopleCards}</CardContainer>
           <PaginationControl pageNumber={pageNumber} setPageNumber={setPageNumber} objectCount={objectCount} />
         </div>
