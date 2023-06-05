@@ -7,7 +7,47 @@
 }
 .rounded-border-container {
   border-radius: 50%;
-  overflow: hidden;
   padding: 2.5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(10, 27, 43);
+  color: white;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+};
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltiptextAlignment {
+  display: flex;
 }

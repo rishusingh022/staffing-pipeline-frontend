@@ -23,7 +23,14 @@ import { default as makeRequest } from '../../utils/makeRequest';
 import { FeatureContext } from '../../context/FeatureContext';
 import PageLoader from '../../components/Spinner';
 import allFeatures from '../../constants/allFeatures';
+import EngagementHorizontalCard from '../../components/EngagementHorizontalCard';
 
+const capitalizeFirstLetterOpt = role => {
+  if (role) {
+    return role.charAt(0).toUpperCase() + role.slice(1);
+  }
+  return '';
+};
 const UpdateUserPage = () => {
   const { userInfo } = React.useContext(FeatureContext);
   const { userId } = useParams();
@@ -186,50 +193,35 @@ const UpdateUserPage = () => {
               Update profile
             </button>
           </div>
-          <div className="user-details-personal">
-            <input
-              className="user-input"
-              name="fmno"
-              type="text"
-              placeholder="FMNO"
-              defaultValue={currentFmno}
-              onChange={e => {
-                setCurrentFmno(e.target.value);
-              }}
-              disabled={!userInfo?.featureAccess?.includes(allFeatures.edit_user)}
-            />
-            <input
-              className="user-input"
-              name="name"
-              type="text"
-              placeholder="Name"
-              defaultValue={currentName}
-              onChange={e => {
-                setCurrentName(e.target.value);
-              }}
-              disabled={!userInfo?.featureAccess?.includes(allFeatures.edit_user)}
-            />
-            <input
-              className="user-input"
-              name="email"
-              type="text"
-              placeholder="E-mail"
-              defaultValue={currentEmail}
-              onChange={e => {
-                setCurrentEmail(e.target.value);
-              }}
-              disabled={!userInfo?.featureAccess?.includes(allFeatures.edit_user)}
-            />
-            <div className="user-details-personal-dropdown ">
-              <DropDown dropdownName="Bengaluru" dropdownData={[]} selectOption={console.log} />
+          <div className="user-details-personal-details">
+            <div>
+              <p className="user-name">{userDetails?.userData?.name}</p>
+            </div>
+            <div className="user-contact-details">
+              <p>{capitalizeFirstLetterOpt(userDetails?.userData?.role)} | Bengaluru - Brigade Center</p>
+              <p>Email: {userDetails?.userData?.email}</p>
             </div>
           </div>
         </div>
 
         <div className="user-engagements">
-          <h1 className="text-2xl font-semibold">Current Engagements</h1>
-          <div className="add-engagements">
-            <GoPlus style={{ color: 'gray', fontSize: '30px', cursor: 'pointer' }} />
+          <p className="current-engagement-title">Current Engagement</p>
+          <div className="max-h-40 overflow-auto pr-4 flex flex-col gap-4">
+            {userDetails?.currentEngagements?.length === 0 ? (
+              <p className="no-engagement-text">No current engagements</p>
+            ) : (
+              userDetails?.currentEngagements?.map((engagement, index) => {
+                return (
+                  <EngagementHorizontalCard
+                    key={index}
+                    engagementId={engagement.engagementId}
+                    engagementTitle={engagement.name}
+                    engagementImage={engagement.image}
+                    knowMore
+                  />
+                );
+              })
+            )}
           </div>
         </div>
       </div>

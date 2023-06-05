@@ -14,9 +14,27 @@ export default function CircleImage({ images }) {
         ))}
       </div>
       {images.length > 4 && (
-        <span className="text-xs text-gray-400 ml-1 rounded-border-container flex-shrink-0 aspect-square flex items-center">{`+${
-          images.length - 4
-        }`}</span>
+        <div className="tooltip text-xs text-gray-400 ml-1 rounded-border-container flex-shrink-0 aspect-square flex items-center">
+          {`+${images.length - 4}`}
+          <div className="tooltiptext">
+            {images.map(
+              (image, index) =>
+                index >= 0 && (
+                  <>
+                    <div className="tooltiptextAlignment">
+                      <img
+                        src={image.url}
+                        alt={image.altText}
+                        key={image.url}
+                        className="w-5 h-5 rounded-full object-cover"
+                      />
+                      <span className="ml-1">{image.altText}</span>
+                    </div>
+                  </>
+                )
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

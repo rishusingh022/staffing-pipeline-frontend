@@ -16,11 +16,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
   gap: 50px;
   /* flex-wrap: wrap; */
 }
-
+.user-details-personal-details {
+  margin-top: 37px;
+}
 .user-img {
   display: flex;
   flex-direction: column;
@@ -36,13 +37,6 @@
   padding: 10px;
   width: 162px;
   height: 45px;
-}
-
-.user-details-personal {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 30px;
 }
 
 .user-input {
@@ -64,10 +58,8 @@
 .user-engagements {
   width: 350px;
   height: 180px;
-  gap: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   /* border: 1px solid black; */
 }
 

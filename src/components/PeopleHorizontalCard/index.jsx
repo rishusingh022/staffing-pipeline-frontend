@@ -41,7 +41,7 @@ function PeopleHorizontalCard({
         <img className="user-horizontal-img" src={userImage ? userImage : UserImage}></img>
       </div>
       <div className="user-horizontal-details">
-        <p className="user-horizontal-id">FMNO: {userFMNO}</p>
+        <p className="user-horizontal-id"></p>
         <p className="user-horizontal-name">{userName}</p>
         <p className="user-horizontal-position">{capitalizeFirstLetter(userPosition)}</p>
         <p className="user-horizontal-office">{userOffice}</p>

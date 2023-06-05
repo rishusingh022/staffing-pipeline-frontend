@@ -9,7 +9,6 @@ import capitalizeFirstLetter from '../../utils/common/stringUtil';
 export default function UserCard({
   imageUrl,
   altText,
-  identityNumber,
   name,
   designation,
   location,
@@ -19,7 +18,7 @@ export default function UserCard({
     <div className="bg-white shadow-lg flex flex-col w-56 user-card-style" data-testid="image-card">
       <Image imageUrl={imageUrl ? imageUrl : UserDefault} altText={altText} />
       <div className="bg-white px-3 py-2">
-        <div className="text-xs mb-1">FMNO: {identityNumber}</div>
+        <div className="text-xs mb-1 text-white">-</div>
         <div className="font-bold text-xl mb-1 user-card-name">{name}</div>
         <div className="font-semibold text-xs mb-1">
           {designation.length > 2 ? capitalizeFirstLetter(designation) : designation.toUpperCase()}

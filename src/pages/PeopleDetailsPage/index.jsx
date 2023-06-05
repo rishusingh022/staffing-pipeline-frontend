@@ -59,7 +59,7 @@ const PeopleDetailsPage = () => {
           </div>
           <div className="user-details-main">
             <div>
-              <p className="user-fmno">FMNO: {userDetails?.userData?.fmno}</p>
+              <p className="user-fmno"></p>
               <p className="user-name">{userDetails?.userData?.name}</p>
             </div>
             <div className="user-contact-details">
